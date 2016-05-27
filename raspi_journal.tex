@@ -32,6 +32,10 @@
 %---------
 % The option pdftex is for use with pdfLaTeX. If eps figure are used, remove the option pdftex and use LaTeX and dvi2pdf.
 
+% *** ACRONYM PACKAGE ***
+\usepackage[nolist]{acronym}
+\input{acronym} % Name of acronyms file
+
 %=================================================================
 \firstpage{1}
 \makeatletter
@@ -78,7 +82,7 @@
 
 %=================================================================
 % Full title of the paper (Capitalized)
-\Title{As Easy as Pi: A Network Coding Raspberry Pi Testbed}
+\Title{Easy as Pi: A Network Coding Raspberry Pi Testbed}
 
 % Authors, for the paper (add full first names)
 \Author{N\'estor J. Hern\'andez Marcano $^{1,2,\dagger}$*, Chres W. S{\o}rensen $^{2,\dagger}$, Juan A. Cabrera G. $^{3}$, Daniel E. Lucani $^{2,\dagger}$ and Frank H. P. Fitzek $^{3}$}
@@ -95,13 +99,13 @@ $^{3}$ \quad Technische Universi\"at Dresden, Deutsche Telekom Chair of Communic
 \corres{Correspondence: nestor@steinwurf.com, nh@es.aau.dk; Tel.: +45 51 20 03 49}
 
 % Current address and/or shared authorship
-\firstnote{Fredrik Bajers Vej 7, Room: A3-111. Aalborg, Denmark}
+\firstnote{Fredrik Bajers Vej 7, Room A3-111. Aalborg, Denmark}
 
 % Simple summary
 %\simplesumm{}
 
 % Abstract (Do not use inserted blank lines, i.e. \\)
-\abstract{The abstract}
+\abstract{Due to the recurrent nature }
 
 % A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: 1) Background: Place the question addressed in a broad context and highlight the purpose of the study; 2) Methods: Describe briefly the main methods or treatments applied; 3) Results: Summarize the article's main findings; and 4) Conclusion: Indicate the main conclusions or interpretations. The abstract should be an objective representation of the article: it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.
 
@@ -141,31 +145,246 @@ $^{3}$ \quad Technische Universi\"at Dresden, Deutsche Telekom Chair of Communic
 
 \section{Introduction}
 
+At the beginning, there was darkness and then... bang! \ac{NC}
+\cite{ahlswede2000network} appeared to save us from the evilness
+of routing.
+
+General introduction. Introduction to topic addressed in the journal.
+Review of the State of the Art. Specify why our approach has benefits
+and which are they. Indicate contributions.
+
+Our work is organized as follows: Section \ref{sec:testbed} introduces
+the testbed system, its setup, connectivity, files configuration and
+compilation of the Kodo library. Section \ref{sec:schemes} defines the
+coding schemes employed in our study. Section \ref{sec:topologies} some
+configurable topologies in the tested. Later, in Section \ref{sec:metrics}
+we describe the considered metrics for performance comparison of the
+codes deployed in the Raspberry Pi. In Section \ref{sec:results}, we show
+the measurements in the Raspberry Pi of the mentioned metrics. Final
+conclusions and future work are reviewed in Section \ref{sec:conclusions}.
+
 %The introduction should briefly place the study in a broad context and highlight why it is important. It should define the purpose of the work and its significance. The current state of the research field should be reviewed carefully and key publications should be cited. Please highlight controversial and diverging hypotheses when necessary. Finally, briefly mention the main aim of the work and highlight the main conclusions. As far as possible, please keep the introduction comprehensible to scientists outside your particular field of research.
 
-Network Coding (NC) reference \cite{ahlswede2000network}.
+
 
 \section{Testbed Description}
+\label{sec:testbed}
+
+We proceed to define the testbed environment by each of its conforming
+parts. We later indicate a procedure to set up the testbed. In this procedure,
+we summarize all the details regarding on setting the connectivity and
+system files for a set of Raspberry Pis in a centralized fashion.
+Afterwards, we indicate how to cross-compile the Kodo library in an
+easy way. Finally, we provide further information about Kodo itself in terms
+of testing, other platforms supported and source code documentation
+for further references.
+
 \subsection{System Overview}
 \subsection{Installation and Updating}
-\subsection{Platform Support: Architectures, OS, compilers and Cross-compilation}
+\subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
 
-\section{Network Codes}
-\subsection{RLNC}
-\subsection{S-RLNC}
-\subsection{TSNC}
+Besides the previous description (\textbf{Include compiling Kodo from the
+RasPi from the scratch}), the testbed administrator can compile Kodo in its
+personal workstation and transfer the generated binaries directly to
+a path in the Raspberry Pi. To achieve this, we get a toolchain that
+contains the binaries for the \texttt{raspberry-gxx49-arm-g++} compiler
+for the Raspberry Pi. Therefore, we strongly recommend any testbed
+administrator to do the following procedure. In what follows, we provide
+the instructions considering that the NFS server uses the \texttt{\$HOME}
+directory as the working directory. However, the administrator may choose
+some other working directory of its preference if desired.
+
+\begin{enumerate}
+
+\item Download the Raspberry Pi toolchain for 64-bit Linux from: \\
+\texttt{http://buildbot.steinwurf.dk/toolchains/linux/} to your
+\texttt{\$HOME} directory. \\
+
+\item Extract the downloaded file locally in the NFS server. After
+this operation, there should be a new directory for the toolchain
+in the server. \\
+
+\item Add the \texttt{bin} folder of the toolchain to the \texttt{PATH}
+Linux environment variable of the server. This will help the server OS
+to recognize the location of the compiler command, which will be needed
+later. To do so, edit the \texttt{\$HOME/.profile} to add in a newline:
+\texttt{PATH="\$PATH:\$HOME/raspberry-gxx49-arm/bin"}. Save the
+\texttt{\$HOME/.profile}. \\
+
+\item Restart the server session in order for the changes made in the
+previous step take effect. To verify this, open a new terminal and type:
+\texttt{raspberry-gxx49-arm-g++ --version}. A correct binary installation
+should return an output similar to:
+
+\texttt{raspberry-gxx49-arm-g++ (crosstool-NG 1.21.0) 4.9.3 20150311 (prerelease)
+Copyright (C) 2014 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.} \\
+
+\item Clone the Kodo repository in the server by executing: \\
+\texttt{git clone git://github.com/steinwurf/kodo.git} in \texttt{\$HOME}. \\
+
+\item Navigate to the repository and configure \texttt{waf} by typing:
+\texttt{python config.py} and select the 16th ``make specification'' file
+for the Raspberry Pi which is option \texttt{[16]cxx\_raspberry\_gxx49\_arm}
+presented by the file.
+
+This command configures \texttt{waf} to use the proper compiler and its
+required flags to generate the binaries for the Raspberry Pi. If the
+configuration was correct, the output will indicate:
+\texttt{'configure' finished successfully (X.XXXs)}, where \texttt{X.XXX}
+is total time in seconds for configuring the project in the server. \\
+
+\item Execute \texttt{python waf build}. If the build process was
+successful, the generated binaries for the Raspberry Pi should be located
+in \texttt{build/cxx\_raspberry\_gxx49\_arm} in the Kodo repository.
+\textbf{Indicate how the binary files should look like}.
+
+Once this procedure is made, the testbed administrator can relocate the
+generated binary files to Raspberry Pi's through the network as desired
+by using the \texttt{scp} command during the configuration step.
+
+
+\end{enumerate}
+
+\subsection{Kodo Builds, Platform Support and Documentation}
+Link to the buildbot and the relevant webpages providing a description
+of them.
+
+\section{Coding Schemes}
+\label{sec:schemes}
+
+In this section, we present a description of the considered coding schemes
+measured with our the Raspberry Pi testbed. We introduce a definition
+for the primitive coding operations, e.g. encoding, decoding and recoding
+(where applies) for each coding scheme. Later, we address particular schemes
+which are obtained by modifying the basic coding operations.
+
+\subsection{Random Linear Network Coding}
+
+\ac{RLNC} is an example of intra-session \ac{NC}. Here, data symbols from a
+single flow are combined with each other. In this type of network coding,
+all the original data packets $P_j, j \in [1,g]$, each of $B$ bits, are used
+to create coded packets. In the following subsections, we describe the
+basic functionalities of \ac{RLNC}. Later, we mention applications that could
+potentially benefit from including \ac{RLNC} as a coding scheme.
+
+\subsubsection{Encoding}
+With \ac{RLNC}, each coded packet is a random linear
+combination of the original set of packets. Hence,
+a \ac{l.i.} set of $g$ coded packets, $C_i,\ i \in [1,g]$
+is required in order to get the original information.
+Each original packet is considered as a concatenation of elements
+from a \ac{GF} of a given size $q$, which we denote
+$GF(q)$. To create a coded packet, a coding coefficient
+$v_{i,j}$, is chosen at random from $GF(q)$ for every
+packet $P_j$ and multiplied and added
+following the respective \ac{GF} arithmetics. In this way,
+a coded packet is:
+%
+\begin{align} \label{eq:coded_packet}
+C_i  &= \bigoplus_{j=1}^{g} v_{i,j} \otimes P_j ,\ \forall i \in [1,g]
+\end{align}
+
+To indicate which packets were used to generate a coded packet, one
+form is to append its coding coefficients. In this case, the overhead
+included for $C_i,\ \forall i \in [1,g]$ by the coding coefficients
+is given by:
+%
+\begin{align} \label{eq:coded_packet}
+|v_i| &= \sum_{j=1}^{g} |v_{i,j}| = g \times \lceil \log_{2} (q)
+\rceil ~ [\mathrm{bits}]
+\end{align}
+
+\subsubsection{Decoding}
+To perform decoding, we define $\textbf{C} = \left[C_1 \ldots C_g \right]^T$
+and $\textbf{P} = \left[P_1 \ldots P_g \right]^T$. Then, decoding
+reduces to solve the linear system $\textbf{C} = \textbf{V} \cdot \textbf{P}$
+using Gaussian elimination \cite{fragouli2006network}.
+Here, the coding matrix $\textbf{V}$ contains any set of $g$ linearly
+independent packets $C_i$ as rows as follows:
+%
+\begin{align} \label{eq:coding_matrix}
+\textbf{V} =
+\left[
+\begin{array}{c}
+        v_1    \\ \hline
+        \vdots \\ \hline
+        v_g    \\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{ccc}
+        v_{1,1} & \ldots & v_{1,g} \\
+        \vdots  & \ddots & \vdots  \\
+        v_{g,1} & \ldots & v_{g,g} \\
+\end{array}
+\right]
+\end{align}
+%
+The decoder begins to compute and remove the contributions from each
+of the pivot elements, e.g. leftmost elements in the main diagonal of
+\eqref{eq:coding_matrix}, to reduce $\textbf{V}$ to reduced echelon
+form. In this way, it is possible to recover the original set of packets.
+
+\subsubsection{Recoding}
+Network coding allows intermediate nodes in a network to
+recombine (or recode) packets from their sources whether they are
+coded or not. In general, a recoded packet should be indistinguishable
+from a coded one. Thus, we define a recoded packet as
+$R_i$ and its corresponding encoding vector as
+$w_i$ with coding coefficients $ \left[w_{i,1} \ldots w_{i,g} \right]$,
+as follows:
+%
+\begin{align}
+\label{eq:recoded_packet}
+R_i = \bigoplus_{j=1}^{g} w_{i,j} \otimes C_j  ,\ \forall i \in [1,g]
+\end{align}
+
+In \eqref{eq:recoded_packet}, $w_{i,j}$ is the coding coefficient that
+multiplies $C_j$, uniformly and randomly chosen from $GF(q)$. Any
+decoder that collects $R_i, i \in [1,g]$ linearly independent coded packets,
+with their respective $w_i$, will be able to decode the data as mentioned
+before.
+
+\subsection{Sparse Random Linear Network Coding}
+
+In \ac{SRLNC}, instead of considering all the packets to create a coded
+packet like \ac{RLNC} does, here the encoder sets some coding coefficients to
+zero when creating a new coded packet. This permits to reduce the complexity
+of both the encoding and decoding operations since the encoder (or decoder)
+requires less operations to process the data. Therefore, a new code parameter
+to control the sparsity, the code density $d$, is included to vary the
+number of non-zero packet that are combined. Here are various approaches to
+set the density.
+
+A first method is to specify the number of zeros in a given
+generation size and later generate coded packets with this amount. For example:
+16 zeros in a coding vector of 64 packets where the position of zeros are
+modified at random for every coded packet generated. Another method is to
+define an average number of zeros in the coding vector. Therefore, more or
+less zeros are exactly generated for each coded packet in the process.
+However, if not carefully made, using a sparse coding scheme might increase
+the probability of generating \ac{l.d.} packets which incurs both overhead
+from redundant information and processing delay.
+
+\subsection{Tunable Sparse Network Coding}
 
 \section{Topologies}
+\label{sec:topologies}
 \subsection{Unicast}
 \subsection{Broadcast}
 
 \section{Analyzed Metrics}
+\label{sec:metrics}
 \subsection{Encoding and Decoding Speeds}
 \subsection{Latency}
 \subsection{Energy}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Results}
+\label{sec:results}
 
 This section may be divided by subheadings. It should provide a concise and precise description of the experimental results, their interpretation as well as the experimental conclusions that can be drawn.
 
@@ -237,10 +456,11 @@ This section may be divided by subheadings. It should provide a concise and prec
 
 
 \section{Conclusion}
+\label{sec:conclusions}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
+%\section{Discussion}
 
 %This section may be divided by subheadings. Authors should discuss the results and how they can be interpreted in perspective of previous studies and of the working hypotheses. The findings and their implications should be discussed in the broadest context possible. Future research directions may also be highlighted.
 
@@ -252,7 +472,7 @@ This section may be divided by subheadings. It should provide a concise and prec
 %Research manuscripts reporting large datasets that are deposited in a publicly available database should specify where the data have been deposited and provide the relevant accession numbers. If the accession numbers have not yet been obtained at the time of submission, please state that they will be provided during review. They must be provided prior to publication.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
+%\section{Conclusions}
 
 %This section is not mandatory, but can be added to the manuscript if the discussion is unusually long or complex.
 
