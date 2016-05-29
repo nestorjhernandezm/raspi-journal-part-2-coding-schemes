@@ -226,7 +226,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.} \\
 
 \item Navigate to the repository and configure \texttt{waf} by typing:
 \texttt{python config.py} and select the 16th ``make specification'' file
-for the Raspberry Pi which is option \texttt{[16]cxx\_raspberry\_gxx49\_arm}
+for the Raspberry Pi, e.g. option \texttt{[16]cxx\_raspberry\_gxx49\_arm}
 presented by the file.
 
 This command configures \texttt{waf} to use the proper compiler and its
@@ -247,9 +247,14 @@ by using the \texttt{scp} command during the configuration step.
 
 \end{enumerate}
 
-\subsection{Kodo Builds, Platform Support and Documentation}
-Link to the buildbot and the relevant webpages providing a description
-of them.
+\subsection{Kodo Builds for the Raspberry Pi, Platform Support and Documentation}
+
+You can check the build status of Kodo, Fifi and other relevant projects through
+their respective repository master branch on our buildbot page
+\cite{steinwurf2016buildbot}. Our buildbot displays the status of the builds for
+Raspbian 8 and GCC 4.9 for the ARM architecture which is the relevant one for the
+Raspberry Pi. At the link, you can check build status and build statistics. Also,
+documentation about Kodo basics with a tutorial is available at \cite{kododocs}.
 
 \section{Coding Schemes}
 \label{sec:schemes}
