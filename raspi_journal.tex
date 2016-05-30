@@ -370,12 +370,13 @@ The simplest way to accomplish this is to add a Bernoulli random
 variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
 
 \begin{align} \label{eq:sparse_coded_packet}
-    C_i  &= \bigoplus_{j=1}^{g} \text{B}(d)_{j} \, v_{i,j} \otimes P_j ,\ \forall i \in [1,g] ,\
+    %C_i  &= \bigoplus_{j=1}^{g} \text{B}(d)_{j} \, v_{i,j} \otimes P_j ,\ \forall i \in [1,g] ,\
+    C_i  &= \bigoplus_{j=1}^{g} \text{B}(d) \, v_{i,j} \otimes P_j ,\ \forall i \in [1,g] ,\
     v_{i,j} > 0,\
     d \in
     \begin{cases}
-        {]0,0.5]} & \text{for } q=2 \\
-        {]0,1]} & \text{for } q>2
+        {(0,0.5]} & \text{for } q=2 \\
+        {(0,1]} & \text{for } q>2
     \end{cases}
 \end{align}
 
