@@ -233,3 +233,23 @@ total budget. The feedback scheme \ref{eq:feedback_dofs} roughly splits the
 remaining \ac{DOF} in halves. This is also the case for the budget that is
 split equally among the two new regions. The very last region will be asigned
 the full remainder of the total budget.
+
+\subsection{Network Coding Implementation for Multicore Architectures}
+\label{sub:implementation-multicore}
+
+The operations needed to encode and decode the data are, in general, similar. To
+encode packets, the encoder needs to perform the matrix multiplication
+$\textbf{C} = \textbf{V} \cdot \textbf{P}$. On the other hand, decoding the
+information requires the decoder to find $\textbf{V}^{-1}$ and to perform the
+matrix multiplication $\textbf{P} = \textbf{V}^{-1} \cdot \textbf{C}$. In both
+cases, a matrix multiplication is needed. Therefore, to make a practical
+implementation of network coding, it is valuable to find a way to optimize the
+matrix multiplications operations for multicore architectures.
+
+Some algorithms implement the decoding combining the matrix inversion and the
+matrix multiplication, e.g., performing the Gauss-Jordan algorithm over the
+coding matrix $\textbf{V}$ while performing, in parallel, row operations on the
+coded data $\textbf{C}$. The parallelization of such operations provide speeds
+up that are limited for small block sizes ($\leq 2048$ bytes). The reason is
+that to operate in a parallel fashion over the same coded packet $C_i$ requires
+strained synchronization.
