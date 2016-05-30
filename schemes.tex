@@ -12,30 +12,33 @@ which are obtained by modifying the basic coding operations.
 single flow are combined with each other. In this type of network coding,
 all the original data packets $P_j, j \in [1,g]$, each of $B$ bits, are used
 to create coded packets. In the following subsections, we describe the
-basic functionalities of \ac{RLNC}. Later, we mention applications that could
-potentially benefit from including \ac{RLNC} as a coding scheme.
+basic functionalities of \ac{RLNC}.
 
 \subsubsection{Encoding}
-With \ac{RLNC}, each coded packet is a random linear
-combination of the original set of packets. Hence,
-a \ac{l.i.} set of $g$ coded packets, $C_i,\ i \in [1,g]$
-is required in order to get the original information.
-Each original packet is considered as a concatenation of elements
-from a \ac{GF} of a given size $q$, which we denote
-$GF(q)$. To create a coded packet, a coding coefficient
-$v_{i,j}$, is chosen at random from $GF(q)$ for every
-packet $P_j$ and multiplied and added
-following the respective \ac{GF} arithmetics. In this way,
-a coded packet is:
+In \ac{RLNC}, any coded packet is a linear combination from all
+the original packets. For the coding scheme, packets are seen as
+algebraic entities formed as a sequence of elements from $GF(q)$,
+which is a \ac{GF} of size $q$. Later, each original packet is
+multiplied by a coding coefficient from $GF(q)$. The coding coefficients
+are picked uniformly at random by the encoder. To perform the
+multiplication of a packet by a coding coefficient, the coefficient is
+multiplied for each of the elements in the concatenation that composes
+an original packet, preserving the concatenation. Later, all resulting
+packets are added within the \ac{GF} arithmetics together to generate
+a coded packet. Thus, a coded packet can be written as:
 %
 \begin{align} \label{eq:coded_packet}
-C_i  &= \bigoplus_{j=1}^{g} v_{i,j} \otimes P_j ,\ \forall i \in [1,g]
+C_i  &= \bigoplus_{j=1}^{g} v_{i,j} \otimes P_j ,\ \forall i \in [1,\ldots)
 \end{align}
 
-To indicate which packets were used to generate a coded packet, one
-form is to append its coding coefficients. In this case, the overhead
-included for $C_i,\ \forall i \in [1,g]$ by the coding coefficients
-is given by:
+In \eqref{eq:coded_packet}, $C_i$ is the generic coded packet. In principle,
+the encoder may
+
+For signaling a receiver which of the original packets were utilized to
+create a coded packet, a simple choice is to append its coding coefficients
+as a header of the coded packet. Hence, an amount of overhead is included
+since every coded packet given that we need to provide some signalling.
+The coding coefficients overhead can be quantied as:
 %
 \begin{align} \label{eq:coded_packet_coef}
 |v_i| &= \sum_{j=1}^{g} |v_{i,j}| = g \times \lceil \log_{2} (q)
@@ -43,12 +46,19 @@ is given by:
 \end{align}
 
 \subsubsection{Decoding}
-To perform decoding, we define $\textbf{C} = \left[C_1 \ldots C_g \right]^T$
-and $\textbf{P} = \left[P_1 \ldots P_g \right]^T$. Then, decoding
-reduces to solve the linear system $\textbf{C} = \textbf{V} \cdot \textbf{P}$
-using Gaussian elimination \cite{fragouli2006network}.
-Here, the coding matrix $\textbf{V}$ contains any set of $g$ linearly
-independent packets $C_i$ as rows as follows:
+To be able to decode a batch of $g$ packets, a \ac{l.i.} set of $g$
+coded packets, $C_i,\ i \in [1,g]$ is required in order to get the
+original information. Once this set has been collected for any receiver,
+the original packets can be found by computing the solution of a system
+of linear equation using \ac{GF} aritmethics. Thus, we define
+$\textbf{C} = \left[C_1 \ldots C_g \right]^T$ and
+$\textbf{P} = \left[P_1 \ldots P_g \right]^T$. Algebraically, decoding
+simplifies to finding the inverse of $\textbf{V}$ in the linear system
+$\textbf{C} = \textbf{V} \cdot \textbf{P}$, which can achieved using
+Gaussian elimination techniques \cite{fragouli2006network} that can
+be efficient. For decoding to be possible, the (coding) matrix $\textbf{V}$
+must contain any set of $g$ linearly independent packets $C_i$ in order
+to reduce to row-echelon form. The coding matrix is represented as follows:
 %
 \begin{align} \label{eq:coding_matrix}
 \textbf{V} =
