@@ -1,10 +1,12 @@
 # Document-based types #
 ########################
-*.pdf
+raspi_journal.pdf
+*converted-to.pdf
 *.blg
 *.bbl
 *.out
 *.aux
+.*.swp
 
 
 # Packages #
