@@ -20,25 +20,32 @@ the original packets. For the coding scheme, packets are seen as
 algebraic entities formed as a sequence of elements from $GF(q)$,
 which is a \ac{GF} of size $q$. Later, each original packet is
 multiplied by a coding coefficient from $GF(q)$. The coding coefficients
-are picked uniformly at random by the encoder. To perform the
-multiplication of a packet by a coding coefficient, the coefficient is
-multiplied for each of the elements in the concatenation that composes
-an original packet, preserving the concatenation. Later, all resulting
-packets are added within the \ac{GF} arithmetics together to generate
-a coded packet. Thus, a coded packet can be written as:
+are picked uniformly at random from the \ac{GF} by the encoder. To
+perform the multiplication of a packet by a coding coefficient, the
+coefficient is multiplied for each of the elements in the
+concatenation that composes an original packet, preserving the
+concatenation. Later, all resulting packets are added within the
+\ac{GF} arithmetics together to generate a coded packet. Thus, a
+coded packet can be written as:
 %
 \begin{align} \label{eq:coded_packet}
 C_i  &= \bigoplus_{j=1}^{g} v_{i,j} \otimes P_j ,\ \forall i \in [1,\ldots)
 \end{align}
 
 In \eqref{eq:coded_packet}, $C_i$ is the generic coded packet. In principle,
-the encoder may
+the encoder may produce any number of coded packets, but a finite
+number is produced in practice given that a decoder needs only
+$g$ \ac{l.i.} coded packets to decode the batch. Also, in
+\eqref{eq:coded_packet}, $v_{i,j}$ is the coding coefficient used in the
+$i$-th coded packet and assigned to multiply the $j$-th original packet.
 
-For signaling a receiver which of the original packets were utilized to
-create a coded packet, a simple choice is to append its coding coefficients
-as a header of the coded packet. Hence, an amount of overhead is included
-since every coded packet given that we need to provide some signalling.
-The coding coefficients overhead can be quantied as:
+For indicating a receiver which of the original packets were utilized
+to create a coded packet, a simple and useful choice is to append
+its coding coefficients as a header of the coded packet. Hence, an
+amount of overhead is included in every coded packet given that we
+need to provide some signalling needed for decoding. The coding
+coefficients overhead amount for packet $i$, $|v_i|$, can be quantified
+as:
 %
 \begin{align} \label{eq:coded_packet_coef}
 |v_i| &= \sum_{j=1}^{g} |v_{i,j}| = g \times \lceil \log_{2} (q)
