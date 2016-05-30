@@ -1,0 +1,245 @@
+\label{sec:schemes}
+
+In this section, we present a description of the considered coding schemes
+measured with our the Raspberry Pi testbed. We introduce a definition
+for the primitive coding operations, e.g. encoding, decoding and recoding
+(where applies) for each coding scheme. Later, we address particular schemes
+which are obtained by modifying the basic coding operations.
+
+\subsection{Random Linear Network Coding}
+
+\ac{RLNC} is an example of intra-session \ac{NC}. Here, data symbols from a
+single flow are combined with each other. In this type of network coding,
+all the original data packets $P_j, j \in [1,g]$, each of $B$ bits, are used
+to create coded packets. In the following subsections, we describe the
+basic functionalities of \ac{RLNC}. Later, we mention applications that could
+potentially benefit from including \ac{RLNC} as a coding scheme.
+
+\subsubsection{Encoding}
+With \ac{RLNC}, each coded packet is a random linear
+combination of the original set of packets. Hence,
+a \ac{l.i.} set of $g$ coded packets, $C_i,\ i \in [1,g]$
+is required in order to get the original information.
+Each original packet is considered as a concatenation of elements
+from a \ac{GF} of a given size $q$, which we denote
+$GF(q)$. To create a coded packet, a coding coefficient
+$v_{i,j}$, is chosen at random from $GF(q)$ for every
+packet $P_j$ and multiplied and added
+following the respective \ac{GF} arithmetics. In this way,
+a coded packet is:
+%
+\begin{align} \label{eq:coded_packet}
+C_i  &= \bigoplus_{j=1}^{g} v_{i,j} \otimes P_j ,\ \forall i \in [1,g]
+\end{align}
+
+To indicate which packets were used to generate a coded packet, one
+form is to append its coding coefficients. In this case, the overhead
+included for $C_i,\ \forall i \in [1,g]$ by the coding coefficients
+is given by:
+%
+\begin{align} \label{eq:coded_packet_coef}
+|v_i| &= \sum_{j=1}^{g} |v_{i,j}| = g \times \lceil \log_{2} (q)
+\rceil ~ [\mathrm{bits}]
+\end{align}
+
+\subsubsection{Decoding}
+To perform decoding, we define $\textbf{C} = \left[C_1 \ldots C_g \right]^T$
+and $\textbf{P} = \left[P_1 \ldots P_g \right]^T$. Then, decoding
+reduces to solve the linear system $\textbf{C} = \textbf{V} \cdot \textbf{P}$
+using Gaussian elimination \cite{fragouli2006network}.
+Here, the coding matrix $\textbf{V}$ contains any set of $g$ linearly
+independent packets $C_i$ as rows as follows:
+%
+\begin{align} \label{eq:coding_matrix}
+\textbf{V} =
+\left[
+\begin{array}{c}
+        v_1    \\ \hline
+        \vdots \\ \hline
+        v_g    \\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{ccc}
+        v_{1,1} & \ldots & v_{1,g} \\
+        \vdots  & \ddots & \vdots  \\
+        v_{g,1} & \ldots & v_{g,g} \\
+\end{array}
+\right]
+\end{align}
+%
+The decoder begins to compute and remove the contributions from each
+of the pivot elements, e.g. leftmost elements in the main diagonal of
+\eqref{eq:coding_matrix}, to reduce $\textbf{V}$ to reduced echelon
+form. In this way, it is possible to recover the original set of packets.
+
+\subsubsection{Recoding}
+Network coding allows intermediate nodes in a network to
+recombine (or recode) packets from their sources whether they are
+coded or not. In general, a recoded packet should be indistinguishable
+from a coded one. Thus, we define a recoded packet as
+$R_i$ and its corresponding encoding vector as
+$w_i$ with coding coefficients $ \left[w_{i,1} \ldots w_{i,g} \right]$,
+as follows:
+%
+\begin{align}
+\label{eq:recoded_packet}
+R_i = \bigoplus_{j=1}^{g} w_{i,j} \otimes C_j  ,\ \forall i \in [1,g]
+\end{align}
+
+In \eqref{eq:recoded_packet}, $w_{i,j}$ is the coding coefficient that
+multiplies $C_j$, uniformly and randomly chosen from $GF(q)$. Any
+decoder that collects $R_i, i \in [1,g]$ linearly independent coded packets,
+with their respective $w_i$, will be able to decode the data as mentioned
+before.
+
+\subsection{Sparse Random Linear Network Coding}
+
+In \ac{SRLNC}, instead of considering all the packets to create a coded
+packet like \ac{RLNC} does, here the encoder sets more coding coefficients to
+zero when creating a new coded packet.
+In practice this can be implemented in
+a couple of ways.
+%One way to accomplish this is to add a Bernoulli random
+%variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
+The simplest way to accomplish this is to add a Bernoulli random
+variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
+
+\begin{align} \label{eq:sparse_coded_packet}
+    %C_i  &= \bigoplus_{j=1}^{g} \text{B}(d)_{j} \, v_{i,j} \otimes P_j ,\ \forall i \in [1,g] ,\
+    C_i  &= \bigoplus_{j=1}^{g} \text{B}(d) \, v_{i,j} \otimes P_j ,\ \forall i \in [1,g] ,\
+    v_{i,j} > 0,\
+    d \in
+    \begin{cases}
+        {(0,0.5]} & \text{for } q=2 \\
+        {(0,1]} & \text{for } q>2
+    \end{cases}
+\end{align}
+
+We call $d$ the coding density.
+Reducing $d$ enables the encoder to decrease the average number of packets that
+are mixed into each coded packet. Thereby reducing the complexity of the
+encoder that needs to mix less packets, but also on the decoder that in
+contrast needs to eliminate less nonzero coding coefficients. The catch of this
+approach is that coded packets produced by the encoder becomes more \ac{l.d.}
+on each other as the coding complexity is reduced. This incurs in additional
+channel overhead.
+
+Generating a coded packet does not imply that it contains any data at all. I.e.
+$ \left[ B(d)_{1}, \ldots, B(d)_{g} \right] = \mathbf{0}$.
+In that case, one would have to trash the coded packet and generate a new one.
+
+Most coded packets that are produced by the encoder are typically very sparse.
+We will therefore rely on a slightly different implementation in KODO
+\ref{eq:sparse_coded_packet2} that proved faster for low densities. It is best
+expressed as:
+
+\begin{align} \label{eq:sparse_coded_packet2}
+    C_i  &= \bigoplus_{j=1}^{\floor{\text{Binom}(g,d)}} v_{i,m} \otimes P_{m} ,\
+    %L \subseteq \{1,\dots,g\}: |L|=k ,\
+    \forall i \in [1,g] ,\
+    v_{i,j} > 0
+\end{align}
+where
+$m = \text{choice}(\{1,\dots,g\}, \text{size}=k, \text{replace}=\text{False})$.
+\fxnote{Can this be represented smarter?}
+
+
+%To solve this, one could trash the coded packet and generate a new coded
+%packet. This is not the most efficient because KODO needs to count the
+%the number of nonzero coding coefficients in each coded packets to eliminate
+%all zero packets.
+%
+%This is the most correct approach, but the most efficient approach although it is mathematically .
+
+It is often desired to express the coding density as $d=\frac{k}{g}$. We call
+this notation $k-sparse$ where $k$ is the average number of packets combined to
+produce a coded packet.
+
+%For low coding density, the encoder might generate a coded packet that consists
+%of no coded packets. I.e. the packet consists of all zeroes
+
+
+
+
+
+
+%In \ac{SRLNC}, instead of considering all the packets to create a coded
+%packet like \ac{RLNC} does, here the encoder sets some coding coefficients to
+%zero when creating a new coded packet. This permits to reduce the complexity
+%of both the encoding and decoding operations since the encoder (or decoder)
+%requires less operations to process the data. Therefore, a new code parameter
+%to control the sparsity, the code density $d$, is included to vary the
+%number of non-zero packet that are combined. Here are various approaches to
+%set the density.
+%
+%A first method is to specify the number of zeros in a given
+%generation size and later generate coded packets with this amount. For example:
+%16 zeros in a coding vector of 64 packets where the position of zeros are
+%modified at random for every coded packet generated. Another method is to
+%define an average number of zeros in the coding vector. Therefore, more or
+%less zeros are exactly generated for each coded packet in the process.
+%However, if not carefully made, using a sparse coding scheme might increase
+%the probability of generating \ac{l.d.} packets which incurs both overhead
+%from redundant information and processing delay.
+
+\subsection{Tunable Sparse Network Coding}
+
+\ac{TSNC} can be considered an extension to \ac{SRLNC}. The overall idea is
+not only for the encoder to generate sparse coded packets, but also to
+choose the sparsity of packets wiser. That is, as the decoder accomulates more
+coded packets it becomes more and more likely that the next received
+coded packet will be \ac{l.d.}.
+
+The idea of \ac{TSNC} is therefore to gradually increase the coding density
+as the decoderes \ac{DOF} increases. This enables TSNC to save a lot of
+complexity particulary in the beginning of transmissions, but also to
+tailor the coding delay. I.e. approximate the number of coded packets a
+decoder needs to receive to decode a generation of $g$ packets. We call
+this number the budget, $B$.
+
+Provided a desired budget, $B \geq g$, and the decoders \ac{DOF} it can be
+estimated how sparse the coded packets should be to finish a transmission in
+time.
+
+In our implementation, it is the encoders responsibility to estimate the coding
+density. We use feedback to provide the encoder a better estimate of the
+decoders \ac{DOF} at pre-defined points. Namely, when the decoder obtains the
+following \ac{DOF}'s:
+
+\begin{equation}\label{eq:feedback_dofs}
+    s(k) = g\cdot \frac{2^k -1}{2^k},  \; \text{for } k=0,1,2,\dots
+\end{equation}
+where $k$ is the $k$-th feedback packet that is transmitted during a generation.
+
+The encoder considers the time between feedback packets as regions. It then
+estimates a fixed coding density for each region when a feedback packet is
+received.
+
+Before the coding density can be estimated it is essential that the encoder
+has a good estimate of the decoders \ac{DOF}, but also the remainder of the
+total budget. The feedback scheme \ref{eq:feedback_dofs} roughly splits the
+remaining \ac{DOF} in halves. This is also the case for the budget that is
+split equally among the two new regions. The very last region will be asigned
+the full remainder of the total budget.
+
+\subsection{Network Coding Implementation for Multicore Architectures}
+\label{sub:implementation-multicore}
+
+The operations needed to encode and decode the data are, in general, similar. To
+encode packets, the encoder needs to perform the matrix multiplication
+$\textbf{C} = \textbf{V} \cdot \textbf{P}$. On the other hand, decoding the
+information requires the decoder to find $\textbf{V}^{-1}$ and to perform the
+matrix multiplication $\textbf{P} = \textbf{V}^{-1} \cdot \textbf{C}$. In both
+cases, a matrix multiplication is needed. Therefore, to make a practical
+implementation of network coding, it is valuable to find a way to optimize the
+matrix multiplications operations for multicore architectures.
+
+Some algorithms implement the decoding combining the matrix inversion and the
+matrix multiplication, e.g., performing the Gauss-Jordan algorithm over the
+coding matrix $\textbf{V}$ while performing, in parallel, row operations on the
+coded data $\textbf{C}$. The parallelization of such operations provide speeds
+up that are limited for small block sizes ($\leq 2048$ bytes). The reason is
+that to operate in a parallel fashion over the same coded packet $C_i$ requires
+strained synchronization.
