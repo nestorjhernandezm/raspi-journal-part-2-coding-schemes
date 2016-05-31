@@ -40,8 +40,8 @@ $g$ \ac{l.i.} coded packets to decode the batch. Also, in
 \eqref{eq:coded_packet}, $v_{i,j}$ is the coding coefficient used in the
 $i$-th coded packet and assigned to multiply the $j$-th original packet.
 
-For indicating a receiver which of the original packets were utilized
-to create a coded packet, a simple and useful choice is to append
+For indicating a receiver which packets were utilized
+to create a coded one, a simple yet versatile choice is to append
 its coding coefficients as a header of the coded packet. Hence, an
 amount of overhead is included in every coded packet given that we
 need to provide some signalling needed for decoding. The coding
@@ -55,18 +55,18 @@ as:
 
 \subsubsection{Decoding}
 To be able to decode a batch of $g$ packets, a \ac{l.i.} set of $g$
-coded packets, $C_i,\ i \in [1,g]$ is required in order to get the
-original information. Once this set has been collected for any receiver,
+coded packets, $C_i,\ i \in [1,g]$ is required at a decoder.
+Once this set has been collected for a decoder,
 the original packets can be found by computing the solution of a system
-of linear equation using \ac{GF} aritmethics. Thus, we define
+of linear equations using \ac{GF} aritmethics. Thus, we define
 $\textbf{C} = \left[C_1 \ldots C_g \right]^T$ and
 $\textbf{P} = \left[P_1 \ldots P_g \right]^T$. Algebraically, decoding
 simplifies to finding the inverse of $\textbf{V}$ in the linear system
 $\textbf{C} = \textbf{V} \cdot \textbf{P}$, which can achieved using
-Gaussian elimination techniques \cite{fragouli2006network} that can
-be efficient. For decoding to be possible, the (coding) matrix $\textbf{V}$
-must contain any set of $g$ linearly independent packets $C_i$ in order
-to reduce to row-echelon form. The coding matrix is represented as follows:
+efficient Gaussian elimination techniques \cite{fragouli2006network}.
+On real applications, decoding is performed on-the-fly, e.g. the pivots are
+computed as packets are progressively received, in order to minimize the computation
+delay for each step. The coding matrix is represented as follows:
 %
 \begin{align} \label{eq:coding_matrix}
 \textbf{V} =
@@ -87,15 +87,20 @@ to reduce to row-echelon form. The coding matrix is represented as follows:
 \right]
 \end{align}
 %
-The decoder begins to compute and remove the contributions from each
+A decoder starts to calculate and substract contributions from each
 of the pivot elements, e.g. leftmost elements in the main diagonal of
-\eqref{eq:coding_matrix}, to reduce $\textbf{V}$ to reduced echelon
-form. In this way, it is possible to recover the original set of packets.
+\eqref{eq:coding_matrix}, from top to bottom. The purpose is to obtain 
+the equivalence  $\textbf{V}$ in its reduced echelon form. The steps
+for reducing the matrix by elementary row operations are carried each
+a \ac{l.i.} packet is received. Once in reduced echelon form, packets
+can be retrieved by doing a substitution starting from the lastest
+coded packet. In this way, the amount of elementary operations at the end
+is diminished.
 
 \subsubsection{Recoding}
-Network coding allows intermediate nodes in a network to
-recombine (or recode) packets from their sources whether they are
-coded or not. In general, a recoded packet should be indistinguishable
+An inherent property of \ac{NC} is the possibility for intermediate nodes
+in a network between a source and a destination, to create coded packets
+even from coded packets sent from the source. In general, a recoded packet should be indistinguishable
 from a coded one. Thus, we define a recoded packet as
 $R_i$ and its corresponding encoding vector as
 $w_i$ with coding coefficients $ \left[w_{i,1} \ldots w_{i,g} \right]$,
@@ -103,7 +108,7 @@ as follows:
 %
 \begin{align}
 \label{eq:recoded_packet}
-R_i = \bigoplus_{j=1}^{g} w_{i,j} \otimes C_j  ,\ \forall i \in [1,g]
+R_i = \bigoplus_{j=1}^{g} w_{i,j} \otimes C_j  ,\ \forall i \in [1,\ldots)
 \end{align}
 
 In \eqref{eq:recoded_packet}, $w_{i,j}$ is the coding coefficient that
@@ -130,8 +135,8 @@ variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
     v_{i,j} > 0,\
     d \in
     \begin{cases}
-        {(0,0.5]} & \text{for } q=2 \\
-        {(0,1]} & \text{for } q>2
+        {(0,0.5]} & \text{for} q = 2 \\
+        {(0,1]} & \text{for} q > 2
     \end{cases}
 \end{align}
 
