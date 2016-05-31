@@ -31,14 +31,14 @@ concatenation. Later, all resulting packets are added within the
 coded packet can be written as:
 %
 \begin{align} \label{eq:coded_packet}
-C_i  &= \bigoplus_{j=1}^{g} v_{i,j} \otimes P_j ,\ \forall i \in [1,\ldots)
+C_i  &= \bigoplus_{j=1}^{g} v_{ij} \otimes P_j ,\ \forall i \in [1,\ldots)
 \end{align}
 
 In \eqref{eq:coded_packet}, $C_i$ is the generic coded packet. In principle,
 the encoder may produce any number of coded packets, but a finite
 number is produced in practice given that a decoder needs only
 $g$ \ac{l.i.} coded packets to decode the batch. Also, in
-\eqref{eq:coded_packet}, $v_{i,j}$ is the coding coefficient used in the
+\eqref{eq:coded_packet}, $v_{ij}$ is the coding coefficient used in the
 $i$-th coded packet and assigned to multiply the $j$-th original packet.
 
 For indicating a receiver which packets were utilized
@@ -50,7 +50,7 @@ coefficients overhead amount for packet $i$, $|v_i|$, can be quantified
 as:
 %
 \begin{align} \label{eq:coded_packet_coef}
-|v_i| &= \sum_{j=1}^{g} |v_{i,j}| = g \times \lceil \log_{2} (q)
+|v_i| &= \sum_{j=1}^{g} |v_{ij}| = g \times \lceil \log_{2} (q)
 \rceil ~ [\mathrm{bits}]
 \end{align}
 
@@ -78,9 +78,9 @@ coded packets, as follows:
 =
 \left[
 \begin{array}{ccc}
-        v_{1,1} & \ldots & v_{1,g} \\
+        v_{11} & \ldots & v_{1g} \\
         \vdots  & \ddots & \vdots  \\
-        v_{g,1} & \ldots & v_{g,g} \\
+        v_{g1} & \ldots & v_{gg} \\
 \end{array}
 \right]
 \end{align}
@@ -111,18 +111,18 @@ coding scheme that permits to \textit{recode} former coded packets at any
 point in the network without inquiring in local decoding processing. In
 principle, a recoded packet should be indistinguishable from a coded one.
 Thus, we define a recoded packet as $R_i$ and consider the coding
-coefficients $ \left[w_{i,1} \ldots w_{i,g} \right]$, as the used ones to
+coefficients $w_{i1}, \ldots, w_{ig}$ as the used ones to
 create $R_i$. Later, a recoded packet can be written as:
 %
 \begin{align}
 \label{eq:recoded_packet}
-R_i = \bigoplus_{j=1}^{g} w_{i,j} \otimes C_j  ,\ \forall i \in [1,\ldots)
+R_i = \bigoplus_{j=1}^{g} w_{ij} \otimes C_j  ,\ \forall i \in [1,\ldots)
 \end{align}
 
-In \eqref{eq:recoded_packet}, $w_{i,j}$ is the coding coefficient used
+In \eqref{eq:recoded_packet}, $w_{ij}$ is the coding coefficient used
 in the $i$-th recoded packet and assigned to multiply a previously coded
 packet $C_j$. These coding coefficients are again uniformly and randomly chosen
-from $GF(q)$. Still, each of the $w_{i,j}$ are not the appended recoding
+from $GF(q)$. Still, each of the $w_{ij}$ are not the appended recoding
 coefficients for signalling since the they will only retrieve previously
 coded packets. The analytical expression for the appended recoding
 coefficients is obtained by calculating recoded packets as function of the
@@ -142,9 +142,9 @@ can be written as:
 =
 \left[
 \begin{array}{ccc}
-        w_{1,1} & \ldots & w_{1,g} \\
+        w_{11} & \ldots & w_{1g} \\
         \vdots  & \ddots & \vdots  \\
-        w_{g,1} & \ldots & w_{g,g} \\
+        w_{g1} & \ldots & w_{gg} \\
 \end{array}
 \right]
 \end{align}
@@ -155,19 +155,19 @@ $\textbf{R} = \left[R_1 \ldots R_g \right]^T$ are written as
 $\textbf{R} = (\textbf{W} \textbf{V}) \textbf{P}$. Here, we recognize
 the relationship between original and recoded packets. The resulting
 coding matrix is simply the multiplication of matrices $\textbf{W}$ and
-$\textbf{V}$. Denoting ${(\textbf{W} \textbf{V})}_{i,j}$ as the element
+$\textbf{V}$. Denoting ${(\textbf{W} \textbf{V})}_{ij}$ as the element
 in the $i$-th row and $j$-th column of $(\textbf{W} \textbf{V})$, this
 term is the resulting coding coefficient used to create $R_i$ after
 encoding the original packet $P_j$ recoding it locally in an intermediate
 node. In this case, we have assumed that recoding has taken place at the
 closesBy doing some algebra, these terms can be verified to be computed
 as:
-
+%
 \begin{align}
 \label{eq:appended_coded_coefficients}
-{(\textbf{W} \textbf{V})}_{i,j} = \sum_{k=1}^{g} w_{i,k} v_{k,j}\ ,\ \forall i,j \in [1,g] \times [1,g]
+{(\textbf{W} \textbf{V})}_{ij} = \sum_{k=1}^{g} w_{ik} v_{kj}\ ,\ \forall i,j \in [1,g] \times [1,g]
 \end{align}
-
+%
 Similarly as with encoding, any decoder that collects a set
 of $g$ \ac{l.i.} recoded packets with their respective $w_i$, will be able to
 decode the data as mentioned before in Section \ref{sssec:decoding}. Finally,
@@ -186,9 +186,9 @@ The simplest way to accomplish this is to add a Bernoulli random
 variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
 
 \begin{align} \label{eq:sparse_coded_packet}
-    %C_i  &= \bigoplus_{j=1}^{g} \text{B}(d)_{j} \, v_{i,j} \otimes P_j ,\ \forall i \in [1,g] ,\
-    C_i  &= \bigoplus_{j=1}^{g} \text{B}(d) \, v_{i,j} \otimes P_j ,\ \forall i \in [1,g] ,\
-    v_{i,j} > 0,\
+    %C_i  &= \bigoplus_{j=1}^{g} \text{B}(d)_{j} \, v_{ij} \otimes P_j ,\ \forall i \in [1,g] ,\
+    C_i  &= \bigoplus_{j=1}^{g} \text{B}(d) \, v_{ij} \otimes P_j ,\ \forall i \in [1,g] ,\
+    v_{ij} > 0,\
     d \in
     \begin{cases}
         {(0,0.5]} & \text{for } q = 2 \\
@@ -215,10 +215,10 @@ We will therefore rely on a slightly different implementation in KODO
 expressed as:
 
 \begin{align} \label{eq:sparse_coded_packet2}
-    C_i  &= \bigoplus_{j=1}^{\floor{\text{Binom}(g,d)}} v_{i,m} \otimes P_{m} ,\
+    C_i  &= \bigoplus_{j=1}^{\floor{\text{Binom}(g,d)}} v_{im} \otimes P_{m} ,\
     %L \subseteq \{1,\dots,g\}: |L|=k ,\
     \forall i \in [1,g] ,\
-    v_{i,j} > 0
+    v_{ij} > 0
 \end{align}
 where
 $m = \text{choice}(\{1,\dots,g\}, \text{size}=k, \text{replace}=\text{False})$.
