@@ -124,8 +124,8 @@ in the $i$-th recoded packet and assigned to multiply a previously coded
 packet $C_j$. These coding coefficients are again uniformly and randomly chosen
 from $GF(q)$. Still, each of the $w_{ij}$ are not the appended recoding
 coefficients for signalling since the they will only retrieve previously
-coded packets. The analytical expression for the appended recoding
-coefficients is obtained by calculating recoded packets as function of the
+coded packets. The analytical expression for the appended coefficients
+after recoding is obtained by calculating recoded packets as function of the
 original packets. Therefore, we define the local coding matrix $\textbf{W}$
 in the same way as it was made for $\textbf{V}$. Thus, the local coding matrix
 can be written as:
@@ -159,19 +159,21 @@ $\textbf{V}$. Denoting ${(\textbf{W} \textbf{V})}_{ij}$ as the element
 in the $i$-th row and $j$-th column of $(\textbf{W} \textbf{V})$, this
 term is the resulting coding coefficient used to create $R_i$ after
 encoding the original packet $P_j$ recoding it locally in an intermediate
-node. In this case, we have assumed that recoding has taken place at the
-closesBy doing some algebra, these terms can be verified to be computed
-as:
+node. Finally, the appended coefficients for $R_i$ are
+${(\textbf{W} \textbf{V})}_{ik}$ with $k \in [1,g]$. By doing some
+algebra, each ${(\textbf{W} \textbf{V})}_{ij}$ term can be verified to be
+computed as:
 %
 \begin{align}
 \label{eq:appended_coded_coefficients}
 {(\textbf{W} \textbf{V})}_{ij} = \sum_{k=1}^{g} w_{ik} v_{kj}\ ,\ \forall i,j \in [1,g] \times [1,g]
 \end{align}
 %
-Similarly as with encoding, any decoder that collects a set
-of $g$ \ac{l.i.} recoded packets with their respective $w_i$, will be able to
-decode the data as mentioned before in Section \ref{sssec:decoding}. Finally,
-the appended coding coefficients for decoding
+This procedure is carried by all the recoders in a given network, therefore
+keeping the structure of the recoded packets for any decoder to compute
+the Gaussian elimination. Similarly as with encoding, any decoder that
+collects a set of $g$ \ac{l.i.} recoded packets with their respective
+${(\textbf{W} \textbf{V})}_{ij}$, will be able to decode the data as mentioned before in Section \ref{sssec:decoding}.
 
 \subsection{Sparse Random Linear Network Coding}
 
