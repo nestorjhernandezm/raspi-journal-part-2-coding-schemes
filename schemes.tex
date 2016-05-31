@@ -5,7 +5,8 @@ In this section, we present a description of the considered coding schemes
 measured with our the Raspberry Pi testbed. We introduce a definition
 for the primitive coding operations, e.g. encoding, decoding and recoding
 (where applies) for each coding scheme. Later, we address particular schemes
-which are obtained by modifying the basic coding operations.
+which are obtained by modifying the basic coding operations that provide
+better processing speeds, particularly relevant for the Raspberry Pi.
 
 \subsection{Random Linear Network Coding}
 
@@ -54,19 +55,16 @@ as:
 \end{align}
 
 \subsubsection{Decoding}
+\label{sssec:decoding}
 To be able to decode a batch of $g$ packets, a \ac{l.i.} set of $g$
 coded packets, $C_i,\ i \in [1,g]$ is required at a decoder.
 Once this set has been collected for a decoder,
 the original packets can be found by computing the solution of a system
 of linear equations using \ac{GF} aritmethics. Thus, we define
-$\textbf{C} = \left[C_1 \ldots C_g \right]^T$ and
-$\textbf{P} = \left[P_1 \ldots P_g \right]^T$. Algebraically, decoding
-simplifies to finding the inverse of $\textbf{V}$ in the linear system
-$\textbf{C} = \textbf{V} \cdot \textbf{P}$, which can achieved using
-efficient Gaussian elimination techniques \cite{fragouli2006network}.
-On real applications, decoding is performed on-the-fly, e.g. the pivots are
-computed as packets are progressively received, in order to minimize the computation
-delay for each step. The coding matrix is represented as follows:
+$\textbf{C} = \left[C_1 \ldots C_g \right]^T$,
+$\textbf{P} = \left[P_1 \ldots P_g \right]^T$ and the coding matrix
+$\textbf{V}$ that collects the coding coefficients for each of the $g$
+coded packets, as follows:
 %
 \begin{align} \label{eq:coding_matrix}
 \textbf{V} =
@@ -87,43 +85,89 @@ delay for each step. The coding matrix is represented as follows:
 \right]
 \end{align}
 %
+Algebraically, decoding simplifies to finding the inverse of
+$\textbf{V}$ in the linear system
+$\textbf{C} = \textbf{V} \textbf{P}$, which can achieved using
+efficient Gaussian elimination techniques \cite{fragouli2006network}.
+On real applications, decoding is performed on-the-fly, e.g. the pivots are
+computed as packets are progressively received, in order to minimize the
+computation delay for each step.
+
 A decoder starts to calculate and substract contributions from each
 of the pivot elements, e.g. leftmost elements in the main diagonal of
-\eqref{eq:coding_matrix}, from top to bottom. The purpose is to obtain 
+\eqref{eq:coding_matrix}, from top to bottom. The purpose is to obtain
 the equivalence  $\textbf{V}$ in its reduced echelon form. The steps
-for reducing the matrix by elementary row operations are carried each
+for reducing the matrix by elementary row operations are carried each time
 a \ac{l.i.} packet is received. Once in reduced echelon form, packets
-can be retrieved by doing a substitution starting from the lastest
+can be retrieved by doing a substitution starting from the latest
 coded packet. In this way, the amount of elementary operations at the end
-is diminished.
+of the decoding process is diminished.
 
 \subsubsection{Recoding}
-An inherent property of \ac{NC} is the possibility for intermediate nodes
-in a network between a source and a destination, to create coded packets
-even from coded packets sent from the source. In general, a recoded packet should be indistinguishable
-from a coded one. Thus, we define a recoded packet as
-$R_i$ and its corresponding encoding vector as
-$w_i$ with coding coefficients $ \left[w_{i,1} \ldots w_{i,g} \right]$,
-as follows:
+As an inherent property of \ac{RLNC}, an intermediate node in the network
+is able to create new coded packets without needing to decode previously
+received ones from an encoding source. Therefore, \ac{RLNC} is an end-to-end
+coding scheme that permits to \textit{recode} former coded packets at any
+point in the network without inquiring in local decoding processing. In
+principle, a recoded packet should be indistinguishable from a coded one.
+Thus, we define a recoded packet as $R_i$ and consider the coding
+coefficients $ \left[w_{i,1} \ldots w_{i,g} \right]$, as the used ones to
+create $R_i$. Later, a recoded packet can be written as:
 %
 \begin{align}
 \label{eq:recoded_packet}
 R_i = \bigoplus_{j=1}^{g} w_{i,j} \otimes C_j  ,\ \forall i \in [1,\ldots)
 \end{align}
 
-In \eqref{eq:recoded_packet}, $w_{i,j}$ is the coding coefficient that
-multiplies $C_j$, uniformly and randomly chosen from $GF(q)$. Any
-decoder that collects $R_i, i \in [1,g]$ linearly independent coded packets,
-with their respective $w_i$, will be able to decode the data as mentioned
-before.
+In \eqref{eq:recoded_packet}, $w_{i,j}$ is the coding coefficient used
+in the $i$-th recoded packet and assigned to multiply a previously coded
+packet $C_j$. These coding coefficients are again uniformly and randomly chosen
+from $GF(q)$. Still, each of the $w_{i,j}$ are not the appended recoding
+coefficients for signalling since the they will only retrieve previously
+coded packets. The analytical expression for the appended recoding
+coefficients is obtained by calculating recoded packets as function of the
+original packets. Therefore, we define the local coding matrix $\textbf{W}$
+in the same way as it was made for $\textbf{V}$. Thus, the local coding matrix
+can be written as:
+%
+\begin{align} \label{eq:local_coding_matrix}
+\textbf{W} =
+\left[
+\begin{array}{c}
+        w_1    \\ \hline
+        \vdots \\ \hline
+        w_g    \\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{ccc}
+        w_{1,1} & \ldots & w_{1,g} \\
+        \vdots  & \ddots & \vdots  \\
+        w_{g,1} & \ldots & w_{g,g} \\
+\end{array}
+\right]
+\end{align}
+%
+With the definitions from \eqref{eq:coding_matrix} and
+\eqref{eq:local_coding_matrix}, the recoded packets
+$\textbf{R} = \left[R_1 \ldots R_g \right]^T$ are written as
+$\textbf{R} = (\textbf{W} \textbf{V}) \textbf{P}$
+
+
+
+Similarly as with encoding, any decoder that collects a set
+of $g$ \ac{l.i.} recoded packets with their respective $w_i$, will be able to
+decode the data as mentioned before in Section \ref{sssec:decoding}. Finally,
+the appended coding coefficients for decoding
 
 \subsection{Sparse Random Linear Network Coding}
 
 In \ac{SRLNC}, instead of considering all the packets to create a coded
 packet like \ac{RLNC} does, here the encoder sets more coding coefficients to
-zero when creating a new coded packet.
-In practice this can be implemented in
+zero when creating a new coded packet. In practice this can be implemented in
 a couple of ways.
+
 %One way to accomplish this is to add a Bernoulli random
 %variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
 The simplest way to accomplish this is to add a Bernoulli random
@@ -135,8 +179,8 @@ variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
     v_{i,j} > 0,\
     d \in
     \begin{cases}
-        {(0,0.5]} & \text{for} q = 2 \\
-        {(0,1]} & \text{for} q > 2
+        {(0,0.5]} & \text{for } q = 2 \\
+        {(0,1]} & \text{for } q > 2
     \end{cases}
 \end{align}
 
