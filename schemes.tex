@@ -1,3 +1,4 @@
+%!TEX root = raspi_journal.tex
 \label{sec:schemes}
 
 In this section, we present a description of the considered coding schemes
@@ -238,7 +239,7 @@ Before the coding density can be estimated it is essential that the encoder
 has a good estimate of the decoders \ac{DOF}, but also the remainder of the
 total budget. The feedback scheme \ref{eq:feedback_dofs} roughly splits the
 remaining \ac{DOF} in halves. This is also the case for the budget that is
-split equally among the two new regions. The very last region will be asigned
+split equally among the two new regions. The very last region will be assigned
 the full remainder of the total budget.
 
 \subsection{Network Coding Implementation for Multicore Architectures}
@@ -253,10 +254,44 @@ cases, a matrix multiplication is needed. Therefore, to make a practical
 implementation of network coding, it is valuable to find a way to optimize the
 matrix multiplications operations for multicore architectures.
 
-Some algorithms implement the decoding combining the matrix inversion and the
+When designing multithreaded algorithms for network coding operations, it is
+possible to implement the decoding by combining the matrix inversion and the
 matrix multiplication, e.g., performing the Gauss-Jordan algorithm over the
 coding matrix $\textbf{V}$ while performing, in parallel, row operations on the
-coded data $\textbf{C}$. The parallelization of such operations provide speeds
-up that are limited for small block sizes ($\leq 2048$ bytes). The reason is
-that to operate in a parallel fashion over the same coded packet $C_i$ requires
-strained synchronization.
+coded data $\textbf{C}$. However, the parallelization of such operations provide
+speeds up that are limited for small block sizes ($\leq 2048$ bytes). The reason
+is that to operate in a parallel fashion over the same coded packet $C_i$
+requires strained synchronization. In~\cite{5061951} and~\cite{4262451} the
+parallelization of the row operations are optimized for \ac{GPU} and \ac{SMP}
+systems respectively.
+
+Therefore, to overcome the constraints of a tight synchronization, it is
+preferable to explicitly invert the matrix $\textbf{V}$, and then take advantage
+of optimizations for matrix multiplications. The authors implemented
+in~\cite{wunderlich2015network} an algorithm that adopts the ideas of efficient
+\ac{BLAS} operations~\cite{lawson1979basic} reimplementing them for finite
+fields operations. The implemented algorithm tries to be cache efficient
+maximizing the number of operations performed over a block of fetched data. This
+is done by operating on square sub-blocks of the matrices, which exploits the
+spatial locality of the data, at least for $\mathcal{O}(n^3)$
+algorithms~\cite{golub2012matrix}. The optimal size of the block is
+architecture-dependent. The ideal block has a number of operands that fit into
+L1 cache, and it is a multiple of the \ac{SIMD} operations size.
+
+The main idea of the implemented algorithm is to represent each one of the sub-
+block matrix operations as a base, \textit{kernel}, operation that can be
+optimized, e.g., using \ac{SIMD} operations. Each of these kernels, at the same
+time, can be represented as a task with inputs and outputs in memory. If the
+algorithm is formulated conventionally, and the data operations on the sub-
+blocks are reordered, then it is possible to resolve data dependencies with a
+\ac{DAG}. For the algorithm, a dependency means, for example, that a sub-block
+of the matrix in memory cannot be read unless a previous writing operation was
+performed there. When the \ac{DAG} is determined, then, a scheduler assigns to
+the available cores the individual kernel operations that have their
+dependencies fulfilled. The benefit of this algorithm is that the
+synchronization relies only on data dependencies, and it does not requires the
+insertion of artificial synchronization points. Using this technique, the matrix
+inversion is performed using an algorithm based on LU
+factorization~\cite{Dongarra:2011:HPM:2132876.2132885}, and the matrix
+multiplication is performed by making the various matrix-matrix multiplications
+of the sub-blocks.
