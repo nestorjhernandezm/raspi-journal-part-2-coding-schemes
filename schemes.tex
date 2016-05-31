@@ -152,9 +152,21 @@ can be written as:
 With the definitions from \eqref{eq:coding_matrix} and
 \eqref{eq:local_coding_matrix}, the recoded packets
 $\textbf{R} = \left[R_1 \ldots R_g \right]^T$ are written as
-$\textbf{R} = (\textbf{W} \textbf{V}) \textbf{P}$
+$\textbf{R} = (\textbf{W} \textbf{V}) \textbf{P}$. Here, we recognize
+the relationship between original and recoded packets. The resulting
+coding matrix is simply the multiplication of matrices $\textbf{W}$ and
+$\textbf{V}$. Denoting ${(\textbf{W} \textbf{V})}_{i,j}$ as the element
+in the $i$-th row and $j$-th column of $(\textbf{W} \textbf{V})$, this
+term is the resulting coding coefficient used to create $R_i$ after
+encoding the original packet $P_j$ recoding it locally in an intermediate
+node. In this case, we have assumed that recoding has taken place at the
+closesBy doing some algebra, these terms can be verified to be computed
+as:
 
-
+\begin{align}
+\label{eq:appended_coded_coefficients}
+{(\textbf{W} \textbf{V})}_{i,j} = \sum_{k=1}^{g} w_{i,k} v_{k,j}\ ,\ \forall i,j \in [1,g] \times [1,g]
+\end{align}
 
 Similarly as with encoding, any decoder that collects a set
 of $g$ \ac{l.i.} recoded packets with their respective $w_i$, will be able to
