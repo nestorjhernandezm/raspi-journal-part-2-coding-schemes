@@ -339,7 +339,7 @@ the full remainder of the total budget.
 \subsection{Network Coding Implementation for Multicore Architectures}
 \label{sub:implementation-multicore}
 
-The operations needed to encode and decode the data are, in general, similar. To
+The operations needed to encode and decode data are, in general, similar. To
 encode packets, the encoder needs to perform the matrix multiplication
 $\textbf{C} = \textbf{V} \cdot \textbf{P}$. On the other hand, decoding the
 information requires the decoder to find $\textbf{V}^{-1}$ and to perform the
@@ -352,40 +352,49 @@ When designing multithreaded algorithms for network coding operations, it is
 possible to implement the decoding by combining the matrix inversion and the
 matrix multiplication, e.g., performing the Gauss-Jordan algorithm over the
 coding matrix $\textbf{V}$ while performing, in parallel, row operations on the
-coded data $\textbf{C}$. However, the parallelization of such operations provide
-speeds up that are limited for small block sizes ($\leq 2048$ bytes). The reason
-is that to operate in a parallel fashion over the same coded packet $C_i$
-requires strained synchronization. In~\cite{5061951} and~\cite{4262451} the
+coded data $\textbf{C}$. For example, in~\cite{5061951} and~\cite{4262451} the
 parallelization of the row operations are optimized for \ac{GPU} and \ac{SMP}
-systems respectively.
+systems respectively. However, the parallelization of such operations provide
+limited speeds up for small block sizes ($\leq 2048$ bytes). The reason is that
+to operate in a parallel fashion over the same coded packet $C_i$ requires
+strained synchronization.
 
 Therefore, to overcome the constraints of a tight synchronization, it is
 preferable to explicitly invert the matrix $\textbf{V}$, and then take advantage
-of optimizations for matrix multiplications. The authors implemented
-in~\cite{wunderlich2015network} an algorithm that adopts the ideas of efficient
-\ac{BLAS} operations~\cite{lawson1979basic} reimplementing them for finite
-fields operations. The implemented algorithm tries to be cache efficient
+of optimizations for matrix multiplications, both at encoding and decoding time.
+With that purpose, the authors implemented in~\cite{wunderlich2015network} an
+algorithm that adopts the ideas of efficient \ac{BLAS}
+operations~\cite{lawson1979basic} reimplementing them for finite fields
+operations. Although there are already certain libraries available such as
+~\cite{dumas2008dense} and \cite{dumas2002linbox} that allows the usage of the
+highly optimize \ac{BLAS} implementations for some finite fields, they work
+converting the GF elements into floating point numbers and back. Even though
+that approach is efficient for large matrix sizes, the overhead imposed by the
+conversions is not suitable for the the matrix sizes of typical network coding
+implementations. The implemented algorithm aims to be cache efficient by
 maximizing the number of operations performed over a block of fetched data. This
-is done by operating on square sub-blocks of the matrices, which exploits the
-spatial locality of the data, at least for $\mathcal{O}(n^3)$
-algorithms~\cite{golub2012matrix}. The optimal size of the block is
-architecture-dependent. The ideal block has a number of operands that fit into
-L1 cache, and it is a multiple of the \ac{SIMD} operations size.
+is done by dividing the matrices in square sub-blocks and operating with them.
+As a consequence, this technique exploits the spatial locality of the data, at
+least for $\mathcal{O}(n^3)$ algorithms~\cite{golub2012matrix}. The optimal size
+of the block is architecture-dependent. The ideal block has a number of operands
+that fit into L1 cache, and it is a multiple of the \ac{SIMD} operations size.
 
 The main idea of the implemented algorithm is to represent each one of the sub-
-block matrix operations as a base, \textit{kernel}, operation that can be
-optimized, e.g., using \ac{SIMD} operations. Each of these kernels, at the same
-time, can be represented as a task with inputs and outputs in memory. If the
-algorithm is formulated conventionally, and the data operations on the sub-
-blocks are reordered, then it is possible to resolve data dependencies with a
-\ac{DAG}. For the algorithm, a dependency means, for example, that a sub-block
-of the matrix in memory cannot be read unless a previous writing operation was
-performed there. When the \ac{DAG} is determined, then, a scheduler assigns to
-the available cores the individual kernel operations that have their
-dependencies fulfilled. The benefit of this algorithm is that the
-synchronization relies only on data dependencies, and it does not requires the
-insertion of artificial synchronization points. Using this technique, the matrix
-inversion is performed using an algorithm based on LU
+block matrix operations (matrix-matrix multiplication, matrix-triangle matrix
+multiplication, triangle-matrix system solving, etc) as a base, \textit{kernel},
+operation that can be optimized individually, e.g., using \ac{SIMD} operations.
+Each of these kernel operations, at the same time, can be represented as a task
+with inputs and outputs in memory. If any algorithm is formulated
+conventionally, and the data operations on the sub-blocks are reordered, then it
+is possible to resolve data dependencies with a \ac{DAG}. For the algorithm, a
+dependency means, for example, that a sub-block of the matrix in memory cannot
+be read unless a previous writing operation was performed there. When the
+\ac{DAG} is determined, then, a scheduler assigns to the available cores the
+execution of the individual kernel operations that have their dependencies
+satisfied. The benefit of this method is that the synchronization relies only on
+data dependencies, and it does not requires the insertion of artificial
+synchronization points. Using this technique, the matrix inversion is performed
+using an algorithm based on LU
 factorization~\cite{Dongarra:2011:HPM:2132876.2132885}, and the matrix
 multiplication is performed by making the various matrix-matrix multiplications
-of the sub-blocks.
+on the sub-blocks.
