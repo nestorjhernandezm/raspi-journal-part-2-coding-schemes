@@ -262,19 +262,29 @@ $d \geq 0.3$ \textbf{Include reference here}. Nevertheless, for $d < 0.3$
 the implementation becomes slow given that more Bernoulli trials are
 required in total for all random variables to generate a coded packet.
 Thus, we introduce a second method that permits a fast implementation
-for low coding densities  \textbf{Same reference here}.
+for low coding densities \textbf{Same reference here}.
 
 For this method, we first calculate the amount of coding coefficients
-that we will use to combine.
+that we will use to combine. To do it so, a random number $\mathbb{N}$
+of the original packets is used to produce a coded packet. For our case,
+$\mathbb{N}$ is binomially distributed with parameters $g$ for the number
+of trials and $d$ for its success probability, e.g. $\mathbb{N} \sim
+Binomial(g,d)$. However, when sampling from this distribution, the case
+$\mathbb{N} = 0$ occurs with a non-zero probability. In order to handle
+this special case, our implementation considers
+$\mathbb{K} = \max(1,\mathbb{N})$ as the final amount of packets to be
+mixed together. In this way, we always ensure that at least one packet is
+encoded.
 
-The second method
-% The reason being that here we control the \textit{average} amount
-% of nonzero coefficients, but not the exact value for each coded packet. Therefore,
-% we may have some cases where we have more or less packets combined. A second
-% implementation in Kodo considers doing something more clever.
+The only caveat is that the case of $\mathbb{K} = 1$ occurs slightly
+more often than in the original distribution, but for the
+considered density range in this method it is depreciable
+\textbf{Same reference here}. Then, once the distribution number of packets
+to mix as been defined, we create a subset $\mathcal{C}$ of size $k$
 
 
-As is shown in \eqref{eq:sparse_coded_packet2}, that implementation
+a coded packetas is shown in
+\eqref{eq:sparse_coded_packet2}, that implementation
 proved faster for low densities \textbf{reference?}. It is best expressed as:
 %
 \begin{align} \label{eq:sparse_coded_packet2}
