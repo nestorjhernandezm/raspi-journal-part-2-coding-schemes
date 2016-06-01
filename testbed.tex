@@ -10,6 +10,37 @@ of testing, other platforms supported and source code documentation
 for further references.
 
 \subsection{System Overview}
+
+This section will be used to present our Raspberry Pi testbed, but also how
+it is set up and configured.
+
+The testbed is depicted in \ref{fig:testbed_setup}. It consists of twenty
+Raspberry Pi 1 model B rev 2 (Rasp\_01 to Rasp\_20) and 
+ten Raspberry Pi 2 model b V1.1 (Rasp2\_01 to Rasp2\_10).
+The Raspberry Pis are each equipped with an ethernet interface (eth0) that are
+assigned the \ac{IP} addresses listed in the figure.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\textwidth]{images/testbed_setup.eps}
+\caption{Testbed setup}
+\label{fig:testbed_setup}
+\end{figure}
+
+\subsubsection{Installing Raspbian}
+
+- 
+- Download image (wget)
+- Update/Modify image (chroot)
+- Burn image
+- Bang! linux is running
+- 
+
+
+We have installed the official Raspbian linux \ac{OS} on all the devices.
+
+
+
 \subsection{Installation and Updating}
 \subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
 

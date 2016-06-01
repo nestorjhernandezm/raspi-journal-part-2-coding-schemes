@@ -21,17 +21,18 @@ in MiB per second for different generation sizes ($g$ = 1024, 128, and 16
 respectively). The throughput is the rate of generating $g$ coded packets,
 divided by the time the encoder took to perform the task. The size of each coded
 packet was fixed to $1536$~bytes since that is the typical size of an Ethernet
-frame. The blocked operations were performed dividing the matrices in sub-blocks
-of 16,32,64,...,1024 symbols, and the figures only show the best results
-(usually block sizes of 16 or 32 symbols since with bigger block sizes, the
-operands do not fit in L1 cache).
+frame. The blocked operations were performed dividing the matrices in squared
+sub-blocks of 16,32,64,...,1024 operands (words in the finite field) in height
+and width, and the figures only show the best results (usually block sizes of
+16x16 or 32x32 operands since with bigger block sizes, the operands do not fit
+in L1 cache).
 
 The following test cases were considered:
 
-\paragraph{Baseline encoding} The baseline results involve no recording
-of the \ac{DAG} and are performed in a \emph{by-the-book} fashion. The encoder
-uses only one thread. And the difference between the non-blocked and blocked
-encoding is that in the blocked scheme, the matrix multiplications are performed
+\paragraph{Baseline encoding} The baseline results involve no recording of the
+\ac{DAG} and are performed in a \emph{by-the-book} fashion. The encoder uses
+only one thread. And the difference between the non-blocked and blocked encoding
+schemes is that in the blocked scheme, the matrix multiplications are performed
 dividing the matrices in sub-blocks in order to make the algorithm cache
 efficient as described in Section~\ref{sub:implementation-multicore}.
 
@@ -76,10 +77,10 @@ Therefore, the decoding throughput is 46\% of the encoding throughput.
 For $g$ = 128, the differences between the baselines operations show that a
 blocked algorithm is 15\% faster than the non-blocked variant. Encoding with
 four cores is 2.82 times faster than with a single core. Due to the smaller
-matrix sizes, the gain by using blocked operations in the baselines is not that
-big compared with $g$ = 1024. For the same reason, the matrix inversion is less
-expensive. As a consequence, the decoding throughput is 71\% of the encoding
-throughput.
+matrix sizes, the gain when using blocked operations in the baselines is not
+that significant when compared with $g$ = 1024. For the same reason, the matrix
+inversion is less expensive. As a consequence, the decoding throughput is 71\%
+of the encoding throughput.
 
 \begin{figure}[h!]
 \centering
@@ -91,14 +92,14 @@ throughput.
 When $g$ = 16, the gains of blocked operations are negligible compared with the
 non-blocked ones. The reason behind this behavior is that all the data fits in
 the L1 cache. For the scheduled version, since the problem to solve is so small,
-the gain of using four cores is a factor of 1.68 compared with a single core,
+the gain when using four cores is a factor of 1.68 compared with a single core,
 and 1.01 compared with two cores. Therefore, there are no practical benefits in
 using four cores instead of two.
 
 The differences in throughput, for all generation sizes, between the blocked
-baseline and the scheduled measurements are due the time spent resolving the
-dependencies and the scheduling overhead. These effects are negligible for big
-generation sizes, while considerable for small matrices.
+baseline and the single threaded scheduled measurements are due the time spent
+resolving the dependencies and the scheduling overhead. These effects are
+negligible for big generation sizes, while considerable for small matrices.
 
 % \begin{figure}
 % \centering
@@ -125,14 +126,15 @@ generation sizes, while considerable for small matrices.
 
 \paragraph{Comparison of the load of matrix multiplications and inversions}
 
-To compare how much slower is the matrix multiplication with the matrix
-inversion for different generation sizes, we ran a set of tests. We used a
-single core to perform the operations. We changed the generation sizes,
-performed matrices multiplications and matrix inversions, and measured the spent
-time doing so. We then calculated the ratio $ratio = \frac{T_{mult}}{T_{inv}}$.
-Table~\ref{runtimes} summarizes the results. The bigger the matrix size, the
-smaller is the calculated ratio. This means that when the problems are bigger,
-the decoding throughput decreases compared with the encoding throughput.
+To compare how much slower is the matrix multiplication with respect to the
+matrix inversion for different generation sizes, we ran a set of tests. We used
+a single core to perform the operations. We changed the generation sizes,
+performed matrices multiplications and matrix inversions, and measured the time
+spent doing so. We then calculated the ratio between these two measured times
+times $ratio = \frac{T_{mult}}{T_{inv}}$. Table~\ref{runtimes} summarizes the
+results. The bigger the matrix size, the smaller is the calculated ratio. This
+means that when the problems are bigger, the decoding throughput decreases
+compared with the encoding throughput.
 
 \begin{table}[H]
 \center
