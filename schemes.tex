@@ -197,23 +197,23 @@ d = \frac{\sum_{j=1}^{g} f(v_{ij})}{g},\ \
     \end{cases}
 \end{align}
 %
-From the density definition in \eqref{eq:coding_density}, it can be observed that
-$0 \leq d \leq 1$. As $g$ increased, we obtain more granularity in the density.
-Notice that the special case $d = 0$ has no practical purpose since it
-implies just zero padded data. So, a practical range for the density excludes
-the zero case, $0 < d \leq 1$. Moreover, it can be also observed that the
-case of $d = 1$ reduces to the \ac{RLNC} coding scheme described in Section
-\ref{ssec:RLNC}.
+From the density definition in \eqref{eq:coding_density}, it can be
+observed that $0 \leq d \leq 1$. As $g$ increased, we obtain more
+granularity in the density. Notice that the special case $d = 0$ has no
+practical purpose since it implies just zero padded data. So, a practical
+range for the density excludes the zero case, $0 < d \leq 1$. Moreover,
+it can be also observed that the case of $d = 1$ reduces to the \ac{RLNC}
+coding scheme described in Section \ref{ssec:RLNC}.
 
 To achieve a desired average coding density in the coefficients, for each
-of them, we utilize a set of Bernoulli random variables all with parameter $d$, i.e.
-$\mathbb{B}_j \sim Bernoulli(d)\ ,\ \forall j \in [1,g]$. In this way, we
-can represent a coded packet in \ac{SRLNC} as:
-%One way to accomplish this is to add a Bernoulli random
-%variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
+of them, we utilize a set of Bernoulli random variables all with parameter
+$d$ as it success probability, i.e. $\mathbb{B}_j \sim Bernoulli(d)\ ,\ \forall
+j \in [1,g]$. In this way, we can represent a coded packet in \ac{SRLNC} as:
+%
 \begin{align} \label{eq:sparse_coded_packet}
-    %C_i  &= \bigoplus_{j=1}^{g} \text{B}(d)_{j} \, v_{ij} \otimes P_j ,\ \forall i \in [1,g] ,\
-    C_i  &= \bigoplus_{j=1}^{g} \mathbb{B}_j v_{ij} \otimes P_j ,\ \forall i \in [1,g] ,\ \
+    C_i  &= \bigoplus_{j=1}^{g} \mathbb{B}_j v_{ij} \otimes P_j ,\ v_{ij}
+    \neq 0\
+    \forall i \in [1,\ldots) ,\ \
     d \in
     \begin{cases}
         {(0,0.5]} & \text{for } q = 2 \\
@@ -221,23 +221,32 @@ can represent a coded packet in \ac{SRLNC} as:
     \end{cases}
 \end{align}
 %
-In \eqref{eq:sparse_coded_packet}, we have specified a dependency on the field size
-for practical density values. In case of employing $GF(2)$, the maximum plausible
-density is restricted up to 0.5 since higher values incur in more frequent \ac{l.d.}
-coded packets \textbf{Include reference here}. Reducing $d$ enables the encoder to
-decrease the average number of packets manipulated to make a coded packet. This
-reduces the complexity of the encoder since it needs to mix less packets. Moreover,
-it also simplifies the decoder processing given that less nonzero coding coefficients
-required to be operated on during the Gaussian elimination stage.
+In \eqref{eq:sparse_coded_packet}, we have the requirement for the coding
+coefficient to not be zero, since we want to ensure a coding coefficient
+is generate for any random trial where $\mathbb{B}_j = 1$. Therefore, in our
+implementation of \ac{SRLNC} we exclude the zero element and then pick
+uniformly distributed random elements from $GF(q)-\{ 0 \}$. Also, we have
+specified a dependency on the field size for practical
+density values. In case of employing $GF(2)$, the
+maximum plausible density is restricted up to 0.5 since higher values incur
+in more frequent \ac{l.d.} coded packets \textbf{Include reference here}.
 
-The drawback of this scheme is that coded packets from the encoder become more \ac{l.d.}
-on each other as the density is reduced. This incurs in transmission overhead
-since more coded packets are required to be sent to overcome the reception of redundant
-packets. Also, particularly with this method, generating a coded packet may imply
-that it could not contain any data at all. For example, we might find the case
-where $\left[\mathbb{B}_1, \ldots, \mathbb{B}_g \right] = \mathbf{0}$. In that case,
-the encoder discards the coded packet and tries to generate a new one, though this is
-unlikely to occur in general.
+Reducing $d$ enables the encoder to decrease the average number of packets
+manipulated to make a coded one. This reduces the complexity of the encoder
+since it needs to mix less packets. Moreover, it also simplifies the decoder
+processing given that less nonzero coding coefficients are required to be
+operated during the Gaussian elimination stage.
+
+The drawback of this scheme is that coded packets from the encoder
+become more \ac{l.d.} on each other as the density is reduced.
+This leads to transmission overhead since another coded packet
+is required to be sent for every reception of a redundant packet.
+Also, particularly with this method, generating a coded packet may imply
+that it could not contain any data at all. For example, we might find
+the case where $\left[\mathbb{B}_1, \ldots, \mathbb{B}_g \right] =
+\mathbf{0}$. In that case, the encoder discards the coded packet
+and tries to generate a new one. This situation occurs more frequently
+as the density is reduced.
 
 Under the current method for setting the density, most coded packets that
 are produced by the encoder are typically very sparse.
