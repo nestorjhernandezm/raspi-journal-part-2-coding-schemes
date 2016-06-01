@@ -358,14 +358,15 @@ is to gradually increase the coding density as the \ac{dof}\footnote{We refer
 as degrees of freedom to the dimension of the linear span from the coded
 packets that a decoder has at a given point} increases, e.g. as the
 cardinality of the set of \ac{l.i.} coded packets increases. This enables
-\ac{TSNC} to significantly reduce the complexity particulary in the
+\ac{TSNC} to significantly reduce the complexity, particularly in the
 beginning of the transmission process and also to control the decoding
-delay. For \ac{TNSC}, we define the number of coded packets a
-decoder needs to receive to decode a generation of $g$ packets. We call
-this number the budget, $B$.
+delay. For \ac{TSNC}, we define the budget, $B \geq g$, to be a target
+number of coded packets a transmitter wants to send to a receiver
+for decoding a generation of $g$ packets.
 
-Provided a desired budget, $B \geq g$, and the decoders \ac{dof} it can be
-estimated how sparse the coded packets should be to finish a transmission in
+Provided a desired budget $B$ and the \ac{dof}s of the
+decoder, an encoder can estimate the required coding density to not exceed
+the required y the budget. ow sparse the coded packets should be to finish a transmission in
 time.
 
 In our implementation, it is the encoders responsibility to estimate the coding
