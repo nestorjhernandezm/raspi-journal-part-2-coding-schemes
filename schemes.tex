@@ -9,6 +9,7 @@ which are obtained by modifying the basic coding operations that provide
 better processing speeds, particularly relevant for the Raspberry Pi.
 
 \subsection{Random Linear Network Coding}
+\label{ssec:RLNC}
 
 \ac{RLNC} is an example of intra-session \ac{NC}. Here, data symbols from a
 single flow are combined with each other. In this type of network coding,
@@ -170,52 +171,85 @@ computed as:
 \end{align}
 %
 This procedure is carried by all the recoders in a given network, therefore
-keeping the structure of the recoded packets for any decoder to compute
-the Gaussian elimination. Similarly as with encoding, any decoder that
-collects a set of $g$ \ac{l.i.} recoded packets with their respective
-${(\textbf{W} \textbf{V})}_{ij}$, will be able to decode the data as mentioned before in Section \ref{sssec:decoding}.
+allowing any decoder to compute the original data after Gaussian elimination,
+regardless of the amount of times where recoding was performed. Similarly as
+with the encoding operation, any decoder that collects a set of $g$ \ac{l.i.} recoded
+packets with their respective coefficients, will be able to decode the data
+as mentioned before in Section \ref{sssec:decoding}.
 
 \subsection{Sparse Random Linear Network Coding}
 
 In \ac{SRLNC}, instead of considering all the packets to create a coded
-packet like \ac{RLNC} does, here the encoder sets more coding coefficients to
-zero when creating a new coded packet. In practice this can be implemented in
-a couple of ways.
+packet as in \ac{RLNC}, for this coding scheme an encoder sets more
+coding coefficients to zero when generating a coded packet. A way to
+accomplish this, is to set a fixed ratio of non-zero coefficients
+in the encoding vector of size $g$. We refer to this fixed ratio as the
+average coding density $d$. Thus, for any coded packet $C_i$ with coding
+coefficients $v_{ij},\ j \in [1,g]$, its coding density is defined as follows:
+%
+\begin{align}
+\label{eq:coding_density}
+d = \frac{\sum_{j=1}^{g} f(v_{ij})}{g},\ \
+    f(v_{ij}) =
+    \begin{cases}
+        0 & \text{for } v_{ij} = 0 \\
+        1 & \text{for } v_{ij} \neq 0
+    \end{cases}
+\end{align}
+%
+From the density definition in \eqref{eq:coding_density}, it can be observed that
+$0 \leq d \leq 1$. As $g$ increased, we obtain more granularity in the density.
+Notice that the special case $d = 0$ has no practical purpose since it
+implies just zero padded data. So, a practical range for the density excludes
+the zero case, $0 < d \leq 1$. Moreover, it can be also observed that the
+case of $d = 1$ reduces to the \ac{RLNC} coding scheme described in Section
+\ref{ssec:RLNC}.
 
+To achieve a desired average coding density in the coefficients, for each
+of them, we utilize a set of Bernoulli random variables all with parameter $d$, i.e.
+$\mathbb{B}_j \sim Bernoulli(d)\ ,\ \forall j \in [1,g]$. In this way, we
+can represent a coded packet in \ac{SRLNC} as:
 %One way to accomplish this is to add a Bernoulli random
 %variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
-The simplest way to accomplish this is to add a Bernoulli random
-variable, $\text{B}(d)$, as in \ref{eq:sparse_coded_packet}:
-
 \begin{align} \label{eq:sparse_coded_packet}
     %C_i  &= \bigoplus_{j=1}^{g} \text{B}(d)_{j} \, v_{ij} \otimes P_j ,\ \forall i \in [1,g] ,\
-    C_i  &= \bigoplus_{j=1}^{g} \text{B}(d) \, v_{ij} \otimes P_j ,\ \forall i \in [1,g] ,\
-    v_{ij} > 0,\
+    C_i  &= \bigoplus_{j=1}^{g} \mathbb{B}_j v_{ij} \otimes P_j ,\ \forall i \in [1,g] ,\ \
     d \in
     \begin{cases}
         {(0,0.5]} & \text{for } q = 2 \\
         {(0,1]} & \text{for } q > 2
     \end{cases}
 \end{align}
+%
+In \eqref{eq:sparse_coded_packet}, we have specified a dependency on the field size
+for practical density values. In case of employing $GF(2)$, the maximum plausible
+density is restricted up to 0.5 since higher values incur in more frequent \ac{l.d.}
+coded packets \textbf{Include reference here}. Reducing $d$ enables the encoder to
+decrease the average number of packets manipulated to make a coded packet. This
+reduces the complexity of the encoder since it needs to mix less packets. Moreover,
+it also simplifies the decoder processing given that less nonzero coding coefficients
+required to be operated on during the Gaussian elimination stage.
 
-We call $d$ the coding density.
-Reducing $d$ enables the encoder to decrease the average number of packets that
-are mixed into each coded packet. Thereby reducing the complexity of the
-encoder that needs to mix less packets, but also on the decoder that in
-contrast needs to eliminate less nonzero coding coefficients. The catch of this
-approach is that coded packets produced by the encoder becomes more \ac{l.d.}
-on each other as the coding complexity is reduced. This incurs in additional
-channel overhead.
+The drawback of this scheme is that coded packets from the encoder become more \ac{l.d.}
+on each other as the density is reduced. This incurs in transmission overhead
+since more coded packets are required to be sent to overcome the reception of redundant
+packets. Also, particularly with this method, generating a coded packet may imply
+that it could not contain any data at all. For example, we might find the case
+where $\left[\mathbb{B}_1, \ldots, \mathbb{B}_g \right] = \mathbf{0}$. In that case,
+the encoder discards the coded packet and tries to generate a new one, though this is
+unlikely to occur in general.
 
-Generating a coded packet does not imply that it contains any data at all. I.e.
-$ \left[ B(d)_{1}, \ldots, B(d)_{g} \right] = \mathbf{0}$.
-In that case, one would have to trash the coded packet and generate a new one.
+Under the current method for setting the density, most coded packets that
+are produced by the encoder are typically very sparse.
+The reason being that here we control the \textit{average} amount
+of nonzero coefficients, but not the exact value for each coded packet. Therefore,
+we may have some cases where we have more or less packets combined. A second
+implementation in Kodo considers doing something more clever.
 
-Most coded packets that are produced by the encoder are typically very sparse.
-We will therefore rely on a slightly different implementation in KODO
-\ref{eq:sparse_coded_packet2} that proved faster for low densities. It is best
-expressed as:
 
+As is shown in \eqref{eq:sparse_coded_packet2}, that implementation
+proved faster for low densities \textbf{reference?}. It is best expressed as:
+%
 \begin{align} \label{eq:sparse_coded_packet2}
     C_i  &= \bigoplus_{j=1}^{\floor{\text{Binom}(g,d)}} v_{im} \otimes P_{m} ,\
     %L \subseteq \{1,\dots,g\}: |L|=k ,\
@@ -227,24 +261,12 @@ $m = \text{choice}(\{1,\dots,g\}, \text{size}=k, \text{replace}=\text{False})$.
 \fxnote{Can this be represented smarter?}
 
 
-%To solve this, one could trash the coded packet and generate a new coded
-%packet. This is not the most efficient because KODO needs to count the
-%the number of nonzero coding coefficients in each coded packets to eliminate
-%all zero packets.
-%
-%This is the most correct approach, but the most efficient approach although it is mathematically .
-
 It is often desired to express the coding density as $d=\frac{k}{g}$. We call
 this notation $k-sparse$ where $k$ is the average number of packets combined to
 produce a coded packet.
 
 %For low coding density, the encoder might generate a coded packet that consists
 %of no coded packets. I.e. the packet consists of all zeroes
-
-
-
-
-
 
 %In \ac{SRLNC}, instead of considering all the packets to create a coded
 %packet like \ac{RLNC} does, here the encoder sets some coding coefficients to
