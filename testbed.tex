@@ -65,19 +65,17 @@ We use standard usb power adapters to power the Raspberry Pis.
 \subsubsection{Installing Raspbian}
 
 To get started, we first need to install an \ac{OS} on the
-Raspberry Pis. We have decided to create a common image of Raspbian Linux
-for all devices. After the image has been configured it can be written to
-a memory card and used in any of the Raspberry Pis. This means that each
-device needs a memory card, but it does not matter which card is put into
-which device.
+Raspberry Pis. We will use Raspbian linux~\cite{raspbian}
 
+We will use a desktop that has linux installed to download,
+configure, and write the image to the memory cards.
+%We have decided to use a linux desktop machine to create a
+%common image of Raspbian Linux that can be used in any of the Raspberry Pis.
 
-
-It can then be written to a memory card and used in one device
-after it has been completely configured  
-
-that
-can be written to a memory card and 
+%for all devices. After the image has been configured it can be written to
+%a memory card and used in any of the Raspberry Pis. This means that each
+%device needs a memory card, but it does not matter which card is put into
+%which device.
 
 We have decided to go with Raspbian linux~\cite{raspbian} and
 to install it on memory cards.
@@ -98,6 +96,17 @@ have decided on a very simple approach of simply instal
 - Burn image
 - Bang! linux is running
 - 
+
+
+\begin{lstlisting}[frame=single]  % Start your code-block
+IMAGE="raspbian_lite-2016-05-31/2016-05-27-raspbian-jessie-lite"
+WORKDIR="${HOME}/Raspbian"
+cd ${WORKDIR}
+wget http://downloads.raspberrypi.org/raspbian_lite/images/${IMAGE}.zip
+unzip ${IMAGE}
+\end{lstlisting}
+\FloatBarrier
+
 
 
 We have installed the official Raspbian linux \ac{OS} on all the devices.
