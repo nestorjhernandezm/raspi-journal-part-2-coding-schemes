@@ -347,14 +347,14 @@ packet using \ac{SRLNC} can be written as shown in
 
 \subsection{Tunable Sparse Network Coding}
 
-\ac{TSNC} can be considered an extension to \ac{SRLNC}. The overall idea is
+\ac{TSNC} can be considered an extension to \ac{SRLNC}. The key idea is
 not only for the encoder to generate sparse coded packets, but also to
-choose the sparsity of packets wiser. That is, as the decoder accomulates more
-coded packets it becomes more and more likely that the next received
-coded packet will be \ac{l.d.}.
+modify the code density of the packets progressively as required. As a
+decoder accomulates more coded packets, the probability that the next
+received coded packet will be \ac{l.d.} increases.
 
-The idea of \ac{TSNC} is therefore to gradually increase the coding density
-as the decoderes \ac{DOF} increases. This enables TSNC to save a lot of
+Therefore, in \ac{TSNC}, a simple procedure for controlling this probability
+is to gradually increase the coding density as the \ac{DOF} increases. This enables TSNC to save a lot of
 complexity particulary in the beginning of transmissions, but also to
 tailor the coding delay. I.e. approximate the number of coded packets a
 decoder needs to receive to decode a generation of $g$ packets. We call
