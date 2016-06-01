@@ -144,7 +144,7 @@ We also notice that each sector is 512 bytes.
 
 
 Mount root partition:
-%\begin{lstlisting}[caption="Mount the root partition"]  % Start your code-block
+%Mount the root partition
 \begin{lstlisting}[]  % Start your code-block
 
 $ export ROOTDIR="${WORKDIR}/root"
@@ -154,20 +154,41 @@ $ mkdir -p ${ROOTDIR}
 \FloatBarrier
 
 Mount boot partition:
-%\begin{lstlisting}[caption="Mount boot partition"]  % Start your code-block
+%Mount boot partition
 \begin{lstlisting}[]  % Start your code-block
 
 # mount -o loop,offset=$((8192*512)) ${IMAGE}.img ${ROOTDIR}/boot
 \end{lstlisting}
 \FloatBarrier
 
+We can now change all the files in the disk image.
 
 
-We have installed the official Raspbian linux \ac{OS} on all the devices.
+
+\subsection{Configuring OS files and scripts}
+
+% Set hostname
+\begin{lstlisting}[]  % Start your code-block
+
+# echo "MrAwesome script" >> ${ROOTDIR}/etc/init.d/hostname.sh
+\end{lstlisting}
+\FloatBarrier
+
+
 
 
 
 \subsection{Installation and Updating}
+
+% CHROOT to OS image
+\begin{lstlisting}[]  % Start your code-block
+
+# mount ...
+# chroot ${ROOTDIR}
+\end{lstlisting}
+\FloatBarrier
+
+
 \subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
 
 Besides the previous description (\textbf{Include compiling Kodo from the
