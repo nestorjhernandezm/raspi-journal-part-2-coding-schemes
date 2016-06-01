@@ -264,12 +264,13 @@ required in total for all random variables to generate a coded packet.
 Thus, we introduce a second method that permits a fast implementation
 for low coding densities \textbf{Same reference here}.
 
-For this method, we first calculate the amount of coding coefficients
-that we will use to combine. To do it so, a random number $\mathbb{N}$
-of the original packets is used to produce a coded packet. For our case,
-$\mathbb{N}$ is binomially distributed with parameters $g$ for the number
-of trials and $d$ for its success probability, e.g. $\mathbb{N} \sim
-Binomial(g,d)$. However, when sampling from this distribution, the case
+For this method, we first obtain the amount of packets
+that we will combine to create a coded packet. To do it so, a random
+number $\mathbb{N}$ of the original packets is used to produce a
+coded packet. For our case, $\mathbb{N}$ is binomially distributed
+with parameters $g$ for the number of trials and $d$ for its success
+probability, e.g. $\mathbb{N} \sim Binomial(g,d)$. However,
+when sampling from this distribution, the case
 $\mathbb{N} = 0$ occurs with a non-zero probability. In order to handle
 this special case, our implementation considers
 $\mathbb{K} = \max(1,\mathbb{N})$ as the final amount of packets to be
@@ -277,30 +278,46 @@ mixed together. In this way, we always ensure that at least one packet is
 encoded.
 
 The only caveat is that the case of $\mathbb{K} = 1$ occurs slightly
-more often than in the original distribution, but for the
-considered density range in this method it is depreciable
-\textbf{Same reference here}. Then, once the distribution number of packets
-to mix as been defined, we create a subset $\mathcal{C}$ of size $k$
-
-
-a coded packetas is shown in
-\eqref{eq:sparse_coded_packet2}, that implementation
-proved faster for low densities \textbf{reference?}. It is best expressed as:
+more often than $\mathbb{N} = 1$ in the original distribution, but for
+the considered density range in this method, this is not a significant
+modification \textbf{Same reference here}. Then, once the distribution for the
+number of packets to mix has been defined, we sample a value $n$ from
+$\mathbb{N}$ and compute $k = \max(1,n)$. Later, we create a create a
+set $\mathcal{K}$ with cardinality $k$, e.g. $|\mathcal{K}| = k$,
+where the elements in $\mathcal{K}$ are the indexes of the packets that are
+going to be considered for making a coded packet. To compute the indexes
+of the set $\mathcal{K}$, we do the following algorithm in pseudo-code: \\
+\ \\
+\begin{algorithm}[H]
+ \label{alg:k_set}
+ \KwData{$k$: Size of $\mathcal{K}$. $g$: Generation Size}
+ \KwResult{$\mathcal{K}$: The set of non-repeated indexes}
+ $\mathcal{K}$ = \{ \}\;
+ \While{$|\mathcal{K}| \neq k$ }{
+  $i$ = Sample from $\mathbb{U}(1,g)$\;
+  \If{$i \notin \mathcal{K}$}{
+   Insert $i$ in $\mathcal{K}$\;
+   }
+ }
+ \caption{Computation of the set of indexes for packet combination in SRLNC.}
+\end{algorithm}
+\ \\
+Where in Algorithm~\ref{alg:k_set}, the notation $\mathbb{U}(1,g)$ stands
+for a uniform discrete random variable with limits $1$ and $g$. The
+pseudo-code in Algorithm~\ref{alg:k_set} indicates that the set $\mathbb{K}$
+is filled with non-repeated elements taken uniformly at random from
+$[1,\ldots,g]$. Finally, once the set of indexes has been defined, a coded
+packet using \ac{SRLNC} can be written as shown in
+\eqref{eq:sparse_coded_packet2}:
 %
 \begin{align} \label{eq:sparse_coded_packet2}
-    C_i  &= \bigoplus_{j=1}^{\floor{\text{Binom}(g,d)}} v_{im} \otimes P_{m} ,\
+    C_i  &= \bigoplus_{m \in \mathcal{K}} v_{im} \otimes P_{m},\ v_{im} \neq 0,\ \forall i \in [1,\ldots)
     %L \subseteq \{1,\dots,g\}: |L|=k ,\
-    \forall i \in [1,g] ,\
-    v_{ij} > 0
 \end{align}
-where
-$m = \text{choice}(\{1,\dots,g\}, \text{size}=k, \text{replace}=\text{False})$.
-\fxnote{Can this be represented smarter?}
 
-
-It is often desired to express the coding density as $d=\frac{k}{g}$. We call
-this notation $k-sparse$ where $k$ is the average number of packets combined to
-produce a coded packet.
+% It is often desired to express the coding density as $d=\frac{k}{g}$. We call
+% this notation $k-sparse$ where $k$ is the average number of packets combined to
+% produce a coded packet.
 
 %For low coding density, the encoder might generate a coded packet that consists
 %of no coded packets. I.e. the packet consists of all zeroes
