@@ -182,9 +182,13 @@ be able to decode the data as mentioned before in Section \ref{sssec:decoding}.
 In \ac{SRLNC}, instead of considering all the packets to create a coded
 packet as in \ac{RLNC}, for this coding scheme an encoder sets more
 coding coefficients to zero when generating a coded packet with the purpose
-of reducing the overall processing in both encoding and decoding. In what
-follows, we describe the coding scheme with a basic method to produce sparse
-coded packets and later we indicate a second one, giving reference to their
+of reducing the overall processing. Decoding is the same as in \ac{RLNC}, but
+given that the coding matrices are now sparse, we will have less operations
+performed in the decoding process. Recoding, although theoreticaly possible,
+is omitted in practical systems since it is too complex to keep packets sparse
+after recoding [\textbf{reference}]. In what follows, we
+describe the coding scheme with a basic method to produce sparse coded
+packets and later we indicate a second one, giving reference to their
 implementation performance.
 
 \subsubsection{Method 1: Fixing the Coding Density}
