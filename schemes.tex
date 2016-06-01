@@ -172,20 +172,27 @@ computed as:
 %
 This procedure is carried by all the recoders in a given network, therefore
 allowing any decoder to compute the original data after Gaussian elimination,
-regardless of the amount of times where recoding was performed. Similarly as
-with the encoding operation, any decoder that collects a set of $g$ \ac{l.i.} recoded
-packets with their respective coefficients, will be able to decode the data
-as mentioned before in Section \ref{sssec:decoding}.
+regardless of the amount of times where recoding was performed. Similarly
+as with the encoding operation, any decoder that collects a set of
+$g$ \ac{l.i.} recoded packets with their respective coefficients, will
+be able to decode the data as mentioned before in Section \ref{sssec:decoding}.
 
 \subsection{Sparse Random Linear Network Coding}
 
 In \ac{SRLNC}, instead of considering all the packets to create a coded
 packet as in \ac{RLNC}, for this coding scheme an encoder sets more
-coding coefficients to zero when generating a coded packet. A way to
-accomplish this, is to set a fixed ratio of non-zero coefficients
-in the encoding vector of size $g$. We refer to this fixed ratio as the
-average coding density $d$. Thus, for any coded packet $C_i$ with coding
-coefficients $v_{ij},\ j \in [1,g]$, its coding density is defined as follows:
+coding coefficients to zero when generating a coded packet with the purpose
+of reducing the overall processing in both encoding and decoding. In what
+follows, we describe the coding scheme with a basic method to produce sparse
+coded packets and later we indicate a second one, giving reference to their
+implementation performance.
+
+\subsubsection{Method 1: Fixing the Coding Density}
+A way to control the amount of non-zero coding coefficients, is to set a
+fixed ratio of non-zero coefficients in the encoding vector of size $g$. We
+refer to this fixed ratio as the average coding density $d$. Thus, for any
+coded packet $C_i$ with coding coefficients $v_{ij},\ j \in [1,g]$, its
+coding density is defined as follows:
 %
 \begin{align}
 \label{eq:coding_density}
@@ -241,19 +248,30 @@ The drawback of this scheme is that coded packets from the encoder
 become more \ac{l.d.} on each other as the density is reduced.
 This leads to transmission overhead since another coded packet
 is required to be sent for every reception of a redundant packet.
-Also, particularly with this method, generating a coded packet may imply
-that it could not contain any data at all. For example, we might find
+Also, particularly with this method, we may still generate a coded packet
+which does not contain any data at all. For example, we might find
 the case where $\left[\mathbb{B}_1, \ldots, \mathbb{B}_g \right] =
 \mathbf{0}$. In that case, the encoder discards the coded packet
 and tries to generate a new one. This situation occurs more frequently
 as the density is reduced.
 
-Under the current method for setting the density, most coded packets that
-are produced by the encoder are typically very sparse.
-The reason being that here we control the \textit{average} amount
-of nonzero coefficients, but not the exact value for each coded packet. Therefore,
-we may have some cases where we have more or less packets combined. A second
-implementation in Kodo considers doing something more clever.
+\subsubsection{Method 2: Sampling the Amount of Packets to Combine}
+The method described from \eqref{eq:sparse_coded_packet} permits
+to obtain a fast implementation in terms of execution time for
+$d \geq 0.3$ \textbf{Include reference here}. Nevertheless, for $d < 0.3$
+the implementation becomes slow given that more Bernoulli trials are
+required in total for all random variables to generate a coded packet.
+Thus, we introduce a second method that permits a fast implementation
+for low coding densities  \textbf{Same reference here}.
+
+For this method, we first calculate the amount of coding coefficients
+that we will use to combine.
+
+The second method
+% The reason being that here we control the \textit{average} amount
+% of nonzero coefficients, but not the exact value for each coded packet. Therefore,
+% we may have some cases where we have more or less packets combined. A second
+% implementation in Kodo considers doing something more clever.
 
 
 As is shown in \eqref{eq:sparse_coded_packet2}, that implementation
