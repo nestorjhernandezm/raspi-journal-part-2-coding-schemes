@@ -97,23 +97,98 @@ have decided on a very simple approach of simply instal
 - Bang! linux is running
 - 
 
+Open a terminal, and then...
 
-\begin{lstlisting}[frame=single]  % Start your code-block
-IMAGE="raspbian_lite-2016-05-31/2016-05-27-raspbian-jessie-lite"
-WORKDIR="${HOME}/Raspbian"
-cd ${WORKDIR}
-wget http://downloads.raspberrypi.org/raspbian_lite/images/${IMAGE}.zip
-unzip ${IMAGE}
+hashmark (\#) means to perform operation as root, dollar (\$) means to perform operation as user
+
+%\begin{lstlisting}[caption=Define variable]  % Start your code-block
+\begin{lstlisting}[]  % Start your code-block
+
+$ export IMAGE="2016-05-27-raspbian-jessie-lite"
+$ export WORKDIR="${HOME}/Raspbian"
 \end{lstlisting}
 \FloatBarrier
 
 
 
-We have installed the official Raspbian linux \ac{OS} on all the devices.
+%\begin{lstlisting}[caption=Download and unpack image]  % Start your code-block
+\begin{lstlisting}[]  % Start your code-block
+
+$ mkdir -p ${WORKDIR}
+$ cd ${WORKDIR}
+$ wget http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-05-31/${IMAGE}.zip
+$ unzip ${IMAGE}.zip
+\end{lstlisting}
+\FloatBarrier
+
+
+%\begin{lstlisting}[caption="Check out the image"]  % Start your code-block
+\begin{lstlisting}[]  % Start your code-block
+
+$ fdisk -lu ${IMAGE}.img
+Disk 2016-05-27-raspbian-jessie-lite.img: 1.3 GiB, 1387266048 bytes, 2709504 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6fcf21f3
+
+Device                               Boot  Start     End Sectors  Size Id Type
+2016-05-27-raspbian-jessie-lite.img1        8192  137215  129024   63M  c W95 FAT32 (LBA)
+2016-05-27-raspbian-jessie-lite.img2      137216 2709503 2572288  1.2G 83 Linux
+\end{lstlisting}
+\FloatBarrier
+
+We see that the boot and root partitions starts at sector 8192 and 137216 respectivly.
+We also notice that each sector is 512 bytes.
+
+
+Mount root partition:
+%Mount the root partition
+\begin{lstlisting}[]  % Start your code-block
+
+$ export ROOTDIR="${WORKDIR}/root"
+$ mkdir -p ${ROOTDIR}
+# mount -o loop,offset=$((137216*512)) ${IMAGE}.img ${ROOTDIR}
+\end{lstlisting}
+\FloatBarrier
+
+Mount boot partition:
+%Mount boot partition
+\begin{lstlisting}[]  % Start your code-block
+
+# mount -o loop,offset=$((8192*512)) ${IMAGE}.img ${ROOTDIR}/boot
+\end{lstlisting}
+\FloatBarrier
+
+We can now change all the files in the disk image.
+
+
+
+\subsection{Configuring OS files and scripts}
+
+% Set hostname
+\begin{lstlisting}[]  % Start your code-block
+
+# echo "MrAwesome script" >> ${ROOTDIR}/etc/init.d/hostname.sh
+\end{lstlisting}
+\FloatBarrier
+
+
 
 
 
 \subsection{Installation and Updating}
+
+% CHROOT to OS image
+\begin{lstlisting}[]  % Start your code-block
+
+# mount ...
+# chroot ${ROOTDIR}
+\end{lstlisting}
+\FloatBarrier
+
+
 \subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
 
 Besides the previous description (\textbf{Include compiling Kodo from the
