@@ -11,14 +11,47 @@ for further references.
 
 \subsection{System Overview}
 
-This section will be used to present our Raspberry Pi testbed, but also how
-it is set up and configured.
+This section will be used to present a Raspberry Pi testbed and the steps to
+install and configure the individual devices.
 
-The testbed is depicted in \ref{fig:testbed_setup}. It consists of twenty
+The testbed is depicted in figure~\ref{fig:testbed_setup}. It consists of twenty
 Raspberry Pi 1 model B rev 2 (Rasp\_01 to Rasp\_20) and 
 ten Raspberry Pi 2 model b V1.1 (Rasp2\_01 to Rasp2\_10).
-The Raspberry Pis are each equipped with an ethernet interface (eth0) that are
-assigned the \ac{IP} addresses listed in the figure.
+
+The goal is to configure all the devices identically with the same software
+and configurations. There are however a few differences between them that we
+need to take into account. E.g. hostname and network addresses.
+
+The testbed will be used by students that might need to change how the
+devices are work either temporary or permanently. We will illustrate how this
+can be accomplished using an overlaying filesystem.
+
+Finally, it should be possible to store data that are generated from
+simulations on the memory cards that are in the individual Raspberry Pi.
+%We using a overlaying filesystem that 
+%We will illustrate
+%how that can be done. In the case of temporary changes, it is important that
+%all changes can be easily reverted. We put a \ac{RAM} filesystem on top of
+%the the root filesystem to .
+%the configure the
+%devices to behave according to their test specifications. We
+%will also present how that might be done.
+
+%their linkings. That could be to change network config
+
+%The goal is to configure all the devices to be as identical as possible. This
+%means that it is desired to have the same software on every device, but  
+
+The Raspberry Pis are all equipped with an ethernet interface (eth0) and
+connected by wire to the university's \ac{LAN}. The university network
+administration was provided
+the \ac{MAC} addresses of the ethernet interfaces to automatically assign
+the devices the desired \ac{IP} addresses as shown in the figure. In a personal
+\ac{LAN}, another option could be to manually provide the devices with static
+\ac{IP}s.
+%that are
+%assigned the \ac{IP} addresses in the figure and connected wired to the
+%university's \ac{LAN}. 
 
 \begin{figure}[ht!]
 \centering
@@ -27,7 +60,37 @@ assigned the \ac{IP} addresses listed in the figure.
 \label{fig:testbed_setup}
 \end{figure}
 
+We use standard usb power adapters to power the Raspberry Pis.
+
 \subsubsection{Installing Raspbian}
+
+To get started, we first need to install an \ac{OS} on the
+Raspberry Pis. We have decided to create a common image of Raspbian Linux
+for all devices. After the image has been configured it can be written to
+a memory card and used in any of the Raspberry Pis. This means that each
+device needs a memory card, but it does not matter which card is put into
+which device.
+
+
+
+It can then be written to a memory card and used in one device
+after it has been completely configured  
+
+that
+can be written to a memory card and 
+
+We have decided to go with Raspbian linux~\cite{raspbian} and
+to install it on memory cards.
+
+
+%There exists a number of ways to setup a testbed in a centralized manner.
+%E.g. using e.g. \ac{NFS}.
+
+There exists a number of ways to setup a testbed 
+
+with multiple devices. We
+have decided on a very simple approach of simply instal
+
 
 - 
 - Download image (wget)
