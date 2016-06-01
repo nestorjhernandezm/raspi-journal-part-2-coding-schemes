@@ -354,20 +354,24 @@ decoder accomulates more coded packets, the probability that the next
 received coded packet will be \ac{l.d.} increases.
 
 Therefore, in \ac{TSNC}, a simple procedure for controlling this probability
-is to gradually increase the coding density as the \ac{DOF} increases. This enables TSNC to save a lot of
-complexity particulary in the beginning of transmissions, but also to
-tailor the coding delay. I.e. approximate the number of coded packets a
+is to gradually increase the coding density as the \ac{dof}\footnote{We refer
+as degrees of freedom to the dimension of the linear span from the coded
+packets that a decoder has at a given point} increases, e.g. as the
+cardinality of the set of \ac{l.i.} coded packets increases. This enables
+\ac{TSNC} to significantly reduce the complexity particulary in the
+beginning of the transmission process and also to control the decoding
+delay. For \ac{TNSC}, we define the number of coded packets a
 decoder needs to receive to decode a generation of $g$ packets. We call
 this number the budget, $B$.
 
-Provided a desired budget, $B \geq g$, and the decoders \ac{DOF} it can be
+Provided a desired budget, $B \geq g$, and the decoders \ac{dof} it can be
 estimated how sparse the coded packets should be to finish a transmission in
 time.
 
 In our implementation, it is the encoders responsibility to estimate the coding
 density. We use feedback to provide the encoder a better estimate of the
-decoders \ac{DOF} at pre-defined points. Namely, when the decoder obtains the
-following \ac{DOF}'s:
+decoders \ac{dof} at pre-defined points. Namely, when the decoder obtains the
+following \ac{dof}'s:
 
 \begin{equation}\label{eq:feedback_dofs}
     s(k) = g\cdot \frac{2^k -1}{2^k},  \; \text{for } k=0,1,2,\dots
@@ -379,9 +383,9 @@ estimates a fixed coding density for each region when a feedback packet is
 received.
 
 Before the coding density can be estimated it is essential that the encoder
-has a good estimate of the decoders \ac{DOF}, but also the remainder of the
+has a good estimate of the decoders \ac{dof}, but also the remainder of the
 total budget. The feedback scheme \ref{eq:feedback_dofs} roughly splits the
-remaining \ac{DOF} in halves. This is also the case for the budget that is
+remaining \ac{dof} in halves. This is also the case for the budget that is
 split equally among the two new regions. The very last region will be assigned
 the full remainder of the total budget.
 
