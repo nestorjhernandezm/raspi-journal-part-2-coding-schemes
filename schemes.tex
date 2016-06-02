@@ -7,6 +7,7 @@ for the primitive coding operations, e.g. encoding, decoding and recoding
 (where applies) for each coding scheme. Later, we address particular schemes
 which are obtained by modifying the basic coding operations that provide
 better processing speeds, particularly relevant for the Raspberry Pi.
+Finally, we include a review of the
 
 \subsection{Random Linear Network Coding}
 \label{ssec:RLNC}
@@ -203,8 +204,8 @@ coding density is defined as follows:
 d = \frac{\sum_{j=1}^{g} f(v_{ij})}{g},\ \
     f(v_{ij}) =
     \begin{cases}
-        0 & \text{for } v_{ij} = 0 \\
-        1 & \text{for } v_{ij} \neq 0
+        0 &,\ v_{ij} = 0 \\
+        1 &,\ v_{ij} \neq 0
     \end{cases}
 \end{align}
 %
@@ -227,8 +228,8 @@ j \in [1,g]$. In this way, we can represent a coded packet in \ac{SRLNC} as:
     \forall i \in [1,\ldots) ,\ \
     d \in
     \begin{cases}
-        {(0,0.5]} & \text{for } q = 2 \\
-        {(0,1]} & \text{for } q > 2
+        {(0,0.5]} & ,\ q = 2 \\
+        {(0,1]}   & ,\ q > 2
     \end{cases}
 \end{align}
 %
@@ -364,47 +365,62 @@ delay. For \ac{TSNC}, we define the budget, $B \geq g$, to be a target
 number of coded packets a transmitter wants to send to a receiver
 for decoding a generation of $g$ packets.
 
-Provided a desired budget $B$ and the \ac{dof}s of the
-decoder, an encoder can estimate the required coding density to not exceed
-the required y the budget. ow sparse the coded packets should be to finish a transmission in
-time.
-
-In our implementation, it is the encoders responsibility to estimate the coding
-density. We use feedback to provide the encoder a better estimate of the
-decoders \ac{dof} at pre-defined points. Namely, when the decoder obtains the
-following \ac{dof}'s:
-
+Provided a desired budget $B$ and the \ac{dof} of the decoder, an encoder
+can estimate the required coding density for the packets to not exceed the
+budget. In our implementation, we use feedback packets to provide the
+encoder an estimate of the decoder \ac{dof} at pre-defined points of the
+transmission process. The points in the process occur when a decoder
+obtains a given amount of \ac{dof}. In our implementation, we define $r(k),\
+k \in [1, \ldots)$ as the rank $r$ of the decoder\footnote{The rank of
+a decoder is the rank of its coding matrix at a given point in the
+transmissions process.} where a decoder has to send the $k$-th feedback in
+\eqref{eq:feedback_dofs}.
+%
 \begin{equation}\label{eq:feedback_dofs}
-    s(k) = g\cdot \frac{2^k -1}{2^k},  \; \text{for } k=0,1,2,\dots
+    r(k) = \floor{g\cdot \left[\frac{2^k -1}{2^k}\right]},\ k \in [1,\ldots)
 \end{equation}
-where $k$ is the $k$-th feedback packet that is transmitted during a generation.
+%
+At the beginning of the transmission process, we assume that the encoder
+starts with an initial coding density that has been calculated depending to
+the budget. According to \eqref{eq:feedback_dofs}, a decoder sends feedback
+once it has obtained (rounded down) $g/2,\ 3g/4,\ 7g/8,\ \ldots$  degrees of
+freedom. The total amount of feedback for this scheme will depend on the
+generation size. Still, we have an implementation that limits the amount of
+feedback to be sent from the decoder in [\textbf{reference}].
 
-The encoder considers the time between feedback packets as regions. It then
-estimates a fixed coding density for each region when a feedback packet is
-received.
+The transmissions made between feedback packets are called the density
+regions since the same estimated density is used for encoding sparse
+packets. Once new feedback is received, an encoder recalculates the coding
+density for the new region until the next feedback packet is received.
+Before the coding density can be estimated, it is essential that the
+encoder has a good estimate of the decoder \ac{dof}, but also the remainder
+of the total budget. The feedback scheme based on the rank reports of
+\eqref{eq:feedback_dofs} roughly splits the remaining coding regions in
+two halves in every. In other words, the first half is the region where
+the encoder currently operates. Once an encoder finishes with this region,
+it proceeds with second half where again it splits this into to two region
+and so on until it finishes on transmitting the whole generation. This is
+also the case for the budget that is split equally among the two new
+regions. The very last region will be assigned the full remainder of
+the total budget and the coding density will not vary.
 
-Before the coding density can be estimated it is essential that the encoder
-has a good estimate of the decoders \ac{dof}, but also the remainder of the
-total budget. The feedback scheme \ref{eq:feedback_dofs} roughly splits the
-remaining \ac{dof} in halves. This is also the case for the budget that is
-split equally among the two new regions. The very last region will be assigned
-the full remainder of the total budget.
-
-\subsection{Network Coding Implementation for Multicore Architectures}
+\subsection{Network Coding Implementation for Multicore Architectures with
+the Raspberry Pi}
 \label{sub:implementation-multicore}
 
-The operations needed to encode and decode data are, in general, similar. To
-encode packets, the encoder needs to perform the matrix multiplication
-$\textbf{C} = \textbf{V} \cdot \textbf{P}$. On the other hand, decoding the
-information requires the decoder to find $\textbf{V}^{-1}$ and to perform the
-matrix multiplication $\textbf{P} = \textbf{V}^{-1} \cdot \textbf{C}$. In both
-cases, a matrix multiplication is needed. Therefore, to make a practical
-implementation of network coding, it is valuable to find a way to optimize the
-matrix multiplications operations for multicore architectures.
+The arithmetic operations needed to encode and decode data are,
+in general, similar. To encode packets, the encoder needs to perform the
+matrix multiplication $\textbf{C} = \textbf{V} \textbf{P}$. On the other
+hand, decoding the information requires the decoder to find
+$\textbf{V}^{-1}$ and to perform the matrix multiplication
+$\textbf{P} = \textbf{V}^{-1} \textbf{C}$. In both cases, a matrix
+multiplication is needed. Therefore, to make a practical implementation of
+network coding, it is valuable to find a way to optimize the matrix
+multiplications operations for multicore architectures.
 
-When designing multithreaded algorithms for network coding operations, it is
+When designing multi-threaded algorithms for network coding operations, it is
 possible to implement the decoding by combining the matrix inversion and the
-matrix multiplication, e.g., performing the Gauss-Jordan algorithm over the
+matrix multiplication, e.g. performing the Gauss-Jordan algorithm over the
 coding matrix $\textbf{V}$ while performing, in parallel, row operations on the
 coded data $\textbf{C}$. For example, in~\cite{5061951} and~\cite{4262451} the
 parallelization of the row operations are optimized for \ac{GPU} and \ac{SMP}
@@ -413,42 +429,47 @@ limited speeds up for small block sizes ($\leq 2048$ bytes). The reason is that
 to operate in a parallel fashion over the same coded packet $C_i$ requires
 strained synchronization.
 
-Therefore, to overcome the constraints of a tight synchronization, it is
-preferable to explicitly invert the matrix $\textbf{V}$, and then take advantage
-of optimizations for matrix multiplications, both at encoding and decoding time.
-With that purpose, the authors implemented in~\cite{wunderlich2015network} an
-algorithm that adopts the ideas of efficient \ac{BLAS}
-operations~\cite{lawson1979basic} reimplementing them for finite fields
-operations. Although there are already certain libraries available such as
-~\cite{dumas2008dense} and \cite{dumas2002linbox} that allows the usage of the
-highly optimize \ac{BLAS} implementations for some finite fields, they work
-converting the GF elements into floating point numbers and back. Even though
-that approach is efficient for large matrix sizes, the overhead imposed by the
-conversions is not suitable for the the matrix sizes of typical network coding
-implementations. The implemented algorithm aims to be cache efficient by
-maximizing the number of operations performed over a block of fetched data. This
-is done by dividing the matrices in square sub-blocks and operating with them.
-As a consequence, this technique exploits the spatial locality of the data, at
-least for $\mathcal{O}(n^3)$ algorithms~\cite{golub2012matrix}. The optimal size
-of the block is architecture-dependent. The ideal block has a number of operands
-that fit into L1 cache, and it is a multiple of the \ac{SIMD} operations size.
+Therefore, to overcome the constraints of tight synchronization, a
+preferable option is to explicitly invert the matrix $\textbf{V}$, and then
+take advantage of optimizations for matrix multiplications, both at
+encoding and decoding time. With that purpose, authors
+in~\cite{wunderlich2015network} implemented an algorithm that adopts
+the ideas of efficient \ac{BLAS}~\cite{lawson1979basic} operations
+reimplementing them for finite fields operations. Although there are
+libraries such as \cite{dumas2008dense} and \cite{dumas2002linbox} that allow
+highly optimized finite field \ac{BLAS} implementations, they work on
+converting the \ac{GF} elements into floating point numbers and back.
+Even though the approach is efficient for large matrix sizes, the
+numerical type conversion overhead is not suitable for matrix sizes of
+network coding implementations.
 
-The main idea of the implemented algorithm is to represent each one of the sub-
-block matrix operations (matrix-matrix multiplication, matrix-triangle matrix
-multiplication, triangle-matrix system solving, etc) as a base, \textit{kernel},
-operation that can be optimized individually, e.g., using \ac{SIMD} operations.
-Each of these kernel operations, at the same time, can be represented as a task
-with inputs and outputs in memory. If any algorithm is formulated
-conventionally, and the data operations on the sub-blocks are reordered, then it
-is possible to resolve data dependencies with a \ac{DAG}. For the algorithm, a
-dependency means, for example, that a sub-block of the matrix in memory cannot
-be read unless a previous writing operation was performed there. When the
-\ac{DAG} is determined, then, a scheduler assigns to the available cores the
-execution of the individual kernel operations that have their dependencies
-satisfied. The benefit of this method is that the synchronization relies only on
-data dependencies, and it does not requires the insertion of artificial
-synchronization points. Using this technique, the matrix inversion is performed
-using an algorithm based on LU
-factorization~\cite{Dongarra:2011:HPM:2132876.2132885}, and the matrix
-multiplication is performed by making the various matrix-matrix multiplications
-on the sub-blocks.
+The implemented algorithm in~\cite{wunderlich2015network} aims to be
+cache-efficient by maximizing the number of operations performed over a
+fetched data block. Here, the matrices are divided in square sub-blocks
+where we can operate each of them. As a consequence, this technique
+exploits the spatial locality of the data, at least for
+$\mathcal{O}(n^3)$ algorithms~\cite{golub2012matrix}. The optimal block
+size is architecture-dependent. The ideal block has a number of operands
+that fit into the system L1 cache, and it is a multiple of the \ac{SIMD}
+operations size.
+
+The idea of the implemented algorithm is to represent each one of the
+sub-block matrix operations: matrix-matrix multiplication,
+matrix-triangle matrix multiplication, triangle-matrix system solving,
+etc; as a base or \textit{kernel} operation that can be optimized
+individually using \ac{SIMD} operations. Each kernel operation, at the
+same time, can be represented as a task with inputs and outputs in memory.
+If an algorithm is formulated conventionally and the data operations on the
+sub-blocks are reordered, then it is possible to resolve data
+dependencies with a \ac{DAG}. For the algorithm, as an example, a dependency
+could be that a sub-block of the matrix in memory cannot be read unless
+a previous writing operation was performed there. When the
+\ac{DAG} is determined, then a scheduler assigns to the available cores the
+execution of the kernel operations that have their dependencies satisfied.
+The benefit of this method is that the synchronization relies only on
+data dependencies and it does not require the insertion of artificial
+synchronization points. Using this technique, the matrix inversion is
+performed using an algorithm based on LU factorization
+\cite{Dongarra:2011:HPM:2132876.2132885}, and the matrix multiplication is
+performed by making the various matrix-matrix multiplications on the
+sub-blocks.
