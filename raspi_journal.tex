@@ -11,6 +11,8 @@
 \usepackage{subcaption}
 \usepackage{listings}             % Include the listings-package
 \usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{caption}
 
 \newcommand\floor[1]{\left\lfloor#1\right\rfloor}
 
@@ -153,7 +155,8 @@ $^{4}$ \quad SFB 912 -- Collaborative Research Center HAEC. Dresden, Germany}
   captionpos=b,                    % sets the caption-position to bottom
   %commentstyle=\color{mygreen},    % comment style
   deletekeywords={...},            % if you want to delete keywords from the given language
-  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  %escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  escapeinside={<@}{@>}
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
   frame=single,	                   % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
@@ -174,6 +177,23 @@ $^{4}$ \quad SFB 912 -- Collaborative Research Center HAEC. Dresden, Germany}
   xleftmargin=5mm,
   xrightmargin=5mm,
   columns=flexible
+}
+
+% Used to suppress line numbers in lstlistings
+\let\origthelstnumber\thelstnumber
+\makeatletter
+\newcommand*\Suppressnumber{%
+  \lst@AddToHook{OnNewLine}{%
+    \let\thelstnumber\relax%
+     \advance\c@lstnumber-\@ne\relax%
+    }%
+}
+
+% Used to reactivate line numbers in lstlistrings
+\newcommand*\Reactivatenumber{%
+  \lst@AddToHook{OnNewLine}{%
+   \let\thelstnumber\origthelstnumber%
+   \advance\c@lstnumber\@ne\relax}%
 }
 
 
