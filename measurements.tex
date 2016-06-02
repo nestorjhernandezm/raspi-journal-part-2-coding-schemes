@@ -5,48 +5,51 @@ This section may be divided by subheadings. It should provide a concise and
 precise description of the experimental results, their interpretation as well as
 the experimental conclusions that can be drawn.
 
-\subsubsection{Multicore Network Coding}
+\subsection{Multicore Network Coding}
 \label{subs:multicore-network-coding}
 
 The authors implemented the algorithm described in
-Section~\ref{sub:implementation-multicore} on the Raspberry Pi 2 Model B, which
-features four ARM Cortex-A7 cores in a Broadcom BCM2836 \ac{SOC} with a 900 MHz
-clock. Each core has a 32 KiB L1 data cache and 32 KiB L1 instruction cache. The
-cores share a 512 KiB L2 cache. All the measured results, including the baseline
-results, were obtained with NEON-enabled code adopted from the FIFI/KODO library
-\cite{kodo2011pedersen}. The NEON extension provides an 128-bit \ac{SIMD}
-instruction set to the Raspberry Pi 2. Figures~\ref{enc_dec1024},
-\ref{enc_dec128} and \ref{enc_dec16} show the encoding and decoding throughput
-in MiB per second for different generation sizes ($g$ = 1024, 128, and 16
+Section~\ref{sub:implementation-multicore} on the Raspberry Pi 2 Model B,
+which features four ARM Cortex-A7 cores in a Broadcom BCM2836 \ac{SOC}
+with a 900 MHz clock. Each core has a 32 KiB L1 data cache and 32 KiB
+L1 instruction cache. The cores share a 512 KiB L2 cache. All the
+measured results, including the baseline results, were obtained with
+NEON-enabled code adopted from the Fifi library [\textbf{Fifi reference}].
+The NEON extension provides an 128-bit \ac{SIMD} instruction set to the
+Raspberry Pi 2. Figures~\ref{enc_dec1024}, \ref{enc_dec128} and
+\ref{enc_dec16} show the encoding and decoding throughput in MiB per
+second for different generation sizes ($g$ = 1024, 128, and 16
 respectively). The throughput is the rate of generating $g$ coded packets,
-divided by the time the encoder took to perform the task. The size of each coded
-packet was fixed to $1536$~bytes since that is the typical size of an Ethernet
-frame. The blocked operations were performed dividing the matrices in squared
-sub-blocks of 16,32,64,...,1024 operands (words in the finite field) in height
-and width, and the figures only show the best results (usually block sizes of
-16x16 or 32x32 operands since with bigger block sizes, the operands do not fit
-in L1 cache).
+divided by the time the encoder took to perform the task. The size of
+each coded packet was fixed to $1536$~bytes since that is the typical
+size of an Ethernet frame. The blocked operations were performed dividing
+the matrices in squared sub-blocks of $16,\ 32\ ,\ 64,\ldots,\ 1024$ operands
+(words in the finite field) in height and width. The figures show only
+block sizes of $16 \times 16$ or $32 \times 32$ operands since with bigger
+block sizes, the operands do not fit in L1 cache.
 
 The following test cases were considered:
 
-\paragraph{Baseline encoding} The baseline results involve no recording of the
+\subsubsection{Baseline encoding}
+The baseline results involve no recording of the
 \ac{DAG} and are performed in a \emph{by-the-book} fashion. The encoder uses
-only one thread. And the difference between the non-blocked and blocked encoding
-schemes is that in the blocked scheme, the matrix multiplications are performed
-dividing the matrices in sub-blocks in order to make the algorithm cache
-efficient as described in Section~\ref{sub:implementation-multicore}.
+only one thread. And the difference between the non-blocked and blocked
+encoding schemes is that in the blocked scheme, the matrix multiplications are
+performed dividing the matrices in sub-blocks in order to make the algorithm
+cache efficient as described in Section~\ref{sub:implementation-multicore}.
 
-\paragraph{Encoding blocked} The encoding results were performed using the
+\subsubsection{Encoding blocked}
+The encoding results were performed using the
 method described in Section~\ref{sub:implementation-multicore}. The time
-recorded includes the dependencies resolving, creation of the \ac{DAG}, and the
-task scheduling. In practice, it would suffice to calculate and store this
+recorded includes the dependencies resolving, creation of the \ac{DAG}, and
+the task scheduling. In practice, it would suffice to calculate and store this
 information only once per generation size.
 
-\paragraph{Decoding blocked} The differences between encoding and decoding, is
-that the decoding task also involves the matrix inversion. Similarly as with the
-encoding results, the time recorded includes the dependencies resolving, the
-creation of the \ac{DAG} and the task scheduling. However, to decode, these
-calculations are also made for inverting the matrix of coding coefficients.
+\subsubsection{Decoding blocked}
+The differences between encoding and decoding, is that the decoding task also
+involves the matrix inversion. Similarly as with the encoding results, the
+time recorded includes the dependencies resolving, the creation of the
+\ac{DAG} and the task scheduling. However, to decode, these calculations are also made for inverting the matrix of coding coefficients.
 
 \begin{figure}[ht!]
 \centering
@@ -124,7 +127,7 @@ negligible for big generation sizes, while considerable for small matrices.
 
 
 
-\paragraph{Comparison of the load of matrix multiplications and inversions}
+\subsubsection{Comparison of the load of matrix multiplications and inversions}
 
 To compare how much slower is the matrix multiplication with respect to the
 matrix inversion for different generation sizes, we ran a set of tests. We used
