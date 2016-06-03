@@ -166,7 +166,7 @@ We can now change all the files in the disk image.
 
 % MAC and Hostname file
 \Suppressnumber\begin{lstlisting}[]
-<@\textcolor{gray}{\$\{ROOTDIR\}/home/pi/.rasp\_config/nodes.csv}@>
+<@\textcolor{gray}{\$\{ROOTDIR\}/home/pi/rasp\_config/nodes.csv}@>
 <@\textcolor{gray}{
 ---------------------------------------------------------------}
 \Reactivatenumber @>
@@ -181,7 +181,7 @@ b8:27:eb:95:bd:11 rasp_03
 
 % Set hostname
 \Suppressnumber\begin{lstlisting}[]
-<@\textcolor{gray}{\$\{ROOTDIR\}/home/pi/.rasp\_config/set\_hostname}@>
+<@\textcolor{gray}{\$\{ROOTDIR\}/home/pi/rasp\_config/set\_hostname}@>
 <@\textcolor{gray}{
 ---------------------------------------------------------------}
 \Reactivatenumber @>
@@ -201,16 +201,16 @@ fi
 
 % Get the files
 \begin{lstlisting}[]
-wget http://kom.aau.dk/project/TuneSCode/rasp_config.zip
-unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
+$ wget http://kom.aau.dk/project/TuneSCode/rasp_config.zip
+# unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
 \end{lstlisting}
 \FloatBarrier
 
 
 Call set\_hostname script at startup. We insert a line of code to call script in rc.local just after the initial comments (i.e. lines starting with \#).
 \begin{lstlisting}[]
-line_number=$(egrep -n -m1 "(^[^#])|(^$)" ${ROOTDIR}/etc/rc.local | cut -d: -f1)
-sed -i "${line_number}c bash /home/pi/.rasp_config/set_hostname" ${ROOTDIR}/etc/rc.local
+# line_number=$(egrep -n -m1 "(^[^#])|(^$)" ${ROOTDIR}/etc/rc.local | cut -d: -f1)
+# sed -i "${line_number}c bash /home/pi/rasp_config/set_hostname" ${ROOTDIR}/etc/rc.local
 \end{lstlisting}
 \FloatBarrier
 %$ line="bash /home/pi/.rasp_config/set_hostname"
@@ -220,7 +220,7 @@ sed -i "${line_number}c bash /home/pi/.rasp_config/set_hostname" ${ROOTDIR}/etc/
 
 All other files could be updated.
 
-\subsection{Installation and Updating}
+\subsection{Installation and Updating the image}
 
 It may be desired to pre-install some programs in the image before it is
 written to all the memory cards that goes into the Raspberry pis.
@@ -248,14 +248,19 @@ This can be done using QEMU Chroot (change root).
 # mount -t proc proc proc/
 # mount --rbind /sys sys/
 # mount --rbind /dev dev/
-# mount --rbind /run run/
-# chroot ${ROOTDIR} /usr/bin/qemu-arm-static /bin/bash
+# proot -q qemu-arm-static -S ${ROOTDIR}
 
 ALTERNATIVE:
-# proot -q qemu-arm-static -S ${ROOTDIR}
+# chroot ${ROOTDIR} /usr/bin/qemu-arm-static /bin/bash
 \end{lstlisting}
 \FloatBarrier
 
+
+% Optionally, we may create a unique prompt to indicate we have changed root
+\begin{lstlisting}[]
+# export PS1="(chroot) $PS1"
+\end{lstlisting}
+\FloatBarrier
 
 
 
@@ -294,24 +299,36 @@ Assumuing that we are still chrooted to the RPi image and the boot partition is 
 \end{lstlisting}
 \FloatBarrier
 
+% Setup initramfs
+\begin{lstlisting}[]
+# cp ${OVERLAYROOTDIR}/hooks-overlay /etc/initramfs-tools/hooks/
+# cp ${OVERLAYROOTDIR}/init-bottom-overlay /etc/initramfs-tools/scripts/init-bottom/
+# echo "overlay" > /etc/initramfs-tools/modules
+\end{lstlisting}
+\FloatBarrier
+
 % Tell uboot to load initramfs
 \begin{lstlisting}[]
 # echo "initramfs init.gz" > /boot/config.txt
 \end{lstlisting}
 \FloatBarrier
 
-% Setup initramfs
-\begin{lstlisting}[]
-# echo "overlay" > /etc/initramfs-tools/modules
-# cp ${OVERLAYROOTDIR}/hooks-overlay /etc/initramfs-tools/hooks/
-# cp ${OVERLAYROOTDIR}/init-bottom-overlay /etc/initramfs-tools/scripts/init-bottom/
-\end{lstlisting}
-\FloatBarrier
-
-
 % Create an initramfs
 \begin{lstlisting}[]
 # mkinitramfs -o /boot/init.gz
+# mkinitramfs -o /boot/init.gz -k 4.4.11+
+\end{lstlisting}
+\FloatBarrier
+
+\subsection{Write image}
+
+% Exit chroot, umount, and write to memory card
+\begin{lstlisting}[]
+# exit
+# cd ..
+# umount --recursive ${ROOTDIR}
+# losetup -d WHICH_NUMBE.img of=/dev/mmcblk0 bs=4MR
+# dd if=${IMAGE}.img of=/dev/mmcblk0 bs=4M
 \end{lstlisting}
 \FloatBarrier
 
