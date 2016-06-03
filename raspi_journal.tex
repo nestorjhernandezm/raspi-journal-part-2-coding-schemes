@@ -13,6 +13,7 @@
 \usepackage{placeins}
 \usepackage{xcolor}
 \usepackage{caption}
+\usepackage{textcomp}  % To get the correct quotes in lstlistings (')
 
 \newcommand\floor[1]{\left\lfloor#1\right\rfloor}
 
@@ -176,7 +177,8 @@ $^{4}$ \quad SFB 912 -- Collaborative Research Center HAEC. Dresden, Germany}
   title=\lstname,                  % show the filename of files included with \lstinputlisting; also try caption instead of title
   xleftmargin=5mm,
   xrightmargin=5mm,
-  columns=flexible
+  columns=flexible,
+  upquote=true
 }
 
 % Used to suppress line numbers in lstlistings
