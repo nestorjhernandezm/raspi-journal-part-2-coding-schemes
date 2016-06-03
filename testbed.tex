@@ -201,16 +201,16 @@ fi
 
 % Get the files
 \begin{lstlisting}[]
-wget http://kom.aau.dk/project/TuneSCode/rasp_config.zip
-unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
+$ wget http://kom.aau.dk/project/TuneSCode/rasp_config.zip
+# unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
 \end{lstlisting}
 \FloatBarrier
 
 
 Call set\_hostname script at startup. We insert a line of code to call script in rc.local just after the initial comments (i.e. lines starting with \#).
 \begin{lstlisting}[]
-line_number=$(egrep -n -m1 "(^[^#])|(^$)" ${ROOTDIR}/etc/rc.local | cut -d: -f1)
-sed -i "${line_number}c bash /home/pi/.rasp_config/set_hostname" ${ROOTDIR}/etc/rc.local
+# line_number=$(egrep -n -m1 "(^[^#])|(^$)" ${ROOTDIR}/etc/rc.local | cut -d: -f1)
+# sed -i "${line_number}c bash /home/pi/.rasp_config/set_hostname" ${ROOTDIR}/etc/rc.local
 \end{lstlisting}
 \FloatBarrier
 %$ line="bash /home/pi/.rasp_config/set_hostname"
@@ -220,7 +220,7 @@ sed -i "${line_number}c bash /home/pi/.rasp_config/set_hostname" ${ROOTDIR}/etc/
 
 All other files could be updated.
 
-\subsection{Installation and Updating}
+\subsection{Installation and Updating the image}
 
 It may be desired to pre-install some programs in the image before it is
 written to all the memory cards that goes into the Raspberry pis.
