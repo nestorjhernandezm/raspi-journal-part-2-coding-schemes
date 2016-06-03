@@ -14,19 +14,60 @@ for further references.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.6\textwidth]{images/testbed_setup.eps}
+\includegraphics[width=0.6\textwidth]{images/testbed_setup2.eps}
 \caption{Testbed setup}
 \label{fig:testbed_setup}
 \end{figure}
 
-This section will be used to present a Raspberry Pi testbed and the steps to
-install and configure the individual devices.
+This section will present a testbed of thirty \ac{Raspi}s.
+%Twenty \ac{Raspi} 1 model B revision 2 and ten \ac{Raspi} 2 model B V1.1.
+They are all equipped with a memory card and are connected to the
+university network by wire using their ethernet interface (eth0).
+
+To easily discover the \ac{Raspi}s within the university network, they have all
+been assigned a unique name under a common domain.
+This eliminates the need to remember their individual \ac{IP}s.
+
+A sketch of the testbed is depicted in figure~\ref{fig:testbed_setup}.
+We have two types of \ac{Raspi}s in our setup.
+Table \ref{tab:rasp_naming} shows the naming convention.
+
+\begin{table}[ht!]
+  \centering
+  \begin{tabular}{|c|c|}
+    \hline
+      \textbf{Hostname} & \textbf{Model} \\ \hline
+    Rasp00 - Rasp19 & Raspberry Pi 1 model B rev. 2 \\ \hline
+    Rasp100 - Rasp109 & Rasperry Pi 2 model B V1.1 \\ \hline
+  \end{tabular}
+  \caption{Raspberry Pi naming convention}
+  \label{tab:rasp_naming}
+\end{table}
+
+
+
+
+Accessing them is easily done using \ac{SSH}.
+To address them within the university network, 
+The \ac{Raspi}s
+
+The Raspberry Pis are all equipped with an ethernet interface (eth0) and
+connected by wire to the university's \ac{LAN}. The university network
+administration was provided
+the \ac{MAC} addresses of the ethernet interfaces to automatically assign
+the devices the desired \ac{IP} addresses as shown in the figure. In a personal
+\ac{LAN}, another option could be to manually provide the devices with static
+\ac{IP}s.
+
+
+This section will be used to present a \ac{Raspi} testbed and the steps to
+install and configure its devices.
 
 The testbed is depicted in figure~\ref{fig:testbed_setup}. It consists of twenty
-Raspberry Pi 1 model B rev 2 (Rasp\_01 to Rasp\_20) and 
+Raspberry Pi 1 model B rev 2 (Rasp01 to Rasp20) and 
 ten Raspberry Pi 2 model b V1.1 (Rasp2\_01 to Rasp2\_10).
 
-The goal is to configure all the devices identically with the same software
+The goal is to configure all the \ac{Raspi}s identically with the same software
 and configurations. There are however a few differences between them that we
 need to take into account. E.g. hostname and network addresses.
 
@@ -102,6 +143,8 @@ Open a terminal, and then...
 
 hashmark (\#) means to perform operation as root, dollar (\$) means to perform operation as user
 
+\subsection{Download image}
+
 % Define variable]
 \begin{lstlisting}[] 
 $ export IMAGE="2016-05-27-raspbian-jessie-lite"
@@ -120,6 +163,7 @@ $ unzip ${IMAGE}.zip
 \end{lstlisting}
 \FloatBarrier
 
+\subsection{Mount image}
 
 % Check out the image   % The dollar hack was to fix vim syntax
 \begin{lstlisting}[literate={DOLLAR}{\$}1]
@@ -316,7 +360,7 @@ Assumuing that we are still chrooted to the RPi image and the boot partition is 
 
 % Create an initramfs
 \begin{lstlisting}[]
-# mkinitramfs -o /boot/init.gz
+# How to i know the kernel version /lib/modules/
 # mkinitramfs -o /boot/init.gz -k 4.4.11+
 \end{lstlisting}
 \FloatBarrier
@@ -328,11 +372,12 @@ Assumuing that we are still chrooted to the RPi image and the boot partition is 
 # exit
 # cd ..
 # umount --recursive ${ROOTDIR}
-# losetup -d WHICH_NUMBE.img of=/dev/mmcblk0 bs=4MR
+# losetup -d WHICH_NUMBE.img
 # dd if=${IMAGE}.img of=/dev/mmcblk0 bs=4M
 \end{lstlisting}
 \FloatBarrier
 
+How about kodo python?
 
 \subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
 
