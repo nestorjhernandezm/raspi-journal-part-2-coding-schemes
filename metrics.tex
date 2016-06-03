@@ -24,11 +24,17 @@ delivery time. We focus on the goodput considering only the coding process,
 i.e. we assume that the application data has been properly
 generated before encoding and also correctly post-processed after decoding.
 The goodput is a measure for the effective processing speed since it
-excludes protocol overhead but considers process
+excludes protocol overhead but considers all delays related with
+algorithmic procedures, field operations, hardware processing,
+multicore coordination (where it applies), etc. Moreover, encoding
+and decoding goodput permits to observe if coding is a system-block
+that limits the end-to-end performance. For example, a low goodput
+would affect the \ac{QoE} of delay-densitive applications for the
+end user. Use cases of the
 
-\subsection{Energy Costs}
-\subsubsection{Average Consumption}
-\subsubsection{Per-Bit Consumption}
+\subsection{Energy Consumption}
+\subsubsection{Average }
+\subsubsection{Per-Bit}
 
 \subsection{Goodput}
 \subsubsection{Encoding}
