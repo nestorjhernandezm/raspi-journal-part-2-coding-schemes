@@ -1,36 +1,40 @@
 \label{sec:metrics}
 
-Once we have defined the coding schemes behavior in terms of encoding
+Once defined the coding schemes behavior in terms of encoding
 and decoding, we proceed to describe the metrics considered in our study.
-We review the energy consumption of the Raspberry Pi since this platform
-is deployed at a large scale in scenarios where (i) energy is
-constrained to the lifetime of the device battery and (ii) the devices
-could be established in locations that are unavailable for regular
-maintenance. Typical use cases of this type of scenarios are sensor
-applications where devices are positioned for measurement retrieval
-without any supervision for large periods fo time. In this type of
-settings, both overall and per-bit energy consumption of the devices
-during the encoding and decoding process are relevant parameters that
-impact in the network performance for a given coding scheme. Also,
-Raspberry Pi processors are based in the \ac{ARM} architecture which
-is the same as in mobile devices like smartphones or tables.
-Therefore, the Raspberry Pi could be used to get an estimate of
-computing capabilities of a mobile device that is much more easy-deployable
-and at a lower overall cost.
+We consider the goodput defined as the ratio of the useful delivered
+information at the application layer and the total delivery time. We focus
+on the goodput considering only the coding process, i.e. we assume that
+the application data has been properly generated before encoding and
+also correctly post-processed after decoding. The goodput is a measure
+for the effective processing speed since it excludes protocol overhead
+but considers all delays related with algorithmic procedures, field
+operations, hardware processing, multicore coordination (where it applies),
+etc. Moreover, encoding and decoding goodput permits to observe if coding is
+a system-block that limits the end-to-end performance. As a reference, a low
+goodput would affect the \ac{QoE} of delay-intolerant applications for the
+end user. For example, Raspberry Pi processors are based in the \ac{ARM}
+architecture which is the same as in mobile devices such as smartphones or
+tables. Mobile user applications are typically delay-intolerant.
+Therefore, the Raspberry Pi might be used as an experiemental tool to
+get an estimate of computing capabilities of a mobile device that is
+much more easy-deployable and at a lower overall cost.
 
-To complement our study, we consider the goodput defined as the ratio
-of the useful delivered information at the application layer and the total
-delivery time. We focus on the goodput considering only the coding process,
-i.e. we assume that the application data has been properly
-generated before encoding and also correctly post-processed after decoding.
-The goodput is a measure for the effective processing speed since it
-excludes protocol overhead but considers process
-
-\subsection{Energy Costs}
-\subsubsection{Average Consumption}
-\subsubsection{Per-Bit Consumption}
+To complement our study, we review the energy consumption of the Raspberry
+Pi since this platform is deployed at a large scale in scenarios where (i)
+energy is constrained to the lifetime of the device battery and (ii) the
+devices could be established in locations that are unavailable for
+regular maintenance. Typical use cases of this type of scenarios are
+sensor applications where devices are positioned for measurement retrieval
+without any supervision for large periods fo time. In this type of settings,
+both overall and per-bit energy consumption of the devices during the
+encoding and decoding process are relevant parameters that impact in the
+network performance for a given coding scheme.
 
 \subsection{Goodput}
 \subsubsection{Encoding}
 \subsubsection{Decoding}
 
+\subsection{Energy Consumption}
+\subsubsection{Average }
+\subsubsection{Per-Bit}
