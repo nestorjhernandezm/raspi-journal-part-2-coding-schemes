@@ -29,25 +29,71 @@ We consider the goodput defined as the ratio of the useful delivered
 information at the application layer and the total delivery time. We focus
 on the goodput considering only the coding process, i.e. we assume that
 the application data has been properly generated before encoding and
-also correctly post-processed after decoding. In this way, the goodput
+also correctly post-processed after decoding. In this way, we define
+the goodput for either an encoder or a decoder as follows:
+%
+\begin{align} \label{eq:goodput}
+Goodput = \frac{gB}{T_{proc}} ~ [\mathrm{Bytes/s}]
+\end{align}
+%
+In \eqref{eq:goodput}, $B$ and $g$ are the packet and generation size
+as defined previously and both represented the data to be processed. For
+goodput measurements, we are concerned in quantifying the processing time
+for either encoding or decoding $g$ \ac{l.i.} packets. Thus, $T_{proc}$ is
+the processing time required for this processing. In the next subsections, we
+define two time bechmarks available in [\textbf{Chres repos here}].
+The purpose of the benchmarks is to quantify the processing time for
+any of the coding scheme considered in Section \ref{sec:schemes}.
 
+\subsubsection{Encoding Benchmark}
+Fig. \ref{fig:enc_goodput_benchmark} refers to the benchmark setup
+made for measuring the encoding processing time. The time benchmark
+is divided in two parts. In the first part, called a \textit{pre-run},
+we quantify the amount of \textit{transmitted} coded packets from an
+encoder (named 1 in Fig. \ref{fig:enc_goodput_benchmark}) required for
+decoding in a single encoder-decoder link with no packet erasures
+for a defined configuration of coding scheme, coding parameters and
+amount of feedback. In the case of \ac{TSNC}, we also record the
+points where a feedback was received from the decoder. The purpose of
+the pre-run is to predict how an encoder should behave with a given
+seed within its random number generator. This part of the benchmark is
+not regarded as a measurement.
 
+In the second part which is the actual \textit{simulation}, a reseted
+encoder (2 in Fig. \ref{fig:enc_goodput_benchmark}) is given the same
+seed as in the pre-run and then we measure the time from which the
+process start until we reach the amount of transmitted packets in the
+pre-run. Then, this measurement is stored as the encoder $T_{proc}$
+for this generic configuration.
 
-\subsubsection{Encoding}
-Encoding benchmark
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.6\textwidth]{images/measure_encoder.pdf}
+\includegraphics[width=0.6\textwidth]{images/measure_encoder.eps}
 \caption{Encoding goodput benchmark}
 \label{fig:enc_goodput_benchmark}
 \end{figure}
 
-\subsubsection{Decoding}
-Decoding benchmark
+\subsubsection{Decoding Benchmark}
+Fig. \ref{fig:dec_goodput_benchmark} shows the benchmark setup
+for measuring the decoding processing time. The time benchmark
+is divided in two parts as its encoding counterpart, e.g. a pre-run
+and the actual simulation. However, some differences occur.
+
+In the pre-run, we still quantify the amount of transmitted coded
+packets from encoder 1. Notice that we include the feedback case because
+it is necesary for the \ac{TSNC} scheme. However, now we store
+the \textit{transmitted packets} instead. The reason being
+that we want to feed the decoder with the same packets in the same
+order. Later, in the actual simulation, an encoder (2 in Fig.
+\ref{fig:dec_goodput_benchmark}) is given the same packets in the same
+order from the pre-run and then we measure the time from which the
+process start until the decoder finishes to retrieve the original
+packets. Finally, this measurement is saved as the decoder $T_{proc}$
+for this general configuration.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.6\textwidth]{images/measure_decoder.pdf}
+\includegraphics[width=0.6\textwidth]{images/measure_decoder.eps}
 \caption{Decoding goodput benchmark}
 \label{fig:dec_goodput_benchmark}
 \end{figure}
