@@ -597,6 +597,10 @@ There already exists implementations overlaying the root filesystem. We will
 use an existing implementation
 available at github: \url{https://github.com/chesty/overlayroot}.
 
+We installed git in a previous step, so lets clone the repository. The below
+code stores it in /tmp which is really mounted in \ac{RAM}. Thus, the files
+will disappear when the machine is rebooted.
+
 % Get files
 \begin{lstlisting}[]
 # OVERLAYROOTDIR="/tmp/overlayroot"
@@ -604,11 +608,21 @@ available at github: \url{https://github.com/chesty/overlayroot}.
 \end{lstlisting}
 \FloatBarrier
 
+To enable the overlaying filesystem it is required to generate an initial \ac{RAM}
+file system (initramfs). Initramfs is an initial filesystem that gets loaded into
+\ac{RAM} during the startup process of a linux machine to prepare the real
+filesystem.
+
+For this purpose, we need BuxyBox:
+
 % Install required packages
 \begin{lstlisting}[]
 # apt-get install busybox
 \end{lstlisting}
 \FloatBarrier
+
+Add and activate the overlaying filesystem, we need to add the scripts and tell initramfs
+to load the overlaying filesytem:
 
 % Setup initramfs
 \begin{lstlisting}[]
@@ -618,20 +632,44 @@ available at github: \url{https://github.com/chesty/overlayroot}.
 \end{lstlisting}
 \FloatBarrier
 
+Raspbian lite uses a "u-boot" to boot, so it should be made aware of the
+initramfs that we will generate.
+
 % Tell uboot to load initramfs
 \begin{lstlisting}[]
 # echo "initramfs init.gz" > /boot/config.txt
 \end{lstlisting}
 \FloatBarrier
 
+Finally, lets generate the image. This is done using "mkinitramfs", that will
+by default look for the kernel modules of the current system. Remember we are
+chrooted, so we need to specify the correct kernel modules to look for. These
+can be found in "/lib/modules".
+
 % Create an initramfs
 \begin{lstlisting}[]
-# How to i know the kernel version /lib/modules/
+# ls /lib/modules/
+\end{lstlisting}
+\FloatBarrier
+
+For \ac{Raspi} 1, our kernel modules was "4.4.11+". The other modules in /lib/modules
+is for \ac{Raspi} 2.
+
+Thus, to run mkinitramfs, type in the correct kernel version:
+
+% Create an initramfs
+\begin{lstlisting}[]
 # mkinitramfs -o /boot/init.gz -k 4.4.11+
 \end{lstlisting}
 \FloatBarrier
 
+This should generate a new initial \ac{RAM} filesystem that will overlay a \ac{RAM} filesystem.
+
 \subsection{Write image}
+
+The final step is to write the image to all the memory cards before they can
+be plugged in the \ac{Raspi}s. This is done by first leaving the chrooted filesystem
+and unmounting all the directories we mounted:
 
 % Exit chroot, umount, and write to memory card
 \begin{lstlisting}[]
@@ -639,11 +677,33 @@ available at github: \url{https://github.com/chesty/overlayroot}.
 # cd ..
 # umount --recursive ${ROOTDIR}
 # losetup -d WHICH_NUMBE.img
+\end{lstlisting}
+\FloatBarrier
+
+If successfully unmounted, you can insert a memory card in your machine. In our
+system, this memory card was available under /dev/mmcblk0, but this may be
+different on different machines. For internal memory card readers, it will
+probably be named /dev/mmcblkX where X is some number and if the memory card
+reader is connected through \ac{USB}, then it is likely called /dev/sdX.
+Make sure to write to the correct device as everything will be overwritten!
+
+Below is a few commands that may help you to deduce which device is correct:
+
+\begin{lstlisting}[]
+# lsblk
+# df -h
+\end{lstlisting}
+\FloatBarrier
+
+For us, the device was /dev/mmcblk0, so we write the image to that device:
+\begin{lstlisting}[]
 # dd if=${IMAGE}.img of=/dev/mmcblk0 bs=4M
 \end{lstlisting}
 \FloatBarrier
 
-How about kodo python?
+
+\subsection{Kodo python}
+
 
 \subsection{fabric}
 
