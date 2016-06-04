@@ -550,12 +550,52 @@ image is written to a memory card.
 
 \subsection{Installation an overlaying filesystem}
 
-See this link:
-\url{https://github.com/chesty/overlayroot}
+Our goal was to enable the users of the testbed to change however the
+\ac{Raspi} are configured while still being able to revert those changes easily.
 
-We use the code provided by
+We do this by storing a users work in the \ac{Raspi}s in \ac{RAM}. Thus a
+\ac{Raspi}, when a \ac{Raspi} is rebooted, it will forget all changes.
 
-Assumuing that we are still chrooted to the RPi image and the boot partition is mounted to /boot
+A way to do this is using stacked filesystem. Stacking filesystem enables
+a filesystem to overlay another filesystem. Whenever a file is accessed,
+the upper filesystem will forward the request to the lower filesystem in
+case it does not have it itself. If it has it, it will simpy return the file.
+
+This idea can be used in our setup to mount the root filesystem (i.e. Raspbian
+lite) in the \ac{Raspi}s duing startup as read-only. Thus, the files will not
+be changable. Some programs needs to change files and the testbed admin might
+want to change configurations. To enable this, it is possible to
+overlay a filesystem that is mounted in \ac{RAM} as read/writable on top of
+the regular root. Thus, reading a file may return a file from the lower filesytem,
+but if it is stored, it will be saved in the upper filesystem. Accessing this file
+again will return the stored file from the upper layer.
+
+
+
+%We do this using an overlay filesystem. The idea is to let the \ac{Raspi}s
+%mount their root filesystem as 
+%
+%We do this using an overlay filesystem (overlayfs).
+%Overlayfs enables a filesystem to be stacked on top of another filesystem. Thus,
+%if the \ac{Raspi}s mount their root filesystem (/) as read-onlyif we mount our root (/) filesystem as 
+%
+%
+%Overlayfs enables filesystems
+%to be stacked on top of each other. We will be using this to make a lower
+%filesystem and an upper filesystem. The lower filesystem will be our
+%traditional filesystem and the upper filesystem will be mounted in tmpfs
+%(i.e. mounted in \ac{RAM}).
+%
+%Thus, when a file is requsted from stacked filesystem, it will first attempt
+%to fetch the file in the upper filesystem if it does not exists there, it will
+%request it from the lower filessytem.  
+
+Assuming that you are still chrooted into the Raspbian lite filesystem, we
+can setup the overlay filesystem (overlayfs).
+
+There already exists implementations overlaying the root filesystem. We will
+use an existing implementation
+available at github: \url{https://github.com/chesty/overlayroot}.
 
 % Get files
 \begin{lstlisting}[]
