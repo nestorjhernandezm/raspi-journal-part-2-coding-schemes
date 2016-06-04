@@ -3,7 +3,7 @@
 We proceed to define the testbed environment by each of its conforming
 parts. We later indicate a procedure to set up the testbed. In this procedure,
 we summarize all the details regarding on setting the connectivity and
-system files for a set of Raspberry Pis in a centralized fashion.
+system files for a set of \ac{Raspi}s in a centralized fashion.
 Afterwards, we indicate how to cross-compile the Kodo library in an
 easy way. Finally, we provide further information about Kodo itself in terms
 of testing, other platforms supported and source code documentation
@@ -48,10 +48,10 @@ Table \ref{tab:rasp_naming} shows the naming convention.
 
 
 Accessing them is easily done using \ac{SSH}.
-To address them within the university network, 
+To address them within the university network,
 The \ac{Raspi}s
 
-The Raspberry Pis are all equipped with an ethernet interface (eth0) and
+The \ac{Raspi}s are all equipped with an ethernet interface (eth0) and
 connected by wire to the university's \ac{LAN}. The university network
 administration was provided
 the \ac{MAC} addresses of the ethernet interfaces to automatically assign
@@ -64,7 +64,7 @@ This section will be used to present a \ac{Raspi} testbed and the steps to
 install and configure its devices.
 
 The testbed is depicted in figure~\ref{fig:testbed_setup}. It consists of twenty
-Raspberry Pi 1 model B rev 2 (Rasp01 to Rasp20) and 
+Raspberry Pi 1 model B rev 2 (Rasp01 to Rasp20) and
 ten Raspberry Pi 2 model b V1.1 (Rasp2\_01 to Rasp2\_10).
 
 The goal is to configure all the \ac{Raspi}s identically with the same software
@@ -76,8 +76,8 @@ devices are work either temporary or permanently. We will illustrate how this
 can be accomplished using an overlaying filesystem.
 
 Finally, it should be possible to store data that are generated from
-simulations on the memory cards that are in the individual Raspberry Pi.
-%We using a overlaying filesystem that 
+simulations on the memory cards that are in the individual \ac{Raspi}.
+%We using a overlaying filesystem that
 %We will illustrate
 %how that can be done. In the case of temporary changes, it is important that
 %all changes can be easily reverted. We put a \ac{RAM} filesystem on top of
@@ -89,9 +89,9 @@ simulations on the memory cards that are in the individual Raspberry Pi.
 %their linkings. That could be to change network config
 
 %The goal is to configure all the devices to be as identical as possible. This
-%means that it is desired to have the same software on every device, but  
+%means that it is desired to have the same software on every device, but
 
-The Raspberry Pis are all equipped with an ethernet interface (eth0) and
+The \ac{Raspi}s are all equipped with an ethernet interface (eth0) and
 connected by wire to the university's \ac{LAN}. The university network
 administration was provided
 the \ac{MAC} addresses of the ethernet interfaces to automatically assign
@@ -100,9 +100,9 @@ the devices the desired \ac{IP} addresses as shown in the figure. In a personal
 \ac{IP}s.
 %that are
 %assigned the \ac{IP} addresses in the figure and connected wired to the
-%university's \ac{LAN}. 
+%university's \ac{LAN}.
 
-We use standard usb power adapters to power the Raspberry Pis.
+We use standard usb power adapters to power the \ac{Raspi}s.
 
 \subsubsection{Installing Raspbian}
 
@@ -126,18 +126,18 @@ to install it on memory cards.
 %There exists a number of ways to setup a testbed in a centralized manner.
 %E.g. using e.g. \ac{NFS}.
 
-There exists a number of ways to setup a testbed 
+There exists a number of ways to setup a testbed
 
 with multiple devices. We
 have decided on a very simple approach of simply instal
 
 
-- 
+-
 - Download image (wget)
 - Update/Modify image (chroot)
 - Burn image
 - Bang! linux is running
-- 
+-
 
 Open a terminal, and then...
 
@@ -146,7 +146,7 @@ hashmark (\#) means to perform operation as root, dollar (\$) means to perform o
 \subsection{Download image}
 
 % Define variable]
-\begin{lstlisting}[] 
+\begin{lstlisting}[]
 $ export IMAGE="2016-05-27-raspbian-jessie-lite"
 $ export WORKDIR="${HOME}/Raspbian"
 \end{lstlisting}
@@ -155,7 +155,7 @@ $ export WORKDIR="${HOME}/Raspbian"
 
 
 % Download and unpack image
-\begin{lstlisting}[] 
+\begin{lstlisting}[]
 $ mkdir -p ${WORKDIR}
 $ cd ${WORKDIR}
 $ wget http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-05-31/${IMAGE}.zip
@@ -327,7 +327,7 @@ Lets install some programs
 
 \subsection{Installation an overlaying filesystem}
 
-We use the code provided by 
+We use the code provided by
 
 Assumuing that we are still chrooted to the RPi image and the boot partition is mounted to /boot
 
@@ -427,9 +427,9 @@ execute a script function by calling "fab install:feh"
 Besides the previous description (\textbf{Include compiling Kodo from the
 RasPi from the scratch}), the testbed administrator can compile Kodo in its
 personal workstation and transfer the generated binaries directly to
-a path in the Raspberry Pi. To achieve this, we get a toolchain that
+a path in the \ac{Raspi}. To achieve this, we get a toolchain that
 contains the binaries for the \texttt{raspberry-gxx49-arm-g++} compiler
-for the Raspberry Pi. Therefore, we strongly recommend any testbed
+for the \ac{Raspi}. Therefore, we strongly recommend any testbed
 administrator to do the following procedure. In what follows, we provide
 the instructions considering that the NFS server uses the \texttt{\$HOME}
 directory as the working directory. However, the administrator may choose
@@ -437,7 +437,7 @@ some other working directory of its preference if desired.
 
 \begin{enumerate}
 
-\item Download the Raspberry Pi toolchain for 64-bit Linux from: \\
+\item Download the \ac{Raspi} toolchain for 64-bit Linux from: \\
 \texttt{http://buildbot.steinwurf.dk/toolchains/linux/} to your
 \texttt{\$HOME} directory. \\
 
@@ -463,36 +463,39 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.} \\
 
 \item Clone the Kodo repository in the server by executing: \\
-\texttt{git clone git://github.com/steinwurf/kodo.git} in \texttt{\$HOME}. \textbf{Change the repo to kodo-rlnc or kodo-cpp since just raw kodo is going to be depreceated soon} \\
+\texttt{git clone git://github.com/steinwurf/kodo.git} in \texttt{\$HOME}.
+\textbf{Change the repo to kodo-rlnc or kodo-cpp since just raw kodo is going
+to be depreceated soon} \\
 
 \item Navigate to the repository and configure \texttt{waf} by typing:
 \texttt{python config.py} and select the 16th ``make specification'' file
-for the Raspberry Pi, e.g. option \texttt{[16]cxx\_raspberry\_gxx49\_arm}
+for the \ac{Raspi}, e.g. option \texttt{[16]cxx\_raspberry\_gxx49\_arm}
 presented by the file.
 
 This command configures \texttt{waf} to use the proper compiler and its
-required flags to generate the binaries for the Raspberry Pi. If the
+required flags to generate the binaries for the \ac{Raspi}. If the
 configuration was correct, the output will indicate:
 \texttt{'configure' finished successfully (X.XXXs)}, where \texttt{X.XXX}
 is total time in seconds for configuring the project in the server. \\
 
 \item Execute \texttt{python waf build}. If the build process was
-successful, the generated binaries for the Raspberry Pi should be located
+successful, the generated binaries for the \ac{Raspi} should be located
 in \texttt{build/cxx\_raspberry\_gxx49\_arm} in the Kodo repository.
 \textbf{Indicate how the binary files should look like}.
 
 Once this procedure is made, the testbed administrator can relocate the
-generated binary files to Raspberry Pi's through the network as desired
+generated binary files to the \ac{Raspi}s through the network as desired
 by using the \texttt{scp} command during the configuration step.
 
 
 \end{enumerate}
 
-\subsection{Kodo Builds for the Raspberry Pi, Platform Support and Documentation}
+\subsection{Kodo Builds for the \ac{Raspi}, Platform Support and Documentation}
 
-You can check the build status of Kodo, Fifi and other relevant projects through
-their respective repository master branch on our buildbot page
-\cite{steinwurf2016buildbot}. Our buildbot displays the status of the builds for
-Raspbian 8 and GCC 4.9 for the ARM architecture which is the relevant one for the
-Raspberry Pi. At the link, you can check build status and build statistics. Also,
-documentation about Kodo basics with a tutorial is available at \cite{kododocs}.
+You can check the build status of Kodo, Fifi and other relevant projects
+through their respective repository master branch on our buildbot page
+\cite{steinwurf2016buildbot}. Our buildbot displays the status of the builds
+for Raspbian 8 and GCC 4.9 for the ARM architecture which is the relevant one
+for the \ac{Raspi}. At the link, you can check build status and build
+statistics. Also, documentation about Kodo basics with a tutorial is available
+at \cite{kododocs}.
