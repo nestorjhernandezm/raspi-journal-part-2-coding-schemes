@@ -424,38 +424,101 @@ All other files could be updated as well.
 
 It may be desired to pre-install some programs in the image before it is
 written to all the memory cards that goes into the \ac{Raspi}s.
-This can be done using QEMU Chroot (change root).
-\url{https://wiki.archlinux.org/index.php/Raspberry_Pi}
+This can be done from any linux x86 machine using QEMU Chroot (change root).
+\url{https://wiki.debian.org/QemuUserEmulation}
+%\url{https://wiki.archlinux.org/index.php/Raspberry_Pi}
 
-\fxnote{Which packages is required for this on debian/ubuntu?}
-
-See the following link for information on this procedure:
-\url{https://wiki.archlinux.org/index.php/Raspberry_Pi}
+Due to the \ac{ARM} processor that \ac{Raspi}s are using, it is required to
+install some additional software:
+%Because \ac{Raspi}s are eqipped with an \ac{ARM} processor 
+%%it is not as
+%straightforward as performing the task for two linux systems of the same
+%architecture.
 
 % CHROOT to OS image
 \begin{lstlisting}[]
 # apt-get install binfmt-support qemu qemu-user-static
-# update-binfmts --importdir /var/lib/binfmts/ --import
 # update-binfmts --display qemu-arm
+qemu-arm (enabled):
+     package = qemu-user-static
+        type = magic
+      offset = 0
+       magic = \x7fELF\x01\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x02\x00\x28\x00
+        mask = \xff\xff\xff\xff\xff\xff\xff\x00\xff\xff\xff\xff\xff\xff\xff\xff\xfe\xff\xff\xff
+ interpreter = /usr/bin/qemu-arm-static
+    detector = 
+\end{lstlisting}
+\FloatBarrier
+% This was neccessary on arch
+%# update-binfmts --importdir /var/lib/binfmts/ --import
+
+Make sure the second command writes "enabled" as the output above. If that 
+is not the case, then try enabling it:
+
+\begin{lstlisting}[]
 # update-binfmts --enable qemu-arm
 \end{lstlisting}
 \FloatBarrier
+
+Provided that qemu-arm is enabled, we should now be able to change root (chroot)
+into our Raspbian lite image. Change root is a method i linux that enables
+the root (/) to be changed. Thus, enabling a linux installation within a
+linux installation.
+
+There are a few commands to be performed before we can change root.
+First, to get internet access from within the Raspbian lite image it is needed
+to copy our resolv.conf into the filesystem. Line 1 steps into Raspbian lite's
+root filesystem. Then line 2 copies resolv.conf.
 
 % CHROOT to OS image
 \begin{lstlisting}[]
 # cd $ROOTDIR
 # cp /etc/resolv.conf etc/resolv.conf
-# cp /usr/bin/qemu-arm-static usr/bin
-# mount -t proc proc proc/
-# mount --rbind /sys sys/
-# mount --rbind /dev dev/
-# proot -q qemu-arm-static -S ${ROOTDIR}
-
-ALTERNATIVE:
-# chroot ${ROOTDIR} /usr/bin/qemu-arm-static /bin/bash
 \end{lstlisting}
 \FloatBarrier
 
+Now, because of the ARM architecture, it is also required to copy
+/usr/bin/qemu-arm-static into the image before we can continue:
+
+% CHROOT to OS image
+\begin{lstlisting}[]
+# cp /usr/bin/qemu-arm-static usr/bin
+\end{lstlisting}
+\FloatBarrier
+
+The final preparation before chaning root is to populate the directories proc,
+sys, and dev:
+
+% CHROOT to OS image
+\begin{lstlisting}[]
+# mount -t proc proc proc/
+# mount --rbind /sys sys/
+# mount --rbind /dev dev/
+\end{lstlisting}
+\FloatBarrier
+
+Finally, the filesystem is ready for us to change root. This can be done with
+"proot". It may be required to install proot:
+
+% CHROOT to OS image
+\begin{lstlisting}[]
+# proot -q qemu-arm-static -S ${ROOTDIR}
+\end{lstlisting}
+\FloatBarrier
+
+Most available online material uses the more known chroot command as written in
+the code block below. This did not work correctly in our machines, but we show
+it as an alternative in case proot may not work on other systems.
+
+% CHROOT to OS image
+\begin{lstlisting}[]
+# chroot ${ROOTDIR} /usr/bin/qemu-arm-static /bin/bash    (ALTERNATIVE TO proot)
+\end{lstlisting}
+\FloatBarrier
+
+If everything went well, we should now be standing in the Raspbian lite filesystem
+under its root. Optionally, we can change the prompt title to indicate that we
+are chrooted:
 
 % Optionally, we may create a unique prompt to indicate we have changed root
 \begin{lstlisting}[]
@@ -463,7 +526,10 @@ ALTERNATIVE:
 \end{lstlisting}
 \FloatBarrier
 
-
+The Raspbian lite system should now be possible to use as if it had been booted
+in a \ac{Raspi}. The only difference is that the laptop that we are using is
+significantly faster than a \ac{Raspi}. Thus enabling us to for example update,
+upgrade, and install software packages:
 
 % Update system
 \begin{lstlisting}[]
@@ -472,14 +538,15 @@ ALTERNATIVE:
 \end{lstlisting}
 \FloatBarrier
 
-Lets install some programs
+Lets install some useful applications:
 % Install packages
 \begin{lstlisting}[]
 # apt-get install vim git
 \end{lstlisting}
 \FloatBarrier
 
-
+All the changes that are made here will exists in all \ac{Raspi}s when the
+image is written to a memory card.
 
 \subsection{Installation an overlaying filesystem}
 
