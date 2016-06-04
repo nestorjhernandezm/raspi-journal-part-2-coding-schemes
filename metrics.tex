@@ -33,7 +33,7 @@ also correctly post-processed after decoding. In this way, we define
 the goodput for either an encoder or a decoder as follows:
 %
 \begin{align} \label{eq:goodput}
-Goodput = \frac{gB}{T_{proc}} ~ [\mathrm{Bytes/s}]
+R_{proc} = \frac{gB}{T_{proc}} ~ [\mathrm{Bytes/s}]
 \end{align}
 %
 In \eqref{eq:goodput}, $B$ and $g$ are the packet and generation size
@@ -98,13 +98,70 @@ for this general configuration.
 \label{fig:dec_goodput_benchmark}
 \end{figure}
 
-\subsection{Power and Energy Consumption}
+\subsection{Energetic Expenditure}
 In large-scale networks where several \ac{Raspi}s might be deployed,
 both average power and energy per bit consumption of the devices are
 relevant parameters that impact in the network performance for a given
-coding scheme. The average power specifies the rate at which energy
-consumed in the \ac{Raspi}, thus it provides information about the autonomy
+coding scheme. Hence, we consider a study of these energy expenditure
+parameters for the encoding and decoding. We define these metrics
+and propose a setup to measure them.
+
+The average power specifies the rate at which energy is
+consumed in the \ac{Raspi}. Thus, for a given energy value in the device
+battery without any external supplies, this metric permits to infer the amount
+of time for which the \ac{Raspi} can operate autonomously before draining
+out its battery. For the energy per bit consumption, it indicates how
+much energy is expended to effectively transmit or receive 1 bit of bit
+considering the encoding or decoding respectively. This energy is computed
+
+For our energy measurement campaign, we automate the setup presented
+in Fig. \ref{fig:measurement_setup} to sequentially run a series of
+simulations for a given configuration of coding scheme and parameters,
+to estimate the energy consumption in both of our \ac{Raspi}
+models. A representative sketch of the setup is shown in the
+computer monitor in Fig. \ref{fig:measurement_setup}. The figure presents
+a \ac{Raspi} device whose power supply is an Agilent 66319D \ac{DC} source,
+instead of its conventional chorded supply. The output of the measurements
+are later sent to a workstation where the raw measurement data is processed.
+The measured variable was the current consumed by the device for a fixed
+5V supply from the source. To identify each experiment, we classified the
+electrical current samples into two groups based on the magnitude. In our
+measurements, the groups to be reported are the idle current $I_{idle}$
+and the processing current $I_{proc}$. The former is the current the
+\ac{Raspi} requires while in idle state, meaning that no processing
+is being carried. The latter stands for the current needed during
+the encoding or decoding processing of the packets. The measurements
+where $I_{proc}$ is observed are made for a given configuration of
+coding scheme with its parameters. Finally, each simulation was enumerated
+to map the coding speed measurements with the corresponding energy
+consumption.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\textwidth]{images/measurement_setup.eps}
+\caption{Energy measurement setup}
+\label{fig:measurement_setup}
+\end{figure}
+
+\subsubsection{Average Power Expenditure}
+To extract the energy consumption of network coding, we subtracted the
+idle energy consumption from the energy consumption used during simulations.
+
+%
+\begin{align} \label{eq:avg_current}
+I_{avg} = \frac{1}{N_s}\sum_{k=1}^{N_s} I_{k}  ~[\mathrm{Amperes}]
+\end{align}
+%
 
 
-\subsubsection{Average Power}
+%
+\begin{align} \label{eq:avg_power}
+P_{avg} = V_{supply}(I_{proc,avg} - I_{idle,avg}) ~[\mathrm{Watts}]
+\end{align}
+%
 \subsubsection{Energy per Bit Consumption}
+%
+\begin{align} \label{eq:goodput}
+E_b = P_{avg} T_{proc} = P_{avg} \times \frac{gB}{R_{proc}} ~[\mathrm{Joules/bit}]
+\end{align}
+%
