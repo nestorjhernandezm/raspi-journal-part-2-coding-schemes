@@ -178,7 +178,30 @@ The overall steps to customize the official Raspbian lite image are listed below
 
 \subsection{Download Raspbian lite}
 
+To download the latest Raspbian lite, we go to the url
+\url{http://downloads.raspberrypi.org/raspbian_lite/images/}.
+At the time of this writing, the latest bundle was
+2016-05-27-raspbian-jessie-lite.zip.
 
+We want to proceed downloading the image with a shell instead of the browser.
+To do this, first open a command window on a linux machine. This guide is
+assuming a debian based distribution, but there should only be minor differences
+if you have another package manager. I.e. the application that is used to
+download and install software packages in linux.
+
+After the terminal has been opened, we first declare a few variables to reduce
+redundant typing. The first variables we declare is the Raspbian image name.
+Notice that the extension has been omitted. This is because the image has been
+packed into a zip file.
+The other variable we declare is a working directory. This is where we will
+download the image to and work on it. In other words, it will be stored in
+/home/<username>/Raspbian
+
+%To download Raspbian lite, we go to the \url{http://downloads.raspberrypi.org}.
+%There should be a folder called raspbian\lite and
+%to find the download page at which Raspbian lite should be located. Instead of
+%downloading with the browser, we just extract the download url to the latest
+%image. At the time of this writing, that was
 
 % Define variable]
 \begin{lstlisting}[]
@@ -187,7 +210,26 @@ $ export WORKDIR="${HOME}/Raspbian"
 \end{lstlisting}
 \FloatBarrier
 
+A final thing to notice is the way \$ and \# are used in the code blocks. \$
+means that the command can be run as a normal user where \# indicates that the
+command should be run with root permissions.
+Running a command with root permissions can on most systems be done by putting
+the command "sudo" in front of each line. This is illustrated in the code below
+with the command "whoami" that prints the username of the caller. Lines without
+leading \$ or \# is the terminal output.
 
+% Root example
+\begin{lstlisting}[]
+$ whoami
+chres
+$ sudo whoami
+root
+\end{lstlisting}
+\FloatBarrier
+
+Next, we make the working directory and change directory (cd) into the working
+directory. We can then use wget to download Raspbian lite. Unpack the image
+when the download is complete.
 
 % Download and unpack image
 \begin{lstlisting}[]
@@ -199,6 +241,8 @@ $ unzip ${IMAGE}.zip
 \FloatBarrier
 
 \subsection{Mount image}
+
+
 
 % Check out the image   % The dollar hack was to fix vim syntax
 \begin{lstlisting}[literate={DOLLAR}{\$}1]
