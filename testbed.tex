@@ -305,12 +305,28 @@ Mount boot partition:
 \end{lstlisting}
 \FloatBarrier
 
-We can now change all the files in the disk image.
+We can now change all the files in the disk image as desired.
 
 
 
 \subsection{Configuring OS files and scripts}
 
+The \ac{Raspi}s should be setup to be as similar as possible. One of those
+things that is prefered to be different on the devices is their hostname.
+This helps distinguish them from each other. One solution to this in our
+approach would be to uniquely change the hostname in each memory card.
+This is however not desired because that would either require modifying
+the the customized Raspbian lite image before writing the content to the
+memory card or to manually change it in the \ac{Raspi}s after the image has
+been written to a meomory card.
+Instead, we decided to register the ethernet MAC addresses of all the \ac{Raspi}s
+in our testbed. Those had to be used to put them in a domain name anyway.
+
+Below is a part of the file where we keep track of the MAC addresses and assign
+hostnames. This file will be available online and copied to the Raspbian lite
+image in a later step under the listed filename. For different \ac{Raspi}s
+the MAC addresses has to be changed. The MAC address of a network card can be found
+using the command "ifconfig" or "ip addr".
 
 % MAC and Hostname file
 \Suppressnumber\begin{lstlisting}[]
@@ -326,6 +342,9 @@ b8:27:eb:95:bd:11 rasp03
 \end{lstlisting}
 \FloatBarrier
 
+Provided that each \ac{Raspi} will have knowledge of all other \ac{Raspi}s in
+the testbed, it still needs to know which name to give itself.
+We do this using a small Bash script:
 
 % Set hostname
 \Suppressnumber\begin{lstlisting}[]
@@ -334,8 +353,10 @@ b8:27:eb:95:bd:11 rasp03
 ---------------------------------------------------------------}
 \Reactivatenumber @>
 #!/usr/bin/env bash
+
+script_path="$(dirname $(realpath $0))"
 mac=$(cat /sys/class/net/eth0/address)
-hostname=$(grep $mac nodes.csv | cut -f2 -d' ')
+hostname=$(grep $mac ${script_path}/nodes.csv | cut -f2 -d' ')
 
 # Assign hostname found in nodes.csv
 if [ ! -z $hostname ]; then
@@ -344,6 +365,15 @@ if [ ! -z $hostname ]; then
 fi
 \end{lstlisting}
 \FloatBarrier
+
+Line 1 tells the system to interpret the script using Bash. Line 3 gets the
+path of the script itself. Line 4 gets the MAC address. This script will be
+located in a \ac{Raspi} and thus return the MAC address of itself when called.
+Line 4 searches line by line for this mac address.
+Line 8-11 assigns the hostname found in "nodes.csv". If the MAC did not exists,
+then it will keep the default hostname of the system.
+
+
 
 
 
@@ -378,6 +408,8 @@ This can be done using QEMU Chroot (change root).
 \fxnote{Lets use RPi for Raspberry Pis throughout the paper!}
 \fxnote{Which packages is required for this on debian/ubuntu?}
 
+See the following link for information on this procedure:
+\url{https://wiki.archlinux.org/index.php/Raspberry_Pi}
 
 % CHROOT to OS image
 \begin{lstlisting}[]
@@ -429,6 +461,9 @@ Lets install some programs
 
 
 \subsection{Installation an overlaying filesystem}
+
+See this link:
+\url{https://github.com/chesty/overlayroot}
 
 We use the code provided by
 
