@@ -1,9 +1,40 @@
 %!TEX root = raspi_journal.tex
 \label{sec:measurements}
 
-This section may be divided by subheadings. It should provide a concise and
-precise description of the experimental results, their interpretation as well
-as the experimental conclusions that can be drawn.
+With the testbed and setups from the previous sections, we
+proceed to obtain the measurements.
+
+\subsection{Goodput}
+Short intro
+
+\subsubsection{Encoding}
+\includepdf[pages={31-32,38,40}]{images/raspberry.pdf}
+
+\subsubsection{Decoding}
+\includepdf[pages={29-30,34,36}]{images/raspberry.pdf}
+
+
+\subsection{Average Power}
+Short section intro
+
+Raspberry One
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\textwidth]{images/current_vs_sec_raspberry_change_gen_from_-10sec_to_500sec.eps}
+\caption{Current measurements for the \ac{Raspi} 1}
+\label{current_rasp2}
+\end{figure}
+
+Raspberry Two
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.7\textwidth]{images/current_vs_sec_raspberry2_change_gen_from_-10sec_to_500sec.eps}
+\caption{Current measurements for the \ac{Raspi} 2}
+\label{current_rasp2}
+\end{figure}
+
+\subsection{Energy per bit}
+
 
 \subsection{Multicore Network Coding}
 \label{subs:multicore-network-coding}
@@ -53,7 +84,7 @@ the time recorded includes the dependencies resolving, the creation of the
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.5\textwidth]{images/2015-04-18_encoding_decoding_1024.pdf}
+\includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_1024.pdf}
 \caption{Encoding and Decoding performance for g = 1024 \cite{wunderlich2015network}}
 \label{enc_dec1024}
 \end{figure}
@@ -73,7 +104,7 @@ is 46\% of the encoding throughput.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.5\textwidth]{images/2015-04-18_encoding_decoding_128.pdf}
+\includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_128.pdf}
 \caption{Encoding and Decoding performance for g = 128 \cite{wunderlich2015network}}
 \label{enc_dec128}
 \end{figure}
@@ -88,7 +119,7 @@ of the encoding throughput.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.5\textwidth]{images/2015-04-18_encoding_decoding_16.pdf}
+\includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_16.pdf}
 \caption{Encoding and Decoding performance for g = 16 \cite{wunderlich2015network}}
 \label{enc_dec16}
 \end{figure}
