@@ -379,6 +379,49 @@ Assumuing that we are still chrooted to the RPi image and the boot partition is 
 
 How about kodo python?
 
+\subsection{fabric}
+
+% Exit chroot, umount, and write to memory card
+\begin{lstlisting}[]
+from fabric.api import run, env, task
+# Python Fabric script to run commands on multiple hosts through ssh
+#
+# Run script as 'fab <task>', where <task> is one of the scripts functions
+# marked as a tesk. The task marked as 'default' will be run if <task> is not
+# specified
+
+env.hosts = ['rasp00.domain.com','rasp01.domain.com','rasp02.domain.com']
+env.user = 'root'
+env.password = 'sdn'
+
+@task
+def install(program):
+    """
+    Install a program
+    program: program name
+    """
+    result = run('apt-get install -y {}'.format(program), quiet=True)
+
+@task
+def open(program, args):
+    """
+    Open af program
+    program: program name
+    args: program arguments
+    """
+    # Set environment variable DISPLAY=:0 and run commands
+    with shell_env(DISPLAY=':0'):
+        # Wake monitor
+        run('xset dpms force on', quiet=True)
+
+        # Run program
+        run('{}'.format(program, " ".join(args)), quit=True)
+
+\end{lstlisting}
+\FloatBarrier
+
+execute a script function by calling "fab install:feh"
+
 \subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
 
 Besides the previous description (\textbf{Include compiling Kodo from the
