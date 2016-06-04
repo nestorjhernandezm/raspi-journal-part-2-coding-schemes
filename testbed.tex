@@ -242,11 +242,13 @@ $ unzip ${IMAGE}.zip
 
 \subsection{Mount image}
 
-
+After Raspbian lite has been unpacked, there should be an .img file in the directory.
+"fdisk" can be used to display what is inside. Pass the arguments "-u sectors" to
+display the sizes in sectors and "-l" to display partitions and exit.
 
 % Check out the image   % The dollar hack was to fix vim syntax
 \begin{lstlisting}[literate={DOLLAR}{\$}1]
-DOLLAR fdisk -lu ${IMAGE}.img
+DOLLAR fdisk -u sectors -l ${IMAGE}.img
 Disk 2016-05-27-raspbian-jessie-lite.img: 1.3 GiB, 1387266048 bytes, 2709504 sectors
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -260,13 +262,30 @@ Device                               Boot  Start     End Sectors  Size Id Type
 \end{lstlisting}
 \FloatBarrier
 
-We see that the boot and root partitions starts at sector 8192 and 137216 respectivly.
-We also notice that each sector is 512 bytes.
+The image contains two partitions. The first one of starting at sector 8192 and
+the other partition starting at sector 137216. The partitions is of type FAT32
+and Linux and have sizes 63M and 1.2G. This indicates that the first partition
+is most likely a boot partition and the second partition is a traditional file
+system. Actually, it is a linux root filesystem (i.e. /).
 
 
-On newer systems, we can mount the device easier using "losetup --show -f -P IMAGE"
 
-Mount root partition:
+%We see that the boot and root partitions starts at sector 8192 and 137216 respectivly.
+%We also notice that each sector is 512 bytes.
+
+
+%On newer systems, we can mount the device easier using "losetup --show -f -P IMAGE"
+
+%Mount root partition:
+
+To browser and alter the files in the image, it is possible to mount the partitions.
+
+Lets first mount the root partition. This is done by first creating a new folder
+that we will call root which will be located in our working directory. After this,
+we mount the partition starting at sector 137216. To provide this offset information
+to mount, we need to find the offset in bytes. From the fdisk command we could also
+see that each sector is 512 bytes. Thus, we multiply the sector size and the sector
+start to get the offset in bytes.
 
 \begin{lstlisting}[]
 $ export ROOTDIR="${WORKDIR}/root"
@@ -274,6 +293,11 @@ $ mkdir -p ${ROOTDIR}
 # mount -o loop,offset=$((137216*512)) ${IMAGE}.img ${ROOTDIR}
 \end{lstlisting}
 \FloatBarrier
+
+After this, we can also mount the boot partition inside the newly mounted
+root filesystem. This is useful because that partition will be mounted
+this exact place when a \ac{Raspi} starts up with a memory card containing
+this image. It is therefore the natural place to mount it for later purposes.
 
 Mount boot partition:
 \begin{lstlisting}[]
@@ -482,19 +506,8 @@ def install(program):
     result = run('apt-get install -y {}'.format(program), quiet=True)
 
 @task
-def open(program, args):
-    """
-    Open af program
-    program: program name
-    args: program arguments
-    """
-    # Set environment variable DISPLAY=:0 and run commands
-    with shell_env(DISPLAY=':0'):
-        # Wake monitor
-        run('xset dpms force on', quiet=True)
-
-        # Run program
-        run('{}'.format(program, " ".join(args)), quit=True)
+def copy_to_rasp(filename):
+    put(...)
 
 \end{lstlisting}
 \FloatBarrier
