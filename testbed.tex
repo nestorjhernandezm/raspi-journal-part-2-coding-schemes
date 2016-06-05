@@ -19,18 +19,20 @@ for further references.
 \label{fig:testbed_setup}
 \end{figure}
 
-This section will present a testbed of thirty \ac{Raspi}s.
+%This section will present a testbed of thirty \ac{Raspi}s and a \ac{PC}
+The testbed consists of thirty \ac{Raspi}s that will be setup and controlled
+by a testbed administrator from a \ac{PC}.
 %Twenty \ac{Raspi} 1 model B revision 2 and ten \ac{Raspi} 2 model B V1.1.
-They are all equipped with a memory card and are connected to the
+The \ac{Raspi}s are each equipped with a memory card and connected to the
 university network by wire using their ethernet interface (eth0).
 
-To easily discover the \ac{Raspi}s within the university network, they have all
-been assigned a unique name under a common domain.
-This eliminates the need to remember their individual \ac{IP}s.
+To easily discover the \ac{Raspi}s within the university network,
+they have all been assigned a unique name under a common domain.
+This eliminates the need to remember their individual \ac{IP} addresses.
 
-A sketch of the testbed is depicted in figure~\ref{fig:testbed_setup}.
+A sketch of the testbed is depicted in Figure~\ref{fig:testbed_setup}.
 We have two types of \ac{Raspi}s in our setup.
-Table \ref{tab:rasp_naming} shows the naming convention.
+Table~\ref{tab:rasp_naming} shows the naming convention.
 
 \begin{table}[ht!]
   \centering
@@ -38,7 +40,7 @@ Table \ref{tab:rasp_naming} shows the naming convention.
     \hline
       \textbf{Hostname} & \textbf{Model} \\ \hline
     Rasp00 - Rasp19 & Raspberry Pi 1 model B rev. 2 \\ \hline
-    Rasp100 - Rasp109 & Rasperry Pi 2 model B V1.1 \\ \hline
+    Rasp20 - Rasp29 & Rasperry Pi 2 model B V1.1 \\ \hline
   \end{tabular}
   \caption{Raspberry Pi naming convention}
   \label{tab:rasp_naming}
@@ -47,36 +49,53 @@ Table \ref{tab:rasp_naming} shows the naming convention.
 
 
 
-Accessing them is easily done using \ac{SSH}.
-To address them within the university network,
-The \ac{Raspi}s
+%Accessing them is easily done using \ac{SSH}.
+%To address them within the university network,
+%The \ac{Raspi}s
 
-The \ac{Raspi}s are all equipped with an ethernet interface (eth0) and
-connected by wire to the university's \ac{LAN}. The university network
-administration was provided
-the \ac{MAC} addresses of the ethernet interfaces to automatically assign
-the devices the desired \ac{IP} addresses as shown in the figure. In a personal
-\ac{LAN}, another option could be to manually provide the devices with static
-\ac{IP}s.
+%The \ac{Raspi}s are all equipped with an ethernet interface (eth0) and
+%connected by wire to the university's \ac{LAN}. The university network
+%administration was provided
+%the \ac{MAC} addresses of the ethernet interfaces to automatically assign
+%the devices the desired \ac{IP} addresses as shown in the figure. In a personal
+%\ac{LAN}, another option could be to manually provide the devices with static
+%\ac{IP}s.
 
 
-This section will be used to present a \ac{Raspi} testbed and the steps to
-install and configure its devices.
+%This section will be used to present a \ac{Raspi} testbed and the steps to
+%install and configure its devices.
 
-The testbed is depicted in figure~\ref{fig:testbed_setup}. It consists of twenty
-Raspberry Pi 1 model B rev 2 (Rasp01 to Rasp20) and
-ten Raspberry Pi 2 model b V1.1 (Rasp2\_01 to Rasp2\_10).
+%The testbed is depicted in figure~\ref{fig:testbed_setup}. It consists of twenty
+%Raspberry Pi 1 model B rev 2 (Rasp01 to Rasp20) and
+%ten Raspberry Pi 2 model b V1.1 (Rasp2\_01 to Rasp2\_10).
 
-The goal is to configure all the \ac{Raspi}s identically with the same software
-and configurations. There are however a few differences between them that we
-need to take into account. E.g. hostname and network addresses.
+The testbed should be usable by students to perform simulations and
+measurements as part of their semester projects. It is therefore desired
+that the \ac{Raspi}s are configured identically, but still allows the
+students to alter the configurations.
 
-The testbed will be used by students that might need to change how the
-devices are work either temporary or permanently. We will illustrate how this
-can be accomplished using an overlaying filesystem.
+When working on a testbed, it is not always desired to make persistant
+changes to the devices. We also present how the concept of stacked
+filesystems can be used to enable the means of both persistant and
+temporary storage.
 
-Finally, it should be possible to store data that are generated from
-simulations on the memory cards that are in the individual \ac{Raspi}.
+%It is therefore
+%mandatory that the \ac{Raspi}s are easily configurable but also
+%desired to 
+
+%The testbed should be usable by students that should be able to configure
+%the \ac{Raspi}'s as desired. It is therefore 
+
+%The testbed will be used by students that might need to change how the
+%devices are work either temporary or permanently. We will illustrate how this
+%can be accomplished using an overlaying filesystem.
+
+%The goal is to configure all the \ac{Raspi}s identically with the same software
+%and configurations. There are however a few differences between them that we
+%need to take into account. E.g. hostname and network addresses.
+
+%Finally, it should be possible to store data that are generated from
+%simulations on the memory cards that are in the individual \ac{Raspi}.
 %We using a overlaying filesystem that
 %We will illustrate
 %how that can be done. In the case of temporary changes, it is important that
@@ -91,18 +110,18 @@ simulations on the memory cards that are in the individual \ac{Raspi}.
 %The goal is to configure all the devices to be as identical as possible. This
 %means that it is desired to have the same software on every device, but
 
-The \ac{Raspi}s are all equipped with an ethernet interface (eth0) and
-connected by wire to the university's \ac{LAN}. The university network
-administration was provided
-the \ac{MAC} addresses of the ethernet interfaces to automatically assign
-the devices the desired \ac{IP} addresses as shown in the figure. In a personal
-\ac{LAN}, another option could be to manually provide the devices with static
-\ac{IP}s.
+%The \ac{Raspi}s are all equipped with an ethernet interface (eth0) and
+%connected by wire to the university's \ac{LAN}. The university network
+%administration was provided
+%the \ac{MAC} addresses of the ethernet interfaces to automatically assign
+%the devices the desired \ac{IP} addresses as shown in the figure. In a personal
+%\ac{LAN}, another option could be to manually provide the devices with static
+%\ac{IP}s.
 %that are
 %assigned the \ac{IP} addresses in the figure and connected wired to the
 %university's \ac{LAN}.
 
-We use standard usb power adapters to power the \ac{Raspi}s.
+%We use standard usb power adapters to power the \ac{Raspi}s.
 
 \subsubsection{Installing Raspbian}
 
@@ -235,10 +254,13 @@ when the download is complete.
 \begin{lstlisting}[]
 $ mkdir -p ${WORKDIR}
 $ cd ${WORKDIR}
-$ wget http://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2016-05-31/${IMAGE}.zip
+$ wget http://kom.aau.dk/project/TuneSCode/raspi/${IMAGE}.zip
 $ unzip ${IMAGE}.zip
 \end{lstlisting}
 \FloatBarrier
+
+A more recent version of Raspbian lite may be available on 
+\url{http://downloads.raspberrypi.org/raspbian_lite/images}.
 
 \subsection{Mount image}
 
