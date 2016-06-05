@@ -183,10 +183,10 @@ P_{avg} = V_{supply}(I_{proc,avg} - I_{idle,avg}) ~[\mathrm{Watts}]
 To get this metric for a given configuration, we simply express the energy
 as the product of the average power by the processing time $T_{proc}$ obtained
 from the goodput measurement for the same configuration. In this way, we can
-relate the processing time by the goodput, the packet and the generation size
+relate the processing time with the goodput, the packet and the generation size
 as shown:
 %
 \begin{align} \label{eq:goodput}
-E_b = P_{avg} T_{proc} = P_{avg} \times \frac{g(B/8)}{R_{proc}} ~[\mathrm{Joules/bit}]
+E_b = P_{avg} T_{proc} = P_{avg} \times \frac{g(8B)}{R_{proc}} ~[\mathrm{Joules}]
 \end{align}
 %
