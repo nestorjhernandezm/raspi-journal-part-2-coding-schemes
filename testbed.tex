@@ -126,10 +126,13 @@ temporary storage.
 \subsubsection{Installing Raspbian}
 
 To get started, we first need to install an \ac{OS} on the
-Raspberry Pis. We will use Raspbian linux~\cite{raspbian}
+\ac{Raspi}s. We will use Raspbian linux~\cite{raspbian}
 
-We will use a desktop that has linux installed to download,
-configure, and write the image to the memory cards.
+We will be using a \ac{PC} running a Debian-based linux distribution
+to setup a customized Raspbian linux image that can be written to
+a memory card and work in any \ac{Raspi} version 1 or 2.
+%We will use a desktop that has linux installed to download,
+%configure, and write the image to the memory cards.
 %We have decided to use a linux desktop machine to create a
 %common image of Raspbian Linux that can be used in any of the Raspberry Pis.
 
@@ -138,54 +141,59 @@ configure, and write the image to the memory cards.
 %device needs a memory card, but it does not matter which card is put into
 %which device.
 
-We have decided to go with Raspbian linux~\cite{raspbian} and
-to install it on memory cards.
+%We have decided to go with Raspbian linux~\cite{raspbian} and
+%to install it on memory cards.
 
 
 %There exists a number of ways to setup a testbed in a centralized manner.
 %E.g. using e.g. \ac{NFS}.
 
-There exists a number of ways to setup a testbed
+%There exists a number of ways to setup a testbed
+%
+%with multiple devices. We
+%have decided on a very simple approach of simply instal
 
-with multiple devices. We
-have decided on a very simple approach of simply instal
+%-
+%- Download image (wget)
+%- Update/Modify image (chroot)
+%- Burn image
+%- Bang! linux is running
+%-
+
+%Open a terminal, and then...
+
+\textbf{hashmark (\#) means to perform operation as root, dollar (\$) means
+to perform operation as user}
 
 
--
-- Download image (wget)
-- Update/Modify image (chroot)
-- Burn image
-- Bang! linux is running
--
-
-Open a terminal, and then...
-
-hashmark (\#) means to perform operation as root, dollar (\$) means to perform operation as user
-
-
-The first thing we need to do is to download the linux installation file.
-For Raspbian, this is available at \url{http://downloads.raspberrypi.org}.
+%The first thing we need to do is to download the linux installation file.
+%For Raspbian, this is available at \url{http://downloads.raspberrypi.org}.
 
 Raspbian is made available in two bundles. Raspbian and Raspbian lite.
 The difference between the two is that Raspbian contains a pre-installed desktop
-environment, and Raspbian lite is by default only accessable through a shell. 
-They will both also be remotely accessible using \ac{SSH}.
+environment, and Raspbian lite is by default only accessible through a 
+command shell. 
+Both Raspbian and Raspbian lite will both by default be remotely
+accessible using \ac{SSH}. \ac{SSH} provides the means to remotely
+connect to another machine through a command shell. In fact it is the successor
+of \ac{Telnet} that has been designed with network security in mind.
 
 Our testbed does not have monitors so we will install Raspbian lite.
-A desktop environment can always be installed manually in case that will be
-desired sometime in the future.
+A desktop environment can be installed using Raspbian's package manager
+(apt-get) in case a desktop environment will be desired sometime in the future.
 
-Below is a procedure of how we setup the \ac{Raspi}s in our testbed. We
-have decided a simple setup where each \ac{Raspi} is equipped with a
+Below is the procedure we did to setup the \ac{Raspi}s in our testbed. We
+have performed a simple setup where each \ac{Raspi} is equipped with a
 memory card that contains a slightly customized Raspbian lite image with
 identical settings. 
 
-The reason this can be done easily is because the official Raspbian lite image
-that we will download simply conntains a complete linux installation that are
-packaged in an image rather than written to a harddrive, memory card, or usb
-pen.
+%The reason this can be done easily is because the official Raspbian lite image
+%that we will download simply conntains a complete linux installation that are
+%packaged in an image rather than written to a harddrive, memory card, or usb
+%pen.
 
-The overall steps to customize the official Raspbian lite image are listed below:
+The overall procedure to customize the official Raspbian lite image
+are:
 \begin{enumerate}
     \item Download Raspbian lite
     \item Alter Raspbian lite. E.g. browse, modify, add, and delete files
