@@ -6,12 +6,12 @@ proceed to obtain the measurements for the \ac{Raspi} 1 and 2 platforms.
 We consider the following set of parameters for our study:
 For all the codes, we use $g = [16,\ 32,\ 64,\ 128,\ 256,\ 512]$
 and $q = [2,\ 2^8]$. For the non-optimized multicore implementations
-and cases when the generation size is varied $B = 1600\ bytes$.
+and cases when the generation size is varied $B = 1600$ bytes.
 We consider a setup where we only vary the packet size,
 $B = [64,\ 128,\ 256,\ 512,\ 1024,\ 2048,\ 4096,\ 8192,\ 16384,\ 32768
-,\ 65536,\ 131072]\ bytes$ with a generation size fixed on $g = [16,\ 128]$
+,\ 65536,\ 131072]$ bytes with a generation size fixed on $g = [16,\ 128]$
 to see computing load that the \ac{Raspi} present in the low and high
-packet size regimes. We considered $B = 1536\ bytes$ for the optimized
+packet size regimes. We considered $B = 1536$ bytes for the optimized
 multicore implementation. For \ac{SRLNC}, we considered
 $d = [0.02,\ 0.1]$. For \ac{TSNC}, we considered excess packets,
 $e = [8,\ 16]$, so that the budget is simply $b = g + e$. In all our
@@ -26,8 +26,14 @@ and later review the case of the decoder.
 
 \subsubsection{Encoding}
 
-Fig. \ref{fig:enc_good_rasp1} shows the results of the encoder goodput measurements
-for the \ac{Raspi} 1.
+Fig. \ref{fig:enc_good_rasp1} shows the results of the encoder goodput
+measurements for the \ac{Raspi} 1. Figs. \ref{fig:enc_good_rasp1_gen_gf2}
+and \ref{fig:enc_good_rasp1_gen_gf256} present goodput as function of the
+generation size for $GF(2)$ and $GF(2^8)$ respectively for a packet size
+of $B = 1600$ bytes. Figs. \ref{fig:enc_good_rasp1_packet_gf2} and 
+\ref{fig:enc_good_rasp1_packet_gf256} present the same metric but now as
+function of the packet size for $GF(2)$ and $GF(2^8)$ respectively. In this
+case the gneation size was set to $g = 16$ packets.
 
 \begin{figure*}
     \centering
@@ -51,7 +57,7 @@ for the \ac{Raspi} 1.
         \centering 
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_encoder_Binary_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $GF(2)$}}    
+        {{\small Goodput vs. Packet size for $GF(2)$ and $g=16$}}    
         \label{fig:enc_good_rasp1_packet_gf2}
     \end{subfigure}
     \quad
@@ -59,16 +65,147 @@ for the \ac{Raspi} 1.
         \centering 
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_encoder_Binary8_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $GF(2^8)$}}    
-        \label{fig:enc_good_rasp1_packet_gf2}
+        {{\small Goodput vs. Packet size for $GF(2^8)$ and $g=16$}}    
+        \label{fig:enc_good_rasp1_packet_gf256}
     \end{subfigure}
     \caption[]
     {\small Encoder goodput measurements for the \ac{Raspi} 1} 
     \label{fig:enc_good_rasp1}
 \end{figure*}
 
+Similarly, Fig. \ref{fig:enc_good_rasp2} shows the same set of
+measurements for the \ac{Raspi} 2. Hence, Figs. \ref{fig:enc_good_rasp2_gen_gf2}
+and \ref{fig:enc_good_rasp2_gen_gf256} present goodput as function of the
+generation size  and Figs. \ref{fig:enc_good_rasp2_packet_gf2} and 
+\ref{fig:enc_good_rasp2_packet_gf256} as a function of the packet size for the
+same cases mentioned previously.
+
+\begin{figure*}
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_encoder_Binary_1600.eps}
+        \caption[]%
+        {{\small Goodput vs. Generation size for $GF(2)$}}    
+        \label{fig:enc_good_rasp2_gen_gf2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_encoder_Binary8_1600.eps}
+        \caption[]%
+        {{\small Goodput vs. Generation size for $GF(2^8)$}}    
+        \label{fig:enc_good_rasp2_gen_gf256}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_encoder_Binary_16.eps}
+        \caption[]%
+        {{\small Goodput vs. Packet size for $GF(2)$ and $g=16$}}    
+        \label{fig:enc_good_rasp2_packet_gf2}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_encoder_Binary8_16.eps}
+        \caption[]%
+        {{\small Goodput vs. Packet size for $GF(2^8)$ and $g=16$}}    
+        \label{fig:enc_good_rasp2_packet_gf256}
+    \end{subfigure}
+    \caption[]
+    {\small Encoder goodput measurements for the \ac{Raspi} 2} 
+    \label{fig:enc_good_rasp2}
+\end{figure*}
+
+Figures description
+
 \subsubsection{Decoding}
 
+We perform the same evaluation as before but now we focus on the decoder.
+Fig. \ref{fig:dec_good_rasp1} shows the results of the decoder goodput
+measurements for the \ac{Raspi} 1. and \ref{fig:dec_good_rasp2} does
+the proper for \ac{Raspi} 2.
+
+\begin{figure*}
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_decoder_Binary_1600.eps}
+        \caption[]%
+        {{\small Goodput vs. Generation size for $GF(2)$}}    
+        \label{fig:dec_good_rasp1_gen_gf2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_decoder_Binary8_1600.eps}
+        \caption[]%
+        {{\small Goodput vs. Generation size for $GF(2^8)$}}    
+        \label{fig:dec_good_rasp1_gen_gf256}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_decoder_Binary_16.eps}
+        \caption[]%
+        {{\small Goodput vs. Packet size for $GF(2)$ and $g=16$}}    
+        \label{fig:dec_good_rasp1_packet_gf2}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_decoder_Binary8_16.eps}
+        \caption[]%
+        {{\small Goodput vs. Packet size for $GF(2^8)$ and $g=16$}}    
+        \label{fig:dec_good_rasp1_packet_gf256}
+    \end{subfigure}
+    \caption[]
+    {\small Encoder goodput measurements for the \ac{Raspi} 1} 
+    \label{fig:dec_good_rasp1}
+\end{figure*}
+
+Description
+
+\begin{figure*}
+    \centering
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_decoder_Binary_1600.eps}
+        \caption[]%
+        {{\small Goodput vs. Generation size for $GF(2)$}}    
+        \label{fig:dec_good_rasp2_gen_gf2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.475\textwidth}  
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_decoder_Binary8_1600.eps}
+        \caption[]%
+        {{\small Goodput vs. Generation size for $GF(2^8)$}}    
+        \label{fig:dec_good_rasp2_gen_gf256}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_decoder_Binary_16.eps}
+        \caption[]%
+        {{\small Goodput vs. Packet size for $GF(2)$ and $g=16$}}    
+        \label{fig:dec_good_rasp2_packet_gf2}
+    \end{subfigure}
+    \quad
+    \begin{subfigure}[b]{0.475\textwidth}   
+        \centering 
+        \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_decoder_Binary8_16.eps}
+        \caption[]%
+        {{\small Goodput vs. Packet size for $GF(2^8)$ and $g=16$}}    
+        \label{fig:dec_good_rasp2_packet_gf256}
+    \end{subfigure}
+    \caption[]
+    {\small Encoder goodput measurements for the \ac{Raspi} 2} 
+    \label{fig:dec_good_rasp2}
+\end{figure*}
+
+Description
 
 \subsection{Average Power}
 Short section intro
