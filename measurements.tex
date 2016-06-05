@@ -1,21 +1,31 @@
 %!TEX root = raspi_journal.tex
 \label{sec:measurements}
 
-With the testbed and setups from the previous sections, we
-proceed to obtain the measurements.
+With the testbed, methodology and setups from the previous sections, we
+proceed to obtain the measurements for the \ac{Raspi} 1 and 2 platforms.
+We consider the following set of parameters for our study:
+For all the codes, we use $g = [16,\ 32,\ 64,\ 128,\ 256,\ 512]$
+and $q = [2,\ 2^8]$. For the non-optimized multicore implementations
+and cases when the generation size is varied $B = 1600\ bytes$.
+We consider a setup where we only vary the packet size,
+$B = [64,\ 128,\ 256,\ 512,\ 1024,\ 2048,\ 4096,\ 8192,\ 16384,\ 32768
+,\ 65536,\ 131072]\ bytes$ with a generation size fixed on $g = [16,\ 128]$
+to see computing load that the \ac{Raspi} present in the low and high
+packet size regimes. We considered $B = 1536\ bytes$ for the optimized
+multicore implementation. For \ac{SRLNC}, we considered
+$d = [0.02,\ 0.1]$. For \ac{TSNC}, we considered excess packets,
+$e = [8,\ 16]$, so that the budget is simply $b = g + e$. In all our
+measurement reports, to simplify their review, we first presents the
+results for the \ac{Raspi} 1 and later continue with the \ac{Raspi} 2.
 
 \subsection{Goodput}
-Short intro
+For the goodput, we separate the results according to their time benchmarks
+as we did in Section \ref{sec:metrics} sicne their consider different
+methodologies. We proceed first with the measurements related to the encoder
+and later review the case of the decoder.
 
 \subsubsection{Encoding}
-%\includepdf[pages={31-32,38,40}]{images/raspberry.pdf}
-
-% \begin{figure}[ht!]
-% \centering
-% \includegraphics[width=0.7\textwidth]{}
-% \caption{Gooput measurements for the \ac{Raspi} 1. $q = 2$}
-% \label{goodput_enc_rasp1}
-% \end{figure}
+Figs. \ref{fig:}
 
 
 
@@ -25,7 +35,7 @@ Short intro
         \centering
         \includegraphics[width=1.2\textwidth]{images/rasp1_good_vs_g_enc_gf2.pdf}
         \caption[]%
-        {{\small $q = 2$}}    
+        {{\small Goodput vs. Generation size for $GF(2)$}}    
         \label{fig:mean and std of net14}
     \end{subfigure}
     \hfill
@@ -33,7 +43,7 @@ Short intro
         \centering 
         \includegraphics[width=1.2\textwidth]{images/rasp1_good_vs_g_enc_gf256.pdf}
         \caption[]%
-        {{\small $q = 2^8$}}    
+        {{\small Goodput vs. Generation size for $GF(2^8)$}}    
         \label{fig:mean and std of net24}
     \end{subfigure}
     \vskip\baselineskip
@@ -41,7 +51,7 @@ Short intro
         \centering 
         \includegraphics[width=1.2\textwidth]{images/rasp1_good_vs_B_enc_gf2.pdf}
         \caption[]%
-        {{\small $q = 2$}}    
+        {{\small Goodput vs. Packet size for $GF(2)$}}    
         \label{fig:mean and std of net34}
     \end{subfigure}
     \quad
@@ -49,16 +59,15 @@ Short intro
         \centering 
         \includegraphics[width=1.2\textwidth]{images/rasp1_good_vs_B_enc_gf256.pdf}
         \caption[]%
-        {{\small $q = 2^8$}}    
+        {{\small Goodput vs. Packet size for $GF(2^8)$}}    
         \label{fig:mean and std of net44}
     \end{subfigure}
-    \caption[ The average and standard deviation of critical parameters ]
+    \caption[]
     {\small Encoder goodput measurements for the \ac{Raspi} 1} 
-    \label{fig:mean and std of nets}
+    \label{fig:enc_good_rasp1}
 \end{figure*}
 
 \subsubsection{Decoding}
-%\includepdf[pages={29-30,34,36}]{images/raspberry.pdf}
 
 
 \subsection{Average Power}
