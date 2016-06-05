@@ -986,12 +986,42 @@ Simply run ...
 
 \subsection{Cross compile Kodo}
 
+WRITE SOMETHING ABOUT THIS AND MENTION HOW TO REQUEST A KODO LICENSE
+
 \begin{enumerate}
 
-\item Clone the Kodo repository in the server by executing: \\
-\texttt{git clone git://github.com/steinwurf/kodo.git} in \texttt{\$HOME}.
-\textbf{Change the repo to kodo-rlnc or kodo-cpp since just raw kodo is going
-to be depreceated soon} \\
+\item Create a directory to hold our code:
+\begin{lstlisting}[]
+$ CODEDIR="${HOME}/code"
+$ mkdir -p ${CODEDIR}
+$ cd ${CODEDIR}
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item Clone the Kodo repository and change directory into the repository: \\
+\begin{lstlisting}[]
+$ git clone https://github.com/steinwurf/kodo-cpp.git
+$ cd kodo-cpp
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item Configure Kodo to build executables for the \ac{ARM} architecture using our toolchain:
+\begin{lstlisting}[]
+$ python waf configure --cxx_mkspec=cxx_raspberry_gxx49_arm
+...
+'configure' finished successfully (0.620s)
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item Build executables:
+\begin{lstlisting}[]
+$ python waf build
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
 
 \item Navigate to the repository and configure \texttt{waf} by typing:
 \texttt{python config.py} and select the 16th ``make specification'' file
