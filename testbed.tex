@@ -380,7 +380,7 @@ we are customizing:
 
 % Get the files
 \begin{lstlisting}[]
-$ wget http://kom.aau.dk/project/TuneSCode/rasp_config.zip
+$ wget http://kom.aau.dk/project/TuneSCode/raspi/rasp_config.zip
 # unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
 \end{lstlisting}
 \FloatBarrier
@@ -752,30 +752,129 @@ some other working directory of its preference if desired.
 
 \begin{enumerate}
 
-\item Download the \ac{Raspi} toolchain for 64-bit Linux from: \\
-\texttt{http://buildbot.steinwurf.dk/toolchains/linux/} to your
-\texttt{\$HOME} directory. \\
+\item Create toolchain directory:
+\begin{lstlisting}[]
+$ TOOLCHAINDIR="${HOME}/toolchains"
+$ mkdir -p $TOOLCHAINDIR
+$ cd $TOOLCHAINDIR
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
 
-\item Extract the downloaded file locally in the NFS server. After
-this operation, there should be a new directory for the toolchain
-in the server. \\
+\item Download the \ac{Raspi} toolchain for 64-bit Linux from.
+A more recent \ac{Raspi} toolchain may be available at
+\texttt{http://buildbot.steinwurf.dk/toolchains/linux/}:
 
-\item Add the \texttt{bin} folder of the toolchain to the \texttt{PATH}
-Linux environment variable of the server. This will help the server OS
-to recognize the location of the compiler command, which will be needed
-later. To do so, edit the \texttt{\$HOME/.profile} to add in a newline:
-\texttt{PATH="\$PATH:\$HOME/raspberry-gxx49-arm/bin"}. Save the
-\texttt{\$HOME/.profile}. \\
+\begin{lstlisting}[]
+$ TOOLCHAIN="raspberry-gxx49-arm"
+$ wget http://kom.aau.dk/project/TuneSCode/raspi/${TOOLCHAIN}.zip
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
 
-\item Restart the server session in order for the changes made in the
-previous step take effect. To verify this, open a new terminal and type:
-\texttt{raspberry-gxx49-arm-g++ --version}. A correct binary installation
-should return an output similar to:
+\item Extract the downloaded file:
+%locally in the NFS server. After
+%this operation, there should be a new directory for the toolchain
+%in the server. \\
+\begin{lstlisting}[]
+$ unzip ${TOOLCHAIN}.zip
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
 
-\texttt{raspberry-gxx49-arm-g++ (crosstool-NG 1.21.0) 4.9.3 20150311 (prerelease)
+\item (Optional) Delete zip file:
+%locally in the NFS server. After
+%this operation, there should be a new directory for the toolchain
+%in the server. \\
+\begin{lstlisting}[]
+$ rm ${TOOLCHAIN}.zip
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item We can now verify that the ARM cross compiler is working:
+
+\begin{lstlisting}[]
+$ ${TOOLCHAINDIR}/${TOOLCHAIN}/bin/${TOOLCHAIN}-g++ --version
+raspberry-gxx49-arm-g++ (crosstool-NG 1.21.0) 4.9.3 20150311 (prerelease)
 Copyright (C) 2014 Free Software Foundation, Inc.
 This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.} \\
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+%\begin{lstlisting}[]
+%$ echo "${TOOLCHAINDIR}/${TOOLCHAIN}/bin/${TOOLCHAIN}-g++"
+%/home/<USER>/toolchains/raspberry-gxx49-arm/bin/raspberry-gxx49-arm-g++
+%\end{lstlisting}
+%\FloatBarrier
+%\vspace{-5mm}
+    
+%    The ARM cross compilers should now be located in
+
+\item Make toolchain binaries available systemwide. Instead of calling
+the ARM cross compiler using its full path, we can make it accessible
+from the command shell systemwide. One way to do this is by adding the 
+toolchain binaries directory to the Linux environment variable \texttt{PATH}
+when the \ac{OS} starts up:
+
+%\item Add toolchain binaries to \texttt{PATH}. Instead specifying the full
+%path to the toolchain binaries we can instead tell the operation system
+%where to search for it. This makes the toolchain binaries available
+%systemwide.
+
+\begin{lstlisting}[]
+$ echo PATH=\"\$PATH:${TOOLCHAINDIR}/${TOOLCHAIN}/bin\" >> ${HOME}/.profile
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+%$ printf 'PATH="%s/%s/bin"\n' "${TOOLCHAINDIR}" "${TOOLCHAIN}" >> ${HOME}/.profile
+
+%\item Add the \texttt{bin} folder of the toolchain to the \texttt{PATH}
+%Linux environment variable of the server. This will help the server OS
+%to recognize the location of the compiler command, which will be needed
+%later. To do so, edit the \texttt{\$HOME/.profile} to add in a newline:
+%\texttt{PATH="\$PATH:\$HOME/raspberry-gxx49-arm/bin"}. Save the
+%\texttt{\$HOME/.profile}. \\
+
+\texttt{~/.profile} should now contain the line we inserted. There may be more
+code in you file.
+% MAC and Hostname file
+\Suppressnumber\begin{lstlisting}[]
+<@\textcolor{gray}{\$HOME/.profile}@>
+<@\textcolor{gray}{
+---------------------------------------------------------------}
+\Reactivatenumber @>
+PATH="$PATH:/home/<USERNAME>/toolchains/raspberry-gxx49-arm/bin"
+\end{lstlisting}
+\FloatBarrier
+
+\item Update \texttt{PATH}. Source \texttt{~/.profile} to make the changes
+take effect in your system:
+\begin{lstlisting}[]
+$ source ${HOME}/.profile
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item ARM cross compiler should now be available systemwide:
+
+\begin{lstlisting}[]
+$ raspberry-gxx49-arm-g++ --version
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+%\item Restart the server session in order for the changes made in the
+%previous step take effect. To verify this, open a new terminal and type:
+%\texttt{raspberry-gxx49-arm-g++ --version}. A correct binary installation
+%should return an output similar to:
+%
+%\texttt{raspberry-gxx49-arm-g++ (crosstool-NG 1.21.0) 4.9.3 20150311 (prerelease)
+%Copyright (C) 2014 Free Software Foundation, Inc.
+%This is free software; see the source for copying conditions.  There is NO
+%warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.} \\
 
 \item Clone the Kodo repository in the server by executing: \\
 \texttt{git clone git://github.com/steinwurf/kodo.git} in \texttt{\$HOME}.
