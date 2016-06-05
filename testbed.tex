@@ -702,41 +702,6 @@ For us, the device was /dev/mmcblk0, so we write the image to that device:
 \FloatBarrier
 
 
-\subsection{Kodo python}
-
-
-\subsection{fabric}
-
-% Exit chroot, umount, and write to memory card
-\begin{lstlisting}[]
-from fabric.api import run, env, task
-# Python Fabric script to run commands on multiple hosts through ssh
-#
-# Run script as 'fab <task>', where <task> is one of the scripts functions
-# marked as a tesk. The task marked as 'default' will be run if <task> is not
-# specified
-
-env.hosts = ['rasp00.domain.com','rasp01.domain.com','rasp02.domain.com']
-env.user = 'root'
-env.password = 'sdn'
-
-@task
-def install(program):
-    """
-    Install a program
-    program: program name
-    """
-    result = run('apt-get install -y {}'.format(program), quiet=True)
-
-@task
-def copy_to_rasp(filename):
-    put(...)
-
-\end{lstlisting}
-\FloatBarrier
-
-execute a script function by calling "fab install:feh"
-
 \section{Cross-compilation: From PC to Raspberry Pi}
 
 %\subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
@@ -973,20 +938,9 @@ Hello World!
 \FloatBarrier
 \vspace{-5mm}
 
-\subsection{Long running jobs over SSH (PUT THIS SECTION SOMEWHERE ELSE)}
-
-Problem when you logout, then applications will terminate. SCREEN is the answer.
-
-EXAMPLE
-
-\texttt{hello\_world} returns immediately. This is not always the case.
-Sometimes it is desired to run simulations that should run for days. 
-A software package called \texttt{screen} can be used for this purpose.
-Simply run ...
-
 \subsection{Cross compile Kodo}
 
-WRITE SOMETHING ABOUT THIS AND MENTION HOW TO REQUEST A KODO LICENSE
+WRITE SOME SMALL INTRO AND MENTION HOW TO REQUEST A KODO LICENSE
 
 \begin{enumerate}
 
@@ -1019,29 +973,35 @@ $ python waf configure --cxx_mkspec=cxx_raspberry_gxx49_arm
 \item Build executables:
 \begin{lstlisting}[]
 $ python waf build
+...
+'build' finished successfully (2m22.918s)
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
 
-\item Navigate to the repository and configure \texttt{waf} by typing:
-\texttt{python config.py} and select the 16th ``make specification'' file
-for the \ac{Raspi}, e.g. option \texttt{[16]cxx\_raspberry\_gxx49\_arm}
-presented by the file.
+\item SHARED and/or STATIC libraries
+\item COPY TO RASPI
+\item RUN EXECUTABLE encode\_decode\_simple
 
-This command configures \texttt{waf} to use the proper compiler and its
-required flags to generate the binaries for the \ac{Raspi}. If the
-configuration was correct, the output will indicate:
-\texttt{'configure' finished successfully (X.XXXs)}, where \texttt{X.XXX}
-is total time in seconds for configuring the project in the server. \\
-
-\item Execute \texttt{python waf build}. If the build process was
-successful, the generated binaries for the \ac{Raspi} should be located
-in \texttt{build/cxx\_raspberry\_gxx49\_arm} in the Kodo repository.
-\textbf{Indicate how the binary files should look like}.
-
-Once this procedure is made, the testbed administrator can relocate the
-generated binary files to the \ac{Raspi}s through the network as desired
-by using the \texttt{scp} command during the configuration step.
+%\item Navigate to the repository and configure \texttt{waf} by typing:
+%\texttt{python config.py} and select the 16th ``make specification'' file
+%for the \ac{Raspi}, e.g. option \texttt{[16]cxx\_raspberry\_gxx49\_arm}
+%presented by the file.
+%
+%This command configures \texttt{waf} to use the proper compiler and its
+%required flags to generate the binaries for the \ac{Raspi}. If the
+%configuration was correct, the output will indicate:
+%\texttt{'configure' finished successfully (X.XXXs)}, where \texttt{X.XXX}
+%is total time in seconds for configuring the project in the server. \\
+%
+%\item Execute \texttt{python waf build}. If the build process was
+%successful, the generated binaries for the \ac{Raspi} should be located
+%in \texttt{build/cxx\_raspberry\_gxx49\_arm} in the Kodo repository.
+%\textbf{Indicate how the binary files should look like}.
+%
+%Once this procedure is made, the testbed administrator can relocate the
+%generated binary files to the \ac{Raspi}s through the network as desired
+%by using the \texttt{scp} command during the configuration step.
 
 
 \end{enumerate}
@@ -1055,3 +1015,58 @@ for Raspbian 8 and GCC 4.9 for the ARM architecture which is the relevant one
 for the \ac{Raspi}. At the link, you can check build status and build
 statistics. Also, documentation about Kodo basics with a tutorial is available
 at \cite{kododocs}.
+
+
+
+\subsection{Long running jobs over SSH (PUT THIS SECTION SOMEWHERE ELSE)}
+
+Problem when you logout, then applications will terminate. SCREEN is the answer.
+
+EXAMPLE
+
+\texttt{hello\_world} returns immediately. This is not always the case.
+Sometimes it is desired to run simulations that should run for days. 
+A software package called \texttt{screen} can be used for this purpose.
+Simply run ...
+
+
+
+
+\subsection{Kodo python}
+
+WRITE HOW TO RUN A KODO PYTHON SCRIPT IN THE RASPIS
+
+\subsection{fabric}
+
+SHORT INTRO. EXPLAIN A FEW USECASES FOR FABRIC. E.G. REBOOT, INSTALL PACKAGE, RUN SCRIPT ON MULTIPLE RASPIS. COPY FILES TO/FROM PC AND MULTIPLE RASPIS 
+
+
+% Exit chroot, umount, and write to memory card
+\begin{lstlisting}[]
+from fabric.api import run, env, task
+# Python Fabric script to run commands on multiple hosts through ssh
+#
+# Run script as 'fab <task>', where <task> is one of the scripts functions
+# marked as a tesk. The task marked as 'default' will be run if <task> is not
+# specified
+
+env.hosts = ['rasp00.domain.com','rasp01.domain.com','rasp02.domain.com']
+env.user = 'root'
+env.password = 'sdn'
+
+@task
+def install(program):
+    """
+    Install a program
+    program: program name
+    """
+    result = run('apt-get install -y {}'.format(program), quiet=True)
+
+@task
+def copy_to_rasp(filename):
+    put(...)
+
+\end{lstlisting}
+\FloatBarrier
+
+execute a script function by calling "fab install:feh"
