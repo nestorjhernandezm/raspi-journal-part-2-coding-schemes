@@ -30,19 +30,21 @@ Fig. \ref{fig:enc_good_rasp1} shows the results of the encoder goodput
 measurements for the \ac{Raspi} 1. Figs. \ref{fig:enc_good_rasp1_gen_gf2}
 and \ref{fig:enc_good_rasp1_gen_gf256} present goodput as function of the
 generation size for $GF(2)$ and $GF(2^8)$ respectively for a packet size
-of $B = 1600$ bytes. Figs. \ref{fig:enc_good_rasp1_packet_gf2} and 
+of $B = 1600$ bytes. Figs. \ref{fig:enc_good_rasp1_packet_gf2} and
 \ref{fig:enc_good_rasp1_packet_gf256} present the same metric but now as
 function of the packet size for $GF(2)$ and $GF(2^8)$ respectively. In this
 case the generation size was set to $g = 16$ packets.
 
 Similarly, Fig. \ref{fig:enc_good_rasp2} shows the same set of
-measurements for the \ac{Raspi} 2. Hence, Figs. \ref{fig:enc_good_rasp2_gen_gf2}
-and \ref{fig:enc_good_rasp2_gen_gf256} present goodput as function of the
-generation size  and Figs. \ref{fig:enc_good_rasp2_packet_gf2} and 
-\ref{fig:enc_good_rasp2_packet_gf256} as a function of the packet size for the
-same cases mentioned previously. Therefore, we will proceed to make the
-results analysis with \ac{Raspi} 1 and indicate which similarities or
-differences occur for the \ac{Raspi} 2 and when do they occur.
+measurements for the \ac{Raspi} 2. Hence, Figs.
+\ref{fig:enc_good_rasp2_gen_gf2} and \ref{fig:enc_good_rasp2_gen_gf256}
+present goodput as function of the generation size  and
+Figs. \ref{fig:enc_good_rasp2_packet_gf2} and
+\ref{fig:enc_good_rasp2_packet_gf256} as a function of the packet size
+for the same cases mentioned previously. Therefore, we will proceed
+to make the results analysis with \ac{Raspi} 1 and indicate which
+similarities or differences occur for the \ac{Raspi} 2 and when do
+they occur.
 %
 \begin{figure*}
     \centering
@@ -50,35 +52,35 @@ differences occur for the \ac{Raspi} 2 and when do they occur.
         \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_encoder_Binary_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2$}}    
+        {{\small Goodput vs. Generation size for $q = 2$}}
         \label{fig:enc_good_rasp1_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_encoder_Binary8_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2^8$}}    
+        {{\small Goodput vs. Generation size for $q = 2^8$}}
         \label{fig:enc_good_rasp1_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_encoder_Binary_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}
         \label{fig:enc_good_rasp1_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_encoder_Binary8_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}
         \label{fig:enc_good_rasp1_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Encoder goodput measurements for the \ac{Raspi} 1} 
+    {\small Encoder goodput measurements for the \ac{Raspi} 1}
     \label{fig:enc_good_rasp1}
 \end{figure*}
 %
@@ -113,9 +115,36 @@ The number of changes is equal to the number of regions minus 1, making
 $steps = \#regions - 1$ and $dep = e$. With these definitions, we first
 evaluate \ac{TSNC} with no changes, e.g. $steps=0$ and the two amounts
 for dependent packets mentioned earlier. In this way the budget is
-either $g + 8$ or $g + 16$. The goal with setting first \ac{TSNC} with
-these values is to observe first the sole effect of the budget in the code
-since $steps = 0$ implies no density changes during the whole process.
+either $g + 8$ or $g + 16$. This means that we tolerate at most 8 or 16
+packets regardless of the generation. The goal with setting first
+\ac{TSNC} with these values is to observe first the sole effect of the
+budget in the code since $steps = 0$ implies no density changes during
+the whole process.
+
+For the plots in the mentioned figures from the encoder goodput measurements,
+\ac{RLNC} presents the worst performance in terms of goodput and
+\ac{TSNC} with $dep = 16$, the best regardless of the \ac{Raspi} model.
+Given that the processing time depends in the amount of coded packets
+required to create, \ac{RLNC} is the slowest to process since it must
+use all of the $g$ original packets. Later, sparse codes process the data
+at a larger rate since less packets are being mixed when creating a
+coded packet. The caveat of these schemes is that the sparser the code,
+the more probable the ocurrences of \ac{l.d.} packets is. So, basically
+the sparser the codes, then more overhead due to transmissions of \ac{l.d.}
+packets they have since it is more likely to generate the same set of
+packets. Excluding the coding coefficients overhead, the overhead due to
+transmissions of \ac{l.d.} packets can be very high.
+For example, if we consider \ac{TSNC} with $dep=16$ and $g = 16$, the budget
+in this case permits to send up to 32 packets which is $2\times$ the generation
+size for an overhead of $100\%$ excluding the one from the coding
+coefficients. This happens because \ac{TSNC} is allowed to add too much
+redundancy in this case, which permits it to use a very low code density $d$.
+For \ac{RLNC} this is not the case, since the occurrence of \ac{l.d.} coded
+packets is low. Even for $GF(2)$, the average amount of redundancy has proven
+to be 1.6 packets after $g$ have been transmitted.
+
+
+
 %
 \begin{figure*}
     \centering
@@ -123,35 +152,35 @@ since $steps = 0$ implies no density changes during the whole process.
         \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_encoder_Binary_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2$}}    
+        {{\small Goodput vs. Generation size for $q = 2$}}
         \label{fig:enc_good_rasp2_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_encoder_Binary8_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2^8$}}    
+        {{\small Goodput vs. Generation size for $q = 2^8$}}
         \label{fig:enc_good_rasp2_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_encoder_Binary_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}
         \label{fig:enc_good_rasp2_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_encoder_Binary8_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}
         \label{fig:enc_good_rasp2_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Encoder goodput measurements for the \ac{Raspi} 2} 
+    {\small Encoder goodput measurements for the \ac{Raspi} 2}
     \label{fig:enc_good_rasp2}
 \end{figure*}
 
@@ -170,35 +199,35 @@ the proper for \ac{Raspi} 2.
         \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_decoder_Binary_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2$}}    
+        {{\small Goodput vs. Generation size for $q = 2$}}
         \label{fig:dec_good_rasp1_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_decoder_Binary8_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2^8$}}    
+        {{\small Goodput vs. Generation size for $q = 2^8$}}
         \label{fig:dec_good_rasp1_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_decoder_Binary_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}
         \label{fig:dec_good_rasp1_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_decoder_Binary8_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}
         \label{fig:dec_good_rasp1_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Decoder goodput measurements for the \ac{Raspi} 1} 
+    {\small Decoder goodput measurements for the \ac{Raspi} 1}
     \label{fig:dec_good_rasp1}
 \end{figure*}
 
@@ -210,35 +239,35 @@ Description
         \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_decoder_Binary_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2$}}    
+        {{\small Goodput vs. Generation size for $q = 2$}}
         \label{fig:dec_good_rasp2_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_generation_size_Rasp_v2_decoder_Binary8_1600.eps}
         \caption[]%
-        {{\small Goodput vs. Generation size for $q = 2^8$}}    
+        {{\small Goodput vs. Generation size for $q = 2^8$}}
         \label{fig:dec_good_rasp2_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_decoder_Binary_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2,\ g=16$}}
         \label{fig:dec_good_rasp2_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/23_07_2015/goodput_vs_symbol_size_Rasp_v2_decoder_Binary8_16.eps}
         \caption[]%
-        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}    
+        {{\small Goodput vs. Packet size for $q = 2^8,\ g=16$}}
         \label{fig:dec_good_rasp2_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Decoder goodput measurements for the \ac{Raspi} 2} 
+    {\small Decoder goodput measurements for the \ac{Raspi} 2}
     \label{fig:dec_good_rasp2}
 \end{figure*}
 
@@ -256,20 +285,20 @@ the \ac{Raspi} 2 in Fig. \ref{fig:current_rasp2}.
         \centering
         \includegraphics[width=1.15\textwidth]{images/current_vs_sec_raspberry_change_gen_from_-10sec_to_500sec.eps}
         \caption[]%
-        {{\small Current for the \ac{Raspi} 1}}    
+        {{\small Current for the \ac{Raspi} 1}}
         \label{fig:current_rasp1}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.15\textwidth]{images/current_vs_sec_raspberry2_change_gen_from_-10sec_to_500sec.eps}
         \caption[]%
-        {{\small Current for the \ac{Raspi} 2}}    
+        {{\small Current for the \ac{Raspi} 2}}
         \label{fig:current_rasp2}
     \end{subfigure}
 
     \caption[]
-    {\small Current consumption for each \ac{Raspi} model} 
+    {\small Current consumption for each \ac{Raspi} model}
     \label{fig:current_rasp}
 \end{figure*}
 
@@ -288,35 +317,35 @@ the previously mentioned cases in the same fashion as before.
         \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_Binary_encoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:enc_ene_rasp1_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_Binary8_encoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2^8$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:enc_ene_rasp1_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_Binary_encoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:enc_ene_rasp1_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_Binary8_encoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:enc_ene_rasp1_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Encoder energy measurements for the \ac{Raspi} 1} 
+    {\small Encoder energy measurements for the \ac{Raspi} 1}
     \label{fig:enc_ene_rasp1}
 \end{figure*}
 
@@ -328,35 +357,35 @@ Raspi 2 encoding
         \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_v2_Binary_encoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:enc_ene_rasp2_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_v2_Binary8_encoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2^8$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:enc_ene_rasp2_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_v2_Binary_encoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:enc_ene_rasp2_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_v2_Binary8_encoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:enc_ene_rasp2_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Encoder energy measurements for the \ac{Raspi} 2} 
+    {\small Encoder energy measurements for the \ac{Raspi} 2}
     \label{fig:enc_ene_rasp2}
 \end{figure*}
 
@@ -368,35 +397,35 @@ Raspi 2 encoding
         \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_Binary_decoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:dec_ene_rasp1_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_Binary8_decoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2^8$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:dec_ene_rasp1_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_Binary_decoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:dec_ene_rasp1_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_Binary8_decoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:dec_ene_rasp1_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Decoder energy measurements for the \ac{Raspi} 1} 
+    {\small Decoder energy measurements for the \ac{Raspi} 1}
     \label{fig:dec_ene_rasp1}
 \end{figure*}
 
@@ -408,35 +437,35 @@ Raspi 2 decoding
         \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_v2_Binary_decoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:dec_ene_rasp2_gen_gf2}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.475\textwidth}  
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_generation_size_Rasp_v2_Binary8_decoder_1600.eps}
         \caption[]%
-        {{\small Energy per bit vs. Generation size for $q = 2^8$}}    
+        {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:dec_ene_rasp2_gen_gf256}
     \end{subfigure}
     \vskip\baselineskip
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_v2_Binary_decoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:dec_ene_rasp2_packet_gf2}
     \end{subfigure}
     \quad
-    \begin{subfigure}[b]{0.475\textwidth}   
-        \centering 
+    \begin{subfigure}[b]{0.475\textwidth}
+        \centering
         \includegraphics[width=1.1\textwidth]{images/23_07_2015/energy_per_bit_vs_symbol_size_Rasp_v2_Binary8_decoder_128.eps}
         \caption[]%
-        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}    
+        {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:dec_ene_rasp2_packet_gf256}
     \end{subfigure}
     \caption[]
-    {\small Decoder energy measurements for the \ac{Raspi} 2} 
+    {\small Decoder energy measurements for the \ac{Raspi} 2}
     \label{fig:dec_ene_rasp2}
 \end{figure*}
 
