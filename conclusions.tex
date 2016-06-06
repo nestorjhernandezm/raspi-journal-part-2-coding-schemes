@@ -1,15 +1,19 @@
 \label{sec:conclusions}
-Given the need for a \ac{Raspi} testbed easy to configure and maintain
-for network coding applications where results could be reproducible
-in a simple fashion, we provide a testbed description at Aalborg
-University with an in-depth performance evaluation for network coding
-schemes to indicate the processing capabilities and energy behaviour
-for two \ac{Raspi} models both of using their \ac{SIMD} capabilities
-and considering a multicore implementation for the \ac{Raspi} 2. Our
-findings report that processing speeds of more than X Mbps and Y Mbps are attainable for \textbf{[goodput scenarios]}, respectively, and that
-processing energy per bit for network coding is below 1 nJ in a large regime
-and even an order of magnitude lower for some algorithms with the same power consumption for \textbf{[goodput scenarios]}. Future work in this area,
-will be to evaluate further elaborated codecs, expand the setup and
-automation of tasks within the testbed creation, consider other working
-topologies or packet erasures and include a description for network
-connectivity where the testbed has more autonomy with \ac{IP} address assignment.
+Given the need for low-cost, easy to configure, testbeds that enable
+reproducible results, we provide a in-depth description of Aalborg
+University's \ac{Raspi} testbed and how to guarantee replicable
+results and managing scaling of the system.  We also provide a
+performance evaluation for network coding schemes, focusing on
+processing speed and energy behaviour for two \ac{Raspi} models,
+including algorithms that exploit \ac{SIMD} instructions and multicore
+capabilities of the \ac{Raspi} 2. Our measurements show that
+processing speeds of more than 80 Mbps and 800 Mbps are attainable for
+the \ac{Raspi} model 1 and 2, respectively, for a wide range of
+network coding configurations and maintaining a processing energy
+below 1 nJ/bit (or even an order of magnitude lower) in similar
+configurations. Future work in the use of \ac{Raspi} devices will
+focus on expanding the setup and automation of tasks to run the
+testbed, configure specified network topologies (e.g., with specific
+connectivity or packet loss ratios), reserve the use of these
+sub-networks for running tailored experiments, and opening the use of
+the testbed beyond our team at Aalborg University.
