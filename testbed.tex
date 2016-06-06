@@ -346,14 +346,15 @@ primary partition, print new partition table, and write new partition table
 to the image:
 
 \begin{lstlisting}[]
-# (echo d; echo ; echo n; echo p; echo ; echo 137216; echo ; echo p; echo w) | fdisk ${IMAGE}.img
+$ (echo d; echo ; echo n; echo p; echo ; echo 137216; echo ; echo p; echo w) | fdisk ${IMAGE}.img
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
 
-Make the Raspbian image available as a block device: 
+Make the Raspbian image available as a block device (notice that the
+command is run as root using sudo): 
 \begin{lstlisting}[]
-# DEV=$(losetup --show -f -P ${IMAGE}.img); echo $DEV
+# export DEV=$(sudo losetup --show -f -P ${IMAGE}.img); echo $DEV
 /dev/loop0
 \end{lstlisting}
 \FloatBarrier
@@ -517,12 +518,22 @@ the following way:
 
 Finally, to actually make the \ac{Raspi}s change hostname, we have to make
 each \ac{Raspi} call the above script when it starts up.
-Do this by inserting the line below in "\$\{ROOTDIR\}/etc/rc.local".
-The file
-can be opened with your favorite text editor.
+Do this with root permissions by inserting the line before
+\texttt{"exit 0"} using your favorite editor:
+%"\$\{ROOTDIR\}/etc/rc.local" using
+%your favorite text editor..
+%The file
+%can be opened with your favorite text editor.
 
-\begin{lstlisting}[]
-bash /home/pi/rasp_config/set_hostname"
+\Suppressnumber\begin{lstlisting}[]
+<@\textcolor{gray}{\$\{ROOTDIR\}/etc/rc.local}@>
+<@\textcolor{gray}{
+-----------------------------------------------------}
+\Reactivatenumber @>
+...
+bash /home/pi/rasp_config/set_hostname
+...
+exit 0
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -597,7 +608,7 @@ root filesystem. Then line 2 copies resolv.conf.
 
 % CHROOT to OS image
 \begin{lstlisting}[]
-# cd $ROOTDIR
+$ cd $ROOTDIR
 # cp /etc/resolv.conf etc/resolv.conf
 \end{lstlisting}
 \FloatBarrier
