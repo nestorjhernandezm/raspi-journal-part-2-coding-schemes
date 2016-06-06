@@ -7,73 +7,74 @@
 % Review of the State of the Art. Specify why our approach has benefits
 % and which are they. Indicate contributions.
 
+The emergence of powerful and inexpensive single-board computers
+running full versions of standard operating systems (OS) in the last
+years opens exciting possibilities for researchers. This not only
+allows to seamlessly develop implementations that are compatible with
+higher end devices and allows the reuse stable software from the Open
+Source community. It also enables the deployment and testing of large
+scale (hundreds of devices or more) distributed systems at a fraction
+of the cost necessary in previous years. This paper focuses on
+providing the critical steps and mechanisms followed to deploy, setup,
+and maintain a large-scale testbed based on Raspberry Pi devices of
+different models. We also complement this with an in-depth evaluation
+of the Raspberry Pi as a platform to enable a new paradigm in
+networking and storage known as network coding, which relies on
+processing at intermediate nodes to achieve higher throughput, delay
+and reliability performance than state-of-the-art routing techniques.
+
+
 % INTRODUCTION TO NETWORK CODING
-Network coding is a novel and disruptive technology introduced in the year
-2000~\cite{ahlswede2000network}. It has imposed a change of paradigm in the way
-how researchers and industry alike interpret networks and, more specifically,
-the role of intermediate relays in the process of transmission of information.
-The key element is that it allows relays to be part of the coding process
-enabling the recoding (i.e., to produce linear combinations without a previous
-decoding process) of the received packets. The recoding process disrupts with
-the traditional routing (store and forward) strategies in today's networks,
-including the Internet \todot{a citation here?}. Network coding allows the
-increase of throughput, reliability, security and delay performance of the
-networks. In its initial conception, the relays would combine and transfer
-packets of different flows, while in later applications of the technology, both
-the sources and the relays would form linear combinations of packets within the
-same information flow.
+Introduced by Ahlswede et al~\cite{ahlswede2000network}, network
+coding constitutes paradigm shift in the way how researchers and
+industry understand and operate networks, by changing the role of
+intermediate relays in the process of transmission of information.
+Relays are no longer limited to storing and forwarding data, but also
+take part in the coding process, through a process called recoding,
+where the relay generates new linear combinations of incoming coded
+packets without previously decoding the data. Network coding allows
+the increase of throughput, reliability, security and delay
+performance of the networks. 
 
-Differently from other broadly used coding schemes (e.g., Gallager's
-codes~\cite{gallager1962low}, Reed-Solomon codes~\cite{reed1960polynomial}),
-network coding is a technology that has been implemented in real systems since
-the early years of its conception. Only six years later, in 2006, Katabi et
-al.~\cite{katabi2006practical} published the results of the performance of their
-protocol COPE when implemented in a real wireless system\todot{is there any
-previous implementation?}. Similarly, in 2008, Pedersen et
-al.~\cite{pedersen2008implementation} used commercially available Symbian OS
-enabled mobile phones to implement network coding in a \ac{D2D} cooperation
-application. In 2011, researchers at Aalborg University in Denmark developed
-KODO~\cite{kodo2011pedersen}, a C++ network coding library with open source code
-for researchers intended to make network coding implementations easily available
-for both, the research community and commercial entities.
-CATWOMAN~\cite{hundeboll2012catwoman} is a protocol implemented in 2012 on IEEE
-802.11 based multi-hop meshed networks. It uses network coding to improve the
-throughput of meshed networks established using the
-B.A.T.M.A.N.~\cite{johnson2008simple} routing protocol. It is currently
-available as open source code and part of the Linux kernel. Also in 2012,
-Pahlevani et al. implemented PlayNCool~\cite{pahlevani2013playncool} as an
-opportunistic protocol that increases the throughput of a wireless mesh network
-by using network coding and local optimization. Similarly, many other
-implementations have been tested on real world systems~
-\cite{katti2008xors,krigslund2013core,paramanathan2013leanandmean}.
+Compared to other broadly used coding schemes, e.g., Gallager's LDPC
+codes~\cite{gallager1962low}, Reed-Solomon
+codes~\cite{reed1960polynomial}, network coding is a technology that
+has been implemented in real systems since the early years of its
+conception. In 2006, Katabi et al~\cite{katabi2006practical} published
+the results of the performance of their protocol COPE when implemented
+in a real wireless system, which relied on minimalistic coding to
+provide interesting gains. In 2008, Pedersen et
+al~\cite{pedersen2008implementation} used commercially available
+Symbian OS enabled mobile phones to implement network coding in a
+\ac{D2D} cooperation application. In 2011, researchers at Aalborg
+University developed KODO~\cite{kodo2011pedersen}, a C++ network
+coding library with open source code for researchers intended to make
+network coding implementations easily available for both, the research
+community and commercial entities.
+CATWOMAN~\cite{hundeboll2012catwoman} is a protocol implemented on top
+of the B.A.T.M.A.N. protocol~\cite{johnson2008simple} for IEEE 802.11
+multi-hop meshed networks using some of the intuition from COPE, but
+deploying it in real systems. It is currently available as open source
+code in the Linux kernel. Many other implementations have been tested
+on real world systems~
+\cite{pahlevani2013playncool,katti2008xors,krigslund2013core,paramanathan2013leanandmean}.
 
-It is then undeniable that network coding theory has always been hand to hand
-with practical implementations. However, each one of the previously tested
-protocols has been implemented in a separate, somehow hard to reproduce,
-testbed. Given the previous importance of practical testbeds for this particular
-technology, the needs for reproducibility of past and future results among
-researchers, and the needs of low-cost and easy-to-deploy testbeds, this paper
-aims to solve those needs. In this work, the authors contribute to the research
-community by providing detailed instructions on how to set up a low-cost,
-heterogeneous and scalable testbed consisting of Raspberry Pis (Raspis), and by
-providing detailed measurements of goodput and energy consumption of such
-testbed when performing network coding operations with different codecs (such as
-full RLNC, multicore-enabled RLNC, sparse RLNC and tunable sparse RLNC). The
-goals are \textbf{i)} to provide information on how to easily build and deploy a
-low-cost testbed for researchers and industry alike in order to test and
-implement their network coding related protocols; and \textbf{ii)} to provide
-information on the expected performance in terms of energy and goodput of such
-testbed while covering a wide range of codecs.
+Despite this successful deployment in real systems, many of these
+protocols and contributions have been implemented in separate testbeds
+and the experiences are hard to reproduce.  Given the need for
+reproducibility of past and future results among researchers and the
+need of low-cost and easy-to-deploy testbeds, this paper contribution
+is provide detailed instructions on how to set up a low-cost,
+heterogeneous and scalable testbed consisting of Raspberry Pis
+(Raspis), and by providing detailed measurements of goodput and energy
+consumption of such testbed when performing network coding operations
+with different codecs (such as full RLNC, multicore-enabled RLNC,
+sparse RLNC and tunable sparse RLNC). The heterogeneity of the testbed
+comes from the fact that old, single core, Raspberry Pi 1 model B are
+integrated seamlessly in the described testbed with newer, multicore
+versions, like the Raspberry Pi 2 model B.
 
-The heterogeneity of the testbed comes from the fact that old, single core,
-Raspis (i.e., Raspberry Pi 1 model B) are integrated seamlessly in the described
-testbed together with newer, multicore versions (i.e., Raspberry Pi 2 model B).
-The testbed is scalable because tenths or hundreds of Raspis can be connected
-together with the described method. And it is low-cost because Raspis represent
-a low fraction of the cost of laptops, desktop computers or other similar
-devices. \todot{is all of this true"?}
-
-Our work is organized as follows: Section~\ref{sec:testbed} introduces the
+Our work is organized as follows. Section~\ref{sec:testbed} introduces the
 testbed system, its setup, connectivity, files configuration and compilation of
 the Kodo library. Section~\ref{sec:schemes} defines the coding schemes employed
 in our study. Later, in Section~\ref{sec:metrics} we describe the considered
