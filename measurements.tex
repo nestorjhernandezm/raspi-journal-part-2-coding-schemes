@@ -110,13 +110,14 @@ it can be seen the goodput trends of 5 codes as a function of
 the generation size: \ac{RLNC}, \ac{SRLNC} with $d = [0.02,\ 0.1]$
 and \ac{TSNC} with an extra parameter that we mention. We define
 $C$ as the number of density changes in the \ac{TSNC} transmission
-process, if any. The number of changes is $C = \#regions - 1$. With
-this definitions, we first evaluate \ac{TSNC} with no changes, e.g.
-$C = 0$ and the two amounts for dependent packets mentioned earlier.
-This means that we tolerate at most 8 or 16 packets regardless of the
-generation. The goal with setting first \ac{TSNC} with these values is to
-observe first the sole effect of the budget in the code since $C = 0$
-implies no density changes during the whole process.
+process, if any. The maximum number of possible changes will depend
+on the budget. The larger the budget, the more regions are formed and
+more density changes are possible. We first evaluate \ac{TSNC} with no
+changes, e.g. $C = 0$ and the two amounts for dependent packets mentioned
+earlier. This means that we tolerate at most 8 or 16 packets regardless of
+the generation. The goal with setting first \ac{TSNC} with these values
+is to observe first the sole effect of the budget in the code since
+$C = 0$ implies no density changes during the whole process.
 
 For the plots in the mentioned figures from the encoder goodput measurements,
 \ac{RLNC} presents the lowest performance in terms of goodput and
@@ -231,10 +232,22 @@ is lower due to the field size effect.
     \label{fig:enc_good_rasp2}
 \end{figure*}
 %
+\par
 The effects mentioned for the \ac{Raspi} 1 were also observed for
-the \ac{Raspi} 2.
-\subsubsection{Decoding}
+the \ac{Raspi} 2 as mentioned previously. Still, the \ac{Raspi} 2 achieves
+roughly $5\times$ to $7\times$ gains in terms of encoding speed when comparing
+the goodputs in Figs.~\ref{fig:enc_good_rasp1} and \ref{fig:enc_good_rasp2},
+given that it has an \ac{ARM} Cortex A7 (v7) \ac{CPU} and twice the \ac{RAM}
+size than the \ac{ARM}1176JZF-S (v6) core of the \ac{Raspi} 1 model.
 
+In Figs.\ref{fig:enc_good_rasp2_packet_gf2} and
+\ref{fig:enc_good_rasp2_packet_gf256}, we observe that the packet size for
+the maximum \ac{RLNC} goodput has shifted towards 8 KiB, indicating that
+the \ac{Raspi} 2 is able to handle $16 \times 8$ KiB $= 128$ KiB. This is
+possible because the \ac{Raspi} 2 has a shared L2 cache of 256 KiB allowing
+to still allocate some space for the data to be processed.
+
+\subsubsection{Decoding}
 We perform the same evaluation as before but now we focus on the decoder.
 Fig. \ref{fig:dec_good_rasp1} shows the results of the decoder goodput
 measurements for the \ac{Raspi} 1 and Fig. \ref{fig:dec_good_rasp2} does
