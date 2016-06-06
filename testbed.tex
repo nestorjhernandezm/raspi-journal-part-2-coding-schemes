@@ -332,6 +332,13 @@ Device                               Boot  Start     End Sectors  Size Id Type
 \end{lstlisting}
 \FloatBarrier
 
+Now, to expand the root filesystem it is required to first remove the second
+and then add it again one \ac{GB} bigger:
+
+\begin{lstlisting}[]
+# (echo d; echo ; echo n; echo p; echo 3; echo 137216; echo ; echo w) | fdisk ${IMAGE}.img
+\end{lstlisting}
+\FloatBarrier
 
 
 %We see that the boot and root partitions starts at sector 8192 and 137216 respectivly.
