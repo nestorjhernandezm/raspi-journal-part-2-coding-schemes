@@ -1,21 +1,41 @@
 
 %\subsection{Kodo cross-compilation: From your PC to the Raspberry Pi}
 
-WRITE INTRO OF WHY WE WANT TO CROSS COMPILE. E.G. 1) WE DO NOT HAVE MONITORS
-CONNECTED TO THE RASPIS, 2) A PC IS SIGNIFICANTLY FASTER AND FAR BETTER EQUIPPED (RAM, CPU, HARDDRIVE), 3) MORE CONVINIENT TO DO EVERYTHING IN ONE PC AND DISTRIBUTE IT TO THE RASPIS AFTERWARDS. MORE?
+Modern \ac{PC}s are significantly better equipped than the \ac{Raspi}s that in
+contrasts to \ac{PC}s target a far more affortable and smaller module size. This
+means that it may be preferred or even mandatory to perform some computational
+expensive tasks in a \ac{PC} rather than in \ac{Raspi}s.
+Example of tasks that are quite computational expensive is to compile software
+packages and large libraries.
+Another reason to use a \ac{PC} may be the hardware limitations of \ac{Raspi}s
+in terms of e.g. memory and disk space. Some software packages might simply be
+too memory demanding to be compiled in a \ac{Raspi}.
+Thus, this section will present how to setup a toolchain in a \ac{PC} that can
+be used to cross compile C++ code to the ARM architecture that the \ac{Raspi}s.
+The toolchain is mandatory on most consumer \ac{PC}s due to the different
+processor architecture.
+
+Furthermore, we will cover how to cross compile a simple C++ example and
+Kodo-cpp as well as how the binaries can be copied from a \ac{PC} to a
+\ac{Raspi} and executed.
+There exists bindings to Kodo in various programming language. We will present
+how to also run a Kodo-python application in a \ac{Raspi}.
+
+%WRITE INTRO OF WHY WE WANT TO CROSS COMPILE. E.G. 1) WE DO NOT HAVE MONITORS
+%CONNECTED TO THE RASPIS, 2) A PC IS SIGNIFICANTLY FASTER AND FAR BETTER EQUIPPED (RAM, CPU, HARDDRIVE), 3) MORE CONVINIENT TO DO EVERYTHING IN ONE PC AND DISTRIBUTE IT TO THE RASPIS AFTERWARDS. MORE?
 
 \subsection{Install toolchain on PC}
 
-Besides the previous description (\textbf{Include compiling Kodo from the
-RasPi from the scratch}), the testbed administrator can compile Kodo in its
-personal workstation and transfer the generated binaries directly to
-a path in the \ac{Raspi}. To achieve this, we get a toolchain that
-contains the binaries for the \texttt{raspberry-gxx49-arm-g++} compiler
-for the \ac{Raspi}. Therefore, we strongly recommend any testbed
-administrator to do the following procedure. In what follows, we provide
-the instructions considering that the NFS server uses the \texttt{\$HOME}
-directory as the working directory. However, the administrator may choose
-some other working directory of its preference if desired.
+%Besides the previous description (\textbf{Include compiling Kodo from the
+%RasPi from the scratch}), the testbed administrator can compile Kodo in its
+%personal workstation and transfer the generated binaries directly to
+%a path in the \ac{Raspi}. To achieve this, we get a toolchain that
+%contains the binaries for the \texttt{raspberry-gxx49-arm-g++} compiler
+%for the \ac{Raspi}. Therefore, we strongly recommend any testbed
+%administrator to do the following procedure. In what follows, we provide
+%the instructions considering that the NFS server uses the \texttt{\$HOME}
+%directory as the working directory. However, the administrator may choose
+%some other working directory of its preference if desired.
 
 \begin{enumerate}
 
@@ -147,7 +167,11 @@ $ raspberry-gxx49-arm-g++ --version
 
 \subsection{Cross compile example}
 
-Create a directory to hold our code:
+The following example will provide a very basic example of 1) how to cross compile
+a \texttt{hello\_world} c++ example to the \ac{Raspi}'s ARM architecture
+and 2) how to copy and execute the binary in a \ac{Raspi} using \ac{SCP} and \ac{SSH}.
+
+Lets create a directory to hold our code:
 \begin{lstlisting}[]
 $ CODEDIR="${HOME}/code"
 $ mkdir -p ${CODEDIR}
@@ -156,7 +180,8 @@ $ cd ${CODEDIR}
 \FloatBarrier
 \vspace{-5mm}
 
-Create a \texttt{hello\_world.cpp} using your favorite text editor:
+Create the file \texttt{hello\_world.cpp} with the following content using your
+favorite text editor:
 
 \Suppressnumber\begin{lstlisting}[]
 <@\textcolor{gray}{\${CODEDIR}/hello\_world.cpp}@>
@@ -181,10 +206,10 @@ $ raspberry-gxx49-arm-g++ hello_world.cpp -o hello_world
 \FloatBarrier
 \vspace{-5mm}
 
-Lets copy the executable file to a \ac{Raspi} and test it. We will use \ac{SCP}
-to copy the executable to one of the \ac{Raspi}s.
+This should produce a binary \texttt{hello\_world}. Copy it to a \ac{Raspi}
+and test it. We will use \ac{SCP} to copy the binary file to one of the \ac{Raspi}s.
 
-Default username is "pi" and password is "raspberry"
+The default username for our Raspbian lite distribution is "pi" and password is "raspberry"
 
 \begin{lstlisting}[]
 $ scp main pi:<RASP_IP>:~/
@@ -227,7 +252,8 @@ hello_world  rasp_config
 \FloatBarrier
 \vspace{-5mm}
 
-Now, simply execute the \texttt{hello\_world}:
+Now, simply execute the \texttt{hello\_world} to confirm that cross compiling
+\texttt{hello\_world} worked properly:
 
 \begin{lstlisting}[]
 pi@rasp07:~ $ ./hello_world
@@ -238,7 +264,16 @@ Hello World!
 
 \subsection{Cross compile Kodo}
 
-WRITE SOME SMALL INTRO AND MENTION HOW TO REQUEST A KODO LICENSE
+Kodo is a C++11 library for \ac{NC}. There exists a number of bindings for
+Kodo to other popular programming languages. This procedure will go through
+how to setup Kodo-cpp to cross compile to \ac{Raspi}. Kodo-cpp provides a
+simple interface to the underlying C++11 code that exists in the libraries
+Kodo-core and Kodo-rlnc.
+
+In order to use Kodo, it is required to obtain a research- and
+education-friendly license.
+A license can be obtained from \url{http://steinwurf.com/license.html}. It is
+free for research and educational purposes.
 
 \begin{enumerate}
 
