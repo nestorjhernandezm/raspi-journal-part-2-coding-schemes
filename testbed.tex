@@ -804,30 +804,124 @@ Thus, to run mkinitramfs, type in the correct kernel version:
 
 This should generate a new initial \ac{RAM} filesystem that will overlay a \ac{RAM} filesystem.
 
-\subsection{Write image}
-
-The final step is to write the image to all the memory cards before they can
-be plugged in the \ac{Raspi}s. This is done by first leaving the chrooted filesystem
-and unmounting all the directories we mounted:
+At this point, it is no longer required to be \texttt{chrooted} and the image
+can be written to a memory card. The following commands exits the \texttt{chrooted}
+environment, unmount all partitions, and detaches the loop device:
 
 % Exit chroot, umount, and write to memory card
 \begin{lstlisting}[]
 # exit
 # cd ..
 # umount --recursive ${ROOTDIR}
-# losetup -d WHICH_NUMBE.img
+# losetup -d ${DEV}.img
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
 
-If successfully unmounted, you can insert a memory card in your machine. In our
-system, this memory card was available under /dev/mmcblk0, but this may be
-different on different machines. For internal memory card readers, it will
-probably be named /dev/mmcblkX where X is some number and if the memory card
-reader is connected through \ac{USB}, then it is likely called /dev/sdX.
-Make sure to write to the correct device as everything will be overwritten!
+\subsection{(Optional) Persistent subdirectories}
 
-Below is a few commands that may help you to deduce which device is correct:
+Provided the stacked filesystem was configured, it may be desired to have
+some directories where files are not flushed upon rebooting the \ac{Raspi}s.
+The following procedure will create an extra partition in the image for
+the \ac{Raspi} users home directory that will be made storage persistent.
+%Provided that a stacked filesystem was configured to make the root
+%filesystem forget chances upon reboots is not always desired. 
+
+Expand image according to the desired home directory size. Keep in mind not
+to make the image bigger than the target memory card.
+% Expand image
+\begin{lstlisting}[]
+# dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img && sync
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Create home partition after the root partition. Use \texttt{fdisk} to
+find the next available sector in the image. In our case, the new
+partition should start at sector 4806656:
+\begin{lstlisting}[]
+# fdisk -lu ${IMAGE}.img
+Disk 2016-05-27-raspbian-jessie-lite.img: 3.3 GiB, 3534749696 bytes, 6903808 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6fcf21f3
+
+Device                               Boot  Start     End Sectors  Size Id Type
+2016-05-27-raspbian-jessie-lite.img1        8192  137215  129024   63M  c W95 FAT32 (LBA)
+2016-05-27-raspbian-jessie-lite.img2      137216 4806655 4669440  2.2G 83 Linux
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Create new partition:
+
+\begin{lstlisting}[]
+# (echo n; echo p; echo ; echo 4806656; echo ; echo p; echo w) | fdisk ${IMAGE}.img
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Create loopback device: 
+\begin{lstlisting}[]
+# DEV=$(losetup --show -f -P ${IMAGE}.img); echo $DEV
+/dev/loop0
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Format new partition:
+\begin{lstlisting}[]
+# mkfs.ext4 ${DEV}p3
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+The last thing to remember is to inform Raspbian to mount the home partition
+we created during startup. This can be done by adding an entry in \texttt{fstab}:
+\begin{lstlisting}[]
+# mount ${DEV}p2 ${ROOTDIR}
+# echo "/dev/mmcblk0p3 /home ext4 defaults,noatime 0 2" >> ${ROOTDIR}/etc/fstab
+# umount ${ROOTDIR}
+# losetup -d ${DEV}
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+
+\subsection{Write image to memory card}
+
+The final step is to write the image to all the memory cards before they can
+be used in the \ac{Raspi}s.
+
+%This is done by first leaving the \texttt{chrooted}
+%filesystem and unmounting all the directories we mounted:
+
+% Exit chroot, umount, and write to memory card
+%\begin{lstlisting}[]
+%# exit
+%# cd ..
+%# umount --recursive ${ROOTDIR}
+%# losetup -d ${DEV}.img
+%\end{lstlisting}
+%\FloatBarrier
+%\vspace{-5mm}
+
+%If successfully unmounted, you can 
+Insert a memory card in your machine. It will be available as
+\texttt{/dev/mmcblkX} or \texttt{/dev/sdX}
+
+%In most systems, this memory card was available under \texttt{/dev/mmcblk0}, but this may be
+%different on different machines. For internal memory card readers, it will
+%probably be named /dev/mmcblkX where X is some number and if the memory card
+%reader is connected through \ac{USB}, then it is likely called /dev/sdX.
+Make absolutely sure to write to the correct device as everything will be 
+overwritten!
+Inserting/Ejecting the memory card a couple of times and using the commands
+below may help deducing the correct device:
+%The commands below may help deduce which device is the correct:
+%Below is a few commands that may help you to deduce which device is correct:
 
 \begin{lstlisting}[]
 # lsblk
@@ -836,7 +930,7 @@ Below is a few commands that may help you to deduce which device is correct:
 \FloatBarrier
 \vspace{-5mm}
 
-For us, the device was /dev/mmcblk0, so we write the image to that device:
+For us, the device was \texttt{/dev/mmcblk0}, so we write the image to that device:
 \begin{lstlisting}[]
 # dd if=${IMAGE}.img of=/dev/mmcblk0 bs=4M
 \end{lstlisting}
@@ -844,9 +938,3 @@ For us, the device was /dev/mmcblk0, so we write the image to that device:
 \vspace{-5mm}
 
 
-\subsection{Persistant home directory in the Raspberry Pis (maybe this section should be put just after overlayfs)}
-
-Provided that a stacked filesystem was configured to make the root
-filesystem forget chances upon reboots is not always desired. 
-
-WRITE THIS
