@@ -449,11 +449,29 @@ WRITE HOW TO RUN A KODO PYTHON SCRIPT IN THE RASPIS
 
 \subsection{fabric}
 
-SHORT INTRO. EXPLAIN A FEW USECASES FOR FABRIC. E.G. REBOOT, INSTALL PACKAGE, RUN SCRIPT ON MULTIPLE RASPIS. COPY FILES TO/FROM PC AND MULTIPLE RASPIS 
+Controlling multiple devices using \ac{SSH} from a single \ac{PC}
+often leads to a lot of repetitive work. E.g.
+
+\begin{itemize}
+    \item rebooting a set of devices
+    \item installing applications in multiple devices
+    \item copy files to/from multiple devices
+    %\item run a script in multiple devices
+\end{itemize}
+
+\texttt{Fabric} provides a python library to ease the task of working
+with multiple devices from a single \ac{PC}. The code below provides
+a small script that can perform the few items above:
+
+%SHORT INTRO. EXPLAIN A FEW USECASES FOR FABRIC. E.G. REBOOT, INSTALL PACKAGE, RUN SCRIPT ON MULTIPLE RASPIS. COPY FILES TO/FROM PC AND MULTIPLE RASPIS 
 
 
 % Exit chroot, umount, and write to memory card
-\begin{lstlisting}[]
+\Suppressnumber\begin{lstlisting}[]
+<@\textcolor{gray}{\$CODEDIR/fabfile.py}@>
+<@\textcolor{gray}{
+-------------------------------------------}
+\Reactivatenumber @>
 from fabric.api import run, env, task
 # Python Fabric script to run commands on multiple hosts through ssh
 #
@@ -466,21 +484,57 @@ env.user = 'pi'
 env.password = 'raspberry'
 
 @task
+def reboot():
+    """ Reboot device """
+    sudo('reboot', quiet=True)
+
+@task
 def install(program):
     """
     Install a program
     program: program name
     """
-    result = run('apt-get install -y {}'.format(program), quiet=True)
+    result = sudo('apt-get install -y {}'.format(program), quiet=True)
+    print(result)
 
 @task
-def copy_to_rasp(filename):
-    put(...)
+def push(src,dst):
+    """
+    Copy file to device
+    src: source file path
+    dst: destination file path
+    """
+    put(src, dst)
 
 \end{lstlisting}
 \FloatBarrier
 
-execute a script function by calling "fab install:feh"
+The script functions can be called from the command shell in the following
+manner. Notice how fab automatically searches the directory for a file 
+named 'fabfile.py' and how fab is called with function name and arguments
+'fab <FUNCTION>:arg1,arg2,...:
+\begin{lstlisting}[]
+$ fab reboot
+$ fab install:tmux
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\begin{lstlisting}[]
+$ fab reboot
+$ fab install:tmux
+$ fab push:"${CODEDIR}/hello_world",'~/'
+[192.168.87.107] Executing task 'push'
+[192.168.87.107] put: /home/<USER>/code/hello_world -> /home/pi/hello_world
+
+Done.
+Disconnecting from 192.168.87.107... done.
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+
+%execute a script function by calling "fab install:feh"
 
 
 
