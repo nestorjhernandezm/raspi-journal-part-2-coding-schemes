@@ -108,21 +108,19 @@ In \ref{fig:enc_good_rasp1_gen_gf2}, \ref{fig:enc_good_rasp1_gen_gf256},
 \ref{fig:enc_good_rasp2_gen_gf2} and \ref{fig:enc_good_rasp2_gen_gf256};
 it can be seen the goodput trends of 5 codes as a function of
 the generation size: \ac{RLNC}, \ac{SRLNC} with $d = [0.02,\ 0.1]$
-and \ac{TSNC} with two parameters that we mention. The first of them,
-$steps$, is the number of density changes in the system, if any.
-The number of changes is equal to the number of regions minus 1, making
-$steps = \#regions - 1$ and $dep = e$. With these definitions, we first
-evaluate \ac{TSNC} with no changes, e.g. $steps=0$ and the two amounts
-for dependent packets mentioned earlier. In this way the budget is
-either $g + 8$ or $g + 16$. This means that we tolerate at most 8 or 16
-packets regardless of the generation. The goal with setting first
-\ac{TSNC} with these values is to observe first the sole effect of the
-budget in the code since $steps = 0$ implies no density changes during
-the whole process.
+and \ac{TSNC} with an extra parameter that we mention. We define
+$C$ as the number of density changes in the \ac{TSNC} transmission
+process, if any. The number of changes is $C = \#regions - 1$. With
+this definitions, we first evaluate \ac{TSNC} with no changes, e.g.
+$C = 0$ and the two amounts for dependent packets mentioned earlier.
+This means that we tolerate at most 8 or 16 packets regardless of the
+generation. The goal with setting first \ac{TSNC} with these values is to
+observe first the sole effect of the budget in the code since $C = 0$
+implies no density changes during the whole process.
 
 For the plots in the mentioned figures from the encoder goodput measurements,
-\ac{RLNC} presents the worst performance in terms of goodput and
-\ac{TSNC} with $dep = 16$, the best regardless of the \ac{Raspi} model.
+\ac{RLNC} presents the lowest performance in terms of goodput and
+\ac{TSNC} with $e = 16$, the highest regardless of the \ac{Raspi} model.
 Given that the processing time depends in the amount of coded packets
 required to create, \ac{RLNC} is the slowest to process since it must
 use all of the $g$ original packets. Later, sparse codes process the data
@@ -130,20 +128,23 @@ at a larger rate since less packets are being mixed when creating a
 coded packet. The caveat of these schemes is that the sparser the code,
 the more probable the ocurrences of \ac{l.d.} packets is. So, basically
 the sparser the codes, then more overhead due to transmissions of \ac{l.d.}
-packets they have since it is more likely to generate the same set of
-packets. Excluding the coding coefficients overhead, the overhead due to
-transmissions of \ac{l.d.} packets can be very high.
-For example, if we consider \ac{TSNC} with $dep=16$ and $g = 16$, the budget
-in this case permits to send up to 32 packets which is $2\times$ the generation
-size for an overhead of $100\%$ excluding the one from the coding
-coefficients. This happens because \ac{TSNC} is allowed to add too much
-redundancy in this case, which permits it to use a, single in this case,
-very low code density $d$. For \ac{RLNC} this is not the case, since the
-occurrence of \ac{l.d.} coded packets is low. Even for $GF(2)$, the
-average amount of redundancy has proven to be 1.6 packets after $g$ have
-been transmitted, much less than the cases where sparse codes are
-utilized. Overall, we observe that there is a trade-off between goodput
-and \ac{l.d.} coded packets transmission overhead.
+packets since it is more frequent to generate similar set of packets.
+Excluding the coding coefficients overhead, the overhead due to
+transmissions of \ac{l.d.} packets might be high for the sparse schemes.
+For example, if we consider \ac{TSNC} with $e = 16$ and $g = 16$
+in Fig.~\ref{fig:enc_good_rasp1_gen_gf2}, the budget in this case permits
+to send up to 32 packets which is $2\times$ the generation
+size for an overhead of $100\%$ excluding the overhead from appending
+the coding coefficients. This happens because \ac{TSNC}
+has been allowed to add too much redundancy in this case. Given that $C=0$,
+this permits it to use a single very low code density $d$. For \ac{RLNC},
+this is not the case since the occurrence of \ac{l.d.} coded packets is
+small, because all coding coefficients are used. Even for $GF(2)$, the
+average amount of redundant packets for \ac{RLNC} has proven to be 1.6
+packets after $g$ have been transmitted \textbf{[Include a reference]},
+but less than the cases where sparse codes are utilized. Overall, we
+observe that there is a trade-off between goodput and \ac{l.d.} coded
+packets transmission overhead.
 
 For Figs.~\ref{fig:enc_good_rasp1_packet_gf2},
 \ref{fig:enc_good_rasp1_packet_gf256}, \ref{fig:enc_good_rasp2_packet_gf2}
@@ -151,41 +152,46 @@ and \ref{fig:enc_good_rasp2_packet_gf256}; we see the packet
 size effect in the encoding goodput in both \ac{Raspi} models and for
 a fixed generation size. For \ac{TSNC} in this case, we allow for 5 density
 changes during the generation transmission and again consider the same
-budgets as before. In all the cases, we clearly observe that there is an
+budgets as before. In all the cases, we observe that there is an
 optimal packet size to operate with. When reviewing the specifications
 of the \ac{Raspi} 1, it uses a L1 cache of 16 KiB. Hence, the trends
-in the packet size can be explained as follows: For low packet sizes,
-the data processing does not overload the \ac{CPU} of the \ac{Raspi}, so
-the goodput progressively increases given that we simply process more
-data as the packet size increases. However, after a certain packet size,
-the goodput gets affected since the cache starts to saturate. The packets
-towards the cache needs to have more processing. Also important, the
-\ac{CPU} needs to allocate computational resources to other processes from
-the different tasks running in the \ac{Raspi}. Beyond this critical packet
-size, the \ac{CPU} just queues processing which incurs in larger delay
-reducing the goodput.
+in the packet size can be explained in the following way: For low packet
+sizes, the data processing does not overload the \ac{CPU} of the
+\ac{Raspi}, so the goodput progressively increases given that we simply
+process more data as the packet size increases. However, after a certain
+packet size, the goodput gets affected since the cache starts to saturate.
+The packets towards the cache needs to have more processing. Beyond this
+critical packet size, the \ac{CPU} just queues processing which incurs in
+larger delay reducing the goodput.
 
 If we consider the previous effect when reviewing the trends in the
-mentioned figures, in all the models we observe that the maximum does not
-come at 16 KiB but at a smaller value depending on the model, field size
-and coding scheme considered. The reason is that given there are various
+mentioned figures, in all the models we observe that the maximum is not
+at 16 KiB but at a smaller value depending on the model, field size
+and coding scheme considered. The reason is that the \ac{CPU} needs to
+allocate computational resources to other processes from the different tasks
+running in the \ac{Raspi}. Then, given there are various
 tasks from other applications for proper functioning running in the
 \ac{Raspi} at the same time as coding, the cache space is filled also
 with the data from these tasks, thus diminishing the cache space available
-for coding.
+for coding operations.
 
 For the \ac{Raspi} 1 model, we observe in
 Fig.~\ref{fig:enc_good_rasp1_packet_gf2} that the critical
 packet size for \ac{RLNC} using $GF(2)$ occurs at 1 KiB whereas for the
-sparse codes is close to 4 KiB in the most of the cases for $GF(2)$. This
-difference takes place since the sparse codes are much less complex to
+sparse codes is close to 8 KiB in the most of the cases for $GF(2)$. This
+difference takes place since the sparse codes mix less packets their
 process than \ac{RLNC}, which turns into less data loading in the
-cache for doing computations. However, for \ac{RLNC} given that it is
-a dense code since $d \to 1$, \ac{RLNC} packets load much more data to
-the cache quite easily making this effect visible for smaller packet sizes.
+cache for doing computations. For a density of $d = 0.1$, packet size of
+$B = 8$ KiB and $g = 16$ packets, we observe that roughly $\ceil{gd} = 2$
+packets are inserted in the cache when calculating a coded packet with this
+sparse code. Loading this into the cache, stands for 16 KiB which is the
+cache size. A similar effect occurs for the other sparse codes. However, for
+\ac{RLNC} given that it is a dense code since $d \to 1$, \ac{RLNC}
+packets load data from all the $g = 16$ coding coefficients, which accounts
+for the 16 KiB of the cache size. In
 Fig.~\ref{fig:enc_good_rasp1_packet_gf256}, although the ideal packet
-size remains the same for \ac{RLNC}, for sparse codes it locates closer to
-8 KiB.
+size remains the same for \ac{RLNC} and the sparse codes, the final goodput
+is lower due to the field size effect.
 %
 \begin{figure*}
     \centering
@@ -225,6 +231,8 @@ size remains the same for \ac{RLNC}, for sparse codes it locates closer to
     \label{fig:enc_good_rasp2}
 \end{figure*}
 %
+The effects mentioned for the \ac{Raspi} 1 were also observed for
+the \ac{Raspi} 2.
 \subsubsection{Decoding}
 
 We perform the same evaluation as before but now we focus on the decoder.
