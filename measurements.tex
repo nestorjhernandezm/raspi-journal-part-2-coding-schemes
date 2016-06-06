@@ -602,47 +602,47 @@ Raspi 2 decoding
 \label{subs:multicore-network-coding}
 
 The authors implemented the algorithm described in
-Section~\ref{sub:implementation-multicore} on the Raspberry Pi 2 Model B,
-which features four ARM Cortex-A7 cores in a Broadcom BCM2836 \ac{SOC}
+Section~\ref{sub:implementation-multicore} on the \ac{Raspi} 2 model,
+which features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC}
 with a 900 MHz clock. Each core has a 32 KiB L1 data cache and 32 KiB
 L1 instruction cache. The cores share a 512 KiB L2 cache. All the
 measured results, including the baseline results, were obtained with
-NEON-enabled code adopted from the Fifi library [\textbf{Fifi reference}].
-The NEON extension provides an 128-bit \ac{SIMD} instruction set to the
-\ac{Raspi} 2. Figures~\ref{enc_dec1024}, \ref{enc_dec128} and
-\ref{enc_dec16} show the encoding and decoding throughput in MiB per
-second for different generation sizes ($g$ = 1024, 128, and 16
-respectively). The throughput is the rate of generating $g$ coded packets,
-divided by the time the encoder took to perform the task. The size of
-each coded packet was fixed to $1536$~bytes since that is the typical
-size of an Ethernet frame. The blocked operations were performed dividing
-the matrices in squared sub-blocks of $16,\ 32\ ,\ 64,\ldots,\ 1024$ operands
-(words in the finite field) in height and width. The figures show only
-block sizes of $16 \times 16$, $32 \times 32$, $64 \times 64$ operands
-since with bigger block sizes, the operands do not fit in L1 cache.
-
-The following test cases were considered:
+NEON-enabled code adapted from the Fifi library [\textbf{Fifi reference}].
+The \ac{Raspi} 2 has a NEON extension instruction set which provides
+an 128-bit \ac{SIMD} instructions that speed the computations.
+Figures~\ref{enc_dec1024}, \ref{enc_dec128} and
+\ref{enc_dec16} show the encoding and decoding goodput in MB per
+second for different generation sizes, $g = [1024, 128, 16]$
+respectively. The size of each coded packet was fixed to $1536$~bytes
+since that is the typical size of an Ethernet frame. The blocked operations
+were performed dividing the matrices in squared sub-blocks of
+$16,\ 32\ ,\ 64,\ldots,\ 1024$ operands (words in the Galois field) in
+height and width. The figures show only block sizes of
+$16 \times 16$, $32 \times 32$, $64 \times 64$ operands since with bigger
+block sizes, the operands do not fit in L1 cache. Several testcases
+are considered and detailed.
 
 \subsubsection{Baseline encoding}
 The baseline results involve no recording of the
 \ac{DAG} and are performed in a \emph{by-the-book} fashion. The encoder uses
-only one thread. And the difference between the non-blocked and blocked
+only one thread. The difference between the non-blocked and blocked
 encoding schemes is that in the blocked scheme, the matrix multiplications are
 performed dividing the matrices in sub-blocks in order to make the algorithm
 cache efficient as described in Section~\ref{sub:implementation-multicore}.
 
 \subsubsection{Encoding blocked}
-The encoding results were performed using the
+The encoding results are obtained using the
 method described in Section~\ref{sub:implementation-multicore}. The time
 recorded includes the dependencies resolving, creation of the \ac{DAG},
-and the task scheduling. In practice, it would suffice to calculate and
+and the taskz scheduling. In practice, it would suffice to calculate and
 store this information only once per generation size.
 
 \subsubsection{Decoding blocked}
 The differences between encoding and decoding, is that the decoding task
 also involves the matrix inversion. Similarly as with the encoding results,
 the time recorded includes the dependencies resolving, the creation of the
-\ac{DAG} and the task scheduling. However, to decode, these calculations are also made for inverting the matrix of coding coefficients.
+\ac{DAG} and the task scheduling. However, to decode, these calculations
+are also made for inverting the matrix of coding coefficients.
 
 \begin{figure}[ht!]
 \centering
@@ -653,16 +653,16 @@ the time recorded includes the dependencies resolving, the creation of the
 
 For $g= 1024$, the blocked baseline measurements outperforms the non blocked
 variant. This means that making the matrix multiplication algorithm cache
-efficient brings an increase in throughput by a factor of 2.83. When using the
+efficient brings an increase in goodput by a factor of 2.83. When using the
 algorithm described in Section~\ref{sub:implementation-multicore},
-encoding with four cores is on average 3.7 times faster than with one core.
-Similarly, decoding with four codes is 3.05 times faster, on average, than
+encoding with four cores is on average $3.7\times$ faster than with one core.
+Similarly, decoding with four codes is $3.05\times$ faster, on average, than
 decoding with a single core. Figure~\ref{enc_dec1024} shows that the
 implemented algorithm, by exploiting cache efficiency and only three extra
-cores provides a gain of 10 folds compared with traditional non-blocked
+cores provides a $10\times$ gain compared with traditional non-blocked
 algorithms. With $g = 1024$, the matrix inversion becomes more expensive
-than at smaller generations sizes. Therefore, the decoding throughput
-is 46\% of the encoding throughput.
+than at smaller generations sizes. Therefore, the decoding goodput
+is 46\% of the encoding goodput.
 
 \begin{figure}[ht!]
 \centering
@@ -671,13 +671,13 @@ is 46\% of the encoding throughput.
 \label{enc_dec128}
 \end{figure}
 
-For $g$ = 128, the differences between the baselines operations show that a
+For $g = 128$, the differences between the baselines operations show that a
 blocked algorithm is 15\% faster than the non-blocked variant. Encoding with
-four cores is 2.82 times faster than with a single core. Due to the smaller
+four cores is $2.82\times$ faster than with a single core. Due to the smaller
 matrix sizes, the gain when using blocked operations in the baselines is not
 that significant when compared with $g = 1024$. For the same reason, the matrix
-inversion is less expensive. As a consequence, the decoding throughput is 71\%
-of the encoding throughput.
+inversion is less expensive. As a consequence, the decoding goodput is 71\%
+of the encoding goodput.
 
 \begin{figure}[ht!]
 \centering
@@ -693,7 +693,7 @@ is so small, the gain when using four cores is a factor of 1.68 compared
 with a single core, and 1.01 compared with two cores. Therefore, there
 are no practical benefits in using four cores instead of two.
 
-The differences in throughput, for all generation sizes, between the
+The differences in goodput, for all generation sizes, between the
 blocked baseline and the single threaded scheduled measurements are due the
 time spent resolving the dependencies and the scheduling overhead. These
 effects are negligible for big generation sizes, while considerable for
@@ -709,7 +709,7 @@ spent doing so which we name $T_{mult}$ and $T_{inv}$. We calculate the ratio
 between these two measured times defined as $r = \frac{T_{mult}}{T_{inv}}$.
 Table~\ref{runtimes} summarizes the results. The bigger the matrix size, the
 smaller is the calculated ratio. This means that when the problems are bigger,
-the decoding throughput decreases compared with the encoding throughput.
+the decoding goodput decreases compared with the encoding goodput.
 
 \begin{table}[H]
 \center
