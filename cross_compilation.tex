@@ -275,9 +275,12 @@ education-friendly license.
 A license can be obtained from \url{http://steinwurf.com/license.html}. It is
 free for research and educational purposes.
 
+A more detailed procedure of setting up Kodo-cpp than provided below is available at
+\url{http://docs.steinwurf.com/kodo/kodo-cpp/index.html}
+
 \begin{enumerate}
 
-\item Create a directory to hold our code:
+\item Start by creating a directory to hold our code:
 \begin{lstlisting}[]
 $ CODEDIR="${HOME}/code"
 $ mkdir -p ${CODEDIR}
@@ -286,7 +289,7 @@ $ cd ${CODEDIR}
 \FloatBarrier
 \vspace{-5mm}
 
-\item Clone the Kodo repository and change directory into the repository: \\
+\item Clone the Kodo repository and change directory into the repository:
 \begin{lstlisting}[]
 $ git clone https://github.com/steinwurf/kodo-cpp.git
 $ cd kodo-cpp
@@ -312,9 +315,38 @@ $ python waf build
 \FloatBarrier
 \vspace{-5mm}
 
-\item SHARED and/or STATIC libraries
-\item COPY TO RASPI
-\item RUN EXECUTABLE encode\_decode\_simple
+
+\item Make shared library:
+\begin{lstlisting}[]
+$ python waf install --install_shared_libs --install_path="./shared_test"
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item Copy shared library to a \ac{Raspi}'s home directory (Alternatively, Kodo can also generate static libraries):
+\begin{lstlisting}[]
+$ scp -r shared_test/include shared_test/libkodoc.so pi@<RASP_IP>:~/
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item Copy a binary using Kodo shared library to the \ac{Raspi}'s home directory:
+\begin{lstlisting}[]
+$ scp -r shared_test/encode_decode_simple pi@<RASP_IP>:~/
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\item Execute binary:
+\begin{lstlisting}[]
+$ ssh pi@<RASP_IP> ./encode_decode_simple
+Data decoded correctly
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Cross compiling Kodo applications works provided that above command
+returned "Data decoded correctly".
 
 %\item Navigate to the repository and configure \texttt{waf} by typing:
 %\texttt{python config.py} and select the 16th ``make specification'' file
