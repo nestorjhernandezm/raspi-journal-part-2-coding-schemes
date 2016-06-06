@@ -371,7 +371,7 @@ returned "Data decoded correctly".
 
 \end{enumerate}
 
-\subsection{Kodo Builds for the \ac{Raspi}, Platform Support and Documentation}
+\subsection{Kodo Builds for the \ac{Raspi}, Platform Support and Documentation (WHAT IS THE PURPOSE OF THIS SUBSECTION?)}
 
 You can check the build status of Kodo, Fifi and other relevant projects
 through their respective repository master branch on our buildbot page
@@ -387,6 +387,63 @@ at \cite{kododocs}.
 
 
 \subsection{Kodo python}
+
+Often when simplicity and fast prototyping is of higher importance than speed
+it is often desired to use a scripting language rather than the often faster
+compiled language. Kodo-python provides roughly similar bindings to the
+underlying C++11 implementation of Kodo as Kodo-cpp does. This means that
+python calls to Kodo-python are actually executed in the underlying C++11
+compilied code.
+
+Parsing calls and variables between Python and C++ compiled code is
+not free, but this small introduced overhead may in many cases be worth
+it to take advantage of Pythons and other scripting languages many
+benefits.
+
+Below is a short procedure to use Kodo-python in a \ac{Raspi}.
+
+One advantage of Python compared to Kodo-cpp is that only the Kodo-python
+library needs to be cross compiled. The python scripts using the Kodo
+library needs not to be cross compiled but simply copied to the same
+directory as .
+
+Kodo-python is available at \url{https://github.com/steinwurf/kodo-python}.
+
+
+
+\begin{lstlisting}[]
+$ apt-get update
+$ apt-get install python build-essential libpython-dev python-dev
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+% IN ARCH LINUX, MOD_PYTHON NEEDS TO BE INSTALLED
+
+
+Create a directory to hold our code:
+\begin{lstlisting}[]
+$ CODEDIR="${HOME}/code"
+$ mkdir -p ${CODEDIR}
+$ cd ${CODEDIR}
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\begin{lstlisting}[]
+$ git clone git@github.com:steinwurf/kodo-python.git 
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+\begin{lstlisting}[]
+$ cd kodo-python
+$ python2.7 waf configure --cxx_mkspec=cxx_raspberry_gxx49_arm
+$ python waf build
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+KODO-PYTHON IS NOT WORKING!! WAITING FOR HELP ON STEINWURF DEV.
 
 WRITE HOW TO RUN A KODO PYTHON SCRIPT IN THE RASPIS
 
@@ -405,8 +462,8 @@ from fabric.api import run, env, task
 # specified
 
 env.hosts = ['rasp00.domain.com','rasp01.domain.com','rasp02.domain.com']
-env.user = 'root'
-env.password = 'sdn'
+env.user = 'pi'
+env.password = 'raspberry'
 
 @task
 def install(program):
@@ -428,13 +485,91 @@ execute a script function by calling "fab install:feh"
 
 
 
-\subsection{Long running jobs over SSH (PUT THIS SECTION SOMEWHERE ELSE)}
+\subsection{Long running jobs using SSH}
 
-Problem when you logout, then applications will terminate. SCREEN is the answer.
+There may be times when it is desired to start a simulation that will
+run for days. For that purpose, it may not be desired to keep
+a \ac{SSH} connection open to the \ac{Raspi} risking that the connection
+will be interrupted and thus result in the \ac{Raspi} terminating
+the running simulation.
 
-EXAMPLE
+There exists a few methods to avoid this risk of simulations terminating
+unexpectedly. One method is to run a program within a \texttt{screen} session.
 
-\texttt{hello\_world} returns immediately. This is not always the case.
-Sometimes it is desired to run simulations that should run for days. 
-A software package called \texttt{screen} can be used for this purpose.
-Simply run ...
+\texttt{screen} enables a user to attach and detach the session as it is
+desired. Programs within the screen session just keeps running.
+
+The following procedure will present how to use SSH to
+\begin{enumerate}
+    \item login to a \ac{Raspi}
+    \item open a screen session
+    \item execute a command
+    \item detach from the screen session
+    \item terminate SSH connection
+    \item login to the \ac{Raspi} again
+    \item attach to screen session to see the program still running
+\end{enumerate}
+
+Start by establishing SSH connection to a \ac{Raspi} and open a screen session:
+\begin{lstlisting}[]
+$ SSH pi@<RASP_IP>
+$ screen
+Screen version 4.02.01 (GNU) 28-Apr-14
+...
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+Press space or return to to clear the shell.
+
+At this stage, we are in a screen session. Now execute a program that never ends:
+\begin{lstlisting}[]
+$ top
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Now that \texttt{top} is running, press Ctrl+a Crtl+d to detach from
+the \texttt{screen} session.
+
+Terminate the SSH connection and login again:
+\begin{lstlisting}[]
+$ exit
+$ SSH pi@<RASP_IP>
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Now that we are logged in to the \ac{Raspi} again, lets see if a
+\texttt{screen} session is still running:
+\begin{lstlisting}[]
+$ screen -list
+There is a screen on:
+	1668.pts-0.rasp09	(06/06/16 04:02:15)	(Detached)
+1 Socket in /var/run/screen/S-pi.
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+It can be seen that our session is still running and that we are
+currently not attached. Lets attach to the session:
+\begin{lstlisting}[]
+$ screen -r 1668.pts-0.rasp09
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+After attaching again, \texttt{top} should still be running. \texttt{screen}
+has a few more useful functionalities that is outside the scope of this
+paper.
+
+To terminate the \texttt{screen} session. First, terminate \texttt{top}
+by pressing 'q', and then type 'exit' two times to first exit the
+\texttt{screen} session and then terminate the \ac{SSH} connection:
+
+
+%Problem when you logout, then applications will terminate. SCREEN is the answer.
+
+%\texttt{hello\_world} returns immediately. This is not always the case.
+%Sometimes it is desired to run simulations that should run for days. 
+%A software package called \texttt{screen} can be used for this purpose.
+%Simply run ...
