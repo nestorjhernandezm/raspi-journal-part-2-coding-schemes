@@ -33,8 +33,17 @@ generation size for $GF(2)$ and $GF(2^8)$ respectively for a packet size
 of $B = 1600$ bytes. Figs. \ref{fig:enc_good_rasp1_packet_gf2} and 
 \ref{fig:enc_good_rasp1_packet_gf256} present the same metric but now as
 function of the packet size for $GF(2)$ and $GF(2^8)$ respectively. In this
-case the gneation size was set to $g = 16$ packets.
+case the generation size was set to $g = 16$ packets.
 
+Similarly, Fig. \ref{fig:enc_good_rasp2} shows the same set of
+measurements for the \ac{Raspi} 2. Hence, Figs. \ref{fig:enc_good_rasp2_gen_gf2}
+and \ref{fig:enc_good_rasp2_gen_gf256} present goodput as function of the
+generation size  and Figs. \ref{fig:enc_good_rasp2_packet_gf2} and 
+\ref{fig:enc_good_rasp2_packet_gf256} as a function of the packet size for the
+same cases mentioned previously. Therefore, we will proceed to make the
+results analysis with \ac{Raspi} 1 and indicate which similarities or
+differences occur for the \ac{Raspi} 2 and when do they occur.
+%
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
@@ -72,14 +81,42 @@ case the gneation size was set to $g = 16$ packets.
     {\small Encoder goodput measurements for the \ac{Raspi} 1} 
     \label{fig:enc_good_rasp1}
 \end{figure*}
+%
+As it can seen in the from: Figs. \ref{fig:enc_good_rasp1_gen_gf2},
+\ref{fig:enc_good_rasp1_gen_gf256}, \ref{fig:enc_good_rasp2_gen_gf2} and
+\ref{fig:enc_good_rasp2_gen_gf256}; which indicate the goodput dependency
+on the generation size, the encoding goodput gets reduced as the generation
+size increases, regardless of the \ac{Raspi} model observed. The reason
+is that the encoding operation processing is $\mathcal{O}(g)$ because
+it is required to create $g$ coding coefficients and do $g$ multiplications
+for each packet. This makes the goodput to scale as the inverse of the
+generation size.
 
-Similarly, Fig. \ref{fig:enc_good_rasp2} shows the same set of
-measurements for the \ac{Raspi} 2. Hence, Figs. \ref{fig:enc_good_rasp2_gen_gf2}
-and \ref{fig:enc_good_rasp2_gen_gf256} present goodput as function of the
-generation size  and Figs. \ref{fig:enc_good_rasp2_packet_gf2} and 
-\ref{fig:enc_good_rasp2_packet_gf256} as a function of the packet size for the
-same cases mentioned previously.
+In the sets of figures shown in Figs.~\ref{fig:enc_good_rasp1} and
+\ref{fig:enc_good_rasp2}, it can be observed that the goodput for $GF(2)$
+is higher than for $GF(2^8)$ but still around the same order of magnitud.
+This difference is explained by noticing that \ac{GF} arithmetics in the
+binary field are simply XOR or AND operations. These operations are
+implemented efficiently by most of the architectures nowday and are
+tailored to be fast in principle. However, the operations in $GF(2^8)$
+are more complex given that the finite field arithmetics have to be
+performed with lookup tables which at the end reduces the computing
+speed giving a lower goodput when compared with the binary field.
 
+In \ref{fig:enc_good_rasp1_gen_gf2}, \ref{fig:enc_good_rasp1_gen_gf256},
+\ref{fig:enc_good_rasp2_gen_gf2} and \ref{fig:enc_good_rasp2_gen_gf256};
+it can be seen the goodput trends of 5 codes as a function of
+the generation size: \ac{RLNC}, \ac{SRLNC} with $d = [0.02,\ 0.1]$
+and \ac{TSNC} with two parameters that we mention. The first of them,
+$steps$, is the number of density changes in the system, if any.
+The number of changes is equal to the number of regions minus 1, making
+$steps = \#regions - 1$ and $dep = e$. With these definitions, we first
+evaluate \ac{TSNC} with no changes, e.g. $steps=0$ and the two amounts
+for dependent packets mentioned earlier. In this way the budget is
+either $g + 8$ or $g + 16$. The goal with setting first \ac{TSNC} with
+these values is to observe first the sole effect of the budget in the code
+since $steps = 0$ implies no density changes during the whole process.
+%
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
