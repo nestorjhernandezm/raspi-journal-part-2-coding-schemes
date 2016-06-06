@@ -153,7 +153,7 @@ a fixed generation size. For \ac{TSNC} in this case, we allow for 5 density
 changes during the generation transmission and again consider the same
 budgets as before. In all the cases, we clearly observe that there is an
 optimal packet size to operate with. When reviewing the specifications
-of the \ac{Raspi}, both models use a L1 cache of 16 KiB. Hence, the trends
+of the \ac{Raspi} 1, it uses a L1 cache of 16 KiB. Hence, the trends
 in the packet size can be explained as follows: For low packet sizes,
 the data processing does not overload the \ac{CPU} of the \ac{Raspi}, so
 the goodput progressively increases given that we simply process more
@@ -166,7 +166,26 @@ size, the \ac{CPU} just queues processing which incurs in larger delay
 reducing the goodput.
 
 If we consider the previous effect when reviewing the trends in the
-mentioned figures,
+mentioned figures, in all the models we observe that the maximum does not
+come at 16 KiB but at a smaller value depending on the model, field size
+and coding scheme considered. The reason is that given there are various
+tasks from other applications for proper functioning running in the
+\ac{Raspi} at the same time as coding, the cache space is filled also
+with the data from these tasks, thus diminishing the cache space available
+for coding.
+
+For the \ac{Raspi} 1 model, we observe in
+Fig.~\ref{fig:enc_good_rasp1_packet_gf2} that the critical
+packet size for \ac{RLNC} using $GF(2)$ occurs at 1 KiB whereas for the
+sparse codes is close to 4 KiB in the most of the cases for $GF(2)$. This
+difference takes place since the sparse codes are much less complex to
+process than \ac{RLNC}, which turns into less data loading in the
+cache for doing computations. However, for \ac{RLNC} given that it is
+a dense code since $d \to 1$, \ac{RLNC} packets load much more data to
+the cache quite easily making this effect visible for smaller packet sizes.
+Fig.~\ref{fig:enc_good_rasp1_packet_gf256}, although the ideal packet
+size remains the same for \ac{RLNC}, for sparse codes it locates closer to
+8 KiB.
 %
 \begin{figure*}
     \centering
