@@ -372,8 +372,59 @@ Center SFB 912 – HAEC.}
 %% optional
 \abbreviations{The following abbreviations are used in this manuscript:\\
 
-\noindent NC: Network Coding\\
-RLNC: Random Linear Network Coding\\}
+% Use these two commands to get used acronyms
+%used=$(grep -ohR '\\ac{[^}]*' *.tex | cut -f2 -d'{' | sort | uniq)
+%for ac in ${used[@]}; do echo "$(grep -R "acro{${ac}}" acronym.tex)"; done | cut -f2-4 -d'{'
+% Use text editor to replace '}{' --> ': ' and '}' --> '\\'
+
+\noindent ACK: Acknowledgment\\
+AMR: Adaptive Multi-Rate\\
+ARM: Advanced RISC Machine\\
+BLAS: Basic Linear Algebra Subprograms\\
+CPU: Central Processing Unit\\
+CSMA/CA: Carrier Sense Multiple Access with Collision Avoidance\\
+GB: Gigabyte\\
+D2D: Device to Device\\
+DAG: Direct Acyclic Graph\\
+DC: Direct Current\\
+DCF: Distributed Coordination Function\\
+GF: Galois Field\\
+GPU: Graphic Processing Unit\\
+IP: Internet Protocol\\
+IPTV: Internet Protocol TeleVision\\
+LAN: Local Area Network\\
+l.d.: linearly dependent\\
+l.i.: linearly independent\\
+LNC: Linear Network Coding\\
+LOS: Line Of Sight\\
+MAC: Medium Access Control\\
+MIMO: Multiple Input Multiple Output\\
+NC: Network Coding\\
+NLOS: Non Line Of Sight\\
+OSI: Open Systems Interconnect\\
+PC: Personal Computer\\
+PNC: Physical layer Network Coding\\
+QoE: Quality of Experience\\
+RLNC: Random Linear Network Coding\\
+SRLNC: Sparse Random Linear Network Coding\\
+SIMD: Single Instruction Multiple Data\\
+SIMD: Single Instruction Multiple Data\\
+SMP: Symmetric Multiprocessor\\
+SOC: System on Chip\\
+SSE: Streaming SIMD Extensions\\
+TSNC: Tunable Sparse Network Coding\\
+VoIP: Voice over Internet Protocol\\
+WLAN: Wireless Local Area Network\\
+dof: degrees of freedom\\
+IP: Internet Protocol\\
+OS: Operating System\\
+NFS: Network File System\\
+RAM: Random Access Memory\\
+Raspi: Raspberry Pi\\
+SSH: Secure Shell\\
+USB: Universal Serial Bus\\
+SCP: Secure copy\\
+Telnet: Telnet}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
