@@ -20,12 +20,11 @@ results for the \ac{Raspi} 1 and later continue with the \ac{Raspi} 2.
 
 \subsection{Goodput}
 For the goodput, we separate the results according to their time benchmarks
-as we did in Section \ref{sec:metrics} sicne their consider different
+as we did in Section \ref{sec:metrics} since their consider different
 methodologies. We proceed first with the measurements related to the encoder
 and later review the case of the decoder.
 
 \subsubsection{Encoding}
-
 Fig. \ref{fig:enc_good_rasp1} shows the results of the encoder goodput
 measurements for the \ac{Raspi} 1. Figs. \ref{fig:enc_good_rasp1_gen_gf2}
 and \ref{fig:enc_good_rasp1_gen_gf256} present goodput as function of the
@@ -138,13 +137,36 @@ For example, if we consider \ac{TSNC} with $dep=16$ and $g = 16$, the budget
 in this case permits to send up to 32 packets which is $2\times$ the generation
 size for an overhead of $100\%$ excluding the one from the coding
 coefficients. This happens because \ac{TSNC} is allowed to add too much
-redundancy in this case, which permits it to use a very low code density $d$.
-For \ac{RLNC} this is not the case, since the occurrence of \ac{l.d.} coded
-packets is low. Even for $GF(2)$, the average amount of redundancy has proven
-to be 1.6 packets after $g$ have been transmitted, much less than the
-cases where sparse codes are employed. Overall, we observe that there is
-a trade-off between goodput and \ac{l.d.} coded packets transmission
-overhead.
+redundancy in this case, which permits it to use a, single in this case,
+very low code density $d$. For \ac{RLNC} this is not the case, since the
+occurrence of \ac{l.d.} coded packets is low. Even for $GF(2)$, the
+average amount of redundancy has proven to be 1.6 packets after $g$ have
+been transmitted, much less than the cases where sparse codes are
+utilized. Overall, we observe that there is a trade-off between goodput
+and \ac{l.d.} coded packets transmission overhead.
+
+For Figs.~\ref{fig:enc_good_rasp1_packet_gf2},
+\ref{fig:enc_good_rasp1_packet_gf256}, \ref{fig:enc_good_rasp2_packet_gf2}
+and \ref{fig:enc_good_rasp2_packet_gf256}; we see the packet
+size effect in the encoding goodput in both \ac{Raspi} models and for
+a fixed generation size. For \ac{TSNC} in this case, we allow for 5 density
+changes during the generation transmission and again consider the same
+budgets as before. In all the cases, we clearly observe that there is an
+optimal packet size to operate with. When reviewing the specifications
+of the \ac{Raspi}, both models use a L1 cache of 16 KiB. Hence, the trends
+in the packet size can be explained as follows: For low packet sizes,
+the data processing does not overload the \ac{CPU} of the \ac{Raspi}, so
+the goodput progressively increases given that we simply process more
+data as the packet size increases. However, after a certain packet size,
+the goodput gets affected since the cache starts to saturate. The packets
+towards the cache needs to have more processing. Also important, the
+\ac{CPU} needs to allocate computational resources to other processes from
+the different tasks running in the \ac{Raspi}. Beyond this critical packet
+size, the \ac{CPU} just queues processing which incurs in larger delay
+reducing the goodput.
+
+If we consider the previous effect when reviewing the trends in the
+mentioned figures,
 %
 \begin{figure*}
     \centering
@@ -183,9 +205,7 @@ overhead.
     {\small Encoder goodput measurements for the \ac{Raspi} 2}
     \label{fig:enc_good_rasp2}
 \end{figure*}
-
-Figures description
-
+%
 \subsubsection{Decoding}
 
 We perform the same evaluation as before but now we focus on the decoder.
