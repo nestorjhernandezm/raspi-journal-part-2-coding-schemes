@@ -386,66 +386,66 @@ at \cite{kododocs}.
 
 
 
-\subsection{Kodo python}
-
-Often when simplicity and fast prototyping is of higher importance than speed
-it is often desired to use a scripting language rather than the often faster
-compiled language. Kodo-python provides roughly similar bindings to the
-underlying C++11 implementation of Kodo as Kodo-cpp does. This means that
-python calls to Kodo-python are actually executed in the underlying C++11
-compilied code.
-
-Parsing calls and variables between Python and C++ compiled code is
-not free, but this small introduced overhead may in many cases be worth
-it to take advantage of Pythons and other scripting languages many
-benefits.
-
-Below is a short procedure to use Kodo-python in a \ac{Raspi}.
-
-One advantage of Python compared to Kodo-cpp is that only the Kodo-python
-library needs to be cross compiled. The python scripts using the Kodo
-library needs not to be cross compiled but simply copied to the same
-directory as .
-
-Kodo-python is available at \url{https://github.com/steinwurf/kodo-python}.
-
-
-
-\begin{lstlisting}[]
-$ apt-get update
-$ apt-get install python build-essential libpython-dev python-dev
-\end{lstlisting}
-\FloatBarrier
-\vspace{-5mm}
-% IN ARCH LINUX, MOD_PYTHON NEEDS TO BE INSTALLED
-
-
-Create a directory to hold our code:
-\begin{lstlisting}[]
-$ CODEDIR="${HOME}/code"
-$ mkdir -p ${CODEDIR}
-$ cd ${CODEDIR}
-\end{lstlisting}
-\FloatBarrier
-\vspace{-5mm}
-
-\begin{lstlisting}[]
-$ git clone git@github.com:steinwurf/kodo-python.git 
-\end{lstlisting}
-\FloatBarrier
-\vspace{-5mm}
-
-\begin{lstlisting}[]
-$ cd kodo-python
-$ python2.7 waf configure --cxx_mkspec=cxx_raspberry_gxx49_arm
-$ python waf build
-\end{lstlisting}
-\FloatBarrier
-\vspace{-5mm}
-
-KODO-PYTHON IS NOT WORKING!! WAITING FOR HELP ON STEINWURF DEV.
-
-WRITE HOW TO RUN A KODO PYTHON SCRIPT IN THE RASPIS
+%\subsection{Kodo python}
+%
+%Often when simplicity and fast prototyping is of higher importance than speed
+%it is often desired to use a scripting language rather than the often faster
+%compiled language. Kodo-python provides roughly similar bindings to the
+%underlying C++11 implementation of Kodo as Kodo-cpp does. This means that
+%python calls to Kodo-python are actually executed in the underlying C++11
+%compilied code.
+%
+%Parsing calls and variables between Python and C++ compiled code is
+%not free, but this small introduced overhead may in many cases be worth
+%it to take advantage of Pythons and other scripting languages many
+%benefits.
+%
+%Below is a short procedure to use Kodo-python in a \ac{Raspi}.
+%
+%One advantage of Python compared to Kodo-cpp is that only the Kodo-python
+%library needs to be cross compiled. The python scripts using the Kodo
+%library needs not to be cross compiled but simply copied to the same
+%directory as .
+%
+%Kodo-python is available at \url{https://github.com/steinwurf/kodo-python}.
+%
+%
+%
+%\begin{lstlisting}[]
+%$ apt-get update
+%$ apt-get install python build-essential libpython-dev python-dev
+%\end{lstlisting}
+%\FloatBarrier
+%\vspace{-5mm}
+%  % IN ARCH LINUX, MOD_PYTHON NEEDS TO BE INSTALLED
+%
+%
+%Create a directory to hold our code:
+%\begin{lstlisting}[]
+%$ CODEDIR="${HOME}/code"
+%$ mkdir -p ${CODEDIR}
+%$ cd ${CODEDIR}
+%\end{lstlisting}
+%\FloatBarrier
+%\vspace{-5mm}
+%
+%\begin{lstlisting}[]
+%$ git clone git@github.com:steinwurf/kodo-python.git 
+%\end{lstlisting}
+%\FloatBarrier
+%\vspace{-5mm}
+%
+%\begin{lstlisting}[]
+%$ cd kodo-python
+%$ python2.7 waf configure --cxx_mkspec=cxx_raspberry_gxx49_arm
+%$ python waf build
+%\end{lstlisting}
+%\FloatBarrier
+%\vspace{-5mm}
+%
+%KODO-PYTHON IS NOT WORKING!! WAITING FOR HELP ON STEINWURF DEV.
+%
+%WRITE HOW TO RUN A KODO PYTHON SCRIPT IN THE RASPIS
 
 \subsection{Fabric}
 
@@ -463,7 +463,6 @@ often leads to a lot of repetitive work. E.g.
 with multiple devices from a single \ac{PC}. The code below provides
 a small script that can perform the few items above:
 
-%SHORT INTRO. EXPLAIN A FEW USECASES FOR FABRIC. E.G. REBOOT, INSTALL PACKAGE, RUN SCRIPT ON MULTIPLE RASPIS. COPY FILES TO/FROM PC AND MULTIPLE RASPIS 
 
 
 % Exit chroot, umount, and write to memory card

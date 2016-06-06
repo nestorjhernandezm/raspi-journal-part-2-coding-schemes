@@ -252,7 +252,7 @@ leading \$ or \# is the terminal output.
 % Root example
 \begin{lstlisting}[]
 $ whoami
-chres
+<USERNAME>
 $ sudo whoami
 root
 \end{lstlisting}
@@ -274,11 +274,11 @@ $ unzip ${IMAGE}.zip
 A more recent version of Raspbian lite may be available on 
 \url{http://downloads.raspberrypi.org/raspbian_lite/images}.
 
-\subsection{Mount image}
+\subsection{The image}
 
 After Raspbian lite has been unpacked, there should be an .img file in the directory.
 "fdisk" can be used to display what is inside. Pass the arguments "-u sectors" to
-display the sizes in sectors and "-l" to display partitions and exit.
+display the sizes in sectors and "-l" to display partitions and exit fdisk again.
 
 % Check out the image   % The dollar hack was to fix vim syntax
 \begin{lstlisting}[literate={DOLLAR}{\$}1]
@@ -296,21 +296,50 @@ Device                               Boot  Start     End Sectors  Size Id Type
 \end{lstlisting}
 \FloatBarrier
 
-The image contains two partitions. The first one of starting at sector 8192 and
+The image is in total 2709504 sectors (1.3GiB) in size and contains two
+partitions. The first one of starting at sector 8192 and
 the other partition starting at sector 137216. The partitions is of type FAT32
 and Linux and have sizes 63M and 1.2G. This indicates that the first partition
-is most likely a boot partition and the second partition is a traditional file
-system. Actually, it is a linux root filesystem (i.e. /).
+is most likely a boot partition and the second partition is a traditional linux file
+system. Actually, it is the linux root filesystem (i.e. /).
+
+\subsection{(Optional) Resize image}
+1.2G is not very much to hold the root filesystem given that it is desired to
+in later steps alter the files and install more packages. It may therefore be
+neccessary to increase the partition size slightly.
+The following steps will therefore illustrate how image and root filesystem
+can be expanded by one \ac{GB}.
+
+First, expand the image one \ac{GB}:
+\begin{lstlisting}[]
+# dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img
+\end{lstlisting}
+\FloatBarrier
+
+Use \texttt{fdisk} to check that the image is now one \ac{GB} bigger:
+\begin{lstlisting}[literate={DOLLAR}{\$}1]
+DOLLAR fdisk -u sectors -l ${IMAGE}.img
+Disk 2016-05-27-raspbian-jessie-lite.img: 2.3 GiB, 2461007872 bytes, 4806656 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x6fcf21f3
+
+Device                               Boot  Start     End Sectors  Size Id Type
+2016-05-27-raspbian-jessie-lite.img1        8192  137215  129024   63M  c W95 FAT32 (LBA)
+2016-05-27-raspbian-jessie-lite.img2      137216 2709503 2572288  1.2G 83 Linux
+\end{lstlisting}
+\FloatBarrier
 
 
 
 %We see that the boot and root partitions starts at sector 8192 and 137216 respectivly.
 %We also notice that each sector is 512 bytes.
-
-
 %On newer systems, we can mount the device easier using "losetup --show -f -P IMAGE"
-
 %Mount root partition:
+
+\subsection{Mount image}
 
 To browser and alter the files in the image, it is possible to mount the partitions.
 
