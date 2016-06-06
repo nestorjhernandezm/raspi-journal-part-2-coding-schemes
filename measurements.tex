@@ -360,16 +360,30 @@ performance of sparse codes is similar.
 %
 \subsection{Average Power}
 With the energy measurement setup described in Section
-\ref{sec:energy_metrics_methods}, we compute the metrics described there.
-We first proceed with the average power consumption of the \ac{Raspi} 1
-in Fig.~\ref{fig:current_rasp1} and the \ac{Raspi} 2 in
-Fig.~\ref{fig:current_rasp2}.
+\ref{sec:energy_metrics_methods}, we compute the average power of each
+device from their current consumption across time in
+Figs.~\ref{fig:current_rasp1} and \ref{fig:current_rasp2}. In each
+figure, the eletrical current values are classified into three possible
+currents: Idle, transition and processing. These values are identified by
+our post-processing. Later, the values in red are idle currents, green for
+transitions and blue for processing.
 
+For a given configuration of a coding scheme, device type and its parameters,
+only electrical current processing values are present. In general, we
+associate the current samples from a given configuration with its goodput
+through a timestamp. In this way, we relate goodput and power / energy
+measurements. Once identified the current values, we compute the averages
+for each configuration as described in Section
+\ref{sec:energy_metrics_methods}. In the presented current samples, we observe
+a presence of bursty noise. Nevertheless, by taking the average as described
+in \eqref{eq:avg_current}, we remove this contribution in the average
+processing current.
+%
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.15\textwidth]{images/06_06_2016/current_vs_sec_raspberry_change_gen_from_-10sec_to_500sec.eps}
+        \includegraphics[width=1.1\textwidth]{images/06_06_2016/current_vs_sec_raspberry_change_gen_from_-10sec_to_500sec.eps}
         \caption[]%
         {{\small Current for the \ac{Raspi} 1 model}}
         \label{fig:current_rasp1}
@@ -377,7 +391,7 @@ Fig.~\ref{fig:current_rasp2}.
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.15\textwidth]{images/06_06_2016/current_vs_sec_raspberry2_change_gen_from_-10sec_to_500sec.eps}
+        \includegraphics[width=1.1\textwidth]{images/06_06_2016/current_vs_sec_raspberry2_change_gen_from_-10sec_to_500sec.eps}
         \caption[]%
         {{\small Current for the \ac{Raspi} 2 model}}
         \label{fig:current_rasp2}
@@ -387,13 +401,42 @@ Fig.~\ref{fig:current_rasp2}.
     {\small Current consumption for each \ac{Raspi} model}
     \label{fig:current_rasp}
 \end{figure*}
+%
+By reviewing the processing current samples in Figs.~\ref{fig:current_rasp1}
+and \ref{fig:current_rasp2}, we observe that the average processing current
+does not change significantly for each \ac{Raspi} model in all the shown
+configurations. Therefore, we approximate the current consumption
+for the devices and compute the average power as indicated in
+\eqref{eq:avg_power}. The results are shown in
+Table~\ref{tab:average_power_table}.
 
-Average current description. Include a table mentioning the current values
-and the resulting power values.
+\begin{table}[H]
+\center
+\caption{Average power for the \ac{Raspi} models}
+\begin{tabular}{|r|r|r|r|}
 
+\hline
+\ac{Raspi} Model & $I_{idle,avg}$ (A)& $I_{proc,avg}$ (A) & $P_{avg}$ (W) \\
+\hline
+\hline
+    \ac{Raspi} 1 &      0.320        &            0.360    & 0.200\\
+\hline
+    \ac{Raspi} 2 &      0.216        &            0.285    & 0.345\\
+\hline
+\end{tabular}
+\vspace{0.2cm}
+\label{tab:average_power_table}
+\end{table}
+%
+From Table~\ref{tab:average_power_table}, we notice that the power expenditure
+for both models is almost the same. Thus, the energy behaviour is mostly
+dependent on the goodput trends since the power is just an scaling constant.
+%
 \subsection{Energy per bit}
 With power and goodput measurements, we compute the energy per bit of
-the previously mentioned cases in the same fashion as before.
+the previously mentioned cases as described in \eqref{eq:energy_per_bit}.
+The trends of the energy per bit are simply the inverse of the goodput since
+both metrics are related by an inverse law.
 
 \subsubsection{Encoding}
 
@@ -575,8 +618,8 @@ each coded packet was fixed to $1536$~bytes since that is the typical
 size of an Ethernet frame. The blocked operations were performed dividing
 the matrices in squared sub-blocks of $16,\ 32\ ,\ 64,\ldots,\ 1024$ operands
 (words in the finite field) in height and width. The figures show only
-block sizes of $16 \times 16$ or $32 \times 32$ operands since with bigger
-block sizes, the operands do not fit in L1 cache.
+block sizes of $16 \times 16$, $32 \times 32$, $64 \times 64$ operands
+since with bigger block sizes, the operands do not fit in L1 cache.
 
 The following test cases were considered:
 
@@ -604,11 +647,11 @@ the time recorded includes the dependencies resolving, the creation of the
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_1024.pdf}
-\caption{Encoding and Decoding performance for g = 1024 \cite{wunderlich2015network}}
+\caption{Encoding and Decoding performance for $g = 1024$. Block size: $32 \times 32$. \cite{wunderlich2015network}}
 \label{enc_dec1024}
 \end{figure}
 
-For $g=$ 1024, the blocked baseline measurements outperforms the non blocked
+For $g= 1024$, the blocked baseline measurements outperforms the non blocked
 variant. This means that making the matrix multiplication algorithm cache
 efficient brings an increase in throughput by a factor of 2.83. When using the
 algorithm described in Section~\ref{sub:implementation-multicore},
@@ -617,14 +660,14 @@ Similarly, decoding with four codes is 3.05 times faster, on average, than
 decoding with a single core. Figure~\ref{enc_dec1024} shows that the
 implemented algorithm, by exploiting cache efficiency and only three extra
 cores provides a gain of 10 folds compared with traditional non-blocked
-algorithms. With $g$ = 1024, the matrix inversion becomes more expensive
+algorithms. With $g = 1024$, the matrix inversion becomes more expensive
 than at smaller generations sizes. Therefore, the decoding throughput
 is 46\% of the encoding throughput.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_128.pdf}
-\caption{Encoding and Decoding performance for g = 128 \cite{wunderlich2015network}}
+\caption{Encoding and Decoding performance for $g = 128$. Block size: $64 \times 64$ \cite{wunderlich2015network}}
 \label{enc_dec128}
 \end{figure}
 
@@ -632,18 +675,18 @@ For $g$ = 128, the differences between the baselines operations show that a
 blocked algorithm is 15\% faster than the non-blocked variant. Encoding with
 four cores is 2.82 times faster than with a single core. Due to the smaller
 matrix sizes, the gain when using blocked operations in the baselines is not
-that significant when compared with $g$ = 1024. For the same reason, the matrix
+that significant when compared with $g = 1024$. For the same reason, the matrix
 inversion is less expensive. As a consequence, the decoding throughput is 71\%
 of the encoding throughput.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_16.pdf}
-\caption{Encoding and Decoding performance for g = 16 \cite{wunderlich2015network}}
+\caption{Encoding and Decoding performance for $g = 16$. Block size: $16 \times 16$ \cite{wunderlich2015network}}
 \label{enc_dec16}
 \end{figure}
 
-When $g$ = 16, the gains of blocked operations are negligible compared with
+When $g = 16$, the gains of blocked operations are negligible compared with
 the non-blocked ones. The reason behind this behavior is that all the data
 fits in the L1 cache. For the scheduled version, since the problem to solve
 is so small, the gain when using four cores is a factor of 1.68 compared
