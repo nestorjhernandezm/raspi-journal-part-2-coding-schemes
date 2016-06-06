@@ -240,6 +240,7 @@ $ export IMAGE="2016-05-27-raspbian-jessie-lite"
 $ export WORKDIR="${HOME}/Raspbian"
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 A final thing to notice is the way \$ and \# are used in the code blocks. \$
 means that the command can be run as a normal user where \# indicates that the
@@ -257,6 +258,7 @@ $ sudo whoami
 root
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Next, we make the working directory and change directory (cd) into the working
 directory. We can then use wget to download Raspbian lite. Unpack the image
@@ -270,6 +272,7 @@ $ wget http://kom.aau.dk/project/TuneSCode/raspi/${IMAGE}.zip
 $ unzip ${IMAGE}.zip
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 A more recent version of Raspbian lite may be available on 
 \url{http://downloads.raspberrypi.org/raspbian_lite/images}.
@@ -303,18 +306,20 @@ and Linux and have sizes 63M and 1.2G. This indicates that the first partition
 is most likely a boot partition and the second partition is a traditional linux file
 system. Actually, it is the linux root filesystem (i.e. /).
 
-\subsection{(Optional) Resize image}
+\subsection{Resize image}
 1.2G is not very much to hold the root filesystem given that it is desired to
 in later steps alter the files and install more packages. It may therefore be
 neccessary to increase the partition size slightly.
 The following steps will therefore illustrate how image and root filesystem
 can be expanded by one \ac{GB}.
 
-First, expand the image one \ac{GB}:
+First, expand the image one \ac{GB} and wait for data to be completely written
+the disk:
 \begin{lstlisting}[]
-# dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img
+# dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img && sync
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Use \texttt{fdisk} to check that the image is now one \ac{GB} bigger:
 \begin{lstlisting}[literate={DOLLAR}{\$}1]
@@ -331,12 +336,48 @@ Device                               Boot  Start     End Sectors  Size Id Type
 2016-05-27-raspbian-jessie-lite.img2      137216 2709503 2572288  1.2G 83 Linux
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
-Now, to expand the root filesystem it is required to first remove the second
-and then add it again one \ac{GB} bigger:
+Now, to expand the root filesystem it is required to first remove the Linux partition
+and then add it again one \ac{GB} bigger.
+We use fdisk for the task. The echo's within the parenthesis will function as
+key-presses in \texttt{fdisk} and hence delete last partition, create a new
+primary partition, print new partition table, and write new partition table
+to the image:
 
 \begin{lstlisting}[]
-# (echo d; echo ; echo n; echo p; echo 3; echo 137216; echo ; echo w) | fdisk ${IMAGE}.img
+# (echo d; echo ; echo n; echo p; echo ; echo 137216; echo ; echo p; echo w) | fdisk ${IMAGE}.img
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Make the Raspbian image available as a block device: 
+\begin{lstlisting}[]
+# DEV=$(losetup --show -f -P ${IMAGE}.img); echo $DEV
+/dev/loop0
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+We see that the image is now available as /dev/loop0. Use \texttt{lsblk}
+to view the partitions of our image:
+
+\begin{lstlisting}[]
+# lsblk
+NAME      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+...
+loop0       7:0    0  2.3G  0 loop 
+|-loop0p1 259:2    0   63M  0 loop 
+|-loop0p2 259:3    0  2.2G  0 loop
+...
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+Check and resize the root filesystem:
+\begin{lstlisting}[]
+# e2fsck -f ${DEV}p2
+# resize2fs ${DEV}p2
 \end{lstlisting}
 \FloatBarrier
 
@@ -348,21 +389,26 @@ and then add it again one \ac{GB} bigger:
 
 \subsection{Mount image}
 
-To browser and alter the files in the image, it is possible to mount the partitions.
+Browsing and altering the files in the image is easy. Simply mount the partitions.
+%To browser and alter the files in the image, it is possible to mount the partitions.
 
 Lets first mount the root partition. This is done by first creating a new folder
-that we will call root which will be located in our working directory. After this,
-we mount the partition starting at sector 137216. To provide this offset information
-to mount, we need to find the offset in bytes. From the fdisk command we could also
-see that each sector is 512 bytes. Thus, we multiply the sector size and the sector
-start to get the offset in bytes.
+that we will name \texttt{root} which will be located in our working directory.
+After this, simply mount the partitions:
+%After this,
+%we mount the partition starting at sector 137216. To provide this offset information
+%to mount, we need to find the offset in bytes. From the fdisk command we could also
+%see that each sector is 512 bytes. Thus, we multiply the sector size and the sector
+%start to get the offset in bytes.
 
 \begin{lstlisting}[]
 $ export ROOTDIR="${WORKDIR}/root"
 $ mkdir -p ${ROOTDIR}
-# mount -o loop,offset=$((137216*512)) ${IMAGE}.img ${ROOTDIR}
+# mount ${DEV}p2 ${ROOTDIR}
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
+%# mount -o loop,offset=$((137216*512)) ${IMAGE}.img ${ROOTDIR}
 
 After this, we can also mount the boot partition inside the newly mounted
 root filesystem. This is useful because that partition will be mounted
@@ -371,9 +417,11 @@ this image. It is therefore the natural place to mount it for later purposes.
 
 Mount boot partition:
 \begin{lstlisting}[]
-# mount -o loop,offset=$((8192*512)) ${IMAGE}.img ${ROOTDIR}/boot
+# mount ${DEV}p1 ${ROOTDIR}/boot
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
+%# mount -o loop,offset=$((8192*512)) ${IMAGE}.img ${ROOTDIR}/boot
 
 We can now change all the files in the disk image as desired.
 
@@ -411,6 +459,7 @@ b8:27:eb:54:9c:64 rasp02
 b8:27:eb:95:bd:11 rasp03
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Provided that each \ac{Raspi} will have knowledge of all other \ac{Raspi}s in
 the testbed, it still needs to know which name to give itself.
@@ -435,6 +484,7 @@ if [ ! -z $hostname ]; then
 fi
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Line 1 tells the system to interpret the script using Bash. Line 3 gets the
 path of the script itself. Line 4 gets the MAC address. This script will be
@@ -454,6 +504,7 @@ $ wget http://kom.aau.dk/project/TuneSCode/raspi/rasp_config.zip
 # unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 "nodes.csv" can be changed using a text editor. For vim, this could be done
 the following way:
@@ -461,6 +512,7 @@ the following way:
 # vim ${ROOTDIR}/home/pi/rasp_config/nodes.csv
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 
 Finally, to actually make the \ac{Raspi}s change hostname, we have to make
@@ -473,6 +525,7 @@ can be opened with your favorite text editor.
 bash /home/pi/rasp_config/set_hostname"
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 
 %This can be done by inserting a call to the script
@@ -519,6 +572,7 @@ qemu-arm (enabled):
     detector = 
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 % This was neccessary on arch
 %# update-binfmts --importdir /var/lib/binfmts/ --import
 
@@ -529,6 +583,7 @@ is not the case, then try enabling it:
 # update-binfmts --enable qemu-arm
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Provided that qemu-arm is enabled, we should now be able to change root (chroot)
 into our Raspbian lite image. Change root is a method i linux that enables
@@ -546,6 +601,7 @@ root filesystem. Then line 2 copies resolv.conf.
 # cp /etc/resolv.conf etc/resolv.conf
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Now, because of the ARM architecture, it is also required to copy
 /usr/bin/qemu-arm-static into the image before we can continue:
@@ -555,6 +611,7 @@ Now, because of the ARM architecture, it is also required to copy
 # cp /usr/bin/qemu-arm-static usr/bin
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 The final preparation before chaning root is to populate the directories proc,
 sys, and dev:
@@ -566,6 +623,7 @@ sys, and dev:
 # mount --rbind /dev dev/
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Finally, the filesystem is ready for us to change root. This can be done with
 "proot". It may be required to install proot:
@@ -575,6 +633,7 @@ Finally, the filesystem is ready for us to change root. This can be done with
 # proot -q qemu-arm-static -S ${ROOTDIR}
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Most available online material uses the more known chroot command as written in
 the code block below. This did not work correctly in our machines, but we show
@@ -585,6 +644,7 @@ it as an alternative in case proot may not work on other systems.
 # chroot ${ROOTDIR} /usr/bin/qemu-arm-static /bin/bash    (ALTERNATIVE TO proot)
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 If everything went well, we should now be standing in the Raspbian lite filesystem
 under its root. Optionally, we can change the prompt title to indicate that we
@@ -595,6 +655,7 @@ are chrooted:
 # export PS1="(chroot) $PS1"
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 The Raspbian lite system should now be possible to use as if it had been booted
 in a \ac{Raspi}. The only difference is that the laptop that we are using is
@@ -607,6 +668,7 @@ upgrade, and install software packages:
 # apt-get upgrade
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Lets install some useful applications:
 % Install packages
@@ -614,6 +676,7 @@ Lets install some useful applications:
 # apt-get install vim git screen
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 All the changes that are made here will exists in all \ac{Raspi}s when the
 image is written to a memory card.
@@ -677,6 +740,7 @@ will disappear when the machine is rebooted.
 # git clone https://github.com/chesty/overlayroot.git $OVERLAYROOTDIR
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 To enable the overlaying filesystem it is required to generate an initial \ac{RAM}
 file system (initramfs). Initramfs is an initial filesystem that gets loaded into
@@ -690,6 +754,7 @@ For this purpose, we need BuxyBox:
 # apt-get install busybox
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Add and activate the overlaying filesystem, we need to add the scripts and tell initramfs
 to load the overlaying filesytem:
@@ -701,6 +766,7 @@ to load the overlaying filesytem:
 # echo "overlay" > /etc/initramfs-tools/modules
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Raspbian lite uses a "u-boot" to boot, so it should be made aware of the
 initramfs that we will generate.
@@ -710,6 +776,7 @@ initramfs that we will generate.
 # echo "initramfs init.gz" > /boot/config.txt
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 Finally, lets generate the image. This is done using "mkinitramfs", that will
 by default look for the kernel modules of the current system. Remember we are
@@ -721,6 +788,7 @@ can be found in "/lib/modules".
 # ls /lib/modules/
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 For \ac{Raspi} 1, our kernel modules was "4.4.11+". The other modules in /lib/modules
 is for \ac{Raspi} 2.
@@ -732,6 +800,7 @@ Thus, to run mkinitramfs, type in the correct kernel version:
 # mkinitramfs -o /boot/init.gz -k 4.4.11+
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 This should generate a new initial \ac{RAM} filesystem that will overlay a \ac{RAM} filesystem.
 
@@ -749,6 +818,7 @@ and unmounting all the directories we mounted:
 # losetup -d WHICH_NUMBE.img
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 If successfully unmounted, you can insert a memory card in your machine. In our
 system, this memory card was available under /dev/mmcblk0, but this may be
@@ -764,11 +834,19 @@ Below is a few commands that may help you to deduce which device is correct:
 # df -h
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 For us, the device was /dev/mmcblk0, so we write the image to that device:
 \begin{lstlisting}[]
 # dd if=${IMAGE}.img of=/dev/mmcblk0 bs=4M
 \end{lstlisting}
 \FloatBarrier
+\vspace{-5mm}
 
 
+\subsection{Persistant home directory in the Raspberry Pis (maybe this section should be put just after overlayfs)}
+
+Provided that a stacked filesystem was configured to make the root
+filesystem forget chances upon reboots is not always desired. 
+
+WRITE THIS
