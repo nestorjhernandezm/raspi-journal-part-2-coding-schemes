@@ -22,15 +22,12 @@ network coding library in an easy way.
 
 %This section will present a testbed of thirty \ac{Raspi}s and a \ac{PC}
 The testbed consists of thirty \ac{Raspi}s that will be setup and controlled
-by a testbed administrator from a \ac{PC}.
-%Twenty \ac{Raspi} 1 model B revision 2 and ten \ac{Raspi} 2 model B V1.1.
-The \ac{Raspi}s are each equipped with a memory card and connected to the
-university network by wire using their ethernet interface (eth0).
-
-To easily discover the \ac{Raspi}s within the university network,
+by a testbed administrator from a \ac{PC}. The \ac{Raspi}s are each equipped
+with a memory card and connected to the
+university network by wire using their ethernet interface (eth0). To easily
+discover the \ac{Raspi}s within the university network,
 they have all been assigned a unique name under a common domain.
 This eliminates the need to remember their individual \ac{IP} addresses.
-
 A sketch of the testbed is depicted in Figure~\ref{fig:testbed_setup}.
 We have two types of \ac{Raspi}s in our setup.
 Table~\ref{tab:rasp_naming} shows the naming convention.
@@ -40,8 +37,8 @@ Table~\ref{tab:rasp_naming} shows the naming convention.
   \begin{tabular}{|c|c|}
     \hline
       \textbf{Hostname} & \textbf{Model} \\ \hline
-    Rasp00 - Rasp19 & Raspberry Pi 1 model B rev. 2 \\ \hline
-    Rasp20 - Rasp29 & Rasperry Pi 2 model B V1.1 \\ \hline
+    rasp00 - rasp19 & Raspberry Pi 1 model B rev. 2 \\ \hline
+    rasp20 - rasp29 & Rasperry Pi 2 model B V1.1 \\ \hline
   \end{tabular}
   \caption{Raspberry Pi naming convention}
   \label{tab:rasp_naming}
@@ -73,9 +70,8 @@ Table~\ref{tab:rasp_naming} shows the naming convention.
 The testbed should be usable by students to perform simulations and
 measurements as part of their semester projects. It is therefore desired
 that the \ac{Raspi}s are configured identically, but still allows the
-students to alter the configurations.
-
-When working on a testbed, it is not always desired to make persistent
+students to alter the configurations. When working on a testbed, it is
+not always desired to make persistent
 changes to the devices. We also present how the concept of stacked
 filesystems can be used to enable the means of both persistent and
 temporary storage.
@@ -127,9 +123,8 @@ temporary storage.
 \subsubsection{Installing Raspbian}
 
 To get started, we first need to install an \ac{OS} on the
-\ac{Raspi}s. We will use Raspbian linux~\cite{raspbian}
-
-We will be using a \ac{PC} running a Debian-based Linux distribution
+\ac{Raspi}s. We will use Raspbian Linux~\cite{raspbian}. We will be
+using a \ac{PC} running a Debian-based Linux distribution
 to setup a customized Raspbian Linux image that can be written to
 a memory card and work in any \ac{Raspi} version 1 or 2.
 %We will use a desktop that has linux installed to download,
@@ -168,11 +163,10 @@ a memory card and work in any \ac{Raspi} version 1 or 2.
 %The first thing we need to do is to download the linux installation file.
 %For Raspbian, this is available at \url{http://downloads.raspberrypi.org}.
 
-Raspbian is made available in two bundles. Raspbian and Raspbian lite.
+Raspbian is made available in two bundles: Raspbian and Raspbian lite.
 The difference between the two is that Raspbian contains a pre-installed desktop
 environment, and Raspbian lite is by default only accessible through a 
-command shell. 
-Both Raspbian and Raspbian lite will both by default be remotely
+command shell. Both Raspbian and Raspbian lite will both by default be remotely
 accessible using \ac{SSH}. \ac{SSH} provides the means to remotely
 connect to another machine through a command shell. In fact it is the successor
 of \ac{Telnet} that has been designed with network security in mind.
@@ -180,7 +174,6 @@ of \ac{Telnet} that has been designed with network security in mind.
 Our testbed does not have monitors so we will install Raspbian lite.
 A desktop environment can be installed using Raspbian's package manager
 (apt-get) in case a desktop environment will be desired sometime in the future.
-
 Below is the procedure we did to setup the \ac{Raspi}s in our testbed. We
 have performed a simple setup where each \ac{Raspi} is equipped with a
 memory card that contains a slightly customized Raspbian lite image with
@@ -195,16 +188,16 @@ The overall procedure to customize the official Raspbian lite image
 are:
 \begin{enumerate}
     \item Download Raspbian lite
-    \item Alter Raspbian lite. E.g. browse, modify, add, and delete files
+    \item Alter Raspbian lite. e.g. browse, modify, add, and delete files
         in the official Raspbian lite image
-    \item Change root. I.e. change root filesystem into the Raspbian lite
+    \item Change root, i.e. change root filesystem into the Raspbian lite
         image to update and install software packages
     \item Write image to memory cards
 \end{enumerate}
 
-Hashmark (\#) and dollar (\$) will be used throughout the procedure
-to indicate if an operation should be run with root permissions or
-user permissions.
+In the following, the hashmark (\#) and dollar (\$) signs will be used
+throughout the procedure to indicate if an operation should be run with
+root permissions or user permissions.
 %\textbf{hashmark (\#) means to perform operation as root, dollar (\$) means
 %to perform operation as user}
 
@@ -225,10 +218,9 @@ download and install software packages in Linux.
 After the terminal has been opened, we first declare a few variables to reduce
 redundant typing. The first variables we declare is the Raspbian image name.
 Notice that the extension has been omitted. This is because the image has been
-packed into a zip file.
-The other variable we declare is a working directory. This is where we will
-download the image to and work on it. In other words, it will be stored in
-/home/<username>/Raspbian
+packed into a zip file. The other variable we declare is a working directory.
+This is where we will download the image to and work on it. In other words, it
+will be stored in \texttt{/home/<username>/Raspbian}
 
 %To download Raspbian lite, we go to the \url{http://downloads.raspberrypi.org}.
 %There should be a folder called raspbian\lite and
