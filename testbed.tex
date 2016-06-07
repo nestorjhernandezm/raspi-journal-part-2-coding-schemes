@@ -3,11 +3,12 @@
 We proceed to define the testbed environment by each of its conforming
 parts. We later indicate a procedure to set up the testbed. In this procedure,
 we summarize all the details regarding on setting the connectivity and
-system files for a set of \ac{Raspi}s in a centralized fashion.
-Afterwards, we indicate how to cross-compile the Kodo library in an
-easy way. Finally, we provide further information about Kodo itself in terms
-of testing, other platforms supported and source code documentation
-for further references.
+system files for a set of \ac{Raspi}s in a decentralized fashion.
+Afterwards, we indicate how to cross-compile C++ code and the Kodo
+network coding library in an easy way.
+%Finally, we provide further information about Kodo itself in terms
+%of testing, other platforms supported and source code documentation
+%for further references.
 
 \subsection{System Overview}
 
@@ -74,9 +75,9 @@ measurements as part of their semester projects. It is therefore desired
 that the \ac{Raspi}s are configured identically, but still allows the
 students to alter the configurations.
 
-When working on a testbed, it is not always desired to make persistant
+When working on a testbed, it is not always desired to make persistent
 changes to the devices. We also present how the concept of stacked
-filesystems can be used to enable the means of both persistant and
+filesystems can be used to enable the means of both persistent and
 temporary storage.
 
 %It is therefore
@@ -128,8 +129,8 @@ temporary storage.
 To get started, we first need to install an \ac{OS} on the
 \ac{Raspi}s. We will use Raspbian linux~\cite{raspbian}
 
-We will be using a \ac{PC} running a Debian-based linux distribution
-to setup a customized Raspbian linux image that can be written to
+We will be using a \ac{PC} running a Debian-based Linux distribution
+to setup a customized Raspbian Linux image that can be written to
 a memory card and work in any \ac{Raspi} version 1 or 2.
 %We will use a desktop that has linux installed to download,
 %configure, and write the image to the memory cards.
@@ -216,10 +217,10 @@ At the time of this writing, the latest bundle was
 2016-05-27-raspbian-jessie-lite.zip.
 
 We want to proceed downloading the image with a shell instead of the browser.
-To do this, first open a command window on a linux machine. This guide is
+To do this, first open a command window on a Linux machine. This guide is
 assuming a debian based distribution, but there should only be minor differences
 if you have another package manager. I.e. the application that is used to
-download and install software packages in linux.
+download and install software packages in Linux.
 
 After the terminal has been opened, we first declare a few variables to reduce
 redundant typing. The first variables we declare is the Raspbian image name.
@@ -310,7 +311,7 @@ system. Actually, it is the linux root filesystem (i.e. /).
 \subsection{Resize image}
 1.2G is not very much to hold the root filesystem given that it is desired to
 in later steps alter the files and install more packages. It may therefore be
-neccessary to increase the partition size slightly.
+necessary to increase the partition size slightly.
 The following steps will therefore illustrate how image and root filesystem
 can be expanded by one \ac{GB}.
 
@@ -341,7 +342,8 @@ Device                               Boot  Start     End Sectors  Size Id Type
 
 Now, to expand the root filesystem it is required to first remove the Linux partition
 and then add it again one \ac{GB} bigger.
-We use fdisk for the task. The echo's within the parenthesis will function as
+We use \texttt{fdisk} for the task. The echo's within the parenthesis
+will function as
 key-presses in \texttt{fdisk} and hence delete last partition, create a new
 primary partition, print new partition table, and write new partition table
 to the image:
@@ -432,13 +434,13 @@ We can now change all the files in the disk image as desired.
 \subsection{Configuring OS files and scripts}
 
 The \ac{Raspi}s should be setup to be as similar as possible. One of those
-things that is prefered to be different on the devices is their hostname.
+things that is preferred to be different on the devices is their hostname.
 This helps distinguish them from each other. One solution to this in our
 approach would be to uniquely change the hostname in each memory card.
 This is however not desired because that would either require modifying
-the the customized Raspbian lite image before writing the content to the
+the customized Raspbian lite image before writing the content to the
 memory card or to manually change it in the \ac{Raspi}s after the image has
-been written to a meomory card.
+been written to a memory card.
 Instead, we decided to register the ethernet MAC addresses of all the \ac{Raspi}s
 in our testbed. Those had to be used to put them in a domain name anyway.
 
@@ -446,7 +448,7 @@ Below is a part of the file where we keep track of the MAC addresses and assign
 hostnames. This file will be available online and copied to the Raspbian lite
 image in a later step under the listed filename. For different \ac{Raspi}s
 the MAC addresses has to be changed. The MAC address of a network card can be found
-using the command "ifconfig" or "ip addr".
+using the command \texttt{"ifconfig"} or \texttt{"ip addr"}.
 
 % MAC and Hostname file
 \Suppressnumber\begin{lstlisting}[]
@@ -492,12 +494,12 @@ Line 1 tells the system to interpret the script using Bash. Line 3 gets the
 path of the script itself. Line 4 gets the MAC address. This script will be
 located in a \ac{Raspi} and thus return the MAC address of itself when called.
 Line 4 searches line by line for this mac address.
-Line 8-11 assigns the hostname found in "nodes.csv". If the MAC did not exists,
+Line 8-11 assigns the hostname found in \texttt{"nodes.csv"}. If the MAC did not exists,
 then it will keep the default hostname of the system.
 
 
 We have packed the files and uploaded them to a webserver. These can be
-retrieved with wget and unziped into the Raspbian lite image that
+retrieved with \texttt{wget} and unzipped into the Raspbian lite image that
 we are customizing:
 
 % Get the files
@@ -566,9 +568,9 @@ This can be done from any linux x86 machine using QEMU Chroot~\cite{QemuUserEmul
 
 Due to the \ac{ARM} processor that \ac{Raspi}s are using, it is required to
 install some additional software:
-%Because \ac{Raspi}s are eqipped with an \ac{ARM} processor 
+%Because \ac{Raspi}s are equipped with an \ac{ARM} processor 
 %%it is not as
-%straightforward as performing the task for two linux systems of the same
+%straightforward as performing the task for two Linux systems of the same
 %architecture.
 
 % CHROOT to OS image
@@ -737,7 +739,7 @@ again will return the stored file from the upper layer.
 %to fetch the file in the upper filesystem if it does not exists there, it will
 %request it from the lower filessytem.  
 
-Assuming that you are still chrooted into the Raspbian lite filesystem, we
+Assuming that you are still \texttt{chrooted} into the Raspbian lite filesystem, we
 can setup the overlay filesystem (overlayfs).
 
 There already exists implementations overlaying the root filesystem. We will
