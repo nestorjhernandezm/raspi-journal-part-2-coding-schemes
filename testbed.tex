@@ -209,8 +209,9 @@ user permissions.
 
 \subsection{Download Raspbian lite}
 
-To download the latest Raspbian lite, we go to the url
-\url{http://downloads.raspberrypi.org/raspbian_lite/images/}.
+The latest Raspbian lite image can be downloaded at~\cite{raspbian}.
+%To download the latest Raspbian lite, we go to the url
+%\url{http://downloads.raspberrypi.org/raspbian_lite/images/}.
 At the time of this writing, the latest bundle was
 2016-05-27-raspbian-jessie-lite.zip.
 
@@ -274,8 +275,8 @@ $ unzip ${IMAGE}.zip
 \FloatBarrier
 \vspace{-5mm}
 
-A more recent version of Raspbian lite may be available on 
-\url{http://downloads.raspberrypi.org/raspbian_lite/images}.
+A more recent version of Raspbian lite may be available at~\cite{raspbian}.
+%\url{http://downloads.raspberrypi.org/raspbian_lite/images}.
 
 \subsection{The image}
 
@@ -316,7 +317,7 @@ can be expanded by one \ac{GB}.
 First, expand the image one \ac{GB} and wait for data to be completely written
 the disk:
 \begin{lstlisting}[]
-# dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img && sync
+$ dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img && sync
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -502,7 +503,7 @@ we are customizing:
 % Get the files
 \begin{lstlisting}[]
 $ wget http://kom.aau.dk/project/TuneSCode/raspi/rasp_config.zip
-# unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
+$ unzip rasp_config.zip -d ${ROOTDIR}/home/pi/
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -510,7 +511,7 @@ $ wget http://kom.aau.dk/project/TuneSCode/raspi/rasp_config.zip
 "nodes.csv" can be changed using a text editor. For vim, this could be done
 the following way:
 \begin{lstlisting}[]
-# vim ${ROOTDIR}/home/pi/rasp_config/nodes.csv
+$ vim ${ROOTDIR}/home/pi/rasp_config/nodes.csv
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -558,8 +559,9 @@ All other files could be updated as well.
 
 It may be desired to pre-install some programs in the image before it is
 written to all the memory cards that goes into the \ac{Raspi}s.
-This can be done from any linux x86 machine using QEMU Chroot (change root).
-\url{https://wiki.debian.org/QemuUserEmulation}
+This can be done from any linux x86 machine using QEMU Chroot~\cite{QemuUserEmulation}
+(change root).
+%\url{https://wiki.debian.org/QemuUserEmulation}
 %\url{https://wiki.archlinux.org/index.php/Raspberry_Pi}
 
 Due to the \ac{ARM} processor that \ac{Raspi}s are using, it is required to
@@ -630,8 +632,9 @@ sys, and dev:
 % CHROOT to OS image
 \begin{lstlisting}[]
 # mount -t proc proc proc/
-# mount --rbind /sys sys/
-# mount --rbind /dev dev/
+# mount --bind /sys sys/
+# mount --bind /dev dev/
+# mount --bind /dev/pts dev/pts
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -675,8 +678,8 @@ upgrade, and install software packages:
 
 % Update system
 \begin{lstlisting}[]
-# apt-get update
-# apt-get upgrade
+(chroot) # apt-get update
+(chroot) # apt-get upgrade
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -684,7 +687,7 @@ upgrade, and install software packages:
 Lets install some useful applications:
 % Install packages
 \begin{lstlisting}[]
-# apt-get install vim git screen
+(chroot) # apt-get install vim git screen
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -739,7 +742,7 @@ can setup the overlay filesystem (overlayfs).
 
 There already exists implementations overlaying the root filesystem. We will
 use an existing implementation
-available at github: \url{https://github.com/chesty/overlayroot}.
+available at github: \cite{overlayroot}.
 
 We installed git in a previous step, so lets clone the repository. The below
 code stores it in /tmp which is really mounted in \ac{RAM}. Thus, the files
@@ -747,8 +750,8 @@ will disappear when the machine is rebooted.
 
 % Get files
 \begin{lstlisting}[]
-# OVERLAYROOTDIR="/tmp/overlayroot"
-# git clone https://github.com/chesty/overlayroot.git $OVERLAYROOTDIR
+(chroot) # OVERLAYROOTDIR="/tmp/overlayroot"
+(chroot) # git clone https://github.com/chesty/overlayroot.git $OVERLAYROOTDIR
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -762,7 +765,7 @@ For this purpose, we need BuxyBox:
 
 % Install required packages
 \begin{lstlisting}[]
-# apt-get install busybox
+(chroot) # apt-get install busybox
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -772,9 +775,9 @@ to load the overlaying filesytem:
 
 % Setup initramfs
 \begin{lstlisting}[]
-# cp ${OVERLAYROOTDIR}/hooks-overlay /etc/initramfs-tools/hooks/
-# cp ${OVERLAYROOTDIR}/init-bottom-overlay /etc/initramfs-tools/scripts/init-bottom/
-# echo "overlay" > /etc/initramfs-tools/modules
+(chroot) # cp ${OVERLAYROOTDIR}/hooks-overlay /etc/initramfs-tools/hooks/
+(chroot) # cp ${OVERLAYROOTDIR}/init-bottom-overlay /etc/initramfs-tools/scripts/init-bottom/
+(chroot) # echo "overlay" > /etc/initramfs-tools/modules
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -784,7 +787,7 @@ initramfs that we will generate.
 
 % Tell uboot to load initramfs
 \begin{lstlisting}[]
-# echo "initramfs init.gz" > /boot/config.txt
+(chroot) # echo "initramfs init.gz" > /boot/config.txt
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -796,7 +799,7 @@ can be found in "/lib/modules".
 
 % Create an initramfs
 \begin{lstlisting}[]
-# ls /lib/modules/
+(chroot) # ls /lib/modules/
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -808,12 +811,14 @@ Thus, to run mkinitramfs, type in the correct kernel version:
 
 % Create an initramfs
 \begin{lstlisting}[]
-# mkinitramfs -o /boot/init.gz -k 4.4.11+
+(chroot) # mkinitramfs -o /boot/init.gz -k 4.4.11+
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
 
-This should generate a new initial \ac{RAM} filesystem that will overlay a \ac{RAM} filesystem.
+Although there might be printet a few warnings, this should generate
+a new working \texttt{initramfs} that will put a \ac{RAM} filesystem
+on top of the root filesystem.
 
 At this point, it is no longer required to be \texttt{chrooted} and the image
 can be written to a memory card. The following commands exits the \texttt{chrooted}
@@ -821,7 +826,7 @@ environment, unmount all partitions, and detaches the loop device:
 
 % Exit chroot, umount, and write to memory card
 \begin{lstlisting}[]
-# exit
+(chroot) # exit
 # cd ..
 # umount --recursive ${ROOTDIR}
 # losetup -d ${DEV}
@@ -842,7 +847,7 @@ Expand image according to the desired home directory size. Keep in mind not
 to make the image bigger than the target memory card.
 % Expand image
 \begin{lstlisting}[]
-# dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img && sync
+$ dd if=/dev/zero bs=1M count=1024 >> ${IMAGE}.img && sync
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
@@ -851,7 +856,7 @@ Create home partition after the root partition. Use \texttt{fdisk} to
 find the next available sector in the image. In our case, the new
 partition should start at sector 4806656:
 \begin{lstlisting}[]
-# fdisk -lu ${IMAGE}.img
+$ fdisk -lu ${IMAGE}.img
 Disk 2016-05-27-raspbian-jessie-lite.img: 3.3 GiB, 3534749696 bytes, 6903808 sectors
 Units: sectors of 1 * 512 = 512 bytes
 Sector size (logical/physical): 512 bytes / 512 bytes
@@ -869,14 +874,14 @@ Device                               Boot  Start     End Sectors  Size Id Type
 Create new partition:
 
 \begin{lstlisting}[]
-# (echo n; echo p; echo ; echo 4806656; echo ; echo p; echo w) | fdisk ${IMAGE}.img
+$ (echo n; echo p; echo ; echo 4806656; echo ; echo p; echo w) | fdisk ${IMAGE}.img
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
 
 Create loopback device: 
 \begin{lstlisting}[]
-# DEV=$(losetup --show -f -P ${IMAGE}.img); echo $DEV
+# export DEV=$(sudo losetup --show -f -P ${IMAGE}.img); echo $DEV
 /dev/loop0
 \end{lstlisting}
 \FloatBarrier
@@ -893,13 +898,27 @@ The last thing to remember is to inform Raspbian to mount the home partition
 we created during startup. This can be done by adding an entry in \texttt{fstab}:
 \begin{lstlisting}[]
 # mount ${DEV}p2 ${ROOTDIR}
-# echo "/dev/mmcblk0p3 /home ext4 defaults,noatime 0 2" >> ${ROOTDIR}/etc/fstab
-# umount ${ROOTDIR}
-# losetup -d ${DEV}
+# sudo sh -c "echo '/dev/mmcblk0p3 /home ext4 defaults,noatime 0 2' >> ${ROOTDIR}/etc/fstab"
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
 
+The home folder was originally located in the root filesystem. We should
+therefore copy the content to the new home partition:
+\begin{lstlisting}[]
+# mount ${DEV}p3 ${ROOTDIR}/mnt
+# mv ${ROOTDIR}/home/* ${ROOTDIR}/mnt/
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
+
+That is it. unmount partitions and detach loop device:
+\begin{lstlisting}[]
+# umount --recursive ${ROOTDIR}
+# losetup -d ${DEV}
+\end{lstlisting}
+\FloatBarrier
+\vspace{-5mm}
 
 \subsection{Write image to memory card}
 
@@ -941,11 +960,12 @@ below may help deducing the correct device:
 \FloatBarrier
 \vspace{-5mm}
 
-For us, the device was \texttt{/dev/mmcblk0}, so we write the image to that device:
+For us, the device was \texttt{/dev/mmcblk0}. Write the image to a memory card:
 \begin{lstlisting}[]
-# dd if=${IMAGE}.img of=/dev/mmcblk0 bs=4M
+# dd if=${IMAGE}.img of=/dev/mmcblk0 bs=4M && sync
 \end{lstlisting}
 \FloatBarrier
 \vspace{-5mm}
 
+The memory card can now be started in a \ac{Raspi}.
 
