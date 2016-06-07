@@ -142,7 +142,7 @@ this permits it to use a single very low code density $d$. For \ac{RLNC},
 this is not the case since the occurrence of \ac{l.d.} coded packets is
 small, because all coding coefficients are used. Even for $GF(2)$, the
 average amount of redundant packets for \ac{RLNC} has proven to be 1.6
-packets after $g$ have been transmitted \textbf{[Include a reference]},
+packets after $g$ have been transmitted \cite{trullols2011exact,zhao2012notes},
 but less than the cases where sparse codes are utilized. Overall, we
 observe that there is a trade-off between goodput and \ac{l.d.} coded
 packets transmission overhead.
@@ -306,11 +306,12 @@ the goodput scales as $\mathcal{O}(R_{proc,dec}) = \mathcal{O}(g/g^{3}) =
 size, should reduce the goodput by a factor of 4, which does not. Instead,
 the goodput it is only reduced by a factor of 2. This is only possible if
 the Gaussian elimination is $\mathcal{O}(g^2)$. A study in
-\textbf{[refence about Achutan's measurements on the Raspi]} indicated
-that this is effectively the case. The reason is that the $g^2$ factor in
-the scaling law for our Gaussian elimination is much higher than the $g^3$
-for $g \geq 512$. \textbf{[Why was the $g^2$ factor greather than the
-$g^3$ factor? Wasn't it due to the amount of of bytes per packet?]}
+\cite{paramanathan2013leanandmean} for \ac{RLNC} speeds in commercial
+devices indicated that this is effectively the case. The reason is that
+the $g^2$ scaling factor in the scaling law for our Gaussian elimination is much
+higher than the $g^3$ scaling for $g < 512$. Particularly, this factor
+relates to the number of field elements in a packet size as mentioned
+in \cite{paramanathan2013leanandmean}.
 
 Another difference with the encoding goodput results in the same figures,
 is that even though the \ac{TSNC} with $e = 16$ packets provides the fastest
@@ -684,7 +685,7 @@ which features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC}
 with a 900 MHz clock. Each core has a 32 KiB L1 data cache and 32 KiB
 L1 instruction cache. The cores share a 512 KiB L2 cache. All the
 measured results, including the baseline results, were obtained with
-NEON-enabled code adapted from the Fifi library [\textbf{Fifi reference}].
+NEON-enabled code adapted from the Fifi library \cite{fifi}.
 The \ac{Raspi} 2 has a NEON extension instruction set which provides
 an 128-bit \ac{SIMD} instructions that speed the computations.
 Figures~\ref{enc_dec1024}, \ref{enc_dec128} and
