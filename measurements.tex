@@ -436,15 +436,25 @@ dependent on the goodput trends since the power is just an scaling constant.
 With power and goodput measurements, we compute the energy per bit of
 the previously mentioned cases as described in \eqref{eq:energy_per_bit}.
 The trends of the energy per bit are simply the inverse of the goodput since
-both metrics are related by an inverse law.
+both metrics are related by an inverse law. As made with the goodput, we
+separate the results descriptions according to the operation carried by the
+\ac{Raspi}: Encoding and decoding. Besides this, we differentiate between
+the models in our study. The energy per bit consumption removes the dependency
+on the amount of packets helping to normalize the results and indicating
+consumption on a fair basis for all the configurations and coding operations
+involved in the study. 
 
 \subsubsection{Encoding}
-
+Figs.~\ref{fig:enc_ene_rasp1} and \ref{fig:enc_ene_rasp2} show the encoding
+energy per bit measurements for the \ac{Raspi} 1 and 2 models, respectively.
+We now proceed to analyze first the \ac{Raspi} 1 case pointing out proper
+differences with the \ac{Raspi} 2 when applicable.
+%
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary_encoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary_encoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:enc_ene_rasp1_gen_gf2}
@@ -452,7 +462,7 @@ both metrics are related by an inverse law.
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary8_encoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary8_encoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:enc_ene_rasp1_gen_gf256}
@@ -460,7 +470,7 @@ both metrics are related by an inverse law.
     \vskip\baselineskip
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary_encoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary_encoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:enc_ene_rasp1_packet_gf2}
@@ -468,7 +478,7 @@ both metrics are related by an inverse law.
     \quad
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary8_encoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary8_encoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:enc_ene_rasp1_packet_gf256}
@@ -477,14 +487,38 @@ both metrics are related by an inverse law.
     {\small Encoder energy measurements for the \ac{Raspi} 1}
     \label{fig:enc_ene_rasp1}
 \end{figure*}
+%
+In Figs.~\ref{fig:enc_ene_rasp1_gen_gf2} and \ref{fig:enc_ene_rasp1_gen_gf256},
+we see the dependency of the energy per bit processed on the generation size
+for the \ac{Raspi} 1 model. In these type of plots, incrementing the
+generation size incurs in more processing time per byte sent which leads to
+more processing time per bit sent. For \ac{RLNC}, the energy trends
+scales as the processing time scale which is $\mathcal{O}(g)$. For sparse
+codes, this trend is scaled by the density, thus for sparse we have
+$\mathcal{O}(\ceil{gd})$ which can be appreciated in the same figures. We
+do also notice that using $GF(2)$ is energy-wise efficient on the a
+per-bit basis since less operations are used to perform the \ac{GF}
+arithmetics which reduces the amount of energy spent.
 
-Raspi 2 encoding
-
+In Figs.~\ref{fig:enc_ene_rasp1_packet_gf2} and
+\ref{fig:enc_ene_rasp1_packet_gf256} for the same device. We exhibit the
+relationship between the energy per bit processed on the packet size which
+is the inverse of the goodput vs. the packet size scaling law. We set
+$g = 128$ in this case to observe energy per bit consumption in the regime where the
+processing time is considerable. As we notice again in this case,
+$GF(2)$ presents as the field with the smallest energy per bit consumption
+given that is the one that has least complex operations. The trends
+for the energy can be explained as follows: As the packet size increases,
+we process more coded bits at the same time, which increases the encoding
+speed, until we hit the critical packet size. After this value, we spend
+more time queueing data towards the cache besides the processing, which
+increases the time spent per processed bit and thus the energy.
+%
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary_encoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary_encoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:enc_ene_rasp2_gen_gf2}
@@ -492,7 +526,7 @@ Raspi 2 encoding
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary8_encoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary8_encoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:enc_ene_rasp2_gen_gf256}
@@ -500,7 +534,7 @@ Raspi 2 encoding
     \vskip\baselineskip
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary_encoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary_encoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:enc_ene_rasp2_packet_gf2}
@@ -508,7 +542,7 @@ Raspi 2 encoding
     \quad
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary8_encoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary8_encoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:enc_ene_rasp2_packet_gf256}
@@ -517,14 +551,35 @@ Raspi 2 encoding
     {\small Encoder energy measurements for the \ac{Raspi} 2}
     \label{fig:enc_ene_rasp2}
 \end{figure*}
+%
+In Figs.~\ref{fig:enc_ene_rasp2_gen_gf2}, \ref{fig:enc_ene_rasp2_gen_gf256},
+\ref{fig:enc_ene_rasp2_packet_gf2} and \ref{fig:enc_ene_rasp2_packet_gf256} 
+we show the encoding energy per bit consumption for the \ac{Raspi} 2.
+We clearly see that the effects discussed for the \ac{Raspi} 1 also apply
+as well for the \ac{Raspi} 2. Moreover, given that the average power
+is in the same order, but the \ac{Raspi} 2 is a faster device,
+the energy costs for the \ac{Raspi} 2 are $2\times$ less than the \ac{Raspi} 1
+when referring to variable generation sizes and a fixed packet size.
+Furthermore, these costs are 1 order of magnitude less for the \ac{Raspi} 2
+with respect to the \ac{Raspi} 1 regarding the case of a fixed generation
+size and a variable packet size. This makes the \ac{Raspi} 2 to achieve
+a minimum encoding energy consumpiton per bit processed of 0.2 nJ for the
+binary field in the mentioned regime.
 
 \subsubsection{Decoding}
-
+In Figs.~\ref{fig:dec_ene_rasp1_gen_gf2}, \ref{fig:dec_ene_rasp1_gen_gf256},
+\ref{fig:dec_ene_rasp1_packet_gf2} and \ref{fig:dec_ene_rasp1_packet_gf256} 
+we show the encoding energy per bit consumption for the \ac{Raspi} 1.
+Again, we notice very similar behavior and trends as previously
+reviewed for the encoding energy per bit expenditure. In this case,
+we focus on performance among the coding schemes since the behavior 
+and trends were previously explained for the encoding case.
+%
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary_decoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary_decoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:dec_ene_rasp1_gen_gf2}
@@ -532,7 +587,7 @@ Raspi 2 encoding
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary8_decoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_Binary8_decoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:dec_ene_rasp1_gen_gf256}
@@ -540,7 +595,7 @@ Raspi 2 encoding
     \vskip\baselineskip
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary_decoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary_decoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:dec_ene_rasp1_packet_gf2}
@@ -548,7 +603,7 @@ Raspi 2 encoding
     \quad
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary8_decoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_Binary8_decoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:dec_ene_rasp1_packet_gf256}
@@ -557,14 +612,18 @@ Raspi 2 encoding
     {\small Decoder energy measurements for the \ac{Raspi} 1}
     \label{fig:dec_ene_rasp1}
 \end{figure*}
+%
+Some differences occurs due to nature of decoding. In this situation,
+the reception of \ac{l.d.} coded packets just increases the decoding
+delay, therefore reducing the performance of some coding schemes
+in terms of the energy per bit consumption. For example,
 
-Raspi 2 decoding
 
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary_decoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary_decoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2$}}
         \label{fig:dec_ene_rasp2_gen_gf2}
@@ -572,7 +631,7 @@ Raspi 2 decoding
     \hfill
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary8_decoder_1600.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_generation_size_Rasp_v2_Binary8_decoder_1600.eps}
         \caption[]%
         {{\small Energy per bit vs. Generation size for $q = 2^8$}}
         \label{fig:dec_ene_rasp2_gen_gf256}
@@ -580,7 +639,7 @@ Raspi 2 decoding
     \vskip\baselineskip
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary_decoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary_decoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2,\ g=128$}}
         \label{fig:dec_ene_rasp2_packet_gf2}
@@ -588,7 +647,7 @@ Raspi 2 decoding
     \quad
     \begin{subfigure}[b]{0.475\textwidth}
         \centering
-        \includegraphics[width=1.1\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary8_decoder_128.eps}
+        \includegraphics[width=1.05\textwidth]{images/06_06_2016/energy_per_bit_vs_symbol_size_Rasp_v2_Binary8_decoder_128.eps}
         \caption[]%
         {{\small Energy per bit vs. Packet size for $q=2^8,\ g=128$}}
         \label{fig:dec_ene_rasp2_packet_gf256}
