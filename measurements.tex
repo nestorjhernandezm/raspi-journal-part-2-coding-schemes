@@ -573,7 +573,9 @@ we show the encoding energy per bit consumption for the \ac{Raspi} 1.
 Again, we notice very similar behavior and trends as previously
 reviewed for the encoding energy per bit expenditure. In this case,
 we focus on performance among the coding schemes since the behavior 
-and trends were previously explained for the encoding case.
+and trends were previously explained for the encoding case. Later,
+we introduce the decoding energy results for the \ac{Raspi} 2 doing
+relevant comparisons with the \ac{Raspi} 1.
 %
 \begin{figure*}
     \centering
@@ -616,9 +618,15 @@ and trends were previously explained for the encoding case.
 Some differences occurs due to nature of decoding. In this situation,
 the reception of \ac{l.d.} coded packets just increases the decoding
 delay, therefore reducing the performance of some coding schemes
-in terms of the energy per bit consumption. For example,
-
-
+in terms of the energy per bit consumption. For example, we notice
+that using \ac{SRLNC} with $d = 0.02$ outperforms \ac{TSNC} with
+$C = 0$ and $e = 16$, for most of the cases in the variable generation
+size curves and in all the cases of variable packet size curves of
+Fig.~\ref{fig:dec_ene_rasp1}. This is a clear scenario where the decoding
+delay is energy-wise susceptible to the transmissions of \ac{l.d.}
+coded packets. With the \ac{Raspi} 1, decoding energies per processed
+bit of 2 nJ or similar are possible. 
+%
 \begin{figure*}
     \centering
     \begin{subfigure}[b]{0.475\textwidth}
@@ -656,11 +664,21 @@ in terms of the energy per bit consumption. For example,
     {\small Decoder energy measurements for the \ac{Raspi} 2}
     \label{fig:dec_ene_rasp2}
 \end{figure*}
-
+%
+Finally, in Figs.~\ref{fig:dec_ene_rasp2_gen_gf2},
+\ref{fig:dec_ene_rasp2_gen_gf256}, \ref{fig:dec_ene_rasp2_packet_gf2}
+and \ref{fig:dec_ene_rasp2_packet_gf256}; we introduce the decoding energy
+per bit consumption for the \ac{Raspi} 2. Here, we obtain a reduction
+of an order of magnitude in energy per processed bit due to the speed
+of the \ac{Raspi} 2. For example, it can be seen that for the binary field
+with $g = 16$ packets, we achieve a decoding energy consumption per bit 
+processed close to 0.1 nJ in practical systems.
+%
 \subsection{Multicore Network Coding}
 \label{subs:multicore-network-coding}
 
-The authors implemented the algorithm described in
+To review the performance of \ac{NC} in a multicore using the \ac{Raspi},
+the authors implemented the algorithm described in
 Section~\ref{sub:implementation-multicore} on the \ac{Raspi} 2 model,
 which features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC}
 with a 900 MHz clock. Each core has a 32 KiB L1 data cache and 32 KiB
