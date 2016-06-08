@@ -489,23 +489,15 @@ size is architecture-dependent. The ideal block has a number of operands
 that fit into the system L1 cache, and it is a multiple of the \ac{SIMD}
 operations size.
 
-The idea of the implemented algorithm is to represent each one of the
-sub-block matrix operations: matrix-matrix multiplication,
-matrix-triangle matrix multiplication, triangle-matrix system solving,
-etc; as a base or \textit{kernel} operation that can be optimized
-individually using \ac{SIMD} operations. Each kernel operation, at the
-same time, can be represented as a task with inputs and outputs in memory.
-If an algorithm is formulated conventionally and the data operations on the
-sub-blocks are reordered, then it is possible to resolve data
-dependencies with a \ac{DAG}. For the algorithm, as an example, a dependency
-could be that a sub-block of the matrix in memory cannot be read unless
-a previous writing operation was performed there. When the
-\ac{DAG} is determined, then a scheduler assigns to the available cores the
-execution of the kernel operations that have their dependencies satisfied.
-The benefit of this method is that the synchronization relies only on
-data dependencies and it does not require the insertion of artificial
-synchronization points. Using this technique, the matrix inversion is
-performed using an algorithm based on LU factorization
+The idea of the implemented algorithm is to represent each one of the sub-block
+matrix operations: matrix-matrix multiplication, matrix-triangle matrix
+multiplication, triangle-matrix system solving, etc; as a base or
+\textit{kernel} operation that can be optimized individually using \ac{SIMD}
+operations. Each kernel operation, at the same time, can be represented as a
+task with inputs and outputs in memory that can be assigned to the cores as soon
+as the dependencies are satisfied. The benefit of this method is that the
+synchronization relies only on data dependencies and it does not require the
+insertion of artificial synchronization points. Using this technique, the matrix
+inversion is performed using an algorithm based on LU factorization
 \cite{Dongarra:2011:HPM:2132876.2132885}, and the matrix multiplication is
-performed by making the various matrix-matrix multiplications on the
-sub-blocks.
+performed by making the various matrix-matrix multiplications on the sub-blocks.
