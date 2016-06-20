@@ -1,0 +1,6200 @@
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000104 sch_run_striped 0.003486 
+
+threads 1 n 512 m 1536 nb 16 base 1.748378 
+threads 1 n 512 m 1536 nb 16 basebl 1.346486 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.749188 
+threads 1 n 512 m 1536 nb 32 basebl 1.305059 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.748427 
+threads 1 n 512 m 1536 nb 64 basebl 1.307638 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.748557 
+threads 1 n 512 m 1536 nb 128 basebl 1.310492 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.748181 
+threads 1 n 512 m 1536 nb 256 basebl 1.309260 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.748236 
+threads 1 n 512 m 1536 nb 512 basebl 1.308879 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.733906 
+threads 1 n 1024 m 1536 nb 16 basebl 6.544359 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.572618 
+threads 1 n 1024 m 1536 nb 32 basebl 5.953333 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.480954 
+threads 1 n 1024 m 1536 nb 64 basebl 5.759431 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.566277 
+threads 1 n 1024 m 1536 nb 128 basebl 5.707920 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.490891 
+threads 1 n 1024 m 1536 nb 256 basebl 5.716115 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.426994 
+threads 1 n 1024 m 1536 nb 512 basebl 6.030498 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000114 sch_run_striped 0.003485 
+
+threads 1 n 512 m 1536 nb 16 base 1.814145 
+threads 1 n 512 m 1536 nb 16 basebl 1.352166 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.815221 
+threads 1 n 512 m 1536 nb 32 basebl 1.308470 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.815690 
+threads 1 n 512 m 1536 nb 64 basebl 1.307885 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.814825 
+threads 1 n 512 m 1536 nb 128 basebl 1.308830 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.814386 
+threads 1 n 512 m 1536 nb 256 basebl 1.308017 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.814285 
+threads 1 n 512 m 1536 nb 512 basebl 1.315064 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.766984 
+threads 1 n 1024 m 1536 nb 16 basebl 6.529561 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.504003 
+threads 1 n 1024 m 1536 nb 32 basebl 5.932099 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.596833 
+threads 1 n 1024 m 1536 nb 64 basebl 5.737512 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.556770 
+threads 1 n 1024 m 1536 nb 128 basebl 5.674419 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.512464 
+threads 1 n 1024 m 1536 nb 256 basebl 5.695390 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.526130 
+threads 1 n 1024 m 1536 nb 512 basebl 5.951690 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000102 sch_run_striped 0.003457 
+
+threads 1 n 512 m 1536 nb 16 base 1.752587 
+threads 1 n 512 m 1536 nb 16 basebl 1.345646 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.752154 
+threads 1 n 512 m 1536 nb 32 basebl 1.303397 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.752355 
+threads 1 n 512 m 1536 nb 64 basebl 1.303644 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.752543 
+threads 1 n 512 m 1536 nb 128 basebl 1.306072 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.752046 
+threads 1 n 512 m 1536 nb 256 basebl 1.305175 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.751915 
+threads 1 n 512 m 1536 nb 512 basebl 1.307569 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.636432 
+threads 1 n 1024 m 1536 nb 16 basebl 6.528908 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.499176 
+threads 1 n 1024 m 1536 nb 32 basebl 5.935728 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.557709 
+threads 1 n 1024 m 1536 nb 64 basebl 5.744713 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.588702 
+threads 1 n 1024 m 1536 nb 128 basebl 5.680876 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.527296 
+threads 1 n 1024 m 1536 nb 256 basebl 5.697336 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.461861 
+threads 1 n 1024 m 1536 nb 512 basebl 5.960925 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000099 sch_run_striped 0.003499 
+
+threads 1 n 512 m 1536 nb 16 base 1.753942 
+threads 1 n 512 m 1536 nb 16 basebl 1.351189 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.753769 
+threads 1 n 512 m 1536 nb 32 basebl 1.308312 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.753935 
+threads 1 n 512 m 1536 nb 64 basebl 1.309325 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.753408 
+threads 1 n 512 m 1536 nb 128 basebl 1.310646 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.753442 
+threads 1 n 512 m 1536 nb 256 basebl 1.309766 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.753259 
+threads 1 n 512 m 1536 nb 512 basebl 1.312436 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.805017 
+threads 1 n 1024 m 1536 nb 16 basebl 6.546857 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.511770 
+threads 1 n 1024 m 1536 nb 32 basebl 5.956781 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.635557 
+threads 1 n 1024 m 1536 nb 64 basebl 5.761305 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.636810 
+threads 1 n 1024 m 1536 nb 128 basebl 5.694404 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.559897 
+threads 1 n 1024 m 1536 nb 256 basebl 5.689926 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.483718 
+threads 1 n 1024 m 1536 nb 512 basebl 5.946451 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000103 sch_run_striped 0.003477 
+
+threads 1 n 512 m 1536 nb 16 base 1.753412 
+threads 1 n 512 m 1536 nb 16 basebl 1.346829 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.753293 
+threads 1 n 512 m 1536 nb 32 basebl 1.302549 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.753676 
+threads 1 n 512 m 1536 nb 64 basebl 1.305272 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.752717 
+threads 1 n 512 m 1536 nb 128 basebl 1.307001 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.753240 
+threads 1 n 512 m 1536 nb 256 basebl 1.306289 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.752560 
+threads 1 n 512 m 1536 nb 512 basebl 1.309710 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.684437 
+threads 1 n 1024 m 1536 nb 16 basebl 6.535732 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.622269 
+threads 1 n 1024 m 1536 nb 32 basebl 5.930549 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.451711 
+threads 1 n 1024 m 1536 nb 64 basebl 5.736876 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.680325 
+threads 1 n 1024 m 1536 nb 128 basebl 5.669317 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.606219 
+threads 1 n 1024 m 1536 nb 256 basebl 5.733356 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.694232 
+threads 1 n 1024 m 1536 nb 512 basebl 5.973837 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003471 
+
+threads 1 n 512 m 1536 nb 16 base 1.825512 
+threads 1 n 512 m 1536 nb 16 basebl 1.356228 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.825571 
+threads 1 n 512 m 1536 nb 32 basebl 1.311376 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.825657 
+threads 1 n 512 m 1536 nb 64 basebl 1.310229 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.825945 
+threads 1 n 512 m 1536 nb 128 basebl 1.312018 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.825180 
+threads 1 n 512 m 1536 nb 256 basebl 1.310657 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.825246 
+threads 1 n 512 m 1536 nb 512 basebl 1.318007 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.679208 
+threads 1 n 1024 m 1536 nb 16 basebl 6.571896 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.556390 
+threads 1 n 1024 m 1536 nb 32 basebl 5.940589 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.394749 
+threads 1 n 1024 m 1536 nb 64 basebl 5.754307 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.358601 
+threads 1 n 1024 m 1536 nb 128 basebl 5.694401 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.451129 
+threads 1 n 1024 m 1536 nb 256 basebl 5.711510 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.461478 
+threads 1 n 1024 m 1536 nb 512 basebl 6.028314 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003553 
+
+threads 1 n 512 m 1536 nb 16 base 1.855521 
+threads 1 n 512 m 1536 nb 16 basebl 1.357428 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.857575 
+threads 1 n 512 m 1536 nb 32 basebl 1.310634 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.857638 
+threads 1 n 512 m 1536 nb 64 basebl 1.309459 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.857083 
+threads 1 n 512 m 1536 nb 128 basebl 1.311518 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.857543 
+threads 1 n 512 m 1536 nb 256 basebl 1.310860 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.857470 
+threads 1 n 512 m 1536 nb 512 basebl 1.318999 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.600447 
+threads 1 n 1024 m 1536 nb 16 basebl 6.547645 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.641104 
+threads 1 n 1024 m 1536 nb 32 basebl 5.949518 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.557290 
+threads 1 n 1024 m 1536 nb 64 basebl 5.757452 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.612538 
+threads 1 n 1024 m 1536 nb 128 basebl 5.678537 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.573173 
+threads 1 n 1024 m 1536 nb 256 basebl 5.713648 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.631341 
+threads 1 n 1024 m 1536 nb 512 basebl 5.961758 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000173 sch_run_striped 0.003492 
+
+threads 1 n 512 m 1536 nb 16 base 1.747073 
+threads 1 n 512 m 1536 nb 16 basebl 1.344419 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.747527 
+threads 1 n 512 m 1536 nb 32 basebl 1.304683 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.746995 
+threads 1 n 512 m 1536 nb 64 basebl 1.306063 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.746531 
+threads 1 n 512 m 1536 nb 128 basebl 1.308788 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.747476 
+threads 1 n 512 m 1536 nb 256 basebl 1.307604 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.747080 
+threads 1 n 512 m 1536 nb 512 basebl 1.307230 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.813222 
+threads 1 n 1024 m 1536 nb 16 basebl 6.509059 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.543569 
+threads 1 n 1024 m 1536 nb 32 basebl 5.939591 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.459325 
+threads 1 n 1024 m 1536 nb 64 basebl 5.748693 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.404603 
+threads 1 n 1024 m 1536 nb 128 basebl 5.681504 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.550249 
+threads 1 n 1024 m 1536 nb 256 basebl 5.694756 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.435147 
+threads 1 n 1024 m 1536 nb 512 basebl 5.989815 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000102 sch_run_striped 0.003537 
+
+threads 1 n 512 m 1536 nb 16 base 1.756130 
+threads 1 n 512 m 1536 nb 16 basebl 1.354112 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.756704 
+threads 1 n 512 m 1536 nb 32 basebl 1.314173 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.757087 
+threads 1 n 512 m 1536 nb 64 basebl 1.311752 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.756565 
+threads 1 n 512 m 1536 nb 128 basebl 1.313190 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.756224 
+threads 1 n 512 m 1536 nb 256 basebl 1.312106 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.756373 
+threads 1 n 512 m 1536 nb 512 basebl 1.315843 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.727892 
+threads 1 n 1024 m 1536 nb 16 basebl 6.553426 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.575009 
+threads 1 n 1024 m 1536 nb 32 basebl 5.948157 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.281859 
+threads 1 n 1024 m 1536 nb 64 basebl 5.761251 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.422820 
+threads 1 n 1024 m 1536 nb 128 basebl 5.696680 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.625277 
+threads 1 n 1024 m 1536 nb 256 basebl 5.699243 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.357040 
+threads 1 n 1024 m 1536 nb 512 basebl 6.003524 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003481 
+
+threads 1 n 512 m 1536 nb 16 base 1.855630 
+threads 1 n 512 m 1536 nb 16 basebl 1.349183 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.856347 
+threads 1 n 512 m 1536 nb 32 basebl 1.299944 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.856130 
+threads 1 n 512 m 1536 nb 64 basebl 1.301289 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.855879 
+threads 1 n 512 m 1536 nb 128 basebl 1.303498 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.855715 
+threads 1 n 512 m 1536 nb 256 basebl 1.302160 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.855140 
+threads 1 n 512 m 1536 nb 512 basebl 1.312234 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.793584 
+threads 1 n 1024 m 1536 nb 16 basebl 6.519026 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.630320 
+threads 1 n 1024 m 1536 nb 32 basebl 5.913175 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.535188 
+threads 1 n 1024 m 1536 nb 64 basebl 5.722774 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.581954 
+threads 1 n 1024 m 1536 nb 128 basebl 5.660130 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.549230 
+threads 1 n 1024 m 1536 nb 256 basebl 5.676518 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.594285 
+threads 1 n 1024 m 1536 nb 512 basebl 5.965506 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003456 
+
+threads 1 n 512 m 1536 nb 16 base 2.003889 
+threads 1 n 512 m 1536 nb 16 basebl 1.364781 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 2.004726 
+threads 1 n 512 m 1536 nb 32 basebl 1.312652 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 2.004223 
+threads 1 n 512 m 1536 nb 64 basebl 1.309910 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 2.003909 
+threads 1 n 512 m 1536 nb 128 basebl 1.311011 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 2.003596 
+threads 1 n 512 m 1536 nb 256 basebl 1.311072 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 2.003575 
+threads 1 n 512 m 1536 nb 512 basebl 1.327586 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.772751 
+threads 1 n 1024 m 1536 nb 16 basebl 6.541063 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.450894 
+threads 1 n 1024 m 1536 nb 32 basebl 5.924747 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.294577 
+threads 1 n 1024 m 1536 nb 64 basebl 5.740513 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.514273 
+threads 1 n 1024 m 1536 nb 128 basebl 5.683470 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.511890 
+threads 1 n 1024 m 1536 nb 256 basebl 5.696826 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.314668 
+threads 1 n 1024 m 1536 nb 512 basebl 6.014572 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003718 
+
+threads 1 n 512 m 1536 nb 16 base 1.751186 
+threads 1 n 512 m 1536 nb 16 basebl 1.345626 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750982 
+threads 1 n 512 m 1536 nb 32 basebl 1.302228 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.751909 
+threads 1 n 512 m 1536 nb 64 basebl 1.304469 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.751242 
+threads 1 n 512 m 1536 nb 128 basebl 1.307166 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.751161 
+threads 1 n 512 m 1536 nb 256 basebl 1.305487 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.751393 
+threads 1 n 512 m 1536 nb 512 basebl 1.308304 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.782314 
+threads 1 n 1024 m 1536 nb 16 basebl 6.511518 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.563926 
+threads 1 n 1024 m 1536 nb 32 basebl 5.919981 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.564639 
+threads 1 n 1024 m 1536 nb 64 basebl 5.720801 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.378345 
+threads 1 n 1024 m 1536 nb 128 basebl 5.679541 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.647792 
+threads 1 n 1024 m 1536 nb 256 basebl 5.711378 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.537467 
+threads 1 n 1024 m 1536 nb 512 basebl 5.924946 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003446 
+
+threads 1 n 512 m 1536 nb 16 base 1.747621 
+threads 1 n 512 m 1536 nb 16 basebl 1.346979 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.747390 
+threads 1 n 512 m 1536 nb 32 basebl 1.306014 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.747380 
+threads 1 n 512 m 1536 nb 64 basebl 1.308005 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.746870 
+threads 1 n 512 m 1536 nb 128 basebl 1.310841 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.747156 
+threads 1 n 512 m 1536 nb 256 basebl 1.309089 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.747239 
+threads 1 n 512 m 1536 nb 512 basebl 1.309071 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.673048 
+threads 1 n 1024 m 1536 nb 16 basebl 6.536057 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.422872 
+threads 1 n 1024 m 1536 nb 32 basebl 5.942210 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.588258 
+threads 1 n 1024 m 1536 nb 64 basebl 5.754521 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.374797 
+threads 1 n 1024 m 1536 nb 128 basebl 5.683466 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.454899 
+threads 1 n 1024 m 1536 nb 256 basebl 5.711967 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.435589 
+threads 1 n 1024 m 1536 nb 512 basebl 6.025317 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000104 sch_run_striped 0.003493 
+
+threads 1 n 512 m 1536 nb 16 base 1.744889 
+threads 1 n 512 m 1536 nb 16 basebl 1.342335 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.745166 
+threads 1 n 512 m 1536 nb 32 basebl 1.301172 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.744864 
+threads 1 n 512 m 1536 nb 64 basebl 1.303167 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.744827 
+threads 1 n 512 m 1536 nb 128 basebl 1.305653 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.744550 
+threads 1 n 512 m 1536 nb 256 basebl 1.304863 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.744292 
+threads 1 n 512 m 1536 nb 512 basebl 1.304453 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.679584 
+threads 1 n 1024 m 1536 nb 16 basebl 6.548576 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.368283 
+threads 1 n 1024 m 1536 nb 32 basebl 5.944298 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.423273 
+threads 1 n 1024 m 1536 nb 64 basebl 5.742266 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.437674 
+threads 1 n 1024 m 1536 nb 128 basebl 5.685209 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.464869 
+threads 1 n 1024 m 1536 nb 256 basebl 5.684750 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.524592 
+threads 1 n 1024 m 1536 nb 512 basebl 5.964149 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000101 sch_run_striped 0.003931 
+
+threads 1 n 512 m 1536 nb 16 base 1.748210 
+threads 1 n 512 m 1536 nb 16 basebl 1.344078 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.748819 
+threads 1 n 512 m 1536 nb 32 basebl 1.301747 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.748486 
+threads 1 n 512 m 1536 nb 64 basebl 1.304793 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.748453 
+threads 1 n 512 m 1536 nb 128 basebl 1.306517 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.747641 
+threads 1 n 512 m 1536 nb 256 basebl 1.305826 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.747888 
+threads 1 n 512 m 1536 nb 512 basebl 1.306723 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.671070 
+threads 1 n 1024 m 1536 nb 16 basebl 6.554160 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.672526 
+threads 1 n 1024 m 1536 nb 32 basebl 5.946675 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.436642 
+threads 1 n 1024 m 1536 nb 64 basebl 5.756243 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.499645 
+threads 1 n 1024 m 1536 nb 128 basebl 5.684730 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.632839 
+threads 1 n 1024 m 1536 nb 256 basebl 5.696480 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.349318 
+threads 1 n 1024 m 1536 nb 512 basebl 5.924479 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003469 
+
+threads 1 n 512 m 1536 nb 16 base 1.749812 
+threads 1 n 512 m 1536 nb 16 basebl 1.341302 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750262 
+threads 1 n 512 m 1536 nb 32 basebl 1.299478 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.749404 
+threads 1 n 512 m 1536 nb 64 basebl 1.300183 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749338 
+threads 1 n 512 m 1536 nb 128 basebl 1.302822 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.749339 
+threads 1 n 512 m 1536 nb 256 basebl 1.301738 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749058 
+threads 1 n 512 m 1536 nb 512 basebl 1.303635 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.725351 
+threads 1 n 1024 m 1536 nb 16 basebl 6.509015 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.604710 
+threads 1 n 1024 m 1536 nb 32 basebl 5.920418 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.385278 
+threads 1 n 1024 m 1536 nb 64 basebl 5.732467 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.519556 
+threads 1 n 1024 m 1536 nb 128 basebl 5.668972 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.412883 
+threads 1 n 1024 m 1536 nb 256 basebl 5.705813 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.469674 
+threads 1 n 1024 m 1536 nb 512 basebl 5.982875 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003650 
+
+threads 1 n 512 m 1536 nb 16 base 1.966016 
+threads 1 n 512 m 1536 nb 16 basebl 1.364281 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.967674 
+threads 1 n 512 m 1536 nb 32 basebl 1.312482 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.967701 
+threads 1 n 512 m 1536 nb 64 basebl 1.308387 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.967322 
+threads 1 n 512 m 1536 nb 128 basebl 1.309118 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.967749 
+threads 1 n 512 m 1536 nb 256 basebl 1.308400 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.966804 
+threads 1 n 512 m 1536 nb 512 basebl 1.327608 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.658789 
+threads 1 n 1024 m 1536 nb 16 basebl 6.558930 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.496998 
+threads 1 n 1024 m 1536 nb 32 basebl 5.955436 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.472268 
+threads 1 n 1024 m 1536 nb 64 basebl 5.752691 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.486772 
+threads 1 n 1024 m 1536 nb 128 basebl 5.708411 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.510801 
+threads 1 n 1024 m 1536 nb 256 basebl 5.693249 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.647729 
+threads 1 n 1024 m 1536 nb 512 basebl 5.965165 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003917 
+
+threads 1 n 512 m 1536 nb 16 base 1.751389 
+threads 1 n 512 m 1536 nb 16 basebl 1.348189 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750705 
+threads 1 n 512 m 1536 nb 32 basebl 1.306494 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.751473 
+threads 1 n 512 m 1536 nb 64 basebl 1.307942 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749933 
+threads 1 n 512 m 1536 nb 128 basebl 1.310313 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.750813 
+threads 1 n 512 m 1536 nb 256 basebl 1.309039 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.751601 
+threads 1 n 512 m 1536 nb 512 basebl 1.310124 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.724631 
+threads 1 n 1024 m 1536 nb 16 basebl 6.543522 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.515517 
+threads 1 n 1024 m 1536 nb 32 basebl 5.958269 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.390378 
+threads 1 n 1024 m 1536 nb 64 basebl 5.743533 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.567633 
+threads 1 n 1024 m 1536 nb 128 basebl 5.679627 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.544669 
+threads 1 n 1024 m 1536 nb 256 basebl 5.677249 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.459420 
+threads 1 n 1024 m 1536 nb 512 basebl 5.958016 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000177 sch_run_striped 0.003493 
+
+threads 1 n 512 m 1536 nb 16 base 1.867440 
+threads 1 n 512 m 1536 nb 16 basebl 1.355619 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.867779 
+threads 1 n 512 m 1536 nb 32 basebl 1.308136 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.868231 
+threads 1 n 512 m 1536 nb 64 basebl 1.307358 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.868143 
+threads 1 n 512 m 1536 nb 128 basebl 1.308260 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.868430 
+threads 1 n 512 m 1536 nb 256 basebl 1.307559 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.866606 
+threads 1 n 512 m 1536 nb 512 basebl 1.316826 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.758761 
+threads 1 n 1024 m 1536 nb 16 basebl 6.510109 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.511684 
+threads 1 n 1024 m 1536 nb 32 basebl 5.946830 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.537317 
+threads 1 n 1024 m 1536 nb 64 basebl 5.756321 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.610739 
+threads 1 n 1024 m 1536 nb 128 basebl 5.692317 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.496321 
+threads 1 n 1024 m 1536 nb 256 basebl 5.698543 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.553019 
+threads 1 n 1024 m 1536 nb 512 basebl 5.981617 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003916 
+
+threads 1 n 512 m 1536 nb 16 base 1.863077 
+threads 1 n 512 m 1536 nb 16 basebl 1.350951 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.863983 
+threads 1 n 512 m 1536 nb 32 basebl 1.301686 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.864369 
+threads 1 n 512 m 1536 nb 64 basebl 1.302460 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.863909 
+threads 1 n 512 m 1536 nb 128 basebl 1.303766 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.862884 
+threads 1 n 512 m 1536 nb 256 basebl 1.302954 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.863382 
+threads 1 n 512 m 1536 nb 512 basebl 1.312262 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.789870 
+threads 1 n 1024 m 1536 nb 16 basebl 6.521441 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.594241 
+threads 1 n 1024 m 1536 nb 32 basebl 5.946985 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.405149 
+threads 1 n 1024 m 1536 nb 64 basebl 5.731657 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.600250 
+threads 1 n 1024 m 1536 nb 128 basebl 5.672608 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.608553 
+threads 1 n 1024 m 1536 nb 256 basebl 5.691539 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.495375 
+threads 1 n 1024 m 1536 nb 512 basebl 5.943650 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000112 sch_run_striped 0.003463 
+
+threads 1 n 512 m 1536 nb 16 base 1.806787 
+threads 1 n 512 m 1536 nb 16 basebl 1.346948 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.808174 
+threads 1 n 512 m 1536 nb 32 basebl 1.300581 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.808085 
+threads 1 n 512 m 1536 nb 64 basebl 1.301651 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.808078 
+threads 1 n 512 m 1536 nb 128 basebl 1.303509 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.807764 
+threads 1 n 512 m 1536 nb 256 basebl 1.302891 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.808038 
+threads 1 n 512 m 1536 nb 512 basebl 1.309622 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.845113 
+threads 1 n 1024 m 1536 nb 16 basebl 6.507048 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.498295 
+threads 1 n 1024 m 1536 nb 32 basebl 5.911894 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.181672 
+threads 1 n 1024 m 1536 nb 64 basebl 5.720742 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.327480 
+threads 1 n 1024 m 1536 nb 128 basebl 5.664557 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.332759 
+threads 1 n 1024 m 1536 nb 256 basebl 5.696374 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.509876 
+threads 1 n 1024 m 1536 nb 512 basebl 5.940299 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003938 
+
+threads 1 n 512 m 1536 nb 16 base 1.870653 
+threads 1 n 512 m 1536 nb 16 basebl 1.357706 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.871463 
+threads 1 n 512 m 1536 nb 32 basebl 1.311188 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.871337 
+threads 1 n 512 m 1536 nb 64 basebl 1.310019 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.870993 
+threads 1 n 512 m 1536 nb 128 basebl 1.311269 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.871514 
+threads 1 n 512 m 1536 nb 256 basebl 1.310092 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.871211 
+threads 1 n 512 m 1536 nb 512 basebl 1.320087 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.830110 
+threads 1 n 1024 m 1536 nb 16 basebl 6.551683 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.580957 
+threads 1 n 1024 m 1536 nb 32 basebl 5.954710 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.624116 
+threads 1 n 1024 m 1536 nb 64 basebl 5.753130 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.497533 
+threads 1 n 1024 m 1536 nb 128 basebl 5.685026 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.643459 
+threads 1 n 1024 m 1536 nb 256 basebl 5.694215 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.362571 
+threads 1 n 1024 m 1536 nb 512 basebl 5.957717 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000100 sch_run_striped 0.003461 
+
+threads 1 n 512 m 1536 nb 16 base 1.745261 
+threads 1 n 512 m 1536 nb 16 basebl 1.339543 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.745697 
+threads 1 n 512 m 1536 nb 32 basebl 1.296746 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.744997 
+threads 1 n 512 m 1536 nb 64 basebl 1.300342 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.745105 
+threads 1 n 512 m 1536 nb 128 basebl 1.302553 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.745518 
+threads 1 n 512 m 1536 nb 256 basebl 1.302303 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.745239 
+threads 1 n 512 m 1536 nb 512 basebl 1.301861 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.633375 
+threads 1 n 1024 m 1536 nb 16 basebl 6.522427 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.585670 
+threads 1 n 1024 m 1536 nb 32 basebl 5.918525 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.435384 
+threads 1 n 1024 m 1536 nb 64 basebl 5.717386 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.584021 
+threads 1 n 1024 m 1536 nb 128 basebl 5.657387 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.323704 
+threads 1 n 1024 m 1536 nb 256 basebl 5.684381 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.480577 
+threads 1 n 1024 m 1536 nb 512 basebl 5.970282 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000114 sch_run_striped 0.003500 
+
+threads 1 n 512 m 1536 nb 16 base 1.749859 
+threads 1 n 512 m 1536 nb 16 basebl 1.346129 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750230 
+threads 1 n 512 m 1536 nb 32 basebl 1.302941 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750507 
+threads 1 n 512 m 1536 nb 64 basebl 1.305693 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749953 
+threads 1 n 512 m 1536 nb 128 basebl 1.308332 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.749253 
+threads 1 n 512 m 1536 nb 256 basebl 1.307457 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749746 
+threads 1 n 512 m 1536 nb 512 basebl 1.308030 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.684697 
+threads 1 n 1024 m 1536 nb 16 basebl 6.529364 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.484192 
+threads 1 n 1024 m 1536 nb 32 basebl 5.940932 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.420092 
+threads 1 n 1024 m 1536 nb 64 basebl 5.736674 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.568800 
+threads 1 n 1024 m 1536 nb 128 basebl 5.686055 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.598385 
+threads 1 n 1024 m 1536 nb 256 basebl 5.706785 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.298878 
+threads 1 n 1024 m 1536 nb 512 basebl 5.945081 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000104 sch_run_striped 0.003535 
+
+threads 1 n 512 m 1536 nb 16 base 1.817855 
+threads 1 n 512 m 1536 nb 16 basebl 1.356512 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.819674 
+threads 1 n 512 m 1536 nb 32 basebl 1.311700 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.819298 
+threads 1 n 512 m 1536 nb 64 basebl 1.310929 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.819186 
+threads 1 n 512 m 1536 nb 128 basebl 1.312466 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.818817 
+threads 1 n 512 m 1536 nb 256 basebl 1.311584 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.818507 
+threads 1 n 512 m 1536 nb 512 basebl 1.320104 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.655244 
+threads 1 n 1024 m 1536 nb 16 basebl 6.529675 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.466417 
+threads 1 n 1024 m 1536 nb 32 basebl 5.957942 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.461493 
+threads 1 n 1024 m 1536 nb 64 basebl 5.742857 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.461192 
+threads 1 n 1024 m 1536 nb 128 basebl 5.708723 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.498470 
+threads 1 n 1024 m 1536 nb 256 basebl 5.675950 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.574077 
+threads 1 n 1024 m 1536 nb 512 basebl 5.979041 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003914 
+
+threads 1 n 512 m 1536 nb 16 base 2.005160 
+threads 1 n 512 m 1536 nb 16 basebl 1.371433 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 2.007224 
+threads 1 n 512 m 1536 nb 32 basebl 1.318441 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 2.006848 
+threads 1 n 512 m 1536 nb 64 basebl 1.314172 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 2.006839 
+threads 1 n 512 m 1536 nb 128 basebl 1.313429 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 2.006691 
+threads 1 n 512 m 1536 nb 256 basebl 1.314427 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 2.006141 
+threads 1 n 512 m 1536 nb 512 basebl 1.333086 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.757140 
+threads 1 n 1024 m 1536 nb 16 basebl 6.553398 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.628687 
+threads 1 n 1024 m 1536 nb 32 basebl 5.939454 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.660653 
+threads 1 n 1024 m 1536 nb 64 basebl 5.741783 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.597812 
+threads 1 n 1024 m 1536 nb 128 basebl 5.692827 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.659703 
+threads 1 n 1024 m 1536 nb 256 basebl 5.706210 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.585070 
+threads 1 n 1024 m 1536 nb 512 basebl 5.982200 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003488 
+
+threads 1 n 512 m 1536 nb 16 base 1.964188 
+threads 1 n 512 m 1536 nb 16 basebl 1.359762 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.964819 
+threads 1 n 512 m 1536 nb 32 basebl 1.307236 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.965003 
+threads 1 n 512 m 1536 nb 64 basebl 1.305348 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.964802 
+threads 1 n 512 m 1536 nb 128 basebl 1.305948 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.964745 
+threads 1 n 512 m 1536 nb 256 basebl 1.305207 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.964409 
+threads 1 n 512 m 1536 nb 512 basebl 1.321915 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.753890 
+threads 1 n 1024 m 1536 nb 16 basebl 6.508791 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.476373 
+threads 1 n 1024 m 1536 nb 32 basebl 5.911160 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.438278 
+threads 1 n 1024 m 1536 nb 64 basebl 5.731450 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.697100 
+threads 1 n 1024 m 1536 nb 128 basebl 5.664418 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.456554 
+threads 1 n 1024 m 1536 nb 256 basebl 5.676982 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.530470 
+threads 1 n 1024 m 1536 nb 512 basebl 5.984612 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003480 
+
+threads 1 n 512 m 1536 nb 16 base 1.824335 
+threads 1 n 512 m 1536 nb 16 basebl 1.354044 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.824166 
+threads 1 n 512 m 1536 nb 32 basebl 1.308061 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.824628 
+threads 1 n 512 m 1536 nb 64 basebl 1.306431 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.824665 
+threads 1 n 512 m 1536 nb 128 basebl 1.308223 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.824613 
+threads 1 n 512 m 1536 nb 256 basebl 1.308862 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.825201 
+threads 1 n 512 m 1536 nb 512 basebl 1.317486 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.716733 
+threads 1 n 1024 m 1536 nb 16 basebl 6.524934 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.450916 
+threads 1 n 1024 m 1536 nb 32 basebl 5.933447 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.566365 
+threads 1 n 1024 m 1536 nb 64 basebl 5.740146 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.470292 
+threads 1 n 1024 m 1536 nb 128 basebl 5.692448 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.437994 
+threads 1 n 1024 m 1536 nb 256 basebl 5.704724 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.323475 
+threads 1 n 1024 m 1536 nb 512 basebl 6.024170 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003464 
+
+threads 1 n 512 m 1536 nb 16 base 1.755981 
+threads 1 n 512 m 1536 nb 16 basebl 1.345188 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.756234 
+threads 1 n 512 m 1536 nb 32 basebl 1.302663 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.754974 
+threads 1 n 512 m 1536 nb 64 basebl 1.303374 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.755039 
+threads 1 n 512 m 1536 nb 128 basebl 1.305897 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755049 
+threads 1 n 512 m 1536 nb 256 basebl 1.304911 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754940 
+threads 1 n 512 m 1536 nb 512 basebl 1.308509 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.705649 
+threads 1 n 1024 m 1536 nb 16 basebl 6.542775 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.378210 
+threads 1 n 1024 m 1536 nb 32 basebl 5.927085 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.639452 
+threads 1 n 1024 m 1536 nb 64 basebl 5.724719 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.642509 
+threads 1 n 1024 m 1536 nb 128 basebl 5.679786 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.352166 
+threads 1 n 1024 m 1536 nb 256 basebl 5.687204 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.292699 
+threads 1 n 1024 m 1536 nb 512 basebl 5.947299 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003527 
+
+threads 1 n 512 m 1536 nb 16 base 1.866772 
+threads 1 n 512 m 1536 nb 16 basebl 1.362193 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.865319 
+threads 1 n 512 m 1536 nb 32 basebl 1.316711 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.864589 
+threads 1 n 512 m 1536 nb 64 basebl 1.314313 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.865015 
+threads 1 n 512 m 1536 nb 128 basebl 1.314591 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.864810 
+threads 1 n 512 m 1536 nb 256 basebl 1.313251 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.863919 
+threads 1 n 512 m 1536 nb 512 basebl 1.323975 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.700085 
+threads 1 n 1024 m 1536 nb 16 basebl 6.556545 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.404897 
+threads 1 n 1024 m 1536 nb 32 basebl 5.962224 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.449811 
+threads 1 n 1024 m 1536 nb 64 basebl 5.771571 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.085397 
+threads 1 n 1024 m 1536 nb 128 basebl 5.713463 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.425294 
+threads 1 n 1024 m 1536 nb 256 basebl 5.746310 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.523859 
+threads 1 n 1024 m 1536 nb 512 basebl 5.995370 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000112 sch_run_striped 0.003519 
+
+threads 1 n 512 m 1536 nb 16 base 1.750464 
+threads 1 n 512 m 1536 nb 16 basebl 1.349210 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750666 
+threads 1 n 512 m 1536 nb 32 basebl 1.308777 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750824 
+threads 1 n 512 m 1536 nb 64 basebl 1.310568 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.750502 
+threads 1 n 512 m 1536 nb 128 basebl 1.312814 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.750420 
+threads 1 n 512 m 1536 nb 256 basebl 1.311726 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750592 
+threads 1 n 512 m 1536 nb 512 basebl 1.312598 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.660043 
+threads 1 n 1024 m 1536 nb 16 basebl 6.545819 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.455881 
+threads 1 n 1024 m 1536 nb 32 basebl 5.952299 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.506964 
+threads 1 n 1024 m 1536 nb 64 basebl 5.761088 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.470960 
+threads 1 n 1024 m 1536 nb 128 basebl 5.719845 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.544166 
+threads 1 n 1024 m 1536 nb 256 basebl 5.744444 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.524103 
+threads 1 n 1024 m 1536 nb 512 basebl 5.982648 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003463 
+
+threads 1 n 512 m 1536 nb 16 base 1.750534 
+threads 1 n 512 m 1536 nb 16 basebl 1.343881 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750640 
+threads 1 n 512 m 1536 nb 32 basebl 1.300731 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750574 
+threads 1 n 512 m 1536 nb 64 basebl 1.302395 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749540 
+threads 1 n 512 m 1536 nb 128 basebl 1.304406 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.749917 
+threads 1 n 512 m 1536 nb 256 basebl 1.303514 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749403 
+threads 1 n 512 m 1536 nb 512 basebl 1.306843 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.769405 
+threads 1 n 1024 m 1536 nb 16 basebl 6.538467 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.345079 
+threads 1 n 1024 m 1536 nb 32 basebl 5.921828 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.611722 
+threads 1 n 1024 m 1536 nb 64 basebl 5.727005 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.289144 
+threads 1 n 1024 m 1536 nb 128 basebl 5.653847 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.327412 
+threads 1 n 1024 m 1536 nb 256 basebl 5.675274 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.473873 
+threads 1 n 1024 m 1536 nb 512 basebl 5.976062 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.004120 
+
+threads 1 n 512 m 1536 nb 16 base 1.832159 
+threads 1 n 512 m 1536 nb 16 basebl 1.358609 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.832385 
+threads 1 n 512 m 1536 nb 32 basebl 1.312129 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.830673 
+threads 1 n 512 m 1536 nb 64 basebl 1.310791 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.831588 
+threads 1 n 512 m 1536 nb 128 basebl 1.310950 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.830653 
+threads 1 n 512 m 1536 nb 256 basebl 1.310210 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.831518 
+threads 1 n 512 m 1536 nb 512 basebl 1.320368 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.718511 
+threads 1 n 1024 m 1536 nb 16 basebl 6.557553 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.572847 
+threads 1 n 1024 m 1536 nb 32 basebl 5.947220 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.272984 
+threads 1 n 1024 m 1536 nb 64 basebl 5.761629 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.472904 
+threads 1 n 1024 m 1536 nb 128 basebl 5.701440 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.508921 
+threads 1 n 1024 m 1536 nb 256 basebl 5.732227 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.616469 
+threads 1 n 1024 m 1536 nb 512 basebl 5.989423 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000110 sch_run_striped 0.003487 
+
+threads 1 n 512 m 1536 nb 16 base 1.749893 
+threads 1 n 512 m 1536 nb 16 basebl 1.343778 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750671 
+threads 1 n 512 m 1536 nb 32 basebl 1.298083 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.749948 
+threads 1 n 512 m 1536 nb 64 basebl 1.301740 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749854 
+threads 1 n 512 m 1536 nb 128 basebl 1.303718 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.749843 
+threads 1 n 512 m 1536 nb 256 basebl 1.302868 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749606 
+threads 1 n 512 m 1536 nb 512 basebl 1.306217 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.858573 
+threads 1 n 1024 m 1536 nb 16 basebl 6.498750 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.357376 
+threads 1 n 1024 m 1536 nb 32 basebl 5.914903 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.101121 
+threads 1 n 1024 m 1536 nb 64 basebl 5.731093 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.415632 
+threads 1 n 1024 m 1536 nb 128 basebl 5.667462 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.508223 
+threads 1 n 1024 m 1536 nb 256 basebl 5.702935 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.483923 
+threads 1 n 1024 m 1536 nb 512 basebl 5.909095 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003475 
+
+threads 1 n 512 m 1536 nb 16 base 1.754614 
+threads 1 n 512 m 1536 nb 16 basebl 1.349751 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.755280 
+threads 1 n 512 m 1536 nb 32 basebl 1.305342 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.755519 
+threads 1 n 512 m 1536 nb 64 basebl 1.307519 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.755635 
+threads 1 n 512 m 1536 nb 128 basebl 1.309184 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.754689 
+threads 1 n 512 m 1536 nb 256 basebl 1.308535 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754132 
+threads 1 n 512 m 1536 nb 512 basebl 1.311199 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.755876 
+threads 1 n 1024 m 1536 nb 16 basebl 6.538436 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.588381 
+threads 1 n 1024 m 1536 nb 32 basebl 5.933024 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.482144 
+threads 1 n 1024 m 1536 nb 64 basebl 5.729250 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.289643 
+threads 1 n 1024 m 1536 nb 128 basebl 5.686278 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.551462 
+threads 1 n 1024 m 1536 nb 256 basebl 5.727376 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.576461 
+threads 1 n 1024 m 1536 nb 512 basebl 5.946178 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003479 
+
+threads 1 n 512 m 1536 nb 16 base 1.749371 
+threads 1 n 512 m 1536 nb 16 basebl 1.346444 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750327 
+threads 1 n 512 m 1536 nb 32 basebl 1.305280 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.749915 
+threads 1 n 512 m 1536 nb 64 basebl 1.306519 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749992 
+threads 1 n 512 m 1536 nb 128 basebl 1.308092 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.749581 
+threads 1 n 512 m 1536 nb 256 basebl 1.306752 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750187 
+threads 1 n 512 m 1536 nb 512 basebl 1.308941 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.730771 
+threads 1 n 1024 m 1536 nb 16 basebl 6.562416 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.562930 
+threads 1 n 1024 m 1536 nb 32 basebl 5.961862 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.613647 
+threads 1 n 1024 m 1536 nb 64 basebl 5.770521 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.220057 
+threads 1 n 1024 m 1536 nb 128 basebl 5.708696 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.565652 
+threads 1 n 1024 m 1536 nb 256 basebl 5.768190 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.507405 
+threads 1 n 1024 m 1536 nb 512 basebl 5.969789 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003885 
+
+threads 1 n 512 m 1536 nb 16 base 1.751797 
+threads 1 n 512 m 1536 nb 16 basebl 1.342849 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.752125 
+threads 1 n 512 m 1536 nb 32 basebl 1.297456 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.752353 
+threads 1 n 512 m 1536 nb 64 basebl 1.300272 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.752859 
+threads 1 n 512 m 1536 nb 128 basebl 1.302568 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.751812 
+threads 1 n 512 m 1536 nb 256 basebl 1.301551 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750852 
+threads 1 n 512 m 1536 nb 512 basebl 1.304852 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.745237 
+threads 1 n 1024 m 1536 nb 16 basebl 6.530550 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.585682 
+threads 1 n 1024 m 1536 nb 32 basebl 5.931180 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.497571 
+threads 1 n 1024 m 1536 nb 64 basebl 5.724279 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.368806 
+threads 1 n 1024 m 1536 nb 128 basebl 5.662960 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.579935 
+threads 1 n 1024 m 1536 nb 256 basebl 5.663423 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.360360 
+threads 1 n 1024 m 1536 nb 512 basebl 5.943417 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000103 sch_run_striped 0.003484 
+
+threads 1 n 512 m 1536 nb 16 base 1.756768 
+threads 1 n 512 m 1536 nb 16 basebl 1.348823 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.756164 
+threads 1 n 512 m 1536 nb 32 basebl 1.302188 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.756553 
+threads 1 n 512 m 1536 nb 64 basebl 1.302978 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.757044 
+threads 1 n 512 m 1536 nb 128 basebl 1.304717 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.756026 
+threads 1 n 512 m 1536 nb 256 basebl 1.304199 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.756475 
+threads 1 n 512 m 1536 nb 512 basebl 1.311352 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.708166 
+threads 1 n 1024 m 1536 nb 16 basebl 6.517598 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.633083 
+threads 1 n 1024 m 1536 nb 32 basebl 5.918855 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.604760 
+threads 1 n 1024 m 1536 nb 64 basebl 5.724853 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.501205 
+threads 1 n 1024 m 1536 nb 128 basebl 5.667569 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.365608 
+threads 1 n 1024 m 1536 nb 256 basebl 5.668581 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.584279 
+threads 1 n 1024 m 1536 nb 512 basebl 5.965604 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003521 
+
+threads 1 n 512 m 1536 nb 16 base 1.751020 
+threads 1 n 512 m 1536 nb 16 basebl 1.348818 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750755 
+threads 1 n 512 m 1536 nb 32 basebl 1.308509 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750753 
+threads 1 n 512 m 1536 nb 64 basebl 1.309330 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.751193 
+threads 1 n 512 m 1536 nb 128 basebl 1.310646 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.750826 
+threads 1 n 512 m 1536 nb 256 basebl 1.310231 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750993 
+threads 1 n 512 m 1536 nb 512 basebl 1.311147 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.694075 
+threads 1 n 1024 m 1536 nb 16 basebl 6.553975 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.446519 
+threads 1 n 1024 m 1536 nb 32 basebl 5.959650 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.259565 
+threads 1 n 1024 m 1536 nb 64 basebl 5.756201 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.278222 
+threads 1 n 1024 m 1536 nb 128 basebl 5.699262 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.625485 
+threads 1 n 1024 m 1536 nb 256 basebl 5.723185 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.193775 
+threads 1 n 1024 m 1536 nb 512 basebl 5.981152 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.004129 
+
+threads 1 n 512 m 1536 nb 16 base 1.827537 
+threads 1 n 512 m 1536 nb 16 basebl 1.350453 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.828233 
+threads 1 n 512 m 1536 nb 32 basebl 1.302933 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.828591 
+threads 1 n 512 m 1536 nb 64 basebl 1.303880 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.828082 
+threads 1 n 512 m 1536 nb 128 basebl 1.305560 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.828720 
+threads 1 n 512 m 1536 nb 256 basebl 1.304714 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.828020 
+threads 1 n 512 m 1536 nb 512 basebl 1.312884 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.798566 
+threads 1 n 1024 m 1536 nb 16 basebl 6.525497 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.461967 
+threads 1 n 1024 m 1536 nb 32 basebl 5.923149 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.559526 
+threads 1 n 1024 m 1536 nb 64 basebl 5.740831 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.449771 
+threads 1 n 1024 m 1536 nb 128 basebl 5.683517 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.431453 
+threads 1 n 1024 m 1536 nb 256 basebl 5.674346 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.600645 
+threads 1 n 1024 m 1536 nb 512 basebl 5.975120 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000104 sch_run_striped 0.003495 
+
+threads 1 n 512 m 1536 nb 16 base 1.874991 
+threads 1 n 512 m 1536 nb 16 basebl 1.357898 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.875516 
+threads 1 n 512 m 1536 nb 32 basebl 1.307047 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.874960 
+threads 1 n 512 m 1536 nb 64 basebl 1.307311 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.874538 
+threads 1 n 512 m 1536 nb 128 basebl 1.309269 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.874974 
+threads 1 n 512 m 1536 nb 256 basebl 1.308336 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.874982 
+threads 1 n 512 m 1536 nb 512 basebl 1.320301 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.823985 
+threads 1 n 1024 m 1536 nb 16 basebl 6.540013 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.589455 
+threads 1 n 1024 m 1536 nb 32 basebl 5.938762 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.512868 
+threads 1 n 1024 m 1536 nb 64 basebl 5.744840 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.277826 
+threads 1 n 1024 m 1536 nb 128 basebl 5.674380 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.493084 
+threads 1 n 1024 m 1536 nb 256 basebl 5.688404 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.487758 
+threads 1 n 1024 m 1536 nb 512 basebl 5.957321 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003468 
+
+threads 1 n 512 m 1536 nb 16 base 1.749613 
+threads 1 n 512 m 1536 nb 16 basebl 1.345884 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.749339 
+threads 1 n 512 m 1536 nb 32 basebl 1.304819 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.749358 
+threads 1 n 512 m 1536 nb 64 basebl 1.306471 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749382 
+threads 1 n 512 m 1536 nb 128 basebl 1.308752 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.748753 
+threads 1 n 512 m 1536 nb 256 basebl 1.307936 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749073 
+threads 1 n 512 m 1536 nb 512 basebl 1.308296 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.821921 
+threads 1 n 1024 m 1536 nb 16 basebl 6.529556 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.454580 
+threads 1 n 1024 m 1536 nb 32 basebl 5.944742 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.219024 
+threads 1 n 1024 m 1536 nb 64 basebl 5.750515 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.523884 
+threads 1 n 1024 m 1536 nb 128 basebl 5.695026 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.498148 
+threads 1 n 1024 m 1536 nb 256 basebl 5.686348 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.406975 
+threads 1 n 1024 m 1536 nb 512 basebl 6.010516 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000112 sch_run_striped 0.003457 
+
+threads 1 n 512 m 1536 nb 16 base 1.749968 
+threads 1 n 512 m 1536 nb 16 basebl 1.344639 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750319 
+threads 1 n 512 m 1536 nb 32 basebl 1.300973 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750600 
+threads 1 n 512 m 1536 nb 64 basebl 1.302922 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749824 
+threads 1 n 512 m 1536 nb 128 basebl 1.305409 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.750042 
+threads 1 n 512 m 1536 nb 256 basebl 1.304224 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750169 
+threads 1 n 512 m 1536 nb 512 basebl 1.307075 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.808775 
+threads 1 n 1024 m 1536 nb 16 basebl 6.544382 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.649645 
+threads 1 n 1024 m 1536 nb 32 basebl 5.922109 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.659918 
+threads 1 n 1024 m 1536 nb 64 basebl 5.723319 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.653351 
+threads 1 n 1024 m 1536 nb 128 basebl 5.693166 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.561205 
+threads 1 n 1024 m 1536 nb 256 basebl 5.699782 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.635602 
+threads 1 n 1024 m 1536 nb 512 basebl 5.989986 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000112 sch_run_striped 0.003529 
+
+threads 1 n 512 m 1536 nb 16 base 1.795033 
+threads 1 n 512 m 1536 nb 16 basebl 1.345752 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.795880 
+threads 1 n 512 m 1536 nb 32 basebl 1.298905 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.795075 
+threads 1 n 512 m 1536 nb 64 basebl 1.301438 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.795697 
+threads 1 n 512 m 1536 nb 128 basebl 1.302974 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.795174 
+threads 1 n 512 m 1536 nb 256 basebl 1.302527 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.794594 
+threads 1 n 512 m 1536 nb 512 basebl 1.307371 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.822681 
+threads 1 n 1024 m 1536 nb 16 basebl 6.507286 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.655788 
+threads 1 n 1024 m 1536 nb 32 basebl 5.918351 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.513888 
+threads 1 n 1024 m 1536 nb 64 basebl 5.724346 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.332021 
+threads 1 n 1024 m 1536 nb 128 basebl 5.655017 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.639807 
+threads 1 n 1024 m 1536 nb 256 basebl 5.714130 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.486566 
+threads 1 n 1024 m 1536 nb 512 basebl 5.911619 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000097 sch_run_striped 0.003586 
+
+threads 1 n 512 m 1536 nb 16 base 1.871854 
+threads 1 n 512 m 1536 nb 16 basebl 1.355159 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.872075 
+threads 1 n 512 m 1536 nb 32 basebl 1.307524 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.871104 
+threads 1 n 512 m 1536 nb 64 basebl 1.308355 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.871559 
+threads 1 n 512 m 1536 nb 128 basebl 1.309517 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.871059 
+threads 1 n 512 m 1536 nb 256 basebl 1.308268 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.871469 
+threads 1 n 512 m 1536 nb 512 basebl 1.318498 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.839241 
+threads 1 n 1024 m 1536 nb 16 basebl 6.536856 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.654843 
+threads 1 n 1024 m 1536 nb 32 basebl 5.944680 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.634255 
+threads 1 n 1024 m 1536 nb 64 basebl 5.747509 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.509414 
+threads 1 n 1024 m 1536 nb 128 basebl 5.684243 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.508593 
+threads 1 n 1024 m 1536 nb 256 basebl 5.690714 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.550463 
+threads 1 n 1024 m 1536 nb 512 basebl 5.975797 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.004001 
+
+threads 1 n 512 m 1536 nb 16 base 2.026537 
+threads 1 n 512 m 1536 nb 16 basebl 1.375551 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 2.027663 
+threads 1 n 512 m 1536 nb 32 basebl 1.320906 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 2.026911 
+threads 1 n 512 m 1536 nb 64 basebl 1.316898 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 2.027269 
+threads 1 n 512 m 1536 nb 128 basebl 1.316186 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 2.026807 
+threads 1 n 512 m 1536 nb 256 basebl 1.316084 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 2.027007 
+threads 1 n 512 m 1536 nb 512 basebl 1.337703 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.742569 
+threads 1 n 1024 m 1536 nb 16 basebl 6.557598 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.349756 
+threads 1 n 1024 m 1536 nb 32 basebl 5.951281 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.496924 
+threads 1 n 1024 m 1536 nb 64 basebl 5.760917 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.505610 
+threads 1 n 1024 m 1536 nb 128 basebl 5.692311 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.446819 
+threads 1 n 1024 m 1536 nb 256 basebl 5.714407 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.481908 
+threads 1 n 1024 m 1536 nb 512 basebl 6.010346 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000103 sch_run_striped 0.003492 
+
+threads 1 n 512 m 1536 nb 16 base 1.763126 
+threads 1 n 512 m 1536 nb 16 basebl 1.354951 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.764526 
+threads 1 n 512 m 1536 nb 32 basebl 1.311456 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.763652 
+threads 1 n 512 m 1536 nb 64 basebl 1.311327 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.763963 
+threads 1 n 512 m 1536 nb 128 basebl 1.311753 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.763421 
+threads 1 n 512 m 1536 nb 256 basebl 1.311122 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.763665 
+threads 1 n 512 m 1536 nb 512 basebl 1.317217 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.751780 
+threads 1 n 1024 m 1536 nb 16 basebl 6.535796 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.375281 
+threads 1 n 1024 m 1536 nb 32 basebl 5.945349 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.072574 
+threads 1 n 1024 m 1536 nb 64 basebl 5.752434 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.557836 
+threads 1 n 1024 m 1536 nb 128 basebl 5.707718 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.338112 
+threads 1 n 1024 m 1536 nb 256 basebl 5.713383 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.159161 
+threads 1 n 1024 m 1536 nb 512 basebl 6.053468 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003472 
+
+threads 1 n 512 m 1536 nb 16 base 1.750600 
+threads 1 n 512 m 1536 nb 16 basebl 1.348209 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.751614 
+threads 1 n 512 m 1536 nb 32 basebl 1.305775 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750919 
+threads 1 n 512 m 1536 nb 64 basebl 1.307667 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.750743 
+threads 1 n 512 m 1536 nb 128 basebl 1.309250 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.751036 
+threads 1 n 512 m 1536 nb 256 basebl 1.308333 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750902 
+threads 1 n 512 m 1536 nb 512 basebl 1.310398 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.756028 
+threads 1 n 1024 m 1536 nb 16 basebl 6.534652 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.498290 
+threads 1 n 1024 m 1536 nb 32 basebl 5.921377 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.483356 
+threads 1 n 1024 m 1536 nb 64 basebl 5.752653 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.283918 
+threads 1 n 1024 m 1536 nb 128 basebl 5.667509 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.491157 
+threads 1 n 1024 m 1536 nb 256 basebl 5.701667 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.409602 
+threads 1 n 1024 m 1536 nb 512 basebl 5.955080 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003453 
+
+threads 1 n 512 m 1536 nb 16 base 1.873311 
+threads 1 n 512 m 1536 nb 16 basebl 1.359711 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.872394 
+threads 1 n 512 m 1536 nb 32 basebl 1.311346 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.873048 
+threads 1 n 512 m 1536 nb 64 basebl 1.310896 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.872261 
+threads 1 n 512 m 1536 nb 128 basebl 1.311837 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.872147 
+threads 1 n 512 m 1536 nb 256 basebl 1.311551 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.871951 
+threads 1 n 512 m 1536 nb 512 basebl 1.322482 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.811738 
+threads 1 n 1024 m 1536 nb 16 basebl 6.562060 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.421083 
+threads 1 n 1024 m 1536 nb 32 basebl 5.980314 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.375011 
+threads 1 n 1024 m 1536 nb 64 basebl 5.770642 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.616212 
+threads 1 n 1024 m 1536 nb 128 basebl 5.701929 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.519014 
+threads 1 n 1024 m 1536 nb 256 basebl 5.708426 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.591603 
+threads 1 n 1024 m 1536 nb 512 basebl 5.975453 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000103 sch_run_striped 0.003452 
+
+threads 1 n 512 m 1536 nb 16 base 1.754066 
+threads 1 n 512 m 1536 nb 16 basebl 1.347860 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.754151 
+threads 1 n 512 m 1536 nb 32 basebl 1.302272 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.754766 
+threads 1 n 512 m 1536 nb 64 basebl 1.302457 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.754955 
+threads 1 n 512 m 1536 nb 128 basebl 1.304982 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.753994 
+threads 1 n 512 m 1536 nb 256 basebl 1.303856 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.755417 
+threads 1 n 512 m 1536 nb 512 basebl 1.309522 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.778509 
+threads 1 n 1024 m 1536 nb 16 basebl 6.537111 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.585201 
+threads 1 n 1024 m 1536 nb 32 basebl 5.914178 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.439299 
+threads 1 n 1024 m 1536 nb 64 basebl 5.730778 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.627694 
+threads 1 n 1024 m 1536 nb 128 basebl 5.668660 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.569917 
+threads 1 n 1024 m 1536 nb 256 basebl 5.680129 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.610139 
+threads 1 n 1024 m 1536 nb 512 basebl 5.941269 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003465 
+
+threads 1 n 512 m 1536 nb 16 base 1.916976 
+threads 1 n 512 m 1536 nb 16 basebl 1.355718 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.917815 
+threads 1 n 512 m 1536 nb 32 basebl 1.306085 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.918080 
+threads 1 n 512 m 1536 nb 64 basebl 1.306113 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.917991 
+threads 1 n 512 m 1536 nb 128 basebl 1.307652 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.918012 
+threads 1 n 512 m 1536 nb 256 basebl 1.307717 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.918217 
+threads 1 n 512 m 1536 nb 512 basebl 1.318510 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.785369 
+threads 1 n 1024 m 1536 nb 16 basebl 6.550279 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.577776 
+threads 1 n 1024 m 1536 nb 32 basebl 5.939728 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.607371 
+threads 1 n 1024 m 1536 nb 64 basebl 5.737463 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.456630 
+threads 1 n 1024 m 1536 nb 128 basebl 5.684624 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.617386 
+threads 1 n 1024 m 1536 nb 256 basebl 5.691588 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.449081 
+threads 1 n 1024 m 1536 nb 512 basebl 5.942458 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003490 
+
+threads 1 n 512 m 1536 nb 16 base 1.755866 
+threads 1 n 512 m 1536 nb 16 basebl 1.355864 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.756852 
+threads 1 n 512 m 1536 nb 32 basebl 1.314789 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.755940 
+threads 1 n 512 m 1536 nb 64 basebl 1.315693 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.756182 
+threads 1 n 512 m 1536 nb 128 basebl 1.315446 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755600 
+threads 1 n 512 m 1536 nb 256 basebl 1.315113 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.755923 
+threads 1 n 512 m 1536 nb 512 basebl 1.318268 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.789556 
+threads 1 n 1024 m 1536 nb 16 basebl 6.548828 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.550266 
+threads 1 n 1024 m 1536 nb 32 basebl 5.951019 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.417609 
+threads 1 n 1024 m 1536 nb 64 basebl 5.762834 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.467579 
+threads 1 n 1024 m 1536 nb 128 basebl 5.709508 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.632177 
+threads 1 n 1024 m 1536 nb 256 basebl 5.700802 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.500612 
+threads 1 n 1024 m 1536 nb 512 basebl 6.000503 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000106 sch_run_striped 0.003606 
+
+threads 1 n 512 m 1536 nb 16 base 1.752630 
+threads 1 n 512 m 1536 nb 16 basebl 1.349918 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.753075 
+threads 1 n 512 m 1536 nb 32 basebl 1.307367 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.753008 
+threads 1 n 512 m 1536 nb 64 basebl 1.308555 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.752960 
+threads 1 n 512 m 1536 nb 128 basebl 1.309615 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.752491 
+threads 1 n 512 m 1536 nb 256 basebl 1.308561 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.752511 
+threads 1 n 512 m 1536 nb 512 basebl 1.312359 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.734028 
+threads 1 n 1024 m 1536 nb 16 basebl 6.543063 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.605467 
+threads 1 n 1024 m 1536 nb 32 basebl 5.949988 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.487851 
+threads 1 n 1024 m 1536 nb 64 basebl 5.727082 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.564969 
+threads 1 n 1024 m 1536 nb 128 basebl 5.663368 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.687690 
+threads 1 n 1024 m 1536 nb 256 basebl 5.717106 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.535665 
+threads 1 n 1024 m 1536 nb 512 basebl 5.941408 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000110 sch_run_striped 0.003478 
+
+threads 1 n 512 m 1536 nb 16 base 1.865545 
+threads 1 n 512 m 1536 nb 16 basebl 1.351982 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.866993 
+threads 1 n 512 m 1536 nb 32 basebl 1.301155 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.866758 
+threads 1 n 512 m 1536 nb 64 basebl 1.302034 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.865828 
+threads 1 n 512 m 1536 nb 128 basebl 1.303100 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.866102 
+threads 1 n 512 m 1536 nb 256 basebl 1.302344 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.866024 
+threads 1 n 512 m 1536 nb 512 basebl 1.314590 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.776306 
+threads 1 n 1024 m 1536 nb 16 basebl 6.511108 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.600978 
+threads 1 n 1024 m 1536 nb 32 basebl 5.911291 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.524865 
+threads 1 n 1024 m 1536 nb 64 basebl 5.712311 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.572648 
+threads 1 n 1024 m 1536 nb 128 basebl 5.648866 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.653101 
+threads 1 n 1024 m 1536 nb 256 basebl 5.669460 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.455339 
+threads 1 n 1024 m 1536 nb 512 basebl 5.923145 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000181 sch_run_striped 0.003502 
+
+threads 1 n 512 m 1536 nb 16 base 1.745559 
+threads 1 n 512 m 1536 nb 16 basebl 1.339937 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.745045 
+threads 1 n 512 m 1536 nb 32 basebl 1.297204 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.744517 
+threads 1 n 512 m 1536 nb 64 basebl 1.300621 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.744762 
+threads 1 n 512 m 1536 nb 128 basebl 1.303299 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.744438 
+threads 1 n 512 m 1536 nb 256 basebl 1.302732 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.744083 
+threads 1 n 512 m 1536 nb 512 basebl 1.302339 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.765048 
+threads 1 n 1024 m 1536 nb 16 basebl 6.506393 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.638823 
+threads 1 n 1024 m 1536 nb 32 basebl 5.907089 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.523494 
+threads 1 n 1024 m 1536 nb 64 basebl 5.718493 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.555339 
+threads 1 n 1024 m 1536 nb 128 basebl 5.642049 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.554676 
+threads 1 n 1024 m 1536 nb 256 basebl 5.664473 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.611850 
+threads 1 n 1024 m 1536 nb 512 basebl 5.937986 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003491 
+
+threads 1 n 512 m 1536 nb 16 base 1.755206 
+threads 1 n 512 m 1536 nb 16 basebl 1.351009 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.755734 
+threads 1 n 512 m 1536 nb 32 basebl 1.307996 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.756085 
+threads 1 n 512 m 1536 nb 64 basebl 1.307952 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.755476 
+threads 1 n 512 m 1536 nb 128 basebl 1.309167 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755195 
+threads 1 n 512 m 1536 nb 256 basebl 1.308334 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754501 
+threads 1 n 512 m 1536 nb 512 basebl 1.313314 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.714989 
+threads 1 n 1024 m 1536 nb 16 basebl 6.529711 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.519856 
+threads 1 n 1024 m 1536 nb 32 basebl 5.927762 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.437026 
+threads 1 n 1024 m 1536 nb 64 basebl 5.742551 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.490219 
+threads 1 n 1024 m 1536 nb 128 basebl 5.675227 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.523847 
+threads 1 n 1024 m 1536 nb 256 basebl 5.701931 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.464797 
+threads 1 n 1024 m 1536 nb 512 basebl 5.980386 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003506 
+
+threads 1 n 512 m 1536 nb 16 base 1.758418 
+threads 1 n 512 m 1536 nb 16 basebl 1.351417 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.757743 
+threads 1 n 512 m 1536 nb 32 basebl 1.304752 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.757203 
+threads 1 n 512 m 1536 nb 64 basebl 1.305588 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.757803 
+threads 1 n 512 m 1536 nb 128 basebl 1.306458 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.757262 
+threads 1 n 512 m 1536 nb 256 basebl 1.305608 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.756825 
+threads 1 n 512 m 1536 nb 512 basebl 1.312758 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.839410 
+threads 1 n 1024 m 1536 nb 16 basebl 6.522066 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.562212 
+threads 1 n 1024 m 1536 nb 32 basebl 5.928400 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.236900 
+threads 1 n 1024 m 1536 nb 64 basebl 5.743923 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.469596 
+threads 1 n 1024 m 1536 nb 128 basebl 5.676223 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.576468 
+threads 1 n 1024 m 1536 nb 256 basebl 5.694186 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.435090 
+threads 1 n 1024 m 1536 nb 512 basebl 5.990122 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000110 sch_run_striped 0.003575 
+
+threads 1 n 512 m 1536 nb 16 base 1.801603 
+threads 1 n 512 m 1536 nb 16 basebl 1.356028 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.803302 
+threads 1 n 512 m 1536 nb 32 basebl 1.309764 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.802737 
+threads 1 n 512 m 1536 nb 64 basebl 1.309024 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.803217 
+threads 1 n 512 m 1536 nb 128 basebl 1.310010 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.803186 
+threads 1 n 512 m 1536 nb 256 basebl 1.309932 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.802788 
+threads 1 n 512 m 1536 nb 512 basebl 1.318070 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.769042 
+threads 1 n 1024 m 1536 nb 16 basebl 6.534201 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.564592 
+threads 1 n 1024 m 1536 nb 32 basebl 5.939609 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.635584 
+threads 1 n 1024 m 1536 nb 64 basebl 5.735752 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.513742 
+threads 1 n 1024 m 1536 nb 128 basebl 5.670235 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.294341 
+threads 1 n 1024 m 1536 nb 256 basebl 5.680173 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.619502 
+threads 1 n 1024 m 1536 nb 512 basebl 6.009522 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000104 sch_run_striped 0.003469 
+
+threads 1 n 512 m 1536 nb 16 base 1.793565 
+threads 1 n 512 m 1536 nb 16 basebl 1.344628 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.794162 
+threads 1 n 512 m 1536 nb 32 basebl 1.299425 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.794018 
+threads 1 n 512 m 1536 nb 64 basebl 1.301217 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.793465 
+threads 1 n 512 m 1536 nb 128 basebl 1.304049 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.793610 
+threads 1 n 512 m 1536 nb 256 basebl 1.302779 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.793395 
+threads 1 n 512 m 1536 nb 512 basebl 1.307263 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.791174 
+threads 1 n 1024 m 1536 nb 16 basebl 6.526409 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.376560 
+threads 1 n 1024 m 1536 nb 32 basebl 5.928589 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.317303 
+threads 1 n 1024 m 1536 nb 64 basebl 5.710776 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.579833 
+threads 1 n 1024 m 1536 nb 128 basebl 5.670584 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.276266 
+threads 1 n 1024 m 1536 nb 256 basebl 5.687795 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.526992 
+threads 1 n 1024 m 1536 nb 512 basebl 6.009429 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003472 
+
+threads 1 n 512 m 1536 nb 16 base 1.750817 
+threads 1 n 512 m 1536 nb 16 basebl 1.353477 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.749774 
+threads 1 n 512 m 1536 nb 32 basebl 1.313137 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750406 
+threads 1 n 512 m 1536 nb 64 basebl 1.312300 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.750266 
+threads 1 n 512 m 1536 nb 128 basebl 1.313229 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.749696 
+threads 1 n 512 m 1536 nb 256 basebl 1.312626 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.751107 
+threads 1 n 512 m 1536 nb 512 basebl 1.313727 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.833065 
+threads 1 n 1024 m 1536 nb 16 basebl 6.544541 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.452717 
+threads 1 n 1024 m 1536 nb 32 basebl 5.967385 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.524878 
+threads 1 n 1024 m 1536 nb 64 basebl 5.769700 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.526270 
+threads 1 n 1024 m 1536 nb 128 basebl 5.715917 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.414452 
+threads 1 n 1024 m 1536 nb 256 basebl 5.748683 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.636796 
+threads 1 n 1024 m 1536 nb 512 basebl 5.991843 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003702 
+
+threads 1 n 512 m 1536 nb 16 base 1.987066 
+threads 1 n 512 m 1536 nb 16 basebl 1.363422 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.991746 
+threads 1 n 512 m 1536 nb 32 basebl 1.311868 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.993303 
+threads 1 n 512 m 1536 nb 64 basebl 1.309588 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.993237 
+threads 1 n 512 m 1536 nb 128 basebl 1.310514 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.992666 
+threads 1 n 512 m 1536 nb 256 basebl 1.310530 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.993327 
+threads 1 n 512 m 1536 nb 512 basebl 1.325916 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.596697 
+threads 1 n 1024 m 1536 nb 16 basebl 6.541467 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.551083 
+threads 1 n 1024 m 1536 nb 32 basebl 5.928688 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.553164 
+threads 1 n 1024 m 1536 nb 64 basebl 5.742509 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.526172 
+threads 1 n 1024 m 1536 nb 128 basebl 5.675754 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.625915 
+threads 1 n 1024 m 1536 nb 256 basebl 5.722315 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.627067 
+threads 1 n 1024 m 1536 nb 512 basebl 5.955818 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003475 
+
+threads 1 n 512 m 1536 nb 16 base 1.825184 
+threads 1 n 512 m 1536 nb 16 basebl 1.351019 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.825360 
+threads 1 n 512 m 1536 nb 32 basebl 1.306011 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.825289 
+threads 1 n 512 m 1536 nb 64 basebl 1.306166 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.825302 
+threads 1 n 512 m 1536 nb 128 basebl 1.308583 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.824990 
+threads 1 n 512 m 1536 nb 256 basebl 1.306705 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.825117 
+threads 1 n 512 m 1536 nb 512 basebl 1.313208 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.744462 
+threads 1 n 1024 m 1536 nb 16 basebl 6.557649 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.555688 
+threads 1 n 1024 m 1536 nb 32 basebl 5.946762 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.441533 
+threads 1 n 1024 m 1536 nb 64 basebl 5.763592 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.454880 
+threads 1 n 1024 m 1536 nb 128 basebl 5.690800 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.581510 
+threads 1 n 1024 m 1536 nb 256 basebl 5.688344 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.535212 
+threads 1 n 1024 m 1536 nb 512 basebl 5.955368 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003458 
+
+threads 1 n 512 m 1536 nb 16 base 1.749590 
+threads 1 n 512 m 1536 nb 16 basebl 1.345068 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750822 
+threads 1 n 512 m 1536 nb 32 basebl 1.299941 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750569 
+threads 1 n 512 m 1536 nb 64 basebl 1.302958 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749766 
+threads 1 n 512 m 1536 nb 128 basebl 1.304838 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.750584 
+threads 1 n 512 m 1536 nb 256 basebl 1.304232 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749641 
+threads 1 n 512 m 1536 nb 512 basebl 1.306343 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.717318 
+threads 1 n 1024 m 1536 nb 16 basebl 6.538575 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.683102 
+threads 1 n 1024 m 1536 nb 32 basebl 5.925058 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.544148 
+threads 1 n 1024 m 1536 nb 64 basebl 5.735173 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.660123 
+threads 1 n 1024 m 1536 nb 128 basebl 5.656508 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.708265 
+threads 1 n 1024 m 1536 nb 256 basebl 5.664142 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.622677 
+threads 1 n 1024 m 1536 nb 512 basebl 5.972118 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003584 
+
+threads 1 n 512 m 1536 nb 16 base 1.748461 
+threads 1 n 512 m 1536 nb 16 basebl 1.341466 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.748957 
+threads 1 n 512 m 1536 nb 32 basebl 1.298922 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.748784 
+threads 1 n 512 m 1536 nb 64 basebl 1.300517 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.748991 
+threads 1 n 512 m 1536 nb 128 basebl 1.302850 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.748809 
+threads 1 n 512 m 1536 nb 256 basebl 1.302439 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.748519 
+threads 1 n 512 m 1536 nb 512 basebl 1.303638 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.751536 
+threads 1 n 1024 m 1536 nb 16 basebl 6.507899 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.543177 
+threads 1 n 1024 m 1536 nb 32 basebl 5.917665 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.468300 
+threads 1 n 1024 m 1536 nb 64 basebl 5.720295 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.637575 
+threads 1 n 1024 m 1536 nb 128 basebl 5.663615 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.669157 
+threads 1 n 1024 m 1536 nb 256 basebl 5.709036 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.243057 
+threads 1 n 1024 m 1536 nb 512 basebl 5.960096 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000106 sch_run_striped 0.003973 
+
+threads 1 n 512 m 1536 nb 16 base 1.757372 
+threads 1 n 512 m 1536 nb 16 basebl 1.356102 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.757890 
+threads 1 n 512 m 1536 nb 32 basebl 1.316997 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.757927 
+threads 1 n 512 m 1536 nb 64 basebl 1.317543 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.757876 
+threads 1 n 512 m 1536 nb 128 basebl 1.317034 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.756877 
+threads 1 n 512 m 1536 nb 256 basebl 1.317263 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.757201 
+threads 1 n 512 m 1536 nb 512 basebl 1.318150 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.703785 
+threads 1 n 1024 m 1536 nb 16 basebl 6.575140 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.585930 
+threads 1 n 1024 m 1536 nb 32 basebl 5.978302 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.611501 
+threads 1 n 1024 m 1536 nb 64 basebl 5.771087 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.554667 
+threads 1 n 1024 m 1536 nb 128 basebl 5.725781 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.265545 
+threads 1 n 1024 m 1536 nb 256 basebl 5.707289 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.659442 
+threads 1 n 1024 m 1536 nb 512 basebl 6.039444 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003591 
+
+threads 1 n 512 m 1536 nb 16 base 1.756171 
+threads 1 n 512 m 1536 nb 16 basebl 1.344240 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.756223 
+threads 1 n 512 m 1536 nb 32 basebl 1.300077 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.756181 
+threads 1 n 512 m 1536 nb 64 basebl 1.301323 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.756023 
+threads 1 n 512 m 1536 nb 128 basebl 1.303679 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755363 
+threads 1 n 512 m 1536 nb 256 basebl 1.302608 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.755895 
+threads 1 n 512 m 1536 nb 512 basebl 1.306693 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.705402 
+threads 1 n 1024 m 1536 nb 16 basebl 6.540438 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.440590 
+threads 1 n 1024 m 1536 nb 32 basebl 5.927694 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.660397 
+threads 1 n 1024 m 1536 nb 64 basebl 5.730952 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.562219 
+threads 1 n 1024 m 1536 nb 128 basebl 5.677932 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.684759 
+threads 1 n 1024 m 1536 nb 256 basebl 5.684739 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.545035 
+threads 1 n 1024 m 1536 nb 512 basebl 5.959826 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000102 sch_run_striped 0.003490 
+
+threads 1 n 512 m 1536 nb 16 base 1.761845 
+threads 1 n 512 m 1536 nb 16 basebl 1.354893 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.761731 
+threads 1 n 512 m 1536 nb 32 basebl 1.314551 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.761513 
+threads 1 n 512 m 1536 nb 64 basebl 1.315092 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.762509 
+threads 1 n 512 m 1536 nb 128 basebl 1.316500 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.761118 
+threads 1 n 512 m 1536 nb 256 basebl 1.315439 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.761253 
+threads 1 n 512 m 1536 nb 512 basebl 1.316828 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.900401 
+threads 1 n 1024 m 1536 nb 16 basebl 6.550957 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.336270 
+threads 1 n 1024 m 1536 nb 32 basebl 5.966523 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.388166 
+threads 1 n 1024 m 1536 nb 64 basebl 5.760290 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.525541 
+threads 1 n 1024 m 1536 nb 128 basebl 5.695551 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.547576 
+threads 1 n 1024 m 1536 nb 256 basebl 5.732161 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.304612 
+threads 1 n 1024 m 1536 nb 512 basebl 6.023172 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000106 sch_run_striped 0.003525 
+
+threads 1 n 512 m 1536 nb 16 base 1.755101 
+threads 1 n 512 m 1536 nb 16 basebl 1.350196 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.755756 
+threads 1 n 512 m 1536 nb 32 basebl 1.308671 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.755703 
+threads 1 n 512 m 1536 nb 64 basebl 1.309497 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.755073 
+threads 1 n 512 m 1536 nb 128 basebl 1.311458 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.754902 
+threads 1 n 512 m 1536 nb 256 basebl 1.310040 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754170 
+threads 1 n 512 m 1536 nb 512 basebl 1.312935 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.592129 
+threads 1 n 1024 m 1536 nb 16 basebl 6.575264 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.530301 
+threads 1 n 1024 m 1536 nb 32 basebl 5.961251 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.525684 
+threads 1 n 1024 m 1536 nb 64 basebl 5.751245 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.541008 
+threads 1 n 1024 m 1536 nb 128 basebl 5.709508 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.565851 
+threads 1 n 1024 m 1536 nb 256 basebl 5.738549 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.565088 
+threads 1 n 1024 m 1536 nb 512 basebl 6.000569 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000103 sch_run_striped 0.003529 
+
+threads 1 n 512 m 1536 nb 16 base 1.963467 
+threads 1 n 512 m 1536 nb 16 basebl 1.364891 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.963912 
+threads 1 n 512 m 1536 nb 32 basebl 1.315203 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.963079 
+threads 1 n 512 m 1536 nb 64 basebl 1.312801 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.962822 
+threads 1 n 512 m 1536 nb 128 basebl 1.312538 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.963224 
+threads 1 n 512 m 1536 nb 256 basebl 1.311893 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.962981 
+threads 1 n 512 m 1536 nb 512 basebl 1.326364 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.738738 
+threads 1 n 1024 m 1536 nb 16 basebl 6.562245 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.591733 
+threads 1 n 1024 m 1536 nb 32 basebl 5.946324 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.584129 
+threads 1 n 1024 m 1536 nb 64 basebl 5.754884 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.563148 
+threads 1 n 1024 m 1536 nb 128 basebl 5.695130 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.713471 
+threads 1 n 1024 m 1536 nb 256 basebl 5.741387 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.493134 
+threads 1 n 1024 m 1536 nb 512 basebl 6.029438 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000110 sch_run_striped 0.003486 
+
+threads 1 n 512 m 1536 nb 16 base 1.756604 
+threads 1 n 512 m 1536 nb 16 basebl 1.346634 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.757377 
+threads 1 n 512 m 1536 nb 32 basebl 1.300618 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.756409 
+threads 1 n 512 m 1536 nb 64 basebl 1.302826 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.756859 
+threads 1 n 512 m 1536 nb 128 basebl 1.304631 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755260 
+threads 1 n 512 m 1536 nb 256 basebl 1.303792 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754903 
+threads 1 n 512 m 1536 nb 512 basebl 1.308869 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.701516 
+threads 1 n 1024 m 1536 nb 16 basebl 6.505801 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.463403 
+threads 1 n 1024 m 1536 nb 32 basebl 5.933266 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.518312 
+threads 1 n 1024 m 1536 nb 64 basebl 5.737397 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.553887 
+threads 1 n 1024 m 1536 nb 128 basebl 5.669083 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.494084 
+threads 1 n 1024 m 1536 nb 256 basebl 5.673078 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.533361 
+threads 1 n 1024 m 1536 nb 512 basebl 5.962046 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003463 
+
+threads 1 n 512 m 1536 nb 16 base 1.754447 
+threads 1 n 512 m 1536 nb 16 basebl 1.347489 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.754845 
+threads 1 n 512 m 1536 nb 32 basebl 1.304711 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.754551 
+threads 1 n 512 m 1536 nb 64 basebl 1.306785 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.753903 
+threads 1 n 512 m 1536 nb 128 basebl 1.308882 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.754077 
+threads 1 n 512 m 1536 nb 256 basebl 1.308186 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754169 
+threads 1 n 512 m 1536 nb 512 basebl 1.309918 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.772712 
+threads 1 n 1024 m 1536 nb 16 basebl 6.543965 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.600501 
+threads 1 n 1024 m 1536 nb 32 basebl 5.943413 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.610072 
+threads 1 n 1024 m 1536 nb 64 basebl 5.740263 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.356070 
+threads 1 n 1024 m 1536 nb 128 basebl 5.678101 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.531813 
+threads 1 n 1024 m 1536 nb 256 basebl 5.710627 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.686261 
+threads 1 n 1024 m 1536 nb 512 basebl 5.991008 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000106 sch_run_striped 0.003464 
+
+threads 1 n 512 m 1536 nb 16 base 1.751205 
+threads 1 n 512 m 1536 nb 16 basebl 1.350601 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.751710 
+threads 1 n 512 m 1536 nb 32 basebl 1.309330 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.751143 
+threads 1 n 512 m 1536 nb 64 basebl 1.311376 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.750933 
+threads 1 n 512 m 1536 nb 128 basebl 1.313000 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.751007 
+threads 1 n 512 m 1536 nb 256 basebl 1.312783 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750632 
+threads 1 n 512 m 1536 nb 512 basebl 1.312663 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.802893 
+threads 1 n 1024 m 1536 nb 16 basebl 6.540004 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.593240 
+threads 1 n 1024 m 1536 nb 32 basebl 5.955769 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.432923 
+threads 1 n 1024 m 1536 nb 64 basebl 5.759434 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.534185 
+threads 1 n 1024 m 1536 nb 128 basebl 5.699525 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.567141 
+threads 1 n 1024 m 1536 nb 256 basebl 5.717260 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.507408 
+threads 1 n 1024 m 1536 nb 512 basebl 5.996188 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003468 
+
+threads 1 n 512 m 1536 nb 16 base 1.937519 
+threads 1 n 512 m 1536 nb 16 basebl 1.360023 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.938234 
+threads 1 n 512 m 1536 nb 32 basebl 1.309985 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.937865 
+threads 1 n 512 m 1536 nb 64 basebl 1.307728 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.937840 
+threads 1 n 512 m 1536 nb 128 basebl 1.309265 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.937670 
+threads 1 n 512 m 1536 nb 256 basebl 1.307848 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.937454 
+threads 1 n 512 m 1536 nb 512 basebl 1.322712 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.758233 
+threads 1 n 1024 m 1536 nb 16 basebl 6.544578 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.303972 
+threads 1 n 1024 m 1536 nb 32 basebl 5.947763 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.429358 
+threads 1 n 1024 m 1536 nb 64 basebl 5.750683 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.612086 
+threads 1 n 1024 m 1536 nb 128 basebl 5.671273 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.522512 
+threads 1 n 1024 m 1536 nb 256 basebl 5.728619 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.508853 
+threads 1 n 1024 m 1536 nb 512 basebl 5.995411 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003495 
+
+threads 1 n 512 m 1536 nb 16 base 1.859459 
+threads 1 n 512 m 1536 nb 16 basebl 1.349236 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.859553 
+threads 1 n 512 m 1536 nb 32 basebl 1.300636 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.859742 
+threads 1 n 512 m 1536 nb 64 basebl 1.301832 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.858831 
+threads 1 n 512 m 1536 nb 128 basebl 1.303650 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.859071 
+threads 1 n 512 m 1536 nb 256 basebl 1.303048 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.859140 
+threads 1 n 512 m 1536 nb 512 basebl 1.310864 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.783419 
+threads 1 n 1024 m 1536 nb 16 basebl 6.509370 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.554418 
+threads 1 n 1024 m 1536 nb 32 basebl 5.914238 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.663877 
+threads 1 n 1024 m 1536 nb 64 basebl 5.737094 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.565595 
+threads 1 n 1024 m 1536 nb 128 basebl 5.665709 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.485324 
+threads 1 n 1024 m 1536 nb 256 basebl 5.679706 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.663735 
+threads 1 n 1024 m 1536 nb 512 basebl 5.944937 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000112 sch_run_striped 0.003583 
+
+threads 1 n 512 m 1536 nb 16 base 1.747631 
+threads 1 n 512 m 1536 nb 16 basebl 1.346630 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.748139 
+threads 1 n 512 m 1536 nb 32 basebl 1.305515 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.748360 
+threads 1 n 512 m 1536 nb 64 basebl 1.308085 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.748112 
+threads 1 n 512 m 1536 nb 128 basebl 1.309546 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.747284 
+threads 1 n 512 m 1536 nb 256 basebl 1.308825 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.747368 
+threads 1 n 512 m 1536 nb 512 basebl 1.308523 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.647350 
+threads 1 n 1024 m 1536 nb 16 basebl 6.536581 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.479124 
+threads 1 n 1024 m 1536 nb 32 basebl 5.940495 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.700193 
+threads 1 n 1024 m 1536 nb 64 basebl 5.739310 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.586985 
+threads 1 n 1024 m 1536 nb 128 basebl 5.687243 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.487229 
+threads 1 n 1024 m 1536 nb 256 basebl 5.682093 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.670965 
+threads 1 n 1024 m 1536 nb 512 basebl 5.976578 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003551 
+
+threads 1 n 512 m 1536 nb 16 base 1.748920 
+threads 1 n 512 m 1536 nb 16 basebl 1.344861 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.748797 
+threads 1 n 512 m 1536 nb 32 basebl 1.303991 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.748763 
+threads 1 n 512 m 1536 nb 64 basebl 1.305471 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.748651 
+threads 1 n 512 m 1536 nb 128 basebl 1.308587 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.748631 
+threads 1 n 512 m 1536 nb 256 basebl 1.307539 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.748142 
+threads 1 n 512 m 1536 nb 512 basebl 1.307561 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.722996 
+threads 1 n 1024 m 1536 nb 16 basebl 6.540996 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.592473 
+threads 1 n 1024 m 1536 nb 32 basebl 5.943056 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.492348 
+threads 1 n 1024 m 1536 nb 64 basebl 5.754261 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.549867 
+threads 1 n 1024 m 1536 nb 128 basebl 5.689507 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.476465 
+threads 1 n 1024 m 1536 nb 256 basebl 5.681817 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.628604 
+threads 1 n 1024 m 1536 nb 512 basebl 5.983098 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003497 
+
+threads 1 n 512 m 1536 nb 16 base 1.756416 
+threads 1 n 512 m 1536 nb 16 basebl 1.350536 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.756328 
+threads 1 n 512 m 1536 nb 32 basebl 1.309134 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.756149 
+threads 1 n 512 m 1536 nb 64 basebl 1.309672 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.755560 
+threads 1 n 512 m 1536 nb 128 basebl 1.310382 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755843 
+threads 1 n 512 m 1536 nb 256 basebl 1.309801 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754957 
+threads 1 n 512 m 1536 nb 512 basebl 1.313414 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.675694 
+threads 1 n 1024 m 1536 nb 16 basebl 6.550258 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.448427 
+threads 1 n 1024 m 1536 nb 32 basebl 5.947000 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.489074 
+threads 1 n 1024 m 1536 nb 64 basebl 5.772168 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.507339 
+threads 1 n 1024 m 1536 nb 128 basebl 5.698661 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.534554 
+threads 1 n 1024 m 1536 nb 256 basebl 5.715032 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.529881 
+threads 1 n 1024 m 1536 nb 512 basebl 5.986925 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003556 
+
+threads 1 n 512 m 1536 nb 16 base 1.827493 
+threads 1 n 512 m 1536 nb 16 basebl 1.355546 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.827647 
+threads 1 n 512 m 1536 nb 32 basebl 1.307087 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.826265 
+threads 1 n 512 m 1536 nb 64 basebl 1.304998 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.826696 
+threads 1 n 512 m 1536 nb 128 basebl 1.305635 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.826403 
+threads 1 n 512 m 1536 nb 256 basebl 1.306227 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.827054 
+threads 1 n 512 m 1536 nb 512 basebl 1.316601 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.691781 
+threads 1 n 1024 m 1536 nb 16 basebl 6.550850 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.529340 
+threads 1 n 1024 m 1536 nb 32 basebl 5.935843 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.506121 
+threads 1 n 1024 m 1536 nb 64 basebl 5.740733 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.276959 
+threads 1 n 1024 m 1536 nb 128 basebl 5.691155 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.586864 
+threads 1 n 1024 m 1536 nb 256 basebl 5.699196 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.519165 
+threads 1 n 1024 m 1536 nb 512 basebl 5.970326 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000116 sch_run_striped 0.003467 
+
+threads 1 n 512 m 1536 nb 16 base 1.940128 
+threads 1 n 512 m 1536 nb 16 basebl 1.360551 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.939865 
+threads 1 n 512 m 1536 nb 32 basebl 1.309941 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.939230 
+threads 1 n 512 m 1536 nb 64 basebl 1.306875 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.939398 
+threads 1 n 512 m 1536 nb 128 basebl 1.308265 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.939439 
+threads 1 n 512 m 1536 nb 256 basebl 1.308208 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.939729 
+threads 1 n 512 m 1536 nb 512 basebl 1.322226 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.753067 
+threads 1 n 1024 m 1536 nb 16 basebl 6.527417 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.219436 
+threads 1 n 1024 m 1536 nb 32 basebl 5.945525 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.552083 
+threads 1 n 1024 m 1536 nb 64 basebl 5.743539 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.309569 
+threads 1 n 1024 m 1536 nb 128 basebl 5.682951 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.310439 
+threads 1 n 1024 m 1536 nb 256 basebl 5.717946 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.612124 
+threads 1 n 1024 m 1536 nb 512 basebl 6.003238 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003453 
+
+threads 1 n 512 m 1536 nb 16 base 1.753227 
+threads 1 n 512 m 1536 nb 16 basebl 1.345276 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.752287 
+threads 1 n 512 m 1536 nb 32 basebl 1.300269 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.753026 
+threads 1 n 512 m 1536 nb 64 basebl 1.302809 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.752878 
+threads 1 n 512 m 1536 nb 128 basebl 1.305127 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.751818 
+threads 1 n 512 m 1536 nb 256 basebl 1.304135 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.752989 
+threads 1 n 512 m 1536 nb 512 basebl 1.308177 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.592625 
+threads 1 n 1024 m 1536 nb 16 basebl 6.536653 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.423742 
+threads 1 n 1024 m 1536 nb 32 basebl 5.923150 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.494650 
+threads 1 n 1024 m 1536 nb 64 basebl 5.739742 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.492058 
+threads 1 n 1024 m 1536 nb 128 basebl 5.676366 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.261389 
+threads 1 n 1024 m 1536 nb 256 basebl 5.674935 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.440514 
+threads 1 n 1024 m 1536 nb 512 basebl 5.988652 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003519 
+
+threads 1 n 512 m 1536 nb 16 base 1.860579 
+threads 1 n 512 m 1536 nb 16 basebl 1.349409 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.860108 
+threads 1 n 512 m 1536 nb 32 basebl 1.301818 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.860960 
+threads 1 n 512 m 1536 nb 64 basebl 1.301935 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.860630 
+threads 1 n 512 m 1536 nb 128 basebl 1.304160 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.860609 
+threads 1 n 512 m 1536 nb 256 basebl 1.303454 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.860603 
+threads 1 n 512 m 1536 nb 512 basebl 1.311844 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.680400 
+threads 1 n 1024 m 1536 nb 16 basebl 6.508630 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.701945 
+threads 1 n 1024 m 1536 nb 32 basebl 5.924885 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.413347 
+threads 1 n 1024 m 1536 nb 64 basebl 5.726424 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.271887 
+threads 1 n 1024 m 1536 nb 128 basebl 5.662955 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.603034 
+threads 1 n 1024 m 1536 nb 256 basebl 5.744839 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.529717 
+threads 1 n 1024 m 1536 nb 512 basebl 5.945979 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003771 
+
+threads 1 n 512 m 1536 nb 16 base 1.962301 
+threads 1 n 512 m 1536 nb 16 basebl 1.362674 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.962871 
+threads 1 n 512 m 1536 nb 32 basebl 1.308635 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.962469 
+threads 1 n 512 m 1536 nb 64 basebl 1.306224 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.961550 
+threads 1 n 512 m 1536 nb 128 basebl 1.306914 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.963148 
+threads 1 n 512 m 1536 nb 256 basebl 1.305843 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.961545 
+threads 1 n 512 m 1536 nb 512 basebl 1.324256 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.897332 
+threads 1 n 1024 m 1536 nb 16 basebl 6.526430 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.332935 
+threads 1 n 1024 m 1536 nb 32 basebl 5.931223 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.478984 
+threads 1 n 1024 m 1536 nb 64 basebl 5.728628 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.415862 
+threads 1 n 1024 m 1536 nb 128 basebl 5.676394 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.298123 
+threads 1 n 1024 m 1536 nb 256 basebl 5.680775 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.458644 
+threads 1 n 1024 m 1536 nb 512 basebl 5.967990 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000107 sch_run_striped 0.003494 
+
+threads 1 n 512 m 1536 nb 16 base 1.880750 
+threads 1 n 512 m 1536 nb 16 basebl 1.373937 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.881210 
+threads 1 n 512 m 1536 nb 32 basebl 1.326345 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.881552 
+threads 1 n 512 m 1536 nb 64 basebl 1.320239 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.881259 
+threads 1 n 512 m 1536 nb 128 basebl 1.319169 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.882242 
+threads 1 n 512 m 1536 nb 256 basebl 1.318371 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.880441 
+threads 1 n 512 m 1536 nb 512 basebl 1.335526 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.751160 
+threads 1 n 1024 m 1536 nb 16 basebl 6.572252 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.436304 
+threads 1 n 1024 m 1536 nb 32 basebl 5.954471 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.507119 
+threads 1 n 1024 m 1536 nb 64 basebl 5.779490 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.675323 
+threads 1 n 1024 m 1536 nb 128 basebl 5.712710 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.414531 
+threads 1 n 1024 m 1536 nb 256 basebl 5.757173 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.600504 
+threads 1 n 1024 m 1536 nb 512 basebl 6.038689 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000103 sch_run_striped 0.003456 
+
+threads 1 n 512 m 1536 nb 16 base 1.901782 
+threads 1 n 512 m 1536 nb 16 basebl 1.357766 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.902496 
+threads 1 n 512 m 1536 nb 32 basebl 1.307037 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.900748 
+threads 1 n 512 m 1536 nb 64 basebl 1.306565 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.902668 
+threads 1 n 512 m 1536 nb 128 basebl 1.308517 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.900972 
+threads 1 n 512 m 1536 nb 256 basebl 1.307991 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.900728 
+threads 1 n 512 m 1536 nb 512 basebl 1.319335 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.799787 
+threads 1 n 1024 m 1536 nb 16 basebl 6.524330 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.411157 
+threads 1 n 1024 m 1536 nb 32 basebl 5.937412 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.346544 
+threads 1 n 1024 m 1536 nb 64 basebl 5.739139 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.411569 
+threads 1 n 1024 m 1536 nb 128 basebl 5.674047 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.530063 
+threads 1 n 1024 m 1536 nb 256 basebl 5.705914 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.469421 
+threads 1 n 1024 m 1536 nb 512 basebl 5.951541 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000110 sch_run_striped 0.003485 
+
+threads 1 n 512 m 1536 nb 16 base 1.754544 
+threads 1 n 512 m 1536 nb 16 basebl 1.345360 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.754910 
+threads 1 n 512 m 1536 nb 32 basebl 1.299516 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.755477 
+threads 1 n 512 m 1536 nb 64 basebl 1.302235 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.754955 
+threads 1 n 512 m 1536 nb 128 basebl 1.304288 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755807 
+threads 1 n 512 m 1536 nb 256 basebl 1.303197 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.755619 
+threads 1 n 512 m 1536 nb 512 basebl 1.307545 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 19.054539 
+threads 1 n 1024 m 1536 nb 16 basebl 6.514720 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.587191 
+threads 1 n 1024 m 1536 nb 32 basebl 5.922261 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.621614 
+threads 1 n 1024 m 1536 nb 64 basebl 5.730722 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.602861 
+threads 1 n 1024 m 1536 nb 128 basebl 5.663472 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.575442 
+threads 1 n 1024 m 1536 nb 256 basebl 5.726390 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.554364 
+threads 1 n 1024 m 1536 nb 512 basebl 5.925973 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003950 
+
+threads 1 n 512 m 1536 nb 16 base 1.937125 
+threads 1 n 512 m 1536 nb 16 basebl 1.373425 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.937804 
+threads 1 n 512 m 1536 nb 32 basebl 1.322479 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.937690 
+threads 1 n 512 m 1536 nb 64 basebl 1.319143 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.937476 
+threads 1 n 512 m 1536 nb 128 basebl 1.318280 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.937914 
+threads 1 n 512 m 1536 nb 256 basebl 1.319948 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.937769 
+threads 1 n 512 m 1536 nb 512 basebl 1.335863 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.735968 
+threads 1 n 1024 m 1536 nb 16 basebl 6.551039 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.585068 
+threads 1 n 1024 m 1536 nb 32 basebl 5.947186 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.536555 
+threads 1 n 1024 m 1536 nb 64 basebl 5.747051 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.327882 
+threads 1 n 1024 m 1536 nb 128 basebl 5.695733 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.538697 
+threads 1 n 1024 m 1536 nb 256 basebl 5.722223 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.368366 
+threads 1 n 1024 m 1536 nb 512 basebl 5.936002 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003492 
+
+threads 1 n 512 m 1536 nb 16 base 1.751001 
+threads 1 n 512 m 1536 nb 16 basebl 1.342735 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.751170 
+threads 1 n 512 m 1536 nb 32 basebl 1.299965 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750801 
+threads 1 n 512 m 1536 nb 64 basebl 1.301287 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.750978 
+threads 1 n 512 m 1536 nb 128 basebl 1.303218 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.750925 
+threads 1 n 512 m 1536 nb 256 basebl 1.302959 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.750221 
+threads 1 n 512 m 1536 nb 512 basebl 1.304674 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.721148 
+threads 1 n 1024 m 1536 nb 16 basebl 6.527094 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.632540 
+threads 1 n 1024 m 1536 nb 32 basebl 5.908124 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.547252 
+threads 1 n 1024 m 1536 nb 64 basebl 5.711143 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.535114 
+threads 1 n 1024 m 1536 nb 128 basebl 5.654132 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.605977 
+threads 1 n 1024 m 1536 nb 256 basebl 5.660411 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.402276 
+threads 1 n 1024 m 1536 nb 512 basebl 5.908927 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003469 
+
+threads 1 n 512 m 1536 nb 16 base 1.753236 
+threads 1 n 512 m 1536 nb 16 basebl 1.348718 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.753354 
+threads 1 n 512 m 1536 nb 32 basebl 1.305447 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.753452 
+threads 1 n 512 m 1536 nb 64 basebl 1.306884 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.752383 
+threads 1 n 512 m 1536 nb 128 basebl 1.309514 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.752306 
+threads 1 n 512 m 1536 nb 256 basebl 1.308922 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.752394 
+threads 1 n 512 m 1536 nb 512 basebl 1.311115 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.631697 
+threads 1 n 1024 m 1536 nb 16 basebl 6.556430 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.552250 
+threads 1 n 1024 m 1536 nb 32 basebl 5.939455 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.597056 
+threads 1 n 1024 m 1536 nb 64 basebl 5.757624 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.482880 
+threads 1 n 1024 m 1536 nb 128 basebl 5.696391 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.695357 
+threads 1 n 1024 m 1536 nb 256 basebl 5.712851 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.618510 
+threads 1 n 1024 m 1536 nb 512 basebl 5.996033 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.004173 
+
+threads 1 n 512 m 1536 nb 16 base 1.832517 
+threads 1 n 512 m 1536 nb 16 basebl 1.360908 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.833036 
+threads 1 n 512 m 1536 nb 32 basebl 1.316649 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.832951 
+threads 1 n 512 m 1536 nb 64 basebl 1.315173 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.832435 
+threads 1 n 512 m 1536 nb 128 basebl 1.315899 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.833065 
+threads 1 n 512 m 1536 nb 256 basebl 1.315726 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.831987 
+threads 1 n 512 m 1536 nb 512 basebl 1.323285 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.707343 
+threads 1 n 1024 m 1536 nb 16 basebl 6.589269 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.324126 
+threads 1 n 1024 m 1536 nb 32 basebl 5.987763 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.399884 
+threads 1 n 1024 m 1536 nb 64 basebl 5.781472 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.468403 
+threads 1 n 1024 m 1536 nb 128 basebl 5.718604 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.345026 
+threads 1 n 1024 m 1536 nb 256 basebl 5.736818 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.592919 
+threads 1 n 1024 m 1536 nb 512 basebl 6.087401 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.003489 
+
+threads 1 n 512 m 1536 nb 16 base 1.748055 
+threads 1 n 512 m 1536 nb 16 basebl 1.347087 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.748296 
+threads 1 n 512 m 1536 nb 32 basebl 1.304572 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.747770 
+threads 1 n 512 m 1536 nb 64 basebl 1.307374 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.748305 
+threads 1 n 512 m 1536 nb 128 basebl 1.314546 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.747952 
+threads 1 n 512 m 1536 nb 256 basebl 1.308558 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.748299 
+threads 1 n 512 m 1536 nb 512 basebl 1.308914 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.568776 
+threads 1 n 1024 m 1536 nb 16 basebl 6.522385 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.609162 
+threads 1 n 1024 m 1536 nb 32 basebl 5.936108 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.717749 
+threads 1 n 1024 m 1536 nb 64 basebl 5.738572 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.648603 
+threads 1 n 1024 m 1536 nb 128 basebl 5.679909 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.446992 
+threads 1 n 1024 m 1536 nb 256 basebl 5.677166 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.531259 
+threads 1 n 1024 m 1536 nb 512 basebl 5.997894 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000096 sch_run_striped 0.003449 
+
+threads 1 n 512 m 1536 nb 16 base 1.755352 
+threads 1 n 512 m 1536 nb 16 basebl 1.345058 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.755756 
+threads 1 n 512 m 1536 nb 32 basebl 1.298901 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.755555 
+threads 1 n 512 m 1536 nb 64 basebl 1.300184 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.756038 
+threads 1 n 512 m 1536 nb 128 basebl 1.302674 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755472 
+threads 1 n 512 m 1536 nb 256 basebl 1.301189 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.755335 
+threads 1 n 512 m 1536 nb 512 basebl 1.308205 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.406669 
+threads 1 n 1024 m 1536 nb 16 basebl 6.527091 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.435929 
+threads 1 n 1024 m 1536 nb 32 basebl 5.919492 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.470644 
+threads 1 n 1024 m 1536 nb 64 basebl 5.725613 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.513202 
+threads 1 n 1024 m 1536 nb 128 basebl 5.668791 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.476432 
+threads 1 n 1024 m 1536 nb 256 basebl 5.666005 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.397770 
+threads 1 n 1024 m 1536 nb 512 basebl 5.944978 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000106 sch_run_striped 0.003994 
+
+threads 1 n 512 m 1536 nb 16 base 1.752457 
+threads 1 n 512 m 1536 nb 16 basebl 1.350133 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.753410 
+threads 1 n 512 m 1536 nb 32 basebl 1.309418 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.752801 
+threads 1 n 512 m 1536 nb 64 basebl 1.310137 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.753352 
+threads 1 n 512 m 1536 nb 128 basebl 1.311573 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.752328 
+threads 1 n 512 m 1536 nb 256 basebl 1.311356 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.752862 
+threads 1 n 512 m 1536 nb 512 basebl 1.311516 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.700859 
+threads 1 n 1024 m 1536 nb 16 basebl 6.530203 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.456901 
+threads 1 n 1024 m 1536 nb 32 basebl 5.952917 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.428740 
+threads 1 n 1024 m 1536 nb 64 basebl 5.762504 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.508798 
+threads 1 n 1024 m 1536 nb 128 basebl 5.688658 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.421859 
+threads 1 n 1024 m 1536 nb 256 basebl 5.714498 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.357538 
+threads 1 n 1024 m 1536 nb 512 basebl 5.973406 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000105 sch_run_striped 0.003497 
+
+threads 1 n 512 m 1536 nb 16 base 1.745693 
+threads 1 n 512 m 1536 nb 16 basebl 1.342325 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.747187 
+threads 1 n 512 m 1536 nb 32 basebl 1.301964 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.746450 
+threads 1 n 512 m 1536 nb 64 basebl 1.304335 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.747024 
+threads 1 n 512 m 1536 nb 128 basebl 1.306902 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.747359 
+threads 1 n 512 m 1536 nb 256 basebl 1.307005 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.747004 
+threads 1 n 512 m 1536 nb 512 basebl 1.305700 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.631472 
+threads 1 n 1024 m 1536 nb 16 basebl 6.527567 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.262256 
+threads 1 n 1024 m 1536 nb 32 basebl 5.938862 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.416001 
+threads 1 n 1024 m 1536 nb 64 basebl 5.740666 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.428910 
+threads 1 n 1024 m 1536 nb 128 basebl 5.693871 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.178281 
+threads 1 n 1024 m 1536 nb 256 basebl 5.730546 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.467655 
+threads 1 n 1024 m 1536 nb 512 basebl 6.044812 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003488 
+
+threads 1 n 512 m 1536 nb 16 base 1.749446 
+threads 1 n 512 m 1536 nb 16 basebl 1.346608 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.749937 
+threads 1 n 512 m 1536 nb 32 basebl 1.305929 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.750063 
+threads 1 n 512 m 1536 nb 64 basebl 1.306898 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749355 
+threads 1 n 512 m 1536 nb 128 basebl 1.309445 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.749340 
+threads 1 n 512 m 1536 nb 256 basebl 1.308351 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749010 
+threads 1 n 512 m 1536 nb 512 basebl 1.308928 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.601434 
+threads 1 n 1024 m 1536 nb 16 basebl 6.530975 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.577724 
+threads 1 n 1024 m 1536 nb 32 basebl 5.939557 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.458729 
+threads 1 n 1024 m 1536 nb 64 basebl 5.758295 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.330574 
+threads 1 n 1024 m 1536 nb 128 basebl 5.697717 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.586795 
+threads 1 n 1024 m 1536 nb 256 basebl 5.733474 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.525967 
+threads 1 n 1024 m 1536 nb 512 basebl 5.989372 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000109 sch_run_striped 0.004122 
+
+threads 1 n 512 m 1536 nb 16 base 1.822785 
+threads 1 n 512 m 1536 nb 16 basebl 1.360452 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.822921 
+threads 1 n 512 m 1536 nb 32 basebl 1.315109 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.822661 
+threads 1 n 512 m 1536 nb 64 basebl 1.313539 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.822957 
+threads 1 n 512 m 1536 nb 128 basebl 1.313054 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.822175 
+threads 1 n 512 m 1536 nb 256 basebl 1.313520 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.822858 
+threads 1 n 512 m 1536 nb 512 basebl 1.322582 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.602068 
+threads 1 n 1024 m 1536 nb 16 basebl 6.580866 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.533409 
+threads 1 n 1024 m 1536 nb 32 basebl 5.984859 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.581879 
+threads 1 n 1024 m 1536 nb 64 basebl 5.785031 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.418761 
+threads 1 n 1024 m 1536 nb 128 basebl 5.689310 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.561344 
+threads 1 n 1024 m 1536 nb 256 basebl 5.771698 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.601081 
+threads 1 n 1024 m 1536 nb 512 basebl 5.984972 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003480 
+
+threads 1 n 512 m 1536 nb 16 base 1.755835 
+threads 1 n 512 m 1536 nb 16 basebl 1.347069 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.755364 
+threads 1 n 512 m 1536 nb 32 basebl 1.304309 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.754818 
+threads 1 n 512 m 1536 nb 64 basebl 1.305116 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.754435 
+threads 1 n 512 m 1536 nb 128 basebl 1.306514 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.755114 
+threads 1 n 512 m 1536 nb 256 basebl 1.306324 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754214 
+threads 1 n 512 m 1536 nb 512 basebl 1.309786 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.372127 
+threads 1 n 1024 m 1536 nb 16 basebl 6.534155 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.279718 
+threads 1 n 1024 m 1536 nb 32 basebl 5.934157 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.324169 
+threads 1 n 1024 m 1536 nb 64 basebl 5.738540 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.476260 
+threads 1 n 1024 m 1536 nb 128 basebl 5.668979 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.589459 
+threads 1 n 1024 m 1536 nb 256 basebl 5.738054 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.476856 
+threads 1 n 1024 m 1536 nb 512 basebl 5.992073 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000110 sch_run_striped 0.003491 
+
+threads 1 n 512 m 1536 nb 16 base 1.779851 
+threads 1 n 512 m 1536 nb 16 basebl 1.359426 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.780203 
+threads 1 n 512 m 1536 nb 32 basebl 1.318468 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.780866 
+threads 1 n 512 m 1536 nb 64 basebl 1.317324 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.779900 
+threads 1 n 512 m 1536 nb 128 basebl 1.317330 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.780801 
+threads 1 n 512 m 1536 nb 256 basebl 1.316411 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.779503 
+threads 1 n 512 m 1536 nb 512 basebl 1.321729 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.649757 
+threads 1 n 1024 m 1536 nb 16 basebl 6.538537 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.207361 
+threads 1 n 1024 m 1536 nb 32 basebl 5.960975 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.162492 
+threads 1 n 1024 m 1536 nb 64 basebl 5.766060 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.571213 
+threads 1 n 1024 m 1536 nb 128 basebl 5.713327 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.179419 
+threads 1 n 1024 m 1536 nb 256 basebl 5.745108 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.224734 
+threads 1 n 1024 m 1536 nb 512 basebl 6.005813 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000111 sch_run_striped 0.003528 
+
+threads 1 n 512 m 1536 nb 16 base 1.754879 
+threads 1 n 512 m 1536 nb 16 basebl 1.354314 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.754408 
+threads 1 n 512 m 1536 nb 32 basebl 1.312693 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.753881 
+threads 1 n 512 m 1536 nb 64 basebl 1.311986 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.752958 
+threads 1 n 512 m 1536 nb 128 basebl 1.312153 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.753473 
+threads 1 n 512 m 1536 nb 256 basebl 1.311997 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.753127 
+threads 1 n 512 m 1536 nb 512 basebl 1.316184 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.654325 
+threads 1 n 1024 m 1536 nb 16 basebl 6.531798 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.455156 
+threads 1 n 1024 m 1536 nb 32 basebl 5.961564 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.152005 
+threads 1 n 1024 m 1536 nb 64 basebl 5.767155 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.320973 
+threads 1 n 1024 m 1536 nb 128 basebl 5.711053 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.556164 
+threads 1 n 1024 m 1536 nb 256 basebl 5.710153 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.078169 
+threads 1 n 1024 m 1536 nb 512 basebl 6.002565 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000110 sch_run_striped 0.003932 
+
+threads 1 n 512 m 1536 nb 16 base 1.749998 
+threads 1 n 512 m 1536 nb 16 basebl 1.343303 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.750892 
+threads 1 n 512 m 1536 nb 32 basebl 1.299263 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.749510 
+threads 1 n 512 m 1536 nb 64 basebl 1.302064 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.749861 
+threads 1 n 512 m 1536 nb 128 basebl 1.304725 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.750287 
+threads 1 n 512 m 1536 nb 256 basebl 1.304318 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.749717 
+threads 1 n 512 m 1536 nb 512 basebl 1.304905 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.742283 
+threads 1 n 1024 m 1536 nb 16 basebl 6.530447 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.574758 
+threads 1 n 1024 m 1536 nb 32 basebl 5.937453 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.588876 
+threads 1 n 1024 m 1536 nb 64 basebl 5.724829 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.472172 
+threads 1 n 1024 m 1536 nb 128 basebl 5.657535 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.429476 
+threads 1 n 1024 m 1536 nb 256 basebl 5.668716 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.568488 
+threads 1 n 1024 m 1536 nb 512 basebl 5.920420 
+
+
+
+# WARMUP threads 4 n 128 m 256 nb 32 sch_rec 0.000108 sch_run_striped 0.003486 
+
+threads 1 n 512 m 1536 nb 16 base 1.754632 
+threads 1 n 512 m 1536 nb 16 basebl 1.350821 
+
+
+
+threads 1 n 512 m 1536 nb 32 base 1.755591 
+threads 1 n 512 m 1536 nb 32 basebl 1.308165 
+
+
+
+threads 1 n 512 m 1536 nb 64 base 1.754601 
+threads 1 n 512 m 1536 nb 64 basebl 1.308848 
+
+
+
+threads 1 n 512 m 1536 nb 128 base 1.754978 
+threads 1 n 512 m 1536 nb 128 basebl 1.309580 
+
+
+
+threads 1 n 512 m 1536 nb 256 base 1.754760 
+threads 1 n 512 m 1536 nb 256 basebl 1.309189 
+
+
+
+threads 1 n 512 m 1536 nb 512 base 1.754883 
+threads 1 n 512 m 1536 nb 512 basebl 1.312912 
+
+
+
+threads 1 n 1024 m 1536 nb 16 base 18.785718 
+threads 1 n 1024 m 1536 nb 16 basebl 6.541565 
+
+
+
+threads 1 n 1024 m 1536 nb 32 base 18.560327 
+threads 1 n 1024 m 1536 nb 32 basebl 5.932203 
+
+
+
+threads 1 n 1024 m 1536 nb 64 base 18.449674 
+threads 1 n 1024 m 1536 nb 64 basebl 5.754567 
+
+
+
+threads 1 n 1024 m 1536 nb 128 base 18.311072 
+threads 1 n 1024 m 1536 nb 128 basebl 5.696655 
+
+
+
+threads 1 n 1024 m 1536 nb 256 base 18.372646 
+threads 1 n 1024 m 1536 nb 256 basebl 5.731932 
+
+
+
+threads 1 n 1024 m 1536 nb 512 base 18.571914 
+threads 1 n 1024 m 1536 nb 512 basebl 5.993279 
+
+
+
