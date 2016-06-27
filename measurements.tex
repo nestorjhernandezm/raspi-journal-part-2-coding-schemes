@@ -443,7 +443,7 @@ separate the results descriptions according to the operation carried by the
 the models in our study. The energy per bit consumption removes the dependency
 on the amount of packets helping to normalize the results and indicating
 consumption on a fair basis for all the configurations and coding operations
-involved in the study. 
+involved in the study.
 
 \subsubsection{Encoding}
 Figs.~\ref{fig:enc_ene_rasp1} and \ref{fig:enc_ene_rasp2} show the encoding
@@ -554,7 +554,7 @@ increases the time spent per processed bit and thus the energy.
 \end{figure*}
 %
 In Figs.~\ref{fig:enc_ene_rasp2_gen_gf2}, \ref{fig:enc_ene_rasp2_gen_gf256},
-\ref{fig:enc_ene_rasp2_packet_gf2} and \ref{fig:enc_ene_rasp2_packet_gf256} 
+\ref{fig:enc_ene_rasp2_packet_gf2} and \ref{fig:enc_ene_rasp2_packet_gf256}
 we show the encoding energy per bit consumption for the \ac{Raspi} 2.
 We clearly see that the effects discussed for the \ac{Raspi} 1 also apply
 as well for the \ac{Raspi} 2. Moreover, given that the average power
@@ -569,11 +569,11 @@ binary field in the mentioned regime.
 
 \subsubsection{Decoding}
 In Figs.~\ref{fig:dec_ene_rasp1_gen_gf2}, \ref{fig:dec_ene_rasp1_gen_gf256},
-\ref{fig:dec_ene_rasp1_packet_gf2} and \ref{fig:dec_ene_rasp1_packet_gf256} 
+\ref{fig:dec_ene_rasp1_packet_gf2} and \ref{fig:dec_ene_rasp1_packet_gf256}
 we show the encoding energy per bit consumption for the \ac{Raspi} 1.
 Again, we notice very similar behavior and trends as previously
 reviewed for the encoding energy per bit expenditure. In this case,
-we focus on performance among the coding schemes since the behavior 
+we focus on performance among the coding schemes since the behavior
 and trends were previously explained for the encoding case. Later,
 we introduce the decoding energy results for the \ac{Raspi} 2 doing
 relevant comparisons with the \ac{Raspi} 1.
@@ -626,7 +626,7 @@ size curves and in all the cases of variable packet size curves of
 Fig.~\ref{fig:dec_ene_rasp1}. This is a clear scenario where the decoding
 delay is energy-wise susceptible to the transmissions of \ac{l.d.}
 coded packets. With the \ac{Raspi} 1, decoding energies per processed
-bit of 2 nJ or similar are possible. 
+bit of 2 nJ or similar are possible.
 %
 \begin{figure*}
     \centering
@@ -672,48 +672,45 @@ and \ref{fig:dec_ene_rasp2_packet_gf256}; we introduce the decoding energy
 per bit consumption for the \ac{Raspi} 2. Here, we obtain a reduction
 of an order of magnitude in energy per processed bit due to the speed
 of the \ac{Raspi} 2. For example, it can be seen that for the binary field
-with $g = 16$ packets, we achieve a decoding energy consumption per bit 
+with $g = 16$ packets, we achieve a decoding energy consumption per bit
 processed close to 0.1 nJ in practical systems.
 %
 \subsection{Multicore Network Coding}
 \label{subs:multicore-network-coding}
 
-To review the performance of \ac{NC} in a multicore using the \ac{Raspi},
-the authors implemented the algorithm described in
-Section~\ref{sub:implementation-multicore} on the \ac{Raspi} 2 model,
-which features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC}
-with a 900 MHz clock. Each core has a 32 KiB L1 data cache and 32 KiB
-L1 instruction cache. The cores share a 512 KiB L2 cache. All the
-measured results, including the baseline results, were obtained with
-NEON-enabled code adapted from the Fifi library \cite{fifi}.
-The \ac{Raspi} 2 has a NEON extension instruction set which provides
-an 128-bit \ac{SIMD} instructions that speed the computations.
-Figures~\ref{enc_dec1024}, \ref{enc_dec128} and
-\ref{enc_dec16} show the encoding and decoding goodput in MB per
-second for different generation sizes, $g = [1024, 128, 16]$
-respectively. The size of each coded packet was fixed to $1536$~bytes
-since that is the typical size of an Ethernet frame. The blocked operations
-were performed dividing the matrices in squared sub-blocks of
-$16,\ 32\ ,\ 64,\ldots,\ 1024$ operands (words in the Galois field) in
-height and width. The figures show only block sizes of
-$16 \times 16$, $32 \times 32$, $64 \times 64$ operands since with bigger
-block sizes, the operands do not fit in L1 cache. Several testcases
-are considered and detailed.
+To review the performance of \ac{NC} in a multicore architecture using the
+\ac{Raspi}, the authors implemented the algorithm described in
+Section~\ref{sub:implementation-multicore} on the \ac{Raspi} 2 model B, which
+features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC} with a 900 MHz clock.
+Each core has a 32 KiB L1 data cache and 32 KiB L1 instruction cache. The cores
+share a 512 KiB L2 cache. All the measured results, including the baseline
+results, were obtained with NEON-enabled code adapted from the Fifi library
+\cite{fifi}. The \ac{Raspi} 2 has a NEON extension instruction set which
+provides an 128-bit \ac{SIMD} instructions that speed the computations.
+Figures~\ref{enc_dec1024}, \ref{enc_dec128} and \ref{enc_dec16} show the
+encoding and decoding goodput in MB per second for different generation sizes,
+$g = [1024, 128, 16]$ respectively. For $g = [128, 16]$, the displayed results are the mean values over 1000 measurements, while for $g=1024$, they are mean values over 100 measurements. The size of each coded packet was fixed to
+$1536$~bytes since that is the typical size of an Ethernet frame. The blocked
+operations were performed dividing the matrices in squared sub-blocks of $16,\
+32\ ,\ 64,\ldots,\ 1024$ operands (words in the Galois field) in height and
+width. The figures show only block sizes of $16 \times 16$, and $128 \times 128$
+operands since with bigger block sizes, the operands do not fit in cache.
+Several testcases are considered and detailed.
 
 \subsubsection{Baseline encoding}
-The baseline results involve no recording of the
-\ac{DAG} and are performed in a \emph{by-the-book} fashion. The encoder uses
-only one thread. The difference between the non-blocked and blocked
-encoding schemes is that in the blocked scheme, the matrix multiplications are
-performed dividing the matrices in sub-blocks in order to make the algorithm
-cache efficient as described in Section~\ref{sub:implementation-multicore}.
+The baseline results involve no recording of the \ac{DAG} and are performed in a
+\emph{by-the-book} fashion. The encoder uses only one thread. The difference
+between the non-blocked and blocked encoding schemes is that in the blocked
+scheme, the matrix multiplications are performed dividing the matrices in
+sub-blocks in order to make the algorithm cache efficient as described in
+Section~\ref{sub:implementation-multicore}.
 
 \subsubsection{Encoding blocked}
-The encoding results are obtained using the
-method described in Section~\ref{sub:implementation-multicore}. The time
-recorded includes the dependencies resolving, creation of the \ac{DAG},
-and the taskz scheduling. In practice, it would suffice to calculate and
-store this information only once per generation size.
+The encoding results are obtained using the method described in
+Section~\ref{sub:implementation-multicore}. The time recorded includes the
+dependencies resolving, creation of the \ac{DAG}, and the task scheduling. In
+practice, it would suffice to calculate and store this information only once per
+generation size.
 
 \subsubsection{Decoding blocked}
 The differences between encoding and decoding, is that the decoding task
@@ -724,58 +721,60 @@ are also made for inverting the matrix of coding coefficients.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_1024.pdf}
-\caption{Encoding and Decoding performance for $g = 1024$. Block size: $32 \times 32$. \cite{wunderlich2015network}}
+% \includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_1024.pdf}
+\includegraphics[width=0.7\textwidth]{images/GenSize_1024_SymbolSize_1536.eps}
+\caption{Encoding and Decoding performance for $g = 1024$. Block size: $128 \times 128$.}
 \label{enc_dec1024}
 \end{figure}
 
 For $g= 1024$, the blocked baseline measurements outperforms the non blocked
 variant. This means that making the matrix multiplication algorithm cache
-efficient brings an increase in goodput by a factor of 2.83. When using the
-algorithm described in Section~\ref{sub:implementation-multicore},
-encoding with four cores is on average $3.7\times$ faster than with one core.
-Similarly, decoding with four codes is $3.05\times$ faster, on average, than
-decoding with a single core. Figure~\ref{enc_dec1024} shows that the
-implemented algorithm, by exploiting cache efficiency and only three extra
-cores provides a $10\times$ gain compared with traditional non-blocked
-algorithms. With $g = 1024$, the matrix inversion becomes more expensive
-than at smaller generations sizes. Therefore, the decoding goodput
-is 46\% of the encoding goodput.
+efficient brings an increase in goodput by a factor of 3.24. When using the
+algorithm described in Section~\ref{sub:implementation-multicore}, encoding with
+four cores is on average $3.9\times$ faster than with one core. Similarly,
+decoding with four codes is $3.9\times$ faster, on average, than decoding with
+a single core. Figure~\ref{enc_dec1024} shows that the implemented algorithm, by
+exploiting cache efficiency and only three extra cores provides a $13\times$
+gain compared with traditional non-blocked algorithms. With $g = 1024$, the
+matrix inversion becomes more expensive than at smaller generations sizes.
+Therefore, the decoding goodput is 58\% of the encoding goodput.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_128.pdf}
-\caption{Encoding and Decoding performance for $g = 128$. Block size: $64 \times 64$ \cite{wunderlich2015network}}
+\includegraphics[width=0.7\textwidth]{images/GenSize_128_SymbolSize_1536.eps}
+\caption{Encoding and Decoding performance for $g = 128$. Block size: $128 \times 128$}
 \label{enc_dec128}
 \end{figure}
 
 For $g = 128$, the differences between the baselines operations show that a
-blocked algorithm is 15\% faster than the non-blocked variant. Encoding with
-four cores is $2.82\times$ faster than with a single core. Due to the smaller
+blocked algorithm is 8\% faster than the non-blocked variant. Encoding with
+four cores is $2.89\times$ faster than with a single core. Due to the smaller
 matrix sizes, the gain when using blocked operations in the baselines is not
 that significant when compared with $g = 1024$. For the same reason, the matrix
-inversion is less expensive. As a consequence, the decoding goodput is 71\%
+inversion is less expensive. As a consequence, the decoding goodput is 46\%
 of the encoding goodput.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_16.pdf}
-\caption{Encoding and Decoding performance for $g = 16$. Block size: $16 \times 16$ \cite{wunderlich2015network}}
+\includegraphics[width=0.7\textwidth]{images/GenSize_16_SymbolSize_1536.eps}
+\caption{Encoding and Decoding performance for $g = 16$. Block size: $16 \times 16$}
 \label{enc_dec16}
 \end{figure}
 
 When $g = 16$, the gains of blocked operations are negligible compared with
 the non-blocked ones. The reason behind this behavior is that all the data
 fits in the L1 cache. For the scheduled version, since the problem to solve
-is so small, the gain when using four cores is a factor of 1.68 compared
-with a single core, and 1.01 compared with two cores. Therefore, there
-are no practical benefits in using four cores instead of two.
+is so small, the gain when using four cores is a factor of 2.45 compared
+with a single core, and 1.46 compared with two cores. Therefore, the
+practical benefits in using four cores instead of two are reduced.
 
 The differences in goodput, for all generation sizes, between the
 blocked baseline and the single threaded scheduled measurements are due the
 time spent resolving the dependencies and the scheduling overhead. These
 effects are negligible for big generation sizes, while considerable for
-small matrices.
+small matrices. For instance, Figure~\ref{enc_dec16} shows that the encoding
+speed when using one core with the described algorithm is 78\% the encoding
+speed without the recording and calculation of the \ac{DAG}.
 
 \subsubsection{Comparison of the load of matrix multiplications and inversions}
 
@@ -799,19 +798,19 @@ $g$ & $T_{mult}$ (ms) & $T_{inv}$ (ms) &$r$ \\
 \hline
 \hline
 
-	16   & 1.703     & 0.345    & 4.9 \\
+	16   & 1.495     & 0.169    & 8.8 \\
 \hline
-	32   & 6.573     & 0.914    & 7.2 \\
+	32   & 5.365     & 0.514    & 10.4 \\
 \hline
-	64   & 21.341    & 3.479    & 6.1 \\
+	64   & 20.573    & 2.024    & 10.1 \\
 \hline
-	128  & 82.326    & 17.411   & 4.7 \\
+	128  & 81.357    & 11.755   & 6.9 \\
 \hline
-	256  & 336.398   & 106.861  & 3.1 \\
+	256  & 326.587   & 75.451  & 4.3 \\
 \hline
-	512  & 1548.750  & 659.469  & 2.3 \\
+	512  & 1354.012  & 540.469  & 2.5 \\
 \hline
-	1024 & 6730.380  & 5166.920 & 1.3 \\
+	1024 & 5965.284  & 4373.329 & 1.3 \\
 \hline
 \end{tabular}
 \vspace{0.2cm}
