@@ -689,7 +689,9 @@ results, were obtained with NEON-enabled code adapted from the Fifi library
 provides an 128-bit \ac{SIMD} instructions that speed the computations.
 Figures~\ref{enc_dec1024}, \ref{enc_dec128} and \ref{enc_dec16} show the
 encoding and decoding goodput in MB per second for different generation sizes,
-$g = [1024, 128, 16]$ respectively. For $g = [128, 16]$, the displayed results are the mean values over 1000 measurements, while for $g=1024$, they are mean values over 100 measurements. The size of each coded packet was fixed to
+$g = [1024, 128, 16]$ respectively. For $g = [128, 16]$, the displayed results
+are the mean values over 1000 measurements, while for $g=1024$, they are mean
+values over 100 measurements. The size of each coded packet was fixed to
 $1536$~bytes since that is the typical size of an Ethernet frame. The blocked
 operations were performed dividing the matrices in squared sub-blocks of $16,\
 32\ ,\ 64,\ldots,\ 1024$ operands (words in the Galois field) in height and
