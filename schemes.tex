@@ -327,34 +327,7 @@ packet using \ac{SRLNC} can be written as shown in
 %
 \begin{align} \label{eq:sparse_coded_packet2}
     C_i  &= \bigoplus_{m \in \mathcal{K}} v_{im} \otimes P_{m},\ v_{im} \neq 0,\ \forall i \in [1,\ldots)
-    %L \subseteq \{1,\dots,g\}: |L|=k ,\
 \end{align}
-
-% It is often desired to express the coding density as $d=\frac{k}{g}$. We call
-% this notation $k-sparse$ where $k$ is the average number of packets combined to
-% produce a coded packet.
-
-%For low coding density, the encoder might generate a coded packet that consists
-%of no coded packets. I.e. the packet consists of all zeroes
-
-%In \ac{SRLNC}, instead of considering all the packets to create a coded
-%packet like \ac{RLNC} does, here the encoder sets some coding coefficients to
-%zero when creating a new coded packet. This permits to reduce the complexity
-%of both the encoding and decoding operations since the encoder (or decoder)
-%requires less operations to process the data. Therefore, a new code parameter
-%to control the sparsity, the code density $d$, is included to vary the
-%number of non-zero packet that are combined. Here are various approaches to
-%set the density.
-%
-%A first method is to specify the number of zeros in a given
-%generation size and later generate coded packets with this amount. For example:
-%16 zeros in a coding vector of 64 packets where the position of zeros are
-%modified at random for every coded packet generated. Another method is to
-%define an average number of zeros in the coding vector. Therefore, more or
-%less zeros are exactly generated for each coded packet in the process.
-%However, if not carefully made, using a sparse coding scheme might increase
-%the probability of generating \ac{l.d.} packets which incurs both overhead
-%from redundant information and processing delay.
 
 \subsection{Tunable Sparse Network Coding}
 

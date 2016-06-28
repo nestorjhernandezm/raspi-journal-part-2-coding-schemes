@@ -7,22 +7,25 @@
 % Review of the State of the Art. Specify why our approach has benefits
 % and which are they. Indicate contributions.
 
-The emergence of powerful and inexpensive single-board computers
-running full versions of a standard \ac{OS} from many possible in the last
-years opens exciting possibilities for researchers. This not only
-allows to seamlessly develop implementations that are compatible with
-higher end devices and allows the reuse stable software from the Open
-Source community. It also enables the deployment and testing of large
-scale (hundreds of devices or more) distributed systems at a fraction
-of the cost necessary in previous years. This paper focuses on
-providing the critical steps and mechanisms followed to deploy, setup,
-and maintain a large-scale testbed based on Raspberry Pi devices of
-different models. We also complement this with an in-depth evaluation
-of the Raspberry Pi as a platform to enable a new paradigm in
-networking and storage known as \ac{NC}, which relies on
-processing at intermediate nodes to achieve higher throughput, delay
-and reliability performance than state-of-the-art routing techniques.
-
+% RAW INTRODUCTION: NEED OF DISTRIBUTED NETWORKS AND THE RASPBERRY PI
+Due to the advent of the \ac{IoT}, around 50 million devices
+ranging from sensors to phones are expected to be connected into
+data networks in relatively short period of time \textbf{[REFERENCE]}.
+This massive deployment requires the design and testing of new
+distributed systems that permit to cope with the amount of traffic
+from the proposed services provided by these devices. Therefore,
+development platforms that help to quickly deploy, analyze and
+evaluate this type of settings are highly desirable for research.
+The emergence of a powerful and inexpensive portable computer such
+as the Raspberry Pi running standard \ac{OS} like Linux or even
+Windows allows to achieve this goal since enables the deployment
+of distributed systems at a lower cost than the necessary in
+previous years by using standard protocol. We also complement this
+with an in-depth evaluation of the Raspberry Pi as a platform to
+enable a new paradigm in networking and storage known as \ac{NC},
+which relies on processing at intermediate nodes to achieve
+higher throughput, delay and reliability performance than
+state-of-the-art routing techniques.
 
 % INTRODUCTION TO NETWORK CODING
 Introduced by Ahlswede et al.~\cite{ahlswede2000network}, network
