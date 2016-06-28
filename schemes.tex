@@ -377,16 +377,18 @@ for decoding a generation of $g$ packets. In some scenarios, we may set
 $e$ defined as the excess of \ac{l.d.} packets sent from the encoder.
 This helps to also define the budget as $b = g + e$.
 
-The difference between $b$ and $g$ is equal to the losses in the channel and the
-losses due to linear dependencies. Therefore, in a lossless channel, the budget
-is
+The difference between $b$ and $g$ is equal to the losses in the channel
+and the losses due to linear dependencies. Therefore, in a lossless
+channel, the budget is:
 \begin{equation}\label{eq:budget}
     b(g,d)=\sum^{g-1}_{i=0}\frac{1}{P(i,g,d)},
 \end{equation}
 where $P(i,g,d)$ is the probability of receiving an innovative coded packet
-after receiving $i$ \ac{l.i.} packets with a coding density $d$. In our implementations, we considered the the upper bound for the innovation probability from \cite{feizi2014tunable}, given as
+after receiving $i$ \ac{l.i.} packets with a coding density $d$. In our
+implementations, we considered the lower bound for the innovation probability
+from \cite{feizi2014tunable}, given as:
 \begin{equation}
-    P(i,g,d)\geq 1-(1-d)^{g-i}
+    P(i,g,d) \geq 1-(1-d)^{g-i}
 \end{equation}
 
 Provided a desired budget $b$ and the \ac{dof} of the decoder, an encoder
@@ -422,23 +424,24 @@ the remainder of the total budget. To calculate the density, we use
 bisection to estimate a fixed density for the density region that
 satisfies the budget for the $k$-th density region:
 \begin{equation}
-b(s(k-1),r(k),g,d) = \sum^{r(k)}_{i=r(k-1)} \frac{1}{P(i,g,d)} = \sum^{r(k)}_{i=r(k-1)} \frac{1}{1-(1-d)^{g-i}} = \frac{b}{2^k}, k\in [1,...).
+b(r(k),r(k+1),g,d) = \sum^{r(k+1)}_{i=r(k)} \frac{1}{P(i,g,d)} = \sum^{r(k+1)}_{i=r(k)} \frac{1}{1-(1-d)^{g-i}} = \frac{b}{2^k},\ k\in [1,\ldots)
 \end{equation}
 %
 % Where the budget is half of the remaining budget for all the density regions
 % except the last one, to which it is assigned the remaining of the budget.
 The feedback scheme based on the rank reports
-of~\eqref{eq:feedback_dofs} roughly splits the remaining coding
+in~\eqref{eq:feedback_dofs} roughly splits the remaining coding
 regions in two halves. In other words, the first half is the region
 where the encoder currently operates. Once an encoder finishes with
 this region, it proceeds with second half where again it splits this
-into to two region and so on until it finishes on transmitting the
+into two new regions and so on, until it finishes the transmission the
 whole generation. This is also the case for the budget that is split
 equally among the two new regions. The very last region will be
 assigned the full remainder of the total budget and the coding density
 will not vary.
 
-\subsection{Implementation for the Raspberry Pi Multicore Architecture}
+\subsection{Network Coding Implementation for the Raspberry Pi Multicore
+Architecture}
 \label{sub:implementation-multicore}
 
 The arithmetic operations needed to encode and decode data are, in
