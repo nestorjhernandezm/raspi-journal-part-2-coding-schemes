@@ -33,7 +33,7 @@ also correctly post-processed after decoding. In this way, we define
 the goodput for either an encoder or a decoder as follows:
 %
 \begin{align} \label{eq:goodput}
-R_{proc} = \frac{gB}{T_{proc}} ~ [\mathrm{Bytes/second}]
+R_{proc} = \frac{gB}{T_{proc}} ~ [\mathrm{Byte/second}]
 \end{align}
 %
 In \eqref{eq:goodput}, $B$ and $g$ are the packet and generation size
@@ -49,8 +49,8 @@ any of the coding schemes considered in Section \ref{sec:schemes}.
 Fig. \ref{fig:enc_goodput_benchmark} refers to the benchmark setup
 made for measuring the encoding processing time. The time benchmark
 is divided in two parts. In the first part, called a \textit{pre-run},
-we quantify the amount of \textit{transmitted} coded packets from an
-encoder (named 1 in Fig. \ref{fig:enc_goodput_benchmark}) required for
+we quantify the amount of \textit{transmitted} coded packets, from
+encoder 1 in Fig. \ref{fig:enc_goodput_benchmark}, required for
 decoding in a single encoder-decoder link with no packet erasures
 for a defined configuration of coding scheme, coding parameters and
 amount of feedback. In the case of \ac{TSNC}, we also record the
@@ -60,7 +60,7 @@ seed within its random number generator. This part of the benchmark is
 not regarded as a measurement.
 
 In the second part which is the actual \textit{simulation}, a reseted
-encoder (2 in Fig. \ref{fig:enc_goodput_benchmark}) is given the same
+encoder 2 in Fig. \ref{fig:enc_goodput_benchmark} is given the same
 seed as in the pre-run and then we measure the time from which the
 process start until we reach the amount of transmitted packets in the
 pre-run. Then, this measurement is stored as the encoder $T_{proc}$
@@ -84,12 +84,11 @@ packets from encoder 1. Notice that we include the feedback case because
 it is necesary for the \ac{TSNC} scheme. However, now we store
 the \textit{transmitted packets} instead. The reason being
 that we want to feed the decoder with the same packets in the same
-order. Later, in the actual simulation, an encoder (2 in Fig.
-\ref{fig:dec_goodput_benchmark}) is given the same packets in the same
-order from the pre-run and then we measure the time from which the
-process start until the decoder finishes to retrieve the original
-packets. Finally, this measurement is saved as the decoder $T_{proc}$
-for this general configuration.
+order. Later, in the actual simulation, a new decoder is given the
+same packets in the same order from the pre-run and then we measure
+the time from which the process starts until the decoder finishes to
+retrieve the original packets. Finally, this measurement is saved as
+the decoder $T_{proc}$ for this general configuration.
 
 \begin{figure}[ht!]
 \centering
@@ -112,7 +111,7 @@ consumed in the \ac{Raspi}. Thus, for a given energy value in the device
 battery without any external supplies, this metric permits to infer the amount
 of time for which the \ac{Raspi} can operate autonomously before draining
 out its battery. For the energy per bit consumption, it indicates how
-much energy is expended to effectively transmit or receive 1 bit of
+much energy is expended to effectively transmit or receive one bit of
 information taking into account the encoding or decoding operations
 respectively.
 
@@ -120,7 +119,7 @@ For our energy measurement campaign, we automate the setup presented
 in Fig.~\ref{fig:measurement_setup} to sequentially run a series of
 simulations for a given configuration of a coding scheme and its parameters,
 to estimate the energic expenditure in both of our \ac{Raspi}
-models. The energy measurement setup goal is to quantify the power
+models. The energy measurement setup goal is to quantify the energy
 consumption of the \ac{Raspi} over long periods of processing time to
 obtain accurate results. A representative sketch of the setup is shown
 in the computer monitor in Fig.~\ref{fig:measurement_setup}.
@@ -129,7 +128,7 @@ The energy measurement setup presents a \ac{Raspi} device whose power
 supply is an Agilent 66319D \ac{DC} source, instead of a conventional
 power chord supply.   To compute the power, we just need to measure
 the current since the \ac{Raspi} feeds from a fixed input voltage of $5V$
-set by the Agilent device, but its current consumption is variable.
+set by the Agilent device, but its electric current demand is variable.
 Hence, the measured variable is the current consumed by the device for
 this fixed input voltage. The output of the measurements
 are later sent to a workstation where the raw measurement data is processed.
@@ -168,7 +167,7 @@ the given configuration. Regardless of the current type, the average value
 of the sample set of a given number of samples $N_s$ is:
 %
 \begin{align} \label{eq:avg_current}
-I_{avg} = \frac{1}{N_s}\sum_{k=1}^{N_s} I_{k}  ~[\mathrm{Amperes}]
+I_{avg} = \frac{1}{N_s}\sum_{k=1}^{N_s} I_{k}  ~[\mathrm{Ampere}]
 \end{align}
 %
 With the average current from \eqref{eq:avg_current}, we compute the average
@@ -178,17 +177,17 @@ supply voltage to obtain the average power during the considered configuration,
 given as:
 %
 \begin{align} \label{eq:avg_power}
-P_{avg} = V_{supply}(I_{proc,avg} - I_{idle,avg}) ~[\mathrm{Watts}]
+P_{avg} = V_{supply}(I_{proc,avg} - I_{idle,avg}) ~[\mathrm{Watt}]
 \end{align}
 %
 \subsubsection{Energy per Bit Consumption}
 To get this metric for a given configuration, we simply express the energy
-as the product of the average power by the processing time $T_{proc} [sec/byte]$
-obtained from the goodput measurement for the same configuration. In this way, we can
-relate the processing time with the goodput, the packet and the generation size
-as shown:
+as the product of the average power by the processing time $T_{proc}
+~[\mathrm{sec/byte}]$ obtained from the goodput measurement for the same
+configuration. In this way, we can relate the processing time with the
+goodput, the packet and the generation size as shown:
 %
 \begin{align} \label{eq:energy_per_bit}
-E_b = P_{avg} T_{proc,bit} = P_{avg} \times \frac{T_{proc}}{8gB} = \frac{P_{avg}}{8R_{proc}} ~[\mathrm{Joules}]
+E_b = P_{avg} T_{proc,bit} = P_{avg} \times \frac{T_{proc}}{8gB} = \frac{P_{avg}}{8R_{proc}} ~[\mathrm{Joule}]
 \end{align}
 %

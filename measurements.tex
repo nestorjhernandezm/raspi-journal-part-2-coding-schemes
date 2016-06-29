@@ -26,19 +26,19 @@ and later review the case of the decoder.
 
 \subsubsection{Encoding}
 Fig. \ref{fig:enc_good_rasp1} shows the results of the encoder goodput
-measurements for the \ac{Raspi} 1. Figs. \ref{fig:enc_good_rasp1_gen_gf2}
+measurements for the \ac{Raspi} 1. Fig. \ref{fig:enc_good_rasp1_gen_gf2}
 and \ref{fig:enc_good_rasp1_gen_gf256} present goodput as function of the
 generation size for $GF(2)$ and $GF(2^8)$ respectively for a packet size
-of $B = 1600$ bytes. Figs. \ref{fig:enc_good_rasp1_packet_gf2} and
+of $B = 1600$ bytes. Fig. \ref{fig:enc_good_rasp1_packet_gf2} and
 \ref{fig:enc_good_rasp1_packet_gf256} present the same metric but now as
 function of the packet size for $GF(2)$ and $GF(2^8)$ respectively. In this
 case the generation size was set to $g = 16$ packets.
 
 Similarly, Fig. \ref{fig:enc_good_rasp2} shows the same set of
-measurements for the \ac{Raspi} 2. Hence, Figs.
+measurements for the \ac{Raspi} 2. Hence, Fig.
 \ref{fig:enc_good_rasp2_gen_gf2} and \ref{fig:enc_good_rasp2_gen_gf256}
 present goodput as function of the generation size  and
-Figs. \ref{fig:enc_good_rasp2_packet_gf2} and
+Fig. \ref{fig:enc_good_rasp2_packet_gf2} and
 \ref{fig:enc_good_rasp2_packet_gf256} as a function of the packet size
 for the same cases mentioned previously. Therefore, we will proceed
 to make the results analysis with \ac{Raspi} 1 and indicate which
@@ -83,7 +83,7 @@ they occur.
     \label{fig:enc_good_rasp1}
 \end{figure*}
 %
-As it can seen in the from: Figs. \ref{fig:enc_good_rasp1_gen_gf2},
+As it can seen in the from: Fig. \ref{fig:enc_good_rasp1_gen_gf2},
 \ref{fig:enc_good_rasp1_gen_gf256}, \ref{fig:enc_good_rasp2_gen_gf2} and
 \ref{fig:enc_good_rasp2_gen_gf256}; which indicate the goodput dependency
 on the generation size, the encoding goodput gets reduced as the generation
@@ -93,7 +93,7 @@ it is required to create $g$ coding coefficients and do $g$ multiplications
 for each packet. This makes the goodput to scale as the inverse of the
 generation size.
 
-In the sets of figures shown in Figs.~\ref{fig:enc_good_rasp1} and
+In the sets of figures shown in Fig.~\ref{fig:enc_good_rasp1} and
 \ref{fig:enc_good_rasp2}, it can be observed that the goodput for $GF(2)$
 is higher than for $GF(2^8)$ but still around the same order of magnitud.
 This difference is explained by noticing that \ac{GF} arithmetics in the
@@ -104,9 +104,9 @@ are more complex given that the finite field arithmetics have to be
 performed with lookup tables which at the end reduces the computing
 speed giving a lower goodput when compared with the binary field.
 
-In \ref{fig:enc_good_rasp1_gen_gf2}, \ref{fig:enc_good_rasp1_gen_gf256},
+In Fig.~\ref{fig:enc_good_rasp1_gen_gf2}, \ref{fig:enc_good_rasp1_gen_gf256},
 \ref{fig:enc_good_rasp2_gen_gf2} and \ref{fig:enc_good_rasp2_gen_gf256};
-it can be seen the goodput trends of 5 codes as a function of
+it can be seen the goodput trends of five codes as a function of
 the generation size: \ac{RLNC}, \ac{SRLNC} with $d = [0.02,\ 0.1]$
 and \ac{TSNC} with an extra parameter that we mention. We define
 $C$ as the number of density changes in the \ac{TSNC} transmission
@@ -147,11 +147,11 @@ but less than the cases where sparse codes are utilized. Overall, we
 observe that there is a trade-off between goodput and \ac{l.d.} coded
 packets transmission overhead.
 
-For Figs.~\ref{fig:enc_good_rasp1_packet_gf2},
+For Fig.~\ref{fig:enc_good_rasp1_packet_gf2},
 \ref{fig:enc_good_rasp1_packet_gf256}, \ref{fig:enc_good_rasp2_packet_gf2}
 and \ref{fig:enc_good_rasp2_packet_gf256}; we see the packet
 size effect in the encoding goodput in both \ac{Raspi} models and for
-a fixed generation size. For \ac{TSNC} in this case, we allow for 5 density
+a fixed generation size. For \ac{TSNC} in this case, we allow for five density
 changes during the generation transmission and again consider the same
 budgets as before. In all the cases, we observe that there is an
 optimal packet size to operate with. When reviewing the specifications
@@ -236,11 +236,11 @@ is lower due to the field size effect.
 The effects mentioned for the \ac{Raspi} 1 were also observed for
 the \ac{Raspi} 2 as mentioned previously. Still, the \ac{Raspi} 2 achieves
 roughly $5\times$ to $7\times$ gains in terms of encoding speed when comparing
-the goodputs in Figs.~\ref{fig:enc_good_rasp1} and \ref{fig:enc_good_rasp2},
+the goodputs in Fig.~\ref{fig:enc_good_rasp1} and \ref{fig:enc_good_rasp2},
 given that it has an \ac{ARM} Cortex A7 (v7) \ac{CPU} and twice the \ac{RAM}
 size than the \ac{ARM}1176JZF-S (v6) core of the \ac{Raspi} 1 model.
 
-In Figs.\ref{fig:enc_good_rasp2_packet_gf2} and
+In Fig.~\ref{fig:enc_good_rasp2_packet_gf2} and
 \ref{fig:enc_good_rasp2_packet_gf256}, we observe that the packet size for
 the maximum \ac{RLNC} goodput has shifted towards 8 KiB, indicating that
 the \ac{Raspi} 2 is able to handle $16 \times 8$ KiB $= 128$ KiB. This is
@@ -293,12 +293,12 @@ the proper for \ac{Raspi} 2.
     \label{fig:dec_good_rasp1}
 \end{figure*}
 
-In Figs.~\ref{fig:dec_good_rasp1} and \ref{fig:dec_good_rasp2}, we
+In Fig.~\ref{fig:dec_good_rasp1} and \ref{fig:dec_good_rasp2}, we
 observe the same generation and packet size effects reported in the
 encoding case. However, we do observe in
-Figs.~\ref{fig:dec_good_rasp1_gen_gf2}, \ref{fig:dec_good_rasp1_gen_gf256},
+Fig.~\ref{fig:dec_good_rasp1_gen_gf2}, \ref{fig:dec_good_rasp1_gen_gf256},
 \ref{fig:dec_good_rasp2_gen_gf2} and \ref{fig:dec_good_rasp2_gen_gf256};
-that duplicating the generation size does not reduce by a factor of 4 the
+that duplicating the generation size does not reduce by a factor of four the
 goodput. In principle, given that Gaussian elimination scales as
 $\mathcal{O}(g^3)$ (and thus the processing time), we would expect that
 the goodput scales as $\mathcal{O}(R_{proc,dec}) = \mathcal{O}(g/g^{3}) =
@@ -362,9 +362,9 @@ performance of sparse codes is similar.
 \subsection{Average Power}
 With the energy measurement setup described in Section
 \ref{sec:energy_metrics_methods}, we compute the average power of each
-device from their current consumption across time in
-Figs.~\ref{fig:current_rasp1} and \ref{fig:current_rasp2}. In each
-figure, the eletrical current values are classified into three possible
+device from their elecric current consumption across time in
+Fig.~\ref{fig:current_rasp1} and \ref{fig:current_rasp2}. In each
+figure, the eletric current values are classified into three possible
 currents: Idle, transition and processing. These values are identified by
 our post-processing. Later, the values in red are idle currents, green for
 transitions and blue for processing.
@@ -373,8 +373,8 @@ For a given configuration of a coding scheme, device type and its parameters,
 only electrical current processing values are present. In general, we
 associate the current samples from a given configuration with its goodput
 through a timestamp. In this way, we relate goodput and power / energy
-measurements. Once identified the current values, we compute the averages
-for each configuration as described in Section
+measurements. Once identified the electric current values, we compute the
+averages for each configuration as described in Section
 \ref{sec:energy_metrics_methods}. In the presented current samples, we observe
 a presence of bursty noise. Nevertheless, by taking the average as described
 in \eqref{eq:avg_current}, we remove this contribution in the average
@@ -386,7 +386,7 @@ processing current.
         \centering
         \includegraphics[width=1.1\textwidth]{images/06_06_2016/current_vs_sec_raspberry_change_gen_from_-10sec_to_500sec.eps}
         \caption[]%
-        {{\small Current for the \ac{Raspi} 1 model}}
+        {{\small Electric current for the \ac{Raspi} 1 model}}
         \label{fig:current_rasp1}
     \end{subfigure}
     \hfill
@@ -394,19 +394,19 @@ processing current.
         \centering
         \includegraphics[width=1.1\textwidth]{images/06_06_2016/current_vs_sec_raspberry2_change_gen_from_-10sec_to_500sec.eps}
         \caption[]%
-        {{\small Current for the \ac{Raspi} 2 model}}
+        {{\small Electric current for the \ac{Raspi} 2 model}}
         \label{fig:current_rasp2}
     \end{subfigure}
 
     \caption[]
-    {\small Current consumption for each \ac{Raspi} model}
+    {\small Electric current for each \ac{Raspi} model}
     \label{fig:current_rasp}
 \end{figure*}
 %
-By reviewing the processing current samples in Figs.~\ref{fig:current_rasp1}
+By reviewing the processing current samples in Fig.~\ref{fig:current_rasp1}
 and \ref{fig:current_rasp2}, we observe that the average processing current
 does not change significantly for each \ac{Raspi} model in all the shown
-configurations. Therefore, we approximate the current consumption
+configurations. Therefore, we approximate the electric current consumption
 for the devices and compute the average power as indicated in
 \eqref{eq:avg_power}. The results are shown in
 Table~\ref{tab:average_power_table}.
@@ -442,11 +442,11 @@ separate the results descriptions according to the operation carried by the
 \ac{Raspi}: Encoding and decoding. Besides this, we differentiate between
 the models in our study. The energy per bit consumption removes the dependency
 on the amount of packets helping to normalize the results and indicating
-consumption on a fair basis for all the configurations and coding operations
-involved in the study.
+energy consumption on a fair basis for all the configurations and coding
+operations involved in the study.
 
 \subsubsection{Encoding}
-Figs.~\ref{fig:enc_ene_rasp1} and \ref{fig:enc_ene_rasp2} show the encoding
+Fig.~\ref{fig:enc_ene_rasp1} and \ref{fig:enc_ene_rasp2} show the encoding
 energy per bit measurements for the \ac{Raspi} 1 and 2 models, respectively.
 We now proceed to analyze first the \ac{Raspi} 1 case pointing out proper
 differences with the \ac{Raspi} 2 when applicable.
@@ -489,7 +489,7 @@ differences with the \ac{Raspi} 2 when applicable.
     \label{fig:enc_ene_rasp1}
 \end{figure*}
 %
-In Figs.~\ref{fig:enc_ene_rasp1_gen_gf2} and \ref{fig:enc_ene_rasp1_gen_gf256},
+In Fig.~\ref{fig:enc_ene_rasp1_gen_gf2} and \ref{fig:enc_ene_rasp1_gen_gf256},
 we see the dependency of the energy per bit processed on the generation size
 for the \ac{Raspi} 1 model. In these type of plots, incrementing the
 generation size incurs in more processing time per byte sent which leads to
@@ -501,7 +501,7 @@ do also notice that using $GF(2)$ is energy-wise efficient on the a
 per-bit basis since less operations are used to perform the \ac{GF}
 arithmetics which reduces the amount of energy spent.
 
-In Figs.~\ref{fig:enc_ene_rasp1_packet_gf2} and
+In Fig.~\ref{fig:enc_ene_rasp1_packet_gf2} and
 \ref{fig:enc_ene_rasp1_packet_gf256} for the same device. We exhibit the
 relationship between the energy per bit processed on the packet size which
 is the inverse of the goodput vs. the packet size scaling law. We set
@@ -553,7 +553,7 @@ increases the time spent per processed bit and thus the energy.
     \label{fig:enc_ene_rasp2}
 \end{figure*}
 %
-In Figs.~\ref{fig:enc_ene_rasp2_gen_gf2}, \ref{fig:enc_ene_rasp2_gen_gf256},
+In Fig.~\ref{fig:enc_ene_rasp2_gen_gf2}, \ref{fig:enc_ene_rasp2_gen_gf256},
 \ref{fig:enc_ene_rasp2_packet_gf2} and \ref{fig:enc_ene_rasp2_packet_gf256}
 we show the encoding energy per bit consumption for the \ac{Raspi} 2.
 We clearly see that the effects discussed for the \ac{Raspi} 1 also apply
@@ -568,7 +568,7 @@ a minimum encoding energy consumpiton per bit processed of 0.2 nJ for the
 binary field in the mentioned regime.
 
 \subsubsection{Decoding}
-In Figs.~\ref{fig:dec_ene_rasp1_gen_gf2}, \ref{fig:dec_ene_rasp1_gen_gf256},
+In Fig.~\ref{fig:dec_ene_rasp1_gen_gf2}, \ref{fig:dec_ene_rasp1_gen_gf256},
 \ref{fig:dec_ene_rasp1_packet_gf2} and \ref{fig:dec_ene_rasp1_packet_gf256}
 we show the encoding energy per bit consumption for the \ac{Raspi} 1.
 Again, we notice very similar behavior and trends as previously
@@ -666,7 +666,7 @@ bit of 2 nJ or similar are possible.
     \label{fig:dec_ene_rasp2}
 \end{figure*}
 %
-Finally, in Figs.~\ref{fig:dec_ene_rasp2_gen_gf2},
+Finally, in Fig.~\ref{fig:dec_ene_rasp2_gen_gf2},
 \ref{fig:dec_ene_rasp2_gen_gf256}, \ref{fig:dec_ene_rasp2_packet_gf2}
 and \ref{fig:dec_ene_rasp2_packet_gf256}; we introduce the decoding energy
 per bit consumption for the \ac{Raspi} 2. Here, we obtain a reduction
@@ -687,7 +687,7 @@ share a 512 KiB L2 cache. All the measured results, including the baseline
 results, were obtained with NEON-enabled code adapted from the Fifi library
 \cite{fifi}. The \ac{Raspi} 2 has a NEON extension instruction set which
 provides an 128-bit \ac{SIMD} instructions that speed the computations.
-Figures~\ref{enc_dec1024}, \ref{enc_dec128} and \ref{enc_dec16} show the
+Fig.~\ref{enc_dec1024}, \ref{enc_dec128} and \ref{enc_dec16} show the
 encoding and decoding goodput in MB per second for different generation sizes,
 $g = [1024, 128, 16]$ respectively. For $g = [128, 16]$, the displayed results
 are the mean values over 1000 measurements, while for $g=1024$, they are mean
@@ -735,7 +735,7 @@ efficient brings an increase in goodput by a factor of 3.24. When using the
 algorithm described in Section~\ref{sub:implementation-multicore}, encoding with
 four cores is on average $3.9\times$ faster than with one core. Similarly,
 decoding with four codes is $3.9\times$ faster, on average, than decoding with
-a single core. Figure~\ref{enc_dec1024} shows that the implemented algorithm, by
+a single core. Fig.~\ref{enc_dec1024} shows that the implemented algorithm, by
 exploiting cache efficiency and only three extra cores provides a $13\times$
 gain compared with traditional non-blocked algorithms. With $g = 1024$, the
 matrix inversion becomes more expensive than at smaller generations sizes.
@@ -774,7 +774,7 @@ The differences in goodput, for all generation sizes, between the
 blocked baseline and the single threaded scheduled measurements are due the
 time spent resolving the dependencies and the scheduling overhead. These
 effects are negligible for big generation sizes, while considerable for
-small matrices. For instance, Figure~\ref{enc_dec16} shows that the encoding
+small matrices. For instance, Fig.~\ref{enc_dec16} shows that the encoding
 speed when using one core with the described algorithm is 78\% the encoding
 speed without the recording and calculation of the \ac{DAG}.
 

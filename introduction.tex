@@ -8,20 +8,21 @@
 % and which are they. Indicate contributions.
 
 % RAW INTRODUCTION: NEED OF DISTRIBUTED NETWORKS AND THE RASPBERRY PI
-Due to the advent of the \ac{IoT}, approximately fifty million devices
+Due to the advent of the \ac{IoT}, approximately fifty billion devices
 ranging from sensors to phones are expected to be connected through
-data networks in relatively short period of time \textbf{[REFERENCE]}.
+data networks in relatively short period of time \cite{cisco2011forecast}.
 This massive deployment requires the design and testing of new
-distributed systems that permit to cope with the amount of traffic
+distributed systems that permit to manage the amount of traffic
 from the proposed services provided by these devices. Therefore,
 development platforms that help to quickly deploy, analyze and
 evaluate this type of settings are highly desirable for research.
 The emergence of a powerful and inexpensive portable computer such
-as the Raspberry Pi, running standard \ac{OS} like Linux or Windows,
-allows to achieve this goal since it enables the deployment
-of distributed systems at a low cost. Also, the use of an \ac{OS} that
-has a large user community helps to manage this networks in less time
-\textbf{INCLUDE PRIOR WORK}.
+as the Raspberry Pi, running standard operating systems such as
+Linux or Windows, allows to achieve this goal since it enables the
+deployment of distributed systems in a rapid fashion at a low cost.
+Also, the use of an operating system that has a large user community
+permits to administrative these networks in a flexible, stable and
+supported fashion.
 
 % INTRODUCTION TO NETWORK CODING
 Introduced in~\cite{ahlswede2000network}, \ac{NC}
@@ -44,39 +45,44 @@ Compared to other broadly used coding schemes, e.g. \ac{LDPC}
 codes~\cite{gallager1962low} or Reed-Solomon
 codes~\cite{reed1960polynomial}, network coding is a technology that
 has been implemented in real systems since the early years of its
-conception. Katti et al.~\cite{katti2008xors} showed the
+conception. Authors in~\cite{katti2008xors} showed the
 performance of the COPE protocol for the two-way relay channel
 in a wireless network, which relied on minimalistic coding and obtaining
-gains over a forwarding scheme. Later, Pedersen et
-al.~\cite{pedersen2008implementation} used commercially available
+gains over a forwarding scheme. Later, the work in~\cite{pedersen2008implementation} used commercially available
 Symbian OS mobile phones to implement network coding in a
-\ac{D2D} cooperation-based application. Furthermore, researchers at Aalborg
-University developed Kodo~\cite{kodo2011pedersen}, a C++11 network
-coding library intended to make network coding functionalities easily
-available for both the research community and commercial entities.
-Based on Kodo is CATWOMAN~\cite{hundeboll2012catwoman}, a protocol
-implemented on top of the BATMAN protocol~\cite{johnson2008simple} for
-WiFi multi-hop meshed networks using some of the intuition from
-COPE, but deployed within the X topology with overhearing and
-currently available as open source in the Linux kernel. Many other
-implementations have been tested on real world systems~
-\cite{pahlevani2013playncool,katti2008xors,krigslund2013core,paramanathan2013leanandmean}.
+\ac{D2D} cooperation-based application. Furthermore,
+in~\cite{kodo2011pedersen}, the Kodo library was introduce. Kodo is
+a C++11 network coding library intended to make network coding
+basic functionalities easily available for both the research community
+and commercial entities. Based on Kodo, the CATWOMAN
+protocol~\cite{hundeboll2012catwoman} is implemented on top of the
+BATMAN protocol~\cite{johnson2008simple} for WiFi multi-hop meshed
+networks. It uses some of the intuition from COPE, but it is deployed
+within the X topology with overhearing links. Its source code is available
+as open source in the Linux kernel. Moreover, many other successful
+implementations have been tested on real world systems such as
+found in~\cite{pahlevani2013playncool,krigslund2013core,
+paramanathan2013leanandmean}. For the Raspberry Pi platform, an evaluation
+of the performance of \ac{RLNC} can be found in \cite{paramanathan2014sharing}.
+However, this evaluation focused particularly on observing the achievable
+speeds with \ac{RLNC} \cite{ho2006random} by different configurations of
+the code parameters with a single thread and no hardware acceleration through
+\ac{SIMD}.
 
-In this work, we provide detailed measurements of the goodput and energy
-consumption of \ac{Raspi} models 1 and 2, when performing network coding
-operations with different codecs based on \ac{RLNC} \cite{ho2006random}
-such as: full \ac{RLNC}, multicore-enabled \ac{RLNC}, sparse \ac{RLNC}
-and tunable sparse \ac{RLNC}. For this work, we assess the \ac{Raspi}
-performance excluding the channel effect in the processing, meaning that
-we do not consider packet losses or delays in order to have a
+In this work, we provide detailed measurements of the goodput (processing
+speed) and energy consumption of \ac{Raspi} models 1 and 2, when
+performing network coding operations with different codecs based on \ac{RLNC}
+such as: full dense \ac{RLNC}, multicore-enabled \ac{RLNC}, sparse \ac{RLNC}
+and tunable sparse \ac{RLNC}. For these coding schemes, the encoder and implementations from Kodo now detect and exploit the \ac{SIMD}
+capabilities of the Raspberry Pi. We also assess the \ac{Raspi}
+performance excluding the effect of packet losses or delays in order to have a
 description of the codes in terms of their parameters. To achieve this,
 we perform a measurement campaign with the indicated coding schemes and
 their parameters in our local Raspberry Pi testbed. Our measurements permit
-us to characterize the processing speed (goodput) and energy consumption
+us to characterize the goodput and energy consumption
 of these devices showing that speeds of 800 Mbps and processing energy per bit
-values of 0.1 nJ are possible.
-
-Our work is organized as follows. Section~\ref{sec:schemes} defines the
+values of 0.1 nJ are possible. Our work is organized as follows.
+Section~\ref{sec:schemes} defines the
 coding schemes employed in our study. Later, in Section~\ref{sec:metrics}
 we describe the considered metrics and methodology for performance comparison
 of the codes deployed in the \ac{Raspi}. In Section~\ref{sec:measurements}, we

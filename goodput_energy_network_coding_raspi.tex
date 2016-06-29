@@ -121,34 +121,35 @@ $^{4}$ \quad SFB 912 -- Collaborative Research Center HAEC. Dresden, Germany}
 \corres{Correspondence: nestor@steinwurf.com, nh@es.aau.dk; Tel.: +45 51 20 03 49}
 
 % Current address and/or shared authorship
-\firstnote{Fredrik Bajers Vej 7, Room A3-111. Aalborg, Denmark}
+\firstnote{Fredrik Bajers Vej 7A, Room A3-110. Aalborg, Denmark}
 
 % Simple summary
 %\simplesumm{}
 
 % Abstract (Do not use inserted blank lines, i.e. \\)
 \abstract{Given that next generation networks are expected to be populated
-by a large number of devices, there is a need in evaluating large-scale
-deployments of distributed data-processing systems in a quick and manageable
-fashion. In this sense, the Raspberry Pi has been a popular choice
-as a representative device for a network node due to its reduced size,
-processing capabilities, low cost and use of different open
-source operating systems. Also, new paradigms such as network coding have
-appeared for fast and reliable data processing in networking and storage
-systems which overcome the limitations of state-of-the-art routing
-techniques. Therefore, in this work we provide an in-depth performance
-evaluation for \ac{RLNC} based schemes for the Raspberry Pi 1 and 2 models
-by showing the processing speed for the encoding and decoding operations and
-its energy consumption when carrying them. Our results show that processing
-speeds of more than 80 Mbps and 800 Mbps are attainable for several
-scenarios for the Raspberry Pi 1 and 2, respectively. Also analogously,
-we show that the processing energy per bit for network coding is below 1
-nJ and even an order of magnitude lower in the given scenarios.}
+by a large number of devices, there is a need for quick deployment and
+evaluation of alternative mechanisms to cope with the possible generated
+traffic in large-scale distributed data networks. In this sense, the
+Raspberry Pi has been a popular network node choice due to its reduced
+size, processing capabilities, low cost and its support by
+widely-used operating systems. For information transport, network coding is
+a new paradigm for fast and reliable data processing in networking and
+storage systems which overcomes various limitations of state-of-the-art
+routing techniques. Therefore, in this work we provide an in-depth
+performance evaluation of \ac{RLNC} based schemes for the Raspberry Pi
+models 1 and 2, by showing the processing speed of the encoding and
+decoding operations and the corresponding energy consumption. Our
+results show that, in several scenarios, processing speeds of more
+than 80 Mbps in the Raspberry Pi model 1 and 800 Mbps in the Raspberry
+Pi model 2 are attainable. Moreover, we show that the processing
+energy per bit for network coding is below 1 nJ or even an order of
+magnitude less in these scenarios.}
 
 % A single paragraph of about 200 words maximum. For research articles, abstracts should give a pertinent overview of the work. We strongly encourage authors to use the following style of structured abstracts, but without headings: 1) Background: Place the question addressed in a broad context and highlight the purpose of the study; 2) Methods: Describe briefly the main methods or treatments applied; 3) Results: Summarize the article's main findings; and 4) Conclusion: Indicate the main conclusions or interpretations. The abstract should be an objective representation of the article: it must not contain results which are not presented and substantiated in the main text and should not exaggerate the main conclusions.
 
 % Keywords
-\keyword{Network Coding; Raspberry Pi; Testbed; C++}
+\keyword{Network Coding; Raspberry Pi; Goodput; Energy; Performance}
 
 % keyword 1; keyword 2; keyword 3. List three to ten pertinent keywords specific to the article, yet reasonably common within the subject discipline.
 
@@ -367,61 +368,51 @@ Center SFB 912 – HAEC.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
-\abbreviations{The following abbreviations are used in this manuscript:\\
 
 % Use these two commands to get used acronyms
 %used=$(grep -ohR '\\ac{[^}]*' *.tex | cut -f2 -d'{' | sort | uniq)
 %for ac in ${used[@]}; do echo "$(grep -R "acro{${ac}}" acronym.tex)"; done | cut -f2-4 -d'{'
 % Use text editor to replace '}{' --> ': ' and '}' --> '\\'
 
-\noindent ACK: Acknowledgment\\
-AMR: Adaptive Multi-Rate\\
+\abbreviations{The following abbreviations are used in this manuscript:\\
+
+\noindent
 ARM: Advanced RISC Machine\\
 BLAS: Basic Linear Algebra Subprograms\\
 CPU: Central Processing Unit\\
-CSMA/CA: Carrier Sense Multiple Access with Collision Avoidance\\
-GB: Gigabyte\\
 D2D: Device to Device\\
 DAG: Direct Acyclic Graph\\
 DC: Direct Current\\
-DCF: Distributed Coordination Function\\
+dof: degrees of freedom\\
+GB: Gigabyte\\
 GF: Galois Field\\
 GPU: Graphic Processing Unit\\
+IoT: Internet of Things\\
 IP: Internet Protocol\\
-IPTV: Internet Protocol TeleVision\\
+IP: Internet Protocol\\
 LAN: Local Area Network\\
 l.d.: linearly dependent\\
+LDPC: Low Density Parity Check\\
 l.i.: linearly independent\\
-LNC: Linear Network Coding\\
-LOS: Line Of Sight\\
 MAC: Medium Access Control\\
-MIMO: Multiple Input Multiple Output\\
 NC: Network Coding\\
-NLOS: Non Line Of Sight\\
-OSI: Open Systems Interconnect\\
+NFS: Network File System\\
+OS: Operating System\\
 PC: Personal Computer\\
-PNC: Physical layer Network Coding\\
 QoE: Quality of Experience\\
+RAM: Random Access Memory\\
+Raspi: Raspberry Pi\\
 RLNC: Random Linear Network Coding\\
-SRLNC: Sparse Random Linear Network Coding\\
+SCP: Secure copy\\
 SIMD: Single Instruction Multiple Data\\
 SIMD: Single Instruction Multiple Data\\
 SMP: Symmetric Multiprocessor\\
 SOC: System on Chip\\
-SSE: Streaming SIMD Extensions\\
-TSNC: Tunable Sparse Network Coding\\
-VoIP: Voice over Internet Protocol\\
-WLAN: Wireless Local Area Network\\
-dof: degrees of freedom\\
-IP: Internet Protocol\\
-OS: Operating System\\
-NFS: Network File System\\
-RAM: Random Access Memory\\
-Raspi: Raspberry Pi\\
+SRLNC: Sparse Random Linear Network Coding\\
 SSH: Secure Shell\\
-USB: Universal Serial Bus\\
-SCP: Secure copy\\
-Telnet: Telnet}
+Telnet: Telnet\\
+TSNC: Tunable Sparse Network Coding\\
+USB: Universal Serial Bus}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
