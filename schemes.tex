@@ -1,8 +1,11 @@
 %!TEX root = raspi_journal.tex
 \label{sec:schemes}
 
-In this section, we present a description of the considered coding
-schemes measured with the \ac{Raspi} testbed. We introduce a
+In this section, we present the considered coding schemes that are evaluated
+in the \ac{Raspi} 1 and 2.
+%In this section, we present a description of the considered coding
+%schemes measured with the \ac{Raspi} testbed.
+We introduce a
 definition for the primitive coding operations, e.g. encoding,
 decoding and recoding (where it applies) for each coding
 scheme. Later, we address particular schemes which are obtained by
@@ -23,7 +26,7 @@ combinations of the original ones. In the following subsections, we
 describe the basic functionalities of \ac{RLNC}.
 
 \subsubsection{Encoding}
-In \ac{RLNC}, any coded packet is a linear combination from all
+In \ac{RLNC}, any coded packet is a linear combination of all
 the original packets. For the coding scheme, packets are seen as
 algebraic entities formed as a sequence of elements from $GF(q)$,
 which is a \ac{GF} of size $q$. Later, each original packet is
@@ -103,7 +106,7 @@ A decoder starts to calculate and substract contributions from each
 of the pivot elements, e.g. leftmost elements in the main diagonal of
 \eqref{eq:coding_matrix}, from top to bottom. The purpose is to obtain
 the equivalence  $\textbf{V}$ in its reduced echelon form. The steps
-for reducing the matrix by elementary row operations are carried each time
+for reducing the matrix by elementary row operations are carried out each time
 a \ac{l.i.} packet is received. Once in reduced echelon form, packets
 can be retrieved by doing a substitution starting from the latest
 coded packet. In this way, the amount of elementary operations at the end
@@ -112,12 +115,12 @@ of the decoding process is diminished.
 \subsubsection{Recoding}
 As an inherent property of \ac{RLNC}, an intermediate node in the network
 is able to create new coded packets without needing to decode previously
-received ones from an encoding source. Therefore, \ac{RLNC} is an end-to-end
+received packets from an encoding source. Therefore, \ac{RLNC} is an end-to-end
 coding scheme that permits to \textit{recode} former coded packets at any
 point in the network without requiring a local decoding of the data. In
 principle, a recoded packet should be indistinguishable from a coded one.
 Thus, we define a recoded packet as $R_i$ and consider the coding
-coefficients $w_{i1}, \ldots, w_{ig}$ as the used ones to
+coefficients $w_{i1}, \ldots, w_{ig}$ as used to
 create $R_i$. Later, a recoded packet can be written as:
 %
 \begin{align}
@@ -191,13 +194,16 @@ In \ac{SRLNC}, instead of considering all the packets to create a
 coded packet as in \ac{RLNC}, an encoder sets more coding coefficients
 to zero when generating a coded packet with the purpose of reducing
 the overall processing.  Decoding is the same as in \ac{RLNC}, but
-given that the coding matrices are now sparse, we will have less
-operations performed in the decoding process.  Recoding, although
+given that the coding matrices are now sparse means that there will be less
+operations to perform in the decoding process.  Recoding, although
 theoretically possible, is omitted since it requires the use of
-heuristics keep packets sparse after recoding, which is inherently
-sub-optimal. In what follows, we describe the coding scheme with a
-basic method to produce sparse coded packets and later we indicate a
-second one, giving reference to their implementation performance.
+heuristics to keep packets sparse after recoding, which is inherently
+sub-optimal.
+%In what follows, we describe the coding scheme with a
+%basic method to produce sparse coded packets and later we indicate a
+%second one, giving reference to their implementation performance.
+In what follows, we describe the coding scheme with two
+different methods to produce sparse coded packets.
 
 \subsubsection{Method 1: Fixing the Coding Density}
 A way to control the amount of non-zero coding coefficients, is to set a
@@ -219,14 +225,19 @@ d = \frac{\sum_{j=1}^{g} f(v_{ij})}{g},\ \
 From the density definition in~\eqref{eq:coding_density}, it can be
 observed that $0 \leq d \leq 1$. As $g$ increased, we obtain more
 granularity in the density. Notice that the special case of  $d = 0$ has no
-practical purpose since it implies just zero padded data. So, a practical
-range for the density excludes the zero case, $0 < d \leq 1$. Moreover,
-it can be also observed that the case of $d = 1$ reduces to the \ac{RLNC}
-coding scheme described in Section~\ref{ssec:RLNC}.
+practical purpose since it implies just zero padded data.
+\textcolor{red}{exclude the case d=1 for gf(2) here}
+So, a practical
+range for the density excludes the zero case, $0 < d \leq 1$.
+%Moreover,
+%it can be also observed that the case of $d = 1$ reduces to the \ac{RLNC}
+%coding scheme described in Section~\ref{ssec:RLNC}.
+Moreover, the densities $d=0.5$ in $GF(2)$ and $d=1$ in higher order
+\ac{GF}s is similar to the \ac{RLNC} scheme described in Section~\ref{ssec:RLNC}.
 
 To achieve a desired average coding density in the coefficients, for each
 of them, we utilize a set of Bernoulli random variables all with parameter
-$d$ as it success probability, i.e. $\mathbb{B}_j \sim Bernoulli(d)\ ,\ \forall
+$d$ as its success probability, i.e. $\mathbb{B}_j \sim Bernoulli(d)\ ,\ \forall
 j \in [1,g]$. In this way, we can represent a coded packet in \ac{SRLNC} as:
 %
 \begin{align} \label{eq:sparse_coded_packet}
@@ -249,10 +260,10 @@ elements from $GF(q)-\{ 0 \}$. Also, we have specified a dependency on
 the field size for practical density values. In case of employing
 $GF(2)$, the maximum plausible density is restricted up to 0.5 since
 higher values incur in more frequent \ac{l.d.} coded
-packets~\cite{realworld_nc2013}.
+packets~\cite{realworld_nc2013}.\textcolor{red}{Rather more coding complexity}
 
 Reducing $d$ enables the encoder to decrease the average number of
-packets manipulated to make a coded one. This reduces the complexity
+packets mixed to make a coded one. This reduces the complexity
 of the encoder since it needs to mix less packets. Moreover, it also
 simplifies the decoder processing given that less nonzero coding
 coefficients are required to be operated during the Gaussian
@@ -272,10 +283,14 @@ negative impact on overall system performance.
 \subsubsection{Method 2: Sampling the Amount of Packets to Combine}
 The method described from \eqref{eq:sparse_coded_packet} results
 in a fast implementation in terms of execution time for
-$d \geq 0.3$~\cite{practicalview_tsnc2015}. Nevertheless, for $d < 0.3$
-the implementation becomes slow given that more Bernoulli trials are
-required in total for all random variables to generate a coded packet.
-Thus, we introduce a second method that permits a fast implementation
+$d \geq 0.3$~\cite{practicalview_tsnc2015}.
+It is however not able to utilize the full performance potential for
+low densities as the total number of Bernoulli trials remain unchanged
+independently of the density.
+%Nevertheless, for $d < 0.3$
+%the implementation becomes slow given that more Bernoulli trials are
+%required in total for all random variables to generate a coded packet.
+Thus, we introduce a second method that permits a faster implementation
 for low coding densities~\cite{practicalview_tsnc2015}.
 
 For this method, we first obtain the amount of packets
