@@ -46,25 +46,54 @@ The purpose of the benchmarks is to quantify the processing time for
 any of the coding schemes considered in Section \ref{sec:schemes}.
 
 \subsubsection{Encoding Benchmark}
+%Fig. \ref{fig:enc_goodput_benchmark} refers to the benchmark setup
+%made for measuring the encoding processing time of the considered
+%coding schemes given various coding parameters.
 Fig. \ref{fig:enc_goodput_benchmark} refers to the benchmark setup
-made for measuring the encoding processing time. The time benchmark
-is divided in two parts. In the first part, called a \textit{pre-run},
+made for measuring the encoding processing time.
+The time benchmark
+is divided in two parts as a way to exclude the decoding processing
+time from the measurements. In the first part, called a \textit{pre-run},
 we quantify the amount of \textit{transmitted} coded packets, from
 encoder 1 in Fig. \ref{fig:enc_goodput_benchmark}, required for
-decoding in a single encoder-decoder link with no packet erasures
+decoding a generation of packets in a single encoder-decoder link
+with no packet erasures
 for a defined configuration of coding scheme, coding parameters and
 amount of feedback. In the case of \ac{TSNC}, we also record the
-points where a feedback was received from the decoder. The purpose of
-the pre-run is to predict how an encoder should behave with a given
-seed within its random number generator. This part of the benchmark is
-not regarded as a measurement.
+feedback packets received from the decoder. The purpose of
+the pre-run is to observe how an encoder behaves with a given
+seed within its random number generator.
+This part of the benchmark is not measured.
+%This part of the benchmark is not regarded as a measurement.
+%Fig. \ref{fig:enc_goodput_benchmark} refers to the benchmark setup
+%made for measuring the encoding processing time. The time benchmark
+%is divided in two parts. In the first part, called a \textit{pre-run},
+%we quantify the amount of \textit{transmitted} coded packets, from
+%encoder 1 in Fig. \ref{fig:enc_goodput_benchmark}, required for
+%decoding in a single encoder-decoder link with no packet erasures
+%for a defined configuration of coding scheme, coding parameters and
+%amount of feedback. In the case of \ac{TSNC}, we also record the
+%points where a feedback was received from the decoder. The purpose of
+%the pre-run is to predict how an encoder should behave with a given
+%seed within its random number generator. This part of the benchmark is
+%not regarded as a measurement.
 
-In the second part which is the actual \textit{simulation}, a reseted
-encoder 2 in Fig. \ref{fig:enc_goodput_benchmark} is given the same
-seed as in the pre-run and then we measure the time from which the
+The second part is the actual \textit{simulation}. The objective of this
+part is to replicate the pre-run to obtain the encoding speed without
+spending time decoding the packets.
+A reseted encoder 2 in Fig. \ref{fig:enc_goodput_benchmark} is given the
+same seed as in the pre-run and then we measure the time from which the 
 process start until we reach the amount of transmitted packets in the
-pre-run. Then, this measurement is stored as the encoder $T_{proc}$
-for this generic configuration.
+pre-run. The measurement is stored as the encoder $T_{proc}$ for
+this generic configuration. For \ac{TSNC} simulations, the recorded
+feedback packets are injected according to the observations in the pre-run.
+
+%In the second part which is the actual \textit{simulation}, a reseted
+%encoder 2 in Fig. \ref{fig:enc_goodput_benchmark} is given the same
+%seed as in the pre-run and then we measure the time from which the
+%process start until we reach the amount of transmitted packets in the
+%pre-run. Then, this measurement is stored as the encoder $T_{proc}$
+%for this generic configuration.
 
 \begin{figure}[ht!]
 \centering
@@ -162,7 +191,7 @@ next subsections.
 \subsubsection{Average Power Expenditure}
 To extract the average power for a given configuration in our setup, we
 first calculate the average current in each the idle state $I_{idle,avg}$
-and the processing state $I_{idle,avg}$ for all the available sample for
+and the processing state $I_{proc,avg}$ for all the available sample for
 the given configuration. Regardless of the current type, the average value
 of the sample set of a given number of samples $N_s$ is:
 %

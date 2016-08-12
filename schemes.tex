@@ -312,7 +312,7 @@ the considered density range in this method, this is not a significant
 modification~\cite{practicalview_tsnc2015}. Then, once the
 distribution for the number of packets to mix has been defined, we
 sample a value $n$ from $\mathbb{N}$ and compute $k =
-\max(1,n)$. Later, we create a create a set $\mathcal{K}$ with
+\max(1,n)$. Later, we create a set $\mathcal{K}$ with
 cardinality $k$, e.g. $|\mathcal{K}| = k$, where the elements in
 $\mathcal{K}$ are the indexes of the packets that are going to be
 considered for making a coded packet. To compute the indexes
@@ -350,7 +350,8 @@ packet using \ac{SRLNC} can be written as shown in
 not only for the encoder to generate sparse coded packets, but also to
 modify the code density of the packets progressively as required. As a
 decoder accomulates more coded packets, the probability that the next
-received coded packet will be \ac{l.d.} increases.
+received coded packet will be \ac{l.d.} increases~\cite{feizi2014tunable}.
+\textcolor{red}{We can cite Feizi2012 here. That is the paper with the markov chain}
 
 Therefore, in \ac{TSNC}, a simple procedure for controlling this probability
 is to gradually increase the coding density as the \ac{dof}\footnote{We refer
@@ -406,8 +407,8 @@ The transmissions made between feedback packets are called the density
 regions since the same estimated density is used for encoding sparse
 packets. Once a new feedback is received, an encoder recalculates the
 coding density for the new region until the next feedback packet is
-received. before the coding density can be estimated, it is essential
-that the encoder has a good estimate of the decoder \ac{dof}, but also
+received. Before the coding density can be estimated, it is essential
+that the encoder has a good estimate of the decoder's \ac{dof}, but also
 the remainder of the total budget. To calculate the density, we use
 bisection to estimate a fixed density for the density region that
 satisfies the budget for the $k$-th density region:
