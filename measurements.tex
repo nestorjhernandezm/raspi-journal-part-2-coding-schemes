@@ -11,11 +11,11 @@ and cases when the generation size is varied $B = 1600$ bytes.
 We consider a setup where we only vary the packet size,
 $B = [64,\ 128,\ 256,\ 512,\ 1024,\ 2048,\ 4096,\ 8192,\ 16384,\ 32768
 ,\ 65536,\ 131072]$ bytes with a generation size fixed on $g = [16,\ 128]$
-to see computing load that the \ac{Raspi} present in the low and high
+to see the performance of the \ac{Raspi}s in low and high
 packet size regimes. We considered $B = 1536$ bytes for the optimized
 multicore implementation. For \ac{SRLNC}, we considered
 $d = [0.02,\ 0.1]$. For \ac{TSNC}, we considered excess packets,
-$e = [8,\ 16]$, so that the budget is simply $b = g + e$. In all our
+$e = [8,\ 16]$, so that the budget is $b = g + e$. In all our
 measurement reports, to simplify their review, we first presents the
 results for the \ac{Raspi} 1 and later continue with the \ac{Raspi} 2.
 
@@ -28,7 +28,7 @@ and later review the case of the decoder.
 \subsubsection{Encoding}
 Fig. \ref{fig:enc_good_rasp1} shows the results of the encoder goodput
 measurements for the \ac{Raspi} 1. Fig. \ref{fig:enc_good_rasp1_gen_gf2}
-and \ref{fig:enc_good_rasp1_gen_gf256} present goodput as function of the
+and \ref{fig:enc_good_rasp1_gen_gf256} presents goodput as function of the
 generation size for $GF(2)$ and $GF(2^8)$ respectively for a packet size
 of $B = 1600$ bytes. Fig. \ref{fig:enc_good_rasp1_packet_gf2} and
 \ref{fig:enc_good_rasp1_packet_gf256} present the same metric but now as
@@ -96,10 +96,10 @@ generation size.
 
 In the sets of figures shown in Fig.~\ref{fig:enc_good_rasp1} and
 \ref{fig:enc_good_rasp2}, it can be observed that the goodput for $GF(2)$
-is higher than for $GF(2^8)$ but still around the same order of magnitud.
+is higher than for $GF(2^8)$ but still around the same order of magnitude.
 This difference is explained by noticing that \ac{GF} arithmetics in the
 binary field are simply XOR or AND operations. These operations are
-implemented efficiently by most of the architectures nowday and are
+implemented efficiently by most of the architectures nowadays and are
 tailored to be fast in principle. However, the operations in $GF(2^8)$
 are more complex given that the finite field arithmetics have to be
 performed with lookup tables which at the end reduces the computing
@@ -107,25 +107,42 @@ speed giving a lower goodput when compared with the binary field.
 
 In Fig.~\ref{fig:enc_good_rasp1_gen_gf2}, \ref{fig:enc_good_rasp1_gen_gf256},
 \ref{fig:enc_good_rasp2_gen_gf2} and \ref{fig:enc_good_rasp2_gen_gf256};
-it can be seen the goodput trends of five codes as a function of
+it can be seen that the goodput trends of five codes as a function of
 the generation size: \ac{RLNC}, \ac{SRLNC} with $d = [0.02,\ 0.1]$
 and \ac{TSNC} with an extra parameter that we mention. We define
-$C$ as the number of density changes in the \ac{TSNC} transmission
-process, if any. The maximum number of possible changes will depend
-on the budget. The larger the budget, the more regions are formed and
-more density changes are possible. We first evaluate \ac{TSNC} with no
-changes, e.g. $C = 0$ and the two amounts for dependent packets mentioned
-earlier. This means that we tolerate at most 8 or 16 packets regardless of
-the generation. The goal with setting first \ac{TSNC} with these values
-is to observe first the sole effect of the budget in the code since
-$C = 0$ implies no density changes during the whole process.
-
+$C$\fxnote{C is already defined as the set of l.i. coded packets}
+as the number of density regions in the \ac{TSNC} transmission
+process. The maximum number of possible regions depends
+on the generation size. See equation~\eqref{eq:feedback_dofs}.
+The larger the generation, the more density regions may
+be formed and more density changes are possible.
+Throughout this paper, \ac{TSNC} is configured to use the maximum number
+of density regions possible. 
+As there can be at least $C=1$ density region in a transmission, we use
+$C=0$ to indicate the maximum possible density regions. This is
+used for \ac{TSNC} in plots where the generation size is not fixed.
+%In fact, \ac{TSNC} is configured to use the
+%maximum possible density regions in all plots throughout this paper.
+%The larger the generation, the more regions are formed and
+%more density changes are possible.
+%Throughout the section, we evaluate \ac{TSNC} with as many possible
+%density regions that are possible to form during a transmission. This number
+%grows as the generation increases, so we define $C=0$ as the maximum
+%number of possible regions.
+%
+%We first evaluate \ac{TSNC} with no
+%changes, e.g. $C = 0$ and the two amounts for dependent packets mentioned
+%earlier. This means that we tolerate at most 8 or 16\fxnote{dependent packets} packets regardless of
+%the generation. The goal with setting first \ac{TSNC} with these values
+%is to observe first the sole effect of the budget in the code since
+%$C = 0$ implies no density changes during the whole process.
+%
 For the plots in the mentioned figures from the encoder goodput measurements,
 \ac{RLNC} presents the lowest performance in terms of goodput and
 \ac{TSNC} with $e = 16$, the highest regardless of the \ac{Raspi} model.
 Given that the processing time depends in the amount of coded packets
 required to create, \ac{RLNC} is the slowest to process since it must
-use all of the $g$ original packets. Later, sparse codes process the data
+use all of the $g$ original packets\fxnote{The encoding process speed depends on the total number of original packets to mix. Thus coding density and number of coded packets per generation}. Later, sparse codes process the data
 at a larger rate since less packets are being mixed when creating a
 coded packet. The caveat of these schemes is that the sparser the code,
 the more probable the ocurrences of \ac{l.d.} packets is. So, basically
@@ -159,7 +176,7 @@ optimal packet size to operate with. When reviewing the specifications
 of the \ac{Raspi} 1, it uses a L1 cache of 16 KiB. Hence, the trends
 in the packet size can be explained in the following way: For low packet
 sizes, the data processing does not overload the \ac{CPU} of the
-\ac{Raspi}, so the goodput progressively increases given that we simply
+\ac{Raspi}, so the goodput progressively increases given that we
 process more data as the packet size increases. However, after a certain
 packet size, the goodput gets affected since the cache starts to saturate.
 The packets towards the cache needs to have more processing. Beyond this
@@ -253,8 +270,7 @@ a maximum goodputs of 105 MB/s.
 Similar as the encoding goodput, in this Section, we review decoder
 goodput in terms of performance and configurations.
 Fig.~\ref{fig:dec_good_rasp1} shows the results of the decoder goodput
-measurements for the \ac{Raspi} 1 and Fig. \ref{fig:dec_good_rasp2} does
-the proper for \ac{Raspi} 2.
+measurements for the \ac{Raspi} 1 and Fig. \ref{fig:dec_good_rasp2} for the \ac{Raspi} 2.
 
 \begin{figure*}
     \centering
@@ -299,28 +315,29 @@ observe the same generation and packet size effects reported in the
 encoding case. However, we do observe in
 Fig.~\ref{fig:dec_good_rasp1_gen_gf2}, \ref{fig:dec_good_rasp1_gen_gf256},
 \ref{fig:dec_good_rasp2_gen_gf2} and \ref{fig:dec_good_rasp2_gen_gf256};
-that duplicating the generation size does not reduce by a factor of four the
-goodput. In principle, given that Gaussian elimination scales as
+that duplicating\fxnote{What does duplicating the generation size mean? Did you mean doubling?} the generation size does not reduce the goodput by a
+factor of four. In principle, given that Gaussian elimination scales as
 $\mathcal{O}(g^3)$ (and thus the processing time), we would expect that
-the goodput scales as $\mathcal{O}(R_{proc,dec}) = \mathcal{O}(g/g^{3}) =
-\mathcal{O}(g^{-2})$. This would imply that duplicating the generation
-size, should reduce the goodput by a factor of 4, which does not. Instead,
-the goodput it is only reduced by a factor of 2. This is only possible if
+the goodput to scale as $\mathcal{O}(R_{proc,dec}) = \mathcal{O}(g/g^{3}) =
+\mathcal{O}(g^{-2})$. This would imply that duplicating\fxnote{doubling?} the generation
+size, should reduce the goodput by a factor of four, which is not the case. Instead,
+the goodput is only reduced by a factor of two. This is only possible if
 the Gaussian elimination is $\mathcal{O}(g^2)$. A study in
 \cite{paramanathan2013leanandmean} for \ac{RLNC} speeds in commercial
 devices indicated that this is effectively the case. The reason is that
-the $g^2$ scaling factor in the scaling law for our Gaussian elimination is much
+the $g^2$ scaling factor in the scaling law\fxnote{scaling estimate or scaling expression or something else instead of scaling law} of the Gaussian elimination
+is much
 higher than the $g^3$ scaling for $g < 512$. Particularly, this factor
 relates to the number of field elements in a packet size as mentioned
 in \cite{paramanathan2013leanandmean}.
 
 Another difference with the encoding goodput results in the same figures,
-is that even though the \ac{TSNC} with $e = 16$ packets provides the fastest
+is that even though \ac{TSNC} with $e = 16$ packets provides the fastest
 encoding, it does not happen to be the same for the decoding. For this
 very sparse scheme, the decoding is affected by the amount of \ac{l.d.}
 packets generated by, which leads to a higher delay in some cases
 (particularly in $g = [64,\ 128]$). For other generation sizes, the
-performance of sparse codes is similar.
+performance of sparse codes is similar.\fxnote{This block is incorrect. e=16 is not the fastest encoder nor decoder. e=8 is!}
 %
 \begin{figure*}
     \centering
@@ -437,7 +454,7 @@ dependent on the goodput trends since the power is just a scaling constant.
 \subsection{Energy per bit}
 With power and goodput measurements, we compute the energy per bit of
 the previously mentioned cases as described in \eqref{eq:energy_per_bit}.
-The trends of the energy per bit are simply the inverse of the goodput since
+The trends of the energy per bit are simply\fxnote{The word "simply" should be forbidden} the inverse of the goodput since
 both metrics are related by an inverse law. As made with the goodput, we
 separate the results descriptions according to the operation carried by the
 \ac{Raspi}: Encoding and decoding. Besides this, we differentiate between
@@ -679,10 +696,11 @@ processed close to 0.1 nJ in practical systems.
 \subsection{Multicore Network Coding}
 \label{subs:multicore-network-coding}
 
-To review the performance of \ac{NC} in a multicore architecture using the
-\ac{Raspi}, we implemented the algorithm described in
+To review the performance of \ac{NC} in a multicore architecture,
+%using the \ac{Raspi}
+we implemented the algorithm described in
 Section~\ref{sub:implementation-multicore} on the \ac{Raspi} 2 model B, which
-features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC} with a 900 MHz clock.
+features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC} with a 900 MHz clock.\fxnote{... which features an ARMv7 CPU with four cores in a Broadcom ...}
 Each core has a 32 KiB L1 data cache and 32 KiB L1 instruction cache. The cores
 share a 512 KiB L2 cache. All the measured results, including the baseline
 results, were obtained with
