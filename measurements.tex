@@ -432,7 +432,7 @@ Table~\ref{tab:average_power_table}.
 %
 From Table~\ref{tab:average_power_table}, we notice that the power expenditure
 for both models is almost the same. Thus, the energy behaviour is mostly
-dependent on the goodput trends since the power is just an scaling constant.
+dependent on the goodput trends since the power is just a scaling constant.
 %
 \subsection{Energy per bit}
 With power and goodput measurements, we compute the energy per bit of
@@ -680,15 +680,17 @@ processed close to 0.1 nJ in practical systems.
 \label{subs:multicore-network-coding}
 
 To review the performance of \ac{NC} in a multicore architecture using the
-\ac{Raspi}, the authors implemented the algorithm described in
+\ac{Raspi}, we implemented the algorithm described in
 Section~\ref{sub:implementation-multicore} on the \ac{Raspi} 2 model B, which
 features four ARMv7 cores in a Broadcom BCM2836 \ac{SOC} with a 900 MHz clock.
 Each core has a 32 KiB L1 data cache and 32 KiB L1 instruction cache. The cores
 share a 512 KiB L2 cache. All the measured results, including the baseline
-results, were obtained with NEON-enabled code adapted from the Fifi library
-\cite{fifi}. The \ac{Raspi} 2 has a NEON extension instruction set which
+results, were obtained with
+NEON enabled.
+%NEON-enabled code adapted from the Fifi library \cite{fifi}.
+The \ac{Raspi} 2 has a NEON extension instruction set which
 provides an 128-bit \ac{SIMD} instructions that speed the computations.
-Fig.~\ref{enc_dec1024}, \ref{enc_dec128} and \ref{enc_dec16} show the
+Fig.~\ref{enc_dec1024}, \ref{enc_dec128} and \ref{enc_dec16} shows the
 encoding and decoding goodput in MB per second for different generation sizes,
 $g = [1024, 128, 16]$ respectively. For $g = [128, 16]$, the displayed results
 are the mean values over 1000 measurements, while for $g=1024$, they are mean
