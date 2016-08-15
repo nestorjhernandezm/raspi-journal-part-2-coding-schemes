@@ -1,0 +1,68 @@
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Reviewer 1:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Dear reviewer,
+Thank you very much for the valuable feedback. We have corrected the indicated typos and several others particularly in section 4. We have also replaced the abbreviations "l.d." and "l.i." to "linearly dependent" and "linearly independent".
+
+FIXME: variable "g" used on page 2 or 3 before it is defined
+
+FIXME: the notation [1,g] (and many other notations) should be changed to
+       maybe [1,2,...g]
+
+FIXME: change notation such as $\mathbb{N}$ as this is typically used for positive numbers
+
+
+
+
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Reviewer 2:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Dear reviewer,
+Thank you very much for the valuable feedback. We have listed your comments below and described what we have changed to hopefully improve the indicated issues.
+
+
+ - The proposed system is not well described
+
+We have rewritten the parts that indicate a proposed system. All simulations are performed within a single Raspberry Pi. We only replace the traditional power supply with an Agilent to monitor and log the power consumption.
+
+
+   
+- Finally and in a word, the motivation of this paper is unclear. The main question is “why Raspberry pi in network coding?”. What is the advantage of using Raspberry pi?
+
+We consider the Raspberry Pi 1 and 2 to be good representatives in the field of low budget and internet of things devices in terms of performance and capabilities. The two devices have one and four cores respectively and they support hardware acceleration that is mandatory to reach the full potential of network coding. We have updated the introduction to hopefully elaborate a bit more on why network coding in Raspberry Pi is interesting. Another reason for using the Raspberry Pi is its large user community in contrast to many other low cost devices.
+
+
+- They only consider q=2 and 28 , however, as it is mentioned in “Chou, Philip A., Yunnan Wu, and Kamal Jain. "Practical network coding." (2003).”, based on security aspect, in practice, wey should consider q=28 and 216. By this assumption, they should show and compare the results with q=216 too.
+
+We have made a reference to two papers by Achuthan et al. ("Lean and Mean" and "Sharing the Pi" that include measurements for both q=2^8 and q=2^16 that indicates a performance degradation of approximately 10x). We also ran some simulations ourself that indicated similar performance gab between the two field types.
+The reason that we do not consider q=2^16 is that nobody uses it today. q=2^8 is the standard today and q=2 is beneficial in terms of performance in low performance devices. For security purposes, there exists better ways than using q=2^16. 
+
+FIXME: Did we include achuthans papers?
+FIXME: Should we argue somewhere the performance of 2^16 and argue why we use the two fields q=2 and q=2^16?
+
+
+- The list of references neglects some of the most relevant papers. Moreover, the authors have cited to their previous papers (i.e., [6,7,8,10,11,12,13,17,21,27,30])!!! It seems they want to increase citation of their papers!
+
+We link to our prior work as this paper is mostly based on those papers. We have removed reference 10 and 30 and added a few more citations to related work done by others.
+
+FIXME: Did we remove reference 10 and 30?
+
+- The presentation of the paper is not very good. The authors did not care very much about the structure, the language (i.e., page 2 line 42 “Furthermore, in [7], the Kodo library was introduce.” Should be introduced….)
+
+We have corrected the topys mentioned and several others throughout the paper.
+
+FIXME: Did you correct the sentence "... the Kodo library was introduce"?
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+Reviewer 3:
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+Dear reviewer,
+Thank you very much for the valuable feedback. We have corrected the typos as suggested and changed the figures in section 4.4 to show the goodput instead of the throughput.
+
