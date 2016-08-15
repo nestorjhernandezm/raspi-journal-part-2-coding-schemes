@@ -46,7 +46,7 @@ C_i  &= \bigoplus_{j=1}^{g} v_{ij} \otimes P_j ,\ \forall i \in [1,\ldots)
 In \eqref{eq:coded_packet}, $C_i$ is the generic coded packet. In principle,
 the encoder may produce any number of coded packets, but a finite
 number is produced in practice given that a decoder needs only
-$g$ \ac{l.i.} coded packets to decode the batch. Also, in
+$g$ linearly independent coded packets to decode the batch. Also, in
 \eqref{eq:coded_packet}, $v_{ij}$ is the coding coefficient used in the
 $i$-th coded packet and assigned to multiply the $j$-th original packet.
 
@@ -65,7 +65,7 @@ as:
 
 \subsubsection{Decoding}
 \label{sssec:decoding}
-To be able to decode a batch of $g$ packets, a \ac{l.i.} set of $g$
+To be able to decode a batch of $g$ packets, a linearly independent set of $g$
 coded packets, $C_i,\ i \in [1,g]$ is required at a decoder.
 Once this set has been collected for a decoder,
 the original packets can be found by computing the solution of a system
@@ -107,7 +107,7 @@ of the pivot elements, e.g. leftmost elements in the main diagonal of
 \eqref{eq:coding_matrix}, from top to bottom. The purpose is to obtain
 the equivalence  $\textbf{V}$ in its reduced echelon form. The steps
 for reducing the matrix by elementary row operations are carried out each time
-a \ac{l.i.} packet is received. Once in reduced echelon form, packets
+a linearly independent packet is received. Once in reduced echelon form, packets
 can be retrieved by doing a substitution starting from the latest
 coded packet. In this way, the amount of elementary operations at the end
 of the decoding process is diminished.
@@ -184,7 +184,7 @@ recoders in a given network therefore allowing any decoder to compute
 the original data after Gaussian elimination, regardless of the amount
 of times recoding was performed and without incurring in any
 additional overhead cost for signaling. Similar to the encoding
-operation, any decoder that collects a set of $g$ \ac{l.i.} recoded
+operation, any decoder that collects a set of $g$ linearly independent recoded
 packets with their respective coefficients, will be able to decode the
 data as mentioned before in Section \ref{sssec:decoding}.
 
@@ -259,7 +259,7 @@ exclude the zero element and then pick uniformly distributed random
 elements from $GF(q)-\{ 0 \}$. Also, we have specified a dependency on
 the field size for practical density values. In case of employing
 $GF(2)$, the maximum plausible density is restricted up to 0.5 since
-higher values incur in more frequent \ac{l.d.} coded
+higher values incur in more frequent linearly dependent coded
 packets~\cite{realworld_nc2013}.\textcolor{red}{Rather more coding complexity}
 
 Reducing $d$ enables the encoder to decrease the average number of
@@ -270,7 +270,7 @@ coefficients are required to be operated during the Gaussian
 elimination stage.
 
 The drawback of this scheme is that coded packets from the encoder
-become more \ac{l.d.} on each other as the density is reduced.  This
+become more linearly dependent on each other as the density is reduced.  This
 leads to transmission overhead since another coded packet is required
 to be sent for every reception of a redundant packet.  Also, this
 method may still generate a coded packet, which does not contain any
@@ -350,20 +350,20 @@ packet using \ac{SRLNC} can be written as shown in
 not only for the encoder to generate sparse coded packets, but also to
 modify the code density of the packets progressively as required. As a
 decoder accomulates more coded packets, the probability that the next
-received coded packet will be \ac{l.d.} increases~\cite{Feizi2012}.
+received coded packet will be linearly dependent increases~\cite{Feizi2012}.
 %\cite{feizi2014tunable}.
 
 Therefore, in \ac{TSNC}, a simple procedure for controlling this probability
 is to gradually increase the coding density as the \ac{dof}\footnote{We refer
 as degrees of freedom to the dimension of the linear span from the coded
 packets that a decoder has at a given point} increases, e.g., as the
-cardinality of the set of \ac{l.i.} coded packets increases. This enables
+cardinality of the set of linearly independent coded packets increases. This enables
 \ac{TSNC} to significantly reduce the complexity, particularly in the
 beginning of the transmission process and also to control the decoding
 delay. For \ac{TSNC}, we define the budget, $b \geq g$, to be a target
 number of coded packets a transmitter wants to send to a receiver
 for decoding a generation of $g$ packets. In some scenarios, we may set
-$e$ defined as the excess of \ac{l.d.} packets sent from the encoder.
+$e$ defined as the excess of linearly dependent packets sent from the encoder.
 This helps to also define the budget as $b = g + e$.
 
 The difference between $b$ and $g$ is equal to the losses in the channel
@@ -373,7 +373,7 @@ channel, the budget is:
     b(g,d)=\sum^{g-1}_{i=0}\frac{1}{P(i,g,d)},
 \end{equation}
 where $P(i,g,d)$ is the probability of receiving an innovative coded packet
-after receiving $i$ \ac{l.i.} packets with a coding density $d$. In our
+after receiving $i$ linearly independent packets with a coding density $d$. In our
 implementations, we considered the lower bound for the innovation probability
 from \cite{feizi2014tunable}, given as:
 \begin{equation}
