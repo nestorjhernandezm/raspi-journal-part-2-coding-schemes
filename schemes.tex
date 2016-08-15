@@ -385,14 +385,11 @@ can estimate the required coding density for the packets to not exceed the
 budget. In our implementation, we use feedback packets to provide the
 encoder an estimate of the decoder \ac{dof} at pre-defined points of the
 transmission process. The points in the process occur when a decoder
-obtains a given amount of \ac{dof}. In our implementation, we define $r(k),\
-k \in [1, \ldots)$ as the rank $r$ of the decoder\footnote{The rank of
-a decoder is the rank of its coding matrix at a given point in the
-transmissions process.} where a decoder has to send the $k$-th feedback in
+obtains a given amount of \ac{dof}. In our implementation, we define $r(k)$ as the \ac{dof}s of the decoder where it has to send the $k$-th feedback in
 \eqref{eq:feedback_dofs}.
 %
 \begin{equation}\label{eq:feedback_dofs}
-    r(k) = \floor{g\cdot \left[\frac{2^k -1}{2^k}\right]},\ k \in [1,\ldots)
+    r(k) = \floor{g\cdot \left[\frac{2^k -1}{2^k}\right]},\ k \in \Big[1,\ldots,\ceil{log_2(g)}+1\Big]
 \end{equation}
 %
 At the beginning of the transmission process, we assume that the encoder
