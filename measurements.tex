@@ -6,7 +6,7 @@ With the methodology and setups from the previous sections, we
 proceed to obtain the measurements for the \ac{Raspi} 1 and 2 devices.
 We consider the following set of parameters for our study:
 For all the codes, we use $g = [16,\ 32,\ 64,\ 128,\ 256,\ 512]$
-and $q = [2,\ 2^8]$. For the non-optimized multicore implementations
+and $q = [2,\ 2^8]$. For the \fxnote{something} implementations
 and cases when the generation size is varied $B = 1600$ bytes.
 We consider a setup where we only vary the packet size,
 $B = [64,\ 128,\ 256,\ 512,\ 1024,\ 2048,\ 4096,\ 8192,\ 16384,\ 32768
@@ -745,7 +745,8 @@ are also made for inverting the matrix of coding coefficients.
 \begin{figure}[ht!]
 \centering
 % \includegraphics[width=0.7\textwidth]{images/2015-04-18_encoding_decoding_1024.pdf}
-\includegraphics[width=0.7\textwidth]{images/GenSize_1024_SymbolSize_1536.eps}
+%\includegraphics[width=0.7\textwidth]{images/GenSize_1024_SymbolSize_1536.eps}
+\includegraphics[width=0.7\textwidth]{images/GenSize_1024_SymbolSize_1536.pdf}
 \caption{Encoding and Decoding performance for $g = 1024$. Block size: $128 \times 128$.}
 \label{enc_dec1024}
 \end{figure}
@@ -764,7 +765,8 @@ Therefore, the decoding goodput is 58\% of the encoding goodput.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.7\textwidth]{images/GenSize_128_SymbolSize_1536.eps}
+%\includegraphics[width=0.7\textwidth]{images/GenSize_128_SymbolSize_1536.eps}
+\includegraphics[width=0.7\textwidth]{images/GenSize_128_SymbolSize_1536.pdf}
 \caption{Encoding and Decoding performance for $g = 128$. Block size: $128 \times 128$}
 \label{enc_dec128}
 \end{figure}
@@ -779,7 +781,8 @@ of the encoding goodput.
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.7\textwidth]{images/GenSize_16_SymbolSize_1536.eps}
+%\includegraphics[width=0.7\textwidth]{images/GenSize_16_SymbolSize_1536.eps}
+\includegraphics[width=0.7\textwidth]{images/GenSize_16_SymbolSize_1536.pdf}
 \caption{Encoding and Decoding performance for $g = 16$. Block size: $16 \times 16$}
 \label{enc_dec16}
 \end{figure}
