@@ -226,14 +226,25 @@ From the density definition in~\eqref{eq:coding_density}, it can be
 observed that $0 \leq d \leq 1$. As $g$ increased, we obtain more
 granularity in the density. Notice that the special case of  $d = 0$ has no
 practical purpose since it implies just zero padded data.
-\textcolor{red}{exclude the case d=1 for gf(2) here}
+%In $GF(2)$ only, we also eliminate the case of $d = 1$ as it would always
+%produce a coding vector of all ones.
+%In $GF(2)$ only, $d = 1$ causes coding vectors to always be all ones.
+%Furthermore, $d = 1$ in $GF(2)$ leads to coding vectors that are always filled
+%with ones, producing the same coded packet.
+%\textcolor{red}{exclude the case d=1 for gf(2) here}
 So, a practical
 range for the density excludes the zero case, $0 < d \leq 1$.
+%range for the density that we use is $0 < d \leq 1$, and for $GF(2)$ only, $0 < d < 1$.
 %Moreover,
 %it can be also observed that the case of $d = 1$ reduces to the \ac{RLNC}
 %coding scheme described in Section~\ref{ssec:RLNC}.
-Moreover, the densities $d=0.5$ in $GF(2)$ and $d=1$ in higher order
-\ac{GF}s is similar to the \ac{RLNC} scheme described in Section~\ref{ssec:RLNC}.
+%
+Furthermore, in $GF(2)$ there is no benefit of using $d > 0.5$ in terms of
+generating linearly independent packets~\cite{realworld_nc2013}. Thus,
+we limit the range to $0 < d \leq 0.5$ in $GF(2)$. 
+
+%Moreover, the densities $d=0.5$ in $GF(2)$ and $d=1$ in higher order
+%\ac{GF}s is similar to the \ac{RLNC} scheme described in Section~\ref{ssec:RLNC}.
 
 To achieve a desired average coding density in the coefficients, for each
 of them, we utilize a set of Bernoulli random variables all with parameter
