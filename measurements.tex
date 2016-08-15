@@ -315,11 +315,11 @@ observe the same generation and packet size effects reported in the
 encoding case. However, we do observe in
 Fig.~\ref{fig:dec_good_rasp1_gen_gf2}, \ref{fig:dec_good_rasp1_gen_gf256},
 \ref{fig:dec_good_rasp2_gen_gf2} and \ref{fig:dec_good_rasp2_gen_gf256};
-that duplicating\fxnote{What does duplicating the generation size mean? Did you mean doubling?} the generation size does not reduce the goodput by a
+that doubling the generation size does not reduce the goodput by a
 factor of four. In principle, given that Gaussian elimination scales as
 $\mathcal{O}(g^3)$ (and thus the processing time), we would expect that
 the goodput to scale as $\mathcal{O}(R_{proc,dec}) = \mathcal{O}(g/g^{3}) =
-\mathcal{O}(g^{-2})$. This would imply that duplicating\fxnote{doubling?} the generation
+\mathcal{O}(g^{-2})$. This would imply that doubling the generation
 size, should reduce the goodput by a factor of four, which is not the case. Instead,
 the goodput is only reduced by a factor of two. This is only possible if
 the Gaussian elimination is $\mathcal{O}(g^2)$. A study in
