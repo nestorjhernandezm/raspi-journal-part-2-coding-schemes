@@ -43,7 +43,6 @@ We consider the Raspberry Pi 1 and 2 to be good representatives in the field of 
 We have made a reference to two papers by Achuthan et al. ("Lean and Mean" and "Sharing the Pi" that include measurements for both q=2^8 and q=2^16 that indicates a performance degradation of approximately 10x). We also ran some simulations ourself that indicated similar performance gab between the two field types.
 The reason that we do not consider q=2^16 is that nobody uses it today. q=2^8 is the standard today and q=2 is beneficial in terms of performance in low performance devices. For security purposes, there exists better ways than using q=2^16. 
 
-FIXME: Did we include achuthans papers?
 FIXME: Should we argue somewhere the performance of 2^16 and argue why we use the two fields q=2 and q=2^16?
 
 
@@ -51,7 +50,7 @@ FIXME: Should we argue somewhere the performance of 2^16 and argue why we use th
 
 We link to our prior work as this paper is mostly based on those papers. We have removed reference 10 and 30 and added a few more citations to related work done by others.
 
-FIXME: Did we remove reference 10 and 30?
+FIXME: Did we remove reference 10?
 
 Nestor: Which were these papers? These numbers have changed already
 
