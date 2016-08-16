@@ -21,7 +21,7 @@ multicore capabilities of the \ac{Raspi} 2.
 \ac{RLNC} is an example of intra-session \ac{NC}, i.e., data symbols
 from a single flow are combined with each other. In this type of
 %network coding, all the original data packets $P_j, j \in [1,g]$, each
-network coding, $g$ original data packets $P_j, j \in [1,g]$, each
+network coding, $g$ original data packets $P_j, j \in [1,2,\ldots,g]$, each
 of $B$ bytes, are used to create coded packets using random linear
 combinations of the original ones. In the following subsections, we
 describe the basic functionalities of \ac{RLNC}.
@@ -67,7 +67,7 @@ as:
 \subsubsection{Decoding}
 \label{sssec:decoding}
 To be able to decode a batch of $g$ packets, a linearly independent set of $g$
-coded packets, $C_i,\ i \in [1,g]$ is required at a decoder.
+coded packets, $C_i,\ i \in [1,2,\ldots,g]$ is required at a decoder.
 Once this set has been collected for a decoder,
 the original packets can be found by computing the solution of a system
 of linear equations using \ac{GF} aritmethics. Thus, we define
@@ -171,7 +171,7 @@ in the $i$-th row and $j$-th column of $(\textbf{W} \textbf{V})$, this
 term is the resulting coding coefficient used to create $R_i$ after
 encoding the original packet $P_j$ recoding it locally in an intermediate
 node. Finally, the appended coefficients for $R_i$ are
-${(\textbf{W} \textbf{V})}_{ik}$ with $k \in [1,g]$. By doing some
+${(\textbf{W} \textbf{V})}_{ik}$ with $k \in [1,2,\ldots,g]$. By doing some
 algebra, each ${(\textbf{W} \textbf{V})}_{ij}$ term can be verified to be
 computed as:
 %
@@ -210,7 +210,7 @@ different methods to produce sparse coded packets.
 A way to control the amount of non-zero coding coefficients, is to set a
 fixed ratio of non-zero coefficients in the encoding vector of size $g$. We
 refer to this fixed ratio as the average coding density $d$. Thus, for any
-coded packet $C_i$ with coding coefficients $v_{ij},\ j \in [1,g]$, its
+coded packet $C_i$ with coding coefficients $v_{ij},\ j \in [1,2,\ldots,g]$, its
 coding density is defined as follows:
 %
 \begin{align}
@@ -250,7 +250,7 @@ we limit the range to $0 < d \leq 0.5$ in $GF(2)$.
 To achieve a desired average coding density in the coefficients, for each
 of them, we utilize a set of Bernoulli random variables all with parameter
 $d$ as its success probability, i.e. $\mathbb{B}_j \sim Bernoulli(d)\ ,\ \forall
-j \in [1,g]$. In this way, we can represent a coded packet in \ac{SRLNC} as:
+j \in [1,2,\ldots,g]$. In this way, we can represent a coded packet in \ac{SRLNC} as:
 %
 \begin{align} \label{eq:sparse_coded_packet}
     C_i  &= \bigoplus_{j=1}^{g} \mathbb{B}_j v_{ij} \otimes P_j ,\ v_{ij}
