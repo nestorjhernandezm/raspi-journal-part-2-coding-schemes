@@ -5,7 +5,7 @@ Reviewer 1:
 Dear reviewer,
 Thank you very much for the valuable feedback. We have corrected the indicated typos and several others particularly in section 4. We have also replaced the abbreviations "l.d." and "l.i." to "linearly dependent" and "linearly independent".
 
-FIXME: variable "g" used on page 2 or 3 before it is defined
+FIXME: Nestor, what do you think about the way I defined "g" on page 3? I believe "g" is first used on page 3 now. Not page 2 anymore as the reviewer stated?
 
 FIXME: the notation [1,g] (and many other notations) should be changed to
        maybe [1,2,...g]
