@@ -46,7 +46,7 @@ indicated similar performance gab between the two field types. Another reason to
 
 We link to our prior work as this paper is mostly based on those papers. We have removed reference 10 and 30 and added a few more citations to related work done by others.
 
-FIXME: Did we remove reference 10 and 30?
+FIXME: Did we remove reference 10?
 
 Nestor: Which were these papers? These numbers have changed already
 
