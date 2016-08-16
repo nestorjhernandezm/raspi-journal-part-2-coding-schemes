@@ -41,19 +41,29 @@ Authors in \cite{kruger2015rapid} consider using the \ac{Raspi} as an
 \ac{6LoWPAN} gateway for a set of sensor and mobile devices to an
 \ac{IP} version 6 network. In \cite{mahmoud2016sensorian}, a general
 purpose sensoring platform for \ac{IoT} is presented using the \ac{Raspi}
-as its basic building block. Other interesting \ac{IoT} use cases
-are the works presented in \cite{wirz2015enabling,alletto2016indoor}. In the first
-of these works, many \ac{Raspi}s are used as controllable smart devices
+as its basic building block. Various interesting \ac{IoT} use cases
+are the works presented in \cite{wirz2015enabling,alletto2016indoor,
+jalali2016fog,ueyama2014exploiting}. In \cite{wirz2015enabling}, many
+\ac{Raspi}s are used as controllable smart devices
 with network connectivity that may ubiquously interact with different users,
 each represented by a mobile device through a smartphone application.
-The second work considers \ac{Raspi}s as a data processing unit
-for disseminating artwork content in smart museums.
-
+The study in \cite{alletto2016indoor} considers \ac{Raspi}s as a data
+processing unit for disseminating artwork content in smart museums.
+An \ac{IoT} setting where the \ac{Raspi} is employed as a nano-server
+in distributed storage and computing can be found in \cite{jalali2016fog}.
+Finally, in \cite{ueyama2014exploiting}, the authors present
+the \ac{Raspi} as the processing entity of an unmanned aereal
+vehicle application to increase the resilience of a wireless sensor networks.
+However, even though all these advances in the \ac{IoT} area regarding
+the exploitation of the \ac{Raspi} capabilities, the application data
+is forwarded using former conventional routing methods which may
+not satisfy the need of a distributed network for \ac{IoT}
+applications as mentioned earlier 
 
 % INTRODUCTION TO NETWORK CODING
-Introduced in~\cite{ahlswede2000network}, \ac{NC}
-constitutes a paradigm shift in the way networks are understood
-by changing how information is sent through them.
+In this context, introduced in~\cite{ahlswede2000network}, \ac{NC}
+constitutes a paradigm shift in the way data networks are understood
+by changing how information is sent through them and stored at the end devices.
 Instead of treating the packets as atomic
 unmodifiable units, packets are seen as algebraic entities in a \ac{GF}
 that can be operated on to create new coded packets. This permits to
@@ -65,9 +75,11 @@ and decoding on a hop basis, relaying nodes can take part in the
 coding process without needing to decode. Therefore, a relay can
 \textit{recode} packets, i.e. encode again previously received encoded
 (but not decoded) packets in order to reduce delay and still
-take advantage of the data representation for the next hop.
+take advantage of the data representation for the next hop. This new type
+of coding across the network is proven to achieve the multicast
+capacity \cite{ahlswede2000network,koetter2003algebraic}.
 
-Compared to other broadly used coding schemes, e.g. \ac{LDPC}
+Compared to other broadly used coding schemes, such as \ac{LDPC}
 codes~\cite{gallager1962low} or Reed-Solomon
 codes~\cite{reed1960polynomial}, network coding is a technology that
 has been implemented in real systems since the early years of its
@@ -88,26 +100,35 @@ within the X topology with overhearing links. Its source code is available
 as open source in the Linux kernel. Moreover, many other successful
 implementations have been tested on real world systems such as
 found in~\cite{pahlevani2013playncool,krigslund2013core,
-paramanathan2013leanandmean}. For the Raspberry Pi platform, an evaluation
-of the performance of \ac{RLNC} can be found in \cite{paramanathan2014sharing}.
+paramanathan2013leanandmean,seferoglu2011i2nc}. For the Raspberry Pi device, an evaluation
+of the performance of a decentralized network code for distributed systems, \ac{RLNC},
+\cite{ho2006random}, can be found in \cite{paramanathan2014sharing}.
 However, this evaluation focused particularly on observing the achievable
-speeds with \ac{RLNC} \cite{ho2006random} by different configurations of
-the code parameters with a single thread and no hardware acceleration through
-\ac{SIMD}.
+speeds only for \ac{RLNC} with different configurations of
+the code parameters. In this previous work, a relevant practical aspect that
+was not evaluated was the use of hardware acceleration through \ac{SIMD} or
+the multi-core capabilities of more advanced \ac{Raspi} models. These features are
+becoming more frequent in new processors to largely increase their computational
+power for the upcoming demand. In this sense, the Raspberry Pi posses an \ac{ARM}
+architecture that could be multi-core as mentioned and also exploits the \ac{SIMD}
+feature with the optimized NEON instruction set, but still to the best of our knowledge
+there has been no documentation in the literature about these capabilities.
 
-In this work, we provide detailed measurements of the goodput (processing
+Therefore, in this work we provide detailed measurements of the goodput (processing
 speed) and energy consumption of \ac{Raspi} models 1 and 2, when
 performing network coding operations with different codecs based on \ac{RLNC}
-such as: full dense \ac{RLNC}, multicore-enabled \ac{RLNC}, sparse \ac{RLNC}
-and tunable sparse \ac{RLNC}. For these coding schemes, the encoder and implementations from Kodo now detect and exploit the \ac{SIMD}
-capabilities of the Raspberry Pi. We also assess the \ac{Raspi}
-performance excluding the effect of packet losses or delays in order to have a
-description of the codes in terms of their parameters. To achieve this,
-we perform a measurement campaign with the indicated coding schemes and
-their parameters in the Raspberry Pi platform. Our measurements permit
-us to characterize the goodput and energy consumption
-of these devices showing that speeds of 800 Mbps and processing energy per bit
-values of 0.1 nJ are possible. Our work is organized as follows.
+such as: full dense \ac{RLNC}, multi-core enabled \ac{RLNC}, sparse \ac{RLNC}
+and tunable sparse \ac{RLNC}. For these coding schemes, the encoder and decoder
+implementations from Kodo are able to detect and make use of the \ac{SIMD}
+through the NEON instruction set of the Raspberry Pi by recognizing the \ac{ARM}
+architecture with its multicore capabilities. We assess
+the \ac{Raspi} performance excluding the effect of packet losses or delays in
+order to have a description of the processing and energy consumption for only the
+codes in terms of their parameters. To achieve this, we perform a measurement
+campaign with the indicated coding schemes and their parameters in various models
+of a Raspberry Pi device. Our measurements permit us to characterize the mentioned
+metrics of these devices showing that processing peeds of 800 Mbps and processing
+energy per bit values of 0.1 nJ are possible. Our work is organized as follows.
 Section~\ref{sec:schemes} defines the
 coding schemes employed in our study. Later, in Section~\ref{sec:metrics}
 we describe the considered metrics and methodology for performance comparison
