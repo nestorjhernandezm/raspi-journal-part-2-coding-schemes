@@ -21,7 +21,8 @@ multicore capabilities of the \ac{Raspi} 2.
 \ac{RLNC} is an example of intra-session \ac{NC}, i.e., data symbols
 from a single flow are combined with each other. In this type of
 %network coding, all the original data packets $P_j, j \in [1,g]$, each
-network coding, $g$ original data packets $P_j, j \in [1,2,\ldots,g]$, each
+network coding, $g$ original data packets also called a generation
+\cite{chou2003practical}, $P_j, j \in [1,2,\ldots,g]$, each
 of $B$ bytes, are used to create coded packets using random linear
 combinations of the original ones. In the following subsections, we
 describe the basic functionalities of \ac{RLNC}.
@@ -41,7 +42,7 @@ concatenation. Later, all resulting packets are added within the
 coded packet can be written as:
 %
 \begin{align} \label{eq:coded_packet}
-C_i  &= \bigoplus_{j=1}^{g} v_{ij} \otimes P_j ,\ \forall i \in [1,\ldots)
+C_i  &= \bigoplus_{j=1}^{g} v_{ij} \otimes P_j ,\ \forall i \in [1,2,\ldots)
 \end{align}
 
 In \eqref{eq:coded_packet}, $C_i$ is the generic coded packet. In principle,
@@ -177,7 +178,7 @@ computed as:
 %
 \begin{align}
 \label{eq:appended_coded_coefficients}
-{(\textbf{W} \textbf{V})}_{ij} = \sum_{k=1}^{g} w_{ik} v_{kj}\ ,\ \forall i,j \in [1,g] \times [1,g].
+{(\textbf{W} \textbf{V})}_{ij} = \sum_{k=1}^{g} w_{ik} v_{kj}\ ,\ \forall i,j \in [1,2,\ldots,g] \times [1,2,\ldots,g].
 \end{align}
 %
 This update procedure on the coding coefficients is carried by all the
@@ -308,24 +309,24 @@ for low coding densities~\cite{practicalview_tsnc2015}.
 
 For this method, we first obtain the amount of packets
 that we will combine to create a coded packet. To do so, a random
-number, $\mathbb{N}$, of the original packets is used to produce a
-coded packet. For our case, $\mathbb{N}$ is binomially distributed
+number, $\mathbb{M}$, of the original packets is used to produce a
+coded packet. For our case, $\mathbb{M}$ is binomially distributed
 with parameters $g$ for the number of trials and $d$ for its success
-probability, e.g. $\mathbb{N} \sim Binomial(g,d)$. However,
+probability, e.g. $\mathbb{M} \sim Binomial(g,d)$. However,
 when sampling from this distribution, the case
-$\mathbb{N} = 0$ occurs with a non-zero probability. In order to handle
+$\mathbb{M} = 0$ occurs with a non-zero probability. In order to handle
 this special case, our implementation considers
-$\mathbb{K} = \max(1,\mathbb{N})$ as the final amount of packets to be
+$\mathbb{K} = \max(1,\mathbb{M})$ as the final amount of packets to be
 mixed together. In this way, we always ensure that at least one packet is
 encoded.
 
 The only caveat is that the case of $\mathbb{K} = 1$ occurs slightly
-more often than $\mathbb{N} = 1$ in the original distribution, but for
+more often than $\mathbb{M} = 1$ in the original distribution, but for
 the considered density range in this method, this is not a significant
 modification~\cite{practicalview_tsnc2015}. Then, once the
 distribution for the number of packets to mix has been defined, we
-sample a value $n$ from $\mathbb{N}$ and compute $k =
-\max(1,n)$. Later, we create a set $\mathcal{K}$ with
+sample a value $m$ from $\mathbb{M}$ and compute $k =
+\max(1,m)$. Later, we create a set $\mathcal{K}$ with
 cardinality $k$, e.g. $|\mathcal{K}| = k$, where the elements in
 $\mathcal{K}$ are the indexes of the packets that are going to be
 considered for making a coded packet. To compute the indexes
@@ -349,8 +350,8 @@ In Algorithm~\ref{alg:k_set}, the notation $\mathbb{U}(1,g)$ stands
 for a uniform discrete random variable with limits $1$ and $g$. The
 pseudo-code in Algorithm~\ref{alg:k_set} indicates that the set $\mathbb{K}$
 is filled with non-repeated elements taken uniformly at random from
-$[1,\ldots,g]$. Finally, once the set of indexes has been defined, a coded
-packet using \ac{SRLNC} can be written as shown in
+the continuous interval $[1,\ldots,g]$. Finally, once the set of indexes has been
+defined, a coded packet using \ac{SRLNC} can be written as shown in
 \eqref{eq:sparse_coded_packet2}:
 %
 \begin{align} \label{eq:sparse_coded_packet2}
@@ -402,7 +403,7 @@ obtains a given amount of \ac{dof}. In our implementation, we define $r(k)$ as t
 \eqref{eq:feedback_dofs}.
 %
 \begin{equation}\label{eq:feedback_dofs}
-    r(k) = \floor{g\cdot \left[\frac{2^k -1}{2^k}\right]},\ k \in \Big[1,\ldots,\ceil{log_2(g)}+1\Big]
+    r(k) = \floor{g\cdot \left[\frac{2^k -1}{2^k}\right]},\ k \in \Big[1, 2, \ldots,\ceil{log_2(g)}+1\Big]
 \end{equation}
 %
 At the beginning of the transmission process, we assume that the encoder

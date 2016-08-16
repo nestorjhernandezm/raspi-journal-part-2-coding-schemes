@@ -3,54 +3,102 @@ Reviewer 1:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Dear reviewer,
-Thank you very much for your valuable feedback. We have corrected all the indicated and other
-found typos by proof-reading the manuscript. We have also replaced the abbreviations "l.d." and
-"l.i." to "linearly dependent" and "linearly independent" as suggested to enhance clarity in the 
-notation. Regarding the definition of "g", We have defined the parameter "g" as the total number of original packets to be encoded.
+Thank you very much for your valuable feedback. We have listed your comments below and described
+our corrections to hopefully solve the indicated issues.
 
-FIXME: the notation [1,g] (and many other notations) should be changed to
-       maybe [1,2,...g]
-Nestor: Can you make this modification while I advance in the intro?
+- We have corrected all the indicated and other found typos by proof-reading the manuscript. We
+have also replaced the abbreviations "l.d." and "l.i." to "linearly dependent" and "linearly
+independent" as suggested to enhance clarity in the notation.
 
-FIXME: change notation such as $\mathbb{N}$ as this is typically used for positive numbers
-Nestor: Can you make this modification while I advance in the intro?
+- Regarding the definition of "g", We have defined the parameter "g" as the total number of
+original packets to be encoded once at beginning of Section 2.
+
+- For the notation [1,g] to denote the set of integer number between 1 and "g", we have modified
+all its appearances to [1,2,...,g] to indicate the integer nature of this set in a more standard
+fashion. Also, in our
+definitions the notation 
+
+- For the notation $\mathbb{N}$ for the random number of packets to be combined in SRLNC, we have
+modified all its appearances to $\mathbb{M}$ to avoid any confusion with the notation for the set of
+positive numbers.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 Reviewer 2:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Dear reviewer,
-Thank you very much for your valuable feedback. We have listed your comments below and described what we have changed to hopefully improve the indicated issues.
+Thank you very much for your valuable feedback. We have listed your comments below and described
+our corrections or observations to hopefully solve the indicated issues.
 
+- The proposed system is not well described
 
- - The proposed system is not well described
-
-We have rewritten the parts that indicate a proposed system. All our measurements are performed within a single Raspberry Pi. We only replace the traditional power supply with an Agilent Power
+We have rewritten the parts that indicate a proposed system. All our measurements are performed
+within a single Raspberry Pi. We only replace the traditional power supply with an Agilent Power
 Supply device to monitor and log the power consumption.
-   
-- Finally and in a word, the motivation of this paper is unclear. The main question is “why Raspberry pi in network coding?”. What is the advantage of using Raspberry pi?
+
+- Finally and in a word, the motivation of this paper is unclear. The main question is "why
+Raspberry pi in network coding?". What is the advantage of using Raspberry pi?
 
 We consider that the Raspberry Pi models 1 and 2 are good representatives of a low-cost computer
-considered as IoT devices in terms of performance and capabilities. We now elaborate on this idea in the introduction by providing various use cases of IoT + Raspi. At the end of the description of
+considered as IoT devices in terms of performance and capabilities. We now elaborate on this idea
+in the introduction by providing various use cases of IoT + Raspi. At the end of the description of
 the use cases of IoT + Raspi, we specifically mention that despite this advances, data is still
-being conveyed in a conventional way that will hit a performance roof with new services demands. This is why we motivate about network coding since it is proven its utility in the area of meshed
-networks where IoT deployments occur. Another reason for using the Raspberry Pi is its large user community in contrast to many other low cost devices. This allows a system developer to use standard tools and / or based on either Windows or Linux, reducing the development time. Finally, the Raspberry Pi models 1 and 2, have one and four cores respectively and they support hardware acceleration through the NEON instruction set in ARM that is mandatory to reach the full potential of network coding where we have included the proper details. We have updated the introduction to hopefully elaborate on all these subjects to show why using network coding in Raspberry Pi is interesting.
+being conveyed in a conventional way that will hit a performance roof with new services demands.
+This is why we motivate about network coding, e.g. since the usefulness of network coding has been
+verified in the area of meshed networks in prior works. Meshed networks will be the scenario where
+upcoming IoT deployments will mostly occur.
 
-- They only consider q=2 and 28 , however, as it is mentioned in “Chou, Philip A., Yunnan Wu, and Kamal Jain. "Practical network coding." (2003).”, based on security aspect, in practice, wey should consider q=28 and 216. By this assumption, they should show and compare the results with q=216 too.
+Another two important reasons for using the Raspberry Pi are: First, its large user community in
+contrast to many other low-cost devices. This allows a system developer to use standard tools
+and / or based on either Windows or Linux, reducing the development time. Second, the Raspberry
+Pi models 1 and 2, have one and four cores respectively and they support hardware acceleration
+through the NEON instruction set in ARM that is mandatory to reach the full potential of network
+coding where we have included the proper details. We have updated the introduction to elaborate
+on all these subjects to show why using network coding in Raspberry Pi is interesting.
 
-We have made a reference to two papers by Achuthan et al. ("Lean and Mean" and "Sharing the Pi").
-These two references include measurements for both q=2^8 and q=2^16 and indicate a performance degradation of approximately 10x. The underlying reason is that using Galois fields higher than 2^8 provide no perceivable benefit in terms of the decoding probability while increasing in complexity. At the end, this turns disastrous for the code. We also ran a few measurements ourself that
-indicated similar performance gab between the two field types. Another reason to not consider q=2^16 is that it is not a standard field size. q=2^8 is the standard today and q=2 is beneficial in terms of performance in low-computing power devices. For security purposes, there exists even better ways than using q=2^16. 
+- They only consider q=2 and 28 , however, as it is mentioned in "Chou, Philip A., Yunnan Wu, and
+Kamal Jain. "Practical network coding." (2003).", based on security aspect, in practice, wey
+should consider q=28 and 216. By this assumption, they should show and compare the results with
+q=216 too.
 
-- The list of references neglects some of the most relevant papers. Moreover, the authors have cited to their previous papers (i.e., [6,7,8,10,11,12,13,17,21,27,30])!!! It seems they want to increase citation of their papers!
+We have made a reference to two papers by Achuthan et al. (i.e. "Lean and Mean" [23] and "Sharing
+the Pi" [25]). These two references include measurements for both q=2^8 and q=2^16 and indicate
+a performance degradation of approximately 10X for going from q=2^8 to q=2^16. The underlying
+reason is that using Galois fields higher than 2^8 provide no perceivable benefit in terms of the
+decoding probability while increasing in complexity and processing overhead due to the coding
+coefficients. At the end, this significantly reduces the performance of the code. To verify this,
+we also ran a few measurements ourself that indicated a similar performance gap between the two
+field types. Another reason to not consider q=2^16 is that it is not a standard field size. q=2^8
+is the standard today (comparable with Reed-Solomon codes for example) and q=2 is beneficial in
+terms of performance in low-computing power devices. Finally, for security purposes, there exists
+much secure ways than only using q=2^16. 
 
-We link to our prior work as this paper is mostly based on those papers. We have removed reference 10 and 30 and added a few more citations to related work done by others.
+- The list of references neglects some of the most relevant papers. Moreover, the authors have
+cited to their previous papers (i.e., [6,7,8,10,11,12,13,17,21,27,30])!!! It seems they want to
+increase citation of their papers!
 
-FIXME: Did we remove reference 10?
+We have updated the list of references to provide a richer balance in the State-of-the-Art,
+relevant baseline references and our prior work.
 
-Nestor: Which were these papers? These numbers have changed already
+We now have included several references to previous State-of-the-Art and references related
+to use cases for IoT employing the Raspberry Pi [1-9]. Also we have included missing
+references and grouped them with the baseline of network coding [10-16,26].
 
-- The presentation of the paper is not very good. The authors did not care very much about the structure, the language (i.e., page 2 line 42 “Furthermore, in [7], the Kodo library was introduce.” Should be introduced….)
+We link to our prior work as this paper evaluation is based on research lines started
+in those papers. These prior works report our findings in the area of network coding for
+wireless mesh networks and network coding for the Raspberry Pi. To be more specific: Theoretical
+gains and practical implementations of network coding for wireless
+meshed networks are reported in [17,19,21,22]. The Kodo library, our basic building block for the coding operations is [18]. Basic measurements + observed effects of Random
+Linear Network Coding for commercial devices are found in [23]. A initial study of RLNC for
+the Raspberry Pi is available in [25]. Finally, our work with Sparse and Tunable Sparse Network
+Coding is described in [28-31].
+
+At the end, our references consist of less than 27% of the references in the study. We hope
+that this solves the raised issue.
+
+- The presentation of the paper is not very good. The authors did not care very much about the
+structure, the language (i.e., page 2 line 42 "Furthermore, in [7], the Kodo library was
+introduce." Should be introduced....)
 
 We have corrected all the mentioned and other found typos by proof-reading the manuscript.
 
@@ -60,5 +108,6 @@ Reviewer 3:
 
 Dear reviewer,
 Thank you very much for your valuable feedback. We have corrected all the mentioned and other found
-typos as suggested by proof-reading the manuscript and changed the figures in section 4.4 to show the goodput instead of the throughput by properly labelling the axis and verifying that the shown
+typos as suggested by proof-reading the manuscript and changed the figures in section 4.4 to show
+the goodput instead of the throughput by properly labelling the axis and verifying that the shown
 data is correct.

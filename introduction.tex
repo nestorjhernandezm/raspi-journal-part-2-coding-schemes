@@ -82,11 +82,17 @@ capacity \cite{ahlswede2000network,koetter2003algebraic}.
 Compared to other broadly used coding schemes, such as \ac{LDPC}
 codes~\cite{gallager1962low} or Reed-Solomon
 codes~\cite{reed1960polynomial}, network coding is a technology that
-has been implemented in real systems since the early years of its
-conception. Authors in~\cite{katti2008xors} showed the
-performance of the COPE protocol for the two-way relay channel
+has been studied and implemented in real systems since the early years of
+its conception. A decentralized network code that has been proven
+to achieve the multicast capacity with very high probability is
+\ac{RLNC} \cite{ho2006random}. Later, a work observing the
+benefits of employing \ac{RLNC} in meshed networks is the MORE protocol
+addressed in \cite{chachulski2007more}. Shortly afterwards, authors
+in~\cite{katti2008xors} showed the performance of an implementation
+of the COPE protocol for the two-way relay channel
 in a wireless network, which relied on minimalistic coding and obtaining
-gains over a forwarding scheme. Later, the work in~\cite{pedersen2008implementation} used commercially available
+gains over a forwarding scheme. Later, the work
+in~\cite{pedersen2008implementation} used commercially available
 Symbian OS mobile phones to implement network coding in a
 \ac{D2D} cooperation-based application. Furthermore,
 in~\cite{kodo2011pedersen}, the Kodo library was introduced. Kodo is
@@ -100,9 +106,8 @@ within the X topology with overhearing links. Its source code is available
 as open source in the Linux kernel. Moreover, many other successful
 implementations have been tested on real world systems such as
 found in~\cite{pahlevani2013playncool,krigslund2013core,
-paramanathan2013leanandmean,seferoglu2011i2nc}. For the Raspberry Pi device, an evaluation
-of the performance of a decentralized network code for distributed systems, \ac{RLNC},
-\cite{ho2006random}, can be found in \cite{paramanathan2014sharing}.
+paramanathan2013leanandmean,seferoglu2011i2nc}. For the Raspberry Pi device, an
+evaluation of \ac{RLNC} can be found in \cite{paramanathan2014sharing}.
 However, this evaluation focused particularly on observing the achievable
 speeds only for \ac{RLNC} with different configurations of
 the code parameters. In this previous work, a relevant practical aspect that
