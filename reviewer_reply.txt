@@ -54,15 +54,13 @@ FIXME: Did we remove reference 10 and 30?
 
 - The presentation of the paper is not very good. The authors did not care very much about the structure, the language (i.e., page 2 line 42 “Furthermore, in [7], the Kodo library was introduce.” Should be introduced….)
 
-We have corrected the topys mentioned and several others throughout the paper.
-
-FIXME: Did you correct the sentence "... the Kodo library was introduce"?
-
+We have corrected all the mentioned and other found typos by proof-reading the manuscript.
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 Reviewer 3:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Dear reviewer,
-Thank you very much for the valuable feedback. We have corrected the typos as suggested and changed the figures in section 4.4 to show the goodput instead of the throughput.
-
+Thank you very much for your valuable feedback. We have corrected all the mentioned and other found
+typos as suggested by proof-reading the manuscript and changed the figures in section 4.4 to show the goodput instead of the throughput by properly labelling the axis and verifying that the shown
+data is correct.
