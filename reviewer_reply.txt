@@ -107,7 +107,23 @@ Reviewer 3:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Dear reviewer,
-Thank you very much for your valuable feedback. We have corrected all the mentioned and other found
-typos as suggested by proof-reading the manuscript and changed the figures in section 4.4 to show
-the goodput instead of the throughput by properly labelling the axis and verifying that the shown
-data is correct.
+Thank you very much for your valuable feedback.
+We have listed your comments below and described our corrections or observations to
+hopefully solve the indicated issues.
+
+- The setting is limited to a network without intermediate nodes and without packet loss
+We considered this scenario to measure the code performance on device basis. For example, adding
+the effect of packet losses would not permit to estimate the energy consumption on a given device
+since there is energy wasted on possibly lost packets in a given setting.
+
+- Usually RLNC is not a practical scheme due to its high storage cost at the intermediate
+nodes when the number of packets is large.
+For RLNC the amount of collected packets needed to decode would be similar to any other erasure
+code the only difference is that they are coded and some overhead due to the coding coefficients
+must be hold. Still, in the study we open the possibility to reduce the complexity by using sparse
+codes.
+
+- Regarding typos:
+We have corrected all the mentioned and other found typos as suggested by proof-reading the
+manuscript and changed the figures in section 4.4 to show the goodput instead of the throughput by
+properly labelling the axis and verifying that the shown data is correct.
