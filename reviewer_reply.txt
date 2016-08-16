@@ -3,20 +3,21 @@ Reviewer 1:
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
 Dear reviewer,
-Thank you very much for the valuable feedback. We have corrected the indicated typos and several others particularly in section 4. We have also replaced the abbreviations "l.d." and "l.i." to "linearly dependent" and "linearly independent".
+Thank you very much for your valuable feedback. We have corrected all the indicated and other
+found typos by proof-reading the manuscript. We have also replaced the abbreviations "l.d." and
+"l.i." to "linearly dependent" and "linearly independent" as suggested to enhance clarity in the 
+notation.
 
 FIXME: Nestor, what do you think about the way I defined "g" on page 3? I believe "g" is first used on page 3 now. Not page 2 anymore as the reviewer stated?
 
+Nestor: Where is this exactly right now? I cannot see it :(
+
 FIXME: the notation [1,g] (and many other notations) should be changed to
        maybe [1,2,...g]
+Nestor: Can you make this modification while I advance in the intro?
 
 FIXME: change notation such as $\mathbb{N}$ as this is typically used for positive numbers
-
-
-
-
-
-
+Nestor: Can you make this modification while I advance in the intro?
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 Reviewer 2:
@@ -51,6 +52,8 @@ FIXME: Should we argue somewhere the performance of 2^16 and argue why we use th
 We link to our prior work as this paper is mostly based on those papers. We have removed reference 10 and 30 and added a few more citations to related work done by others.
 
 FIXME: Did we remove reference 10 and 30?
+
+Nestor: Which were these papers? These numbers have changed already
 
 - The presentation of the paper is not very good. The authors did not care very much about the structure, the language (i.e., page 2 line 42 “Furthermore, in [7], the Kodo library was introduce.” Should be introduced….)
 
