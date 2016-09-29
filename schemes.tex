@@ -107,7 +107,7 @@ minimize the computation delay for each step.
 A decoder starts to calculate and substract contributions from each
 of the pivot elements, e.g. leftmost elements in the main diagonal of
 \eqref{eq:coding_matrix}, from top to bottom. The purpose is to obtain
-the equivalence  $\textbf{V}$ in its reduced echelon form. The steps
+the equivalence of $\textbf{V}$ in its reduced echelon form. The steps
 for reducing the matrix by elementary row operations are carried out each time
 a linearly independent packet is received. Once in reduced echelon form, packets
 can be retrieved by doing a substitution starting from the latest
@@ -138,7 +138,7 @@ appended to the previous coding coefficients.  Instead, the system
 will update the previous coefficients. Due to the linearity of the
 operation, this update reduces to recombining the coding coefficients
 equivalent to each original packet with the weight of the
-$w_{i,j}$.Therefore, we define the local coding matrix $\textbf{W}$ in
+$w_{ij}$.Therefore, we define the local coding matrix $\textbf{W}$ in
 the same way as it was made for $\textbf{V}$. Thus, the local coding
 matrix can be written as:
 %
@@ -243,7 +243,7 @@ range for the density excludes the zero case, $0 < d \leq 1$.
 %
 Furthermore, in $GF(2)$ there is no benefit of using $d > 0.5$ in terms of
 generating linearly independent packets~\cite{realworld_nc2013}. Thus,
-we limit the range to $0 < d \leq 0.5$ in $GF(2)$. 
+we limit the range to $0 < d \leq 0.5$ in $GF(2)$.
 
 %Moreover, the densities $d=0.5$ in $GF(2)$ and $d=1$ in higher order
 %\ac{GF}s is similar to the \ac{RLNC} scheme described in Section~\ref{ssec:RLNC}.
@@ -289,8 +289,8 @@ leads to transmission overhead since another coded packet is required
 to be sent for every reception of a redundant packet.  Also, this
 method may still generate a coded packet, which does not contain any
 information. For example, we might find the case where
-$\left[\mathbb{B}_1, \ldots, \mathbb{B}_g \right] = \mathbf{0}$ may
-happen frequently for low densities. In that case, the encoder
+$\left[\mathbb{B}_1, \ldots, \mathbb{B}_g \right] = \mathbf{0}$ to occur
+frequently for low densities. In that case, the encoder
 discards the coded packet and tries to generate a new one to avoid the
 negative impact on overall system performance.
 
@@ -368,7 +368,7 @@ received coded packet will be linearly dependent increases~\cite{Feizi2012}.
 %\cite{feizi2014tunable}.
 
 Therefore, in \ac{TSNC}, a simple procedure for controlling this probability
-is to gradually increase the coding density as the \ac{dof}\footnote{We refer
+is to gradually increase the coding density as the \ac{dof} \footnote{We refer
 as degrees of freedom to the dimension of the linear span from the coded
 packets that a decoder has at a given point} increases, e.g., as the
 cardinality of the set of linearly independent coded packets increases. This enables
